@@ -1,0 +1,278 @@
+/* stylelint-disable at-rule-no-unknown */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+:after,
+:before {
+  -webkit-text-size-adjust: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+html {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  font-size: 100%;
+}
+html::-webkit-scrollbar {
+  display: none; /* WebKit */
+}
+body {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  line-height: 1;
+  letter-spacing: 0;
+  /* --size: 5px; */
+  /* mask: linear-gradient(25deg, white, transparent); */
+  /* background: linear-gradient(hsl(0 0% 12%) 0 2px, transparent 2px var(--size))
+    50% 50% / var(--size) var(--size); */
+  overscroll-behavior-y: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent; /* iOSでタップ時のちらつきを無効 */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  @apply font-sans text-black bg-light1;
+}
+body::-webkit-scrollbar {
+  display: none; /* WebKit */
+}
+::selection {
+  @apply bg-light/20;
+}
+#MAIN {
+  position: relative;
+  /* display: grid;
+  grid-template-rows: 1fr auto;
+  grid-template-columns: 100%; */
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  will-change: transform, scroll-position;
+}
+#MAIN::-webkit-scrollbar {
+  display: none; /* WebKit */
+}
+#SCROLLBAR {
+  will-change: transform, scroll-position;
+}
+/* for firefox */
+/* @-moz-document url-prefix() {
+  header {
+    @apply !w-[calc(100%-96px)];
+  }
+  #toast {
+    @apply !right-[48px];
+  }
+} */
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+p {
+  margin: 0;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img {
+  vertical-align: middle;
+  border: 0px;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+}
+input,
+textarea,
+select {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  resize: none;
+}
+input[type='search'] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+button {
+  padding: 0;
+  background: none;
+  outline: none;
+}
+::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+.ellipsis {
+  @apply overflow-hidden text-ellipsis whitespace-nowrap;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes dash {
+  0% {
+    stroke-dasharray: 0, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35px;
+  }
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -126px;
+  }
+}
+@layer components {
+  .link-external {
+    /* @apply; */
+  }
+  .mask {
+    -webkit-mask: linear-gradient(
+      295deg,
+      rgba(0, 0, 0, 0.048) 8%,
+      rgba(0, 0, 0, 0.004)
+    );
+    mask: linear-gradient(
+      295deg,
+      rgba(0, 0, 0, 0.048) 8%,
+      rgba(0, 0, 0, 0.004)
+    );
+  }
+  .noise {
+    background-image: url(/noise.svg);
+    filter: contrast(360%) brightness(100%);
+    /* -webkit-mask: linear-gradient(
+      295deg,
+      rgba(0, 0, 0, 0.048) 8%,
+      rgba(0, 0, 0, 0.004)
+    ); */
+    mask: linear-gradient(
+      295deg,
+      rgba(0, 0, 0, 0) 34%,
+      rgba(0, 0, 0, 0.04) 48%,
+      rgba(0, 0, 0, 0) 66%
+    );
+    @apply absolute inset-0 pointer-events-none;
+  }
+  .noise-reverse {
+    background-image: url(/noise.svg);
+    filter: contrast(360%) brightness(100%);
+    -webkit-mask: linear-gradient(
+      295deg,
+      rgba(0, 0, 0, 0.004) 8%,
+      rgba(0, 0, 0, 0.048)
+    );
+    mask: linear-gradient(
+      295deg,
+      rgba(0, 0, 0, 0.004) 8%,
+      rgba(0, 0, 0, 0.048)
+    );
+    @apply absolute inset-0 pointer-events-none;
+  }
+  .gradient-text {
+    @apply inline-block text-transparent bg-clip-text font-medium bg-gradient-to-b from-white to-light;
+  }
+  .dotted-underline {
+    @apply text-white/90 underline decoration-light/90 decoration-dotted underline-offset-[4px];
+  }
+  .haze-t {
+    @apply fixed top-0 inset-x-0 h-[104px] opacity-50 backdrop-blur-[6px] select-none pointer-events-none;
+    mask-image: linear-gradient(
+      to bottom,
+      rgba(31, 32, 36, 1) 25%,
+      transparent
+    );
+  }
+  .haze-b {
+    @apply fixed bottom-0 inset-x-0 h-[104px] opacity-50 backdrop-blur-[6px] select-none pointer-events-none;
+    mask-image: linear-gradient(to top, rgba(31, 32, 36, 1) 25%, transparent);
+  }
+  .shine {
+    @apply absolute -top-px h-px w-full inset-x-0;
+    background-image: linear-gradient(
+      to right,
+      rgba(121, 122, 126, 0) 7%,
+      rgba(121, 122, 126, 0.25) 50%,
+      rgba(121, 122, 126, 0.5) 67%,
+      rgba(121, 122, 126, 0) 93%
+    );
+  }
+  .shine-b {
+    @apply absolute -bottom-px h-px w-full inset-x-0;
+    background-image: linear-gradient(
+      to left,
+      rgba(121, 122, 126, 0) 7%,
+      rgba(121, 122, 126, 0.25) 50%,
+      rgba(121, 122, 126, 0.5) 67%,
+      rgba(121, 122, 126, 0) 93%
+    );
+  }
+  .shine-lg {
+    @apply absolute -top-px h-px w-full inset-x-0;
+    background-image: linear-gradient(
+      to right,
+      rgba(235, 235, 235, 0) 7%,
+      rgba(235, 235, 235, 0.25) 47%,
+      rgba(235, 235, 235, 0.5) 70%,
+      rgba(235, 235, 235, 0) 93%
+    );
+  }
+  .wrapper {
+    @apply w-[calc(100%-3vw)] md:w-[calc(100%-80px)] mx-auto max-w-[1200px] rounded-2xl lg:rounded-3xl bg-dark2 px-[5vw] lg:px-[72px] py-[18vw] md:py-28;
+  }
+  .scroller {
+    overflow: auto;
+    outline: none;
+    will-change: transform, scroll-position;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none; /* IE, Edge 対応 */
+    scrollbar-width: none; /* Firefox 対応 */
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  .divider {
+    @apply w-full h-px bg-light/10;
+  }
+  .br {
+    content: '';
+    @apply block mt-2;
+  }
+}
