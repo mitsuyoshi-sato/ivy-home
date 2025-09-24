@@ -47,11 +47,11 @@ export const _Hero = () => {
         <div className="absolute inset-0 bg-black/30" />
       </div>
       <div className="relative z-10 h-full">
-        <div className="mx-auto h-full flex items-center lg:px-[150px] ">
-          <div className="max-w-2xl text-white space-y-4">
+        <div className="mx-auto h-full flex items-center lg:px-[150px] sm:px-14 px-4">
+          <div className="text-white space-y-4">
             <h1
               ref={refText}
-              className="text-3xl md:text-5xl font-semibold leading-normal md:leading-[1.3]"
+              className="text-2xl md:text-5xl font-semibold leading-normal md:leading-[1.3]"
               style={{
                 opacity: 0,
                 transform: 'translateY(10px)',
