@@ -1,3 +1,3 @@
-const { prettierConfig } = require("@soichiro_nitta/prettier-config");
+const { prettierConfig } = require('@soichiro_nitta/prettier-config')
 
-module.exports = prettierConfig;
+module.exports = prettierConfig

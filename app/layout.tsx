@@ -38,9 +38,11 @@ export default function RootLayout({
   console.log('描画された')
   return (
     <html lang="ja" className={`${inter.variable} ${notosansjp.variable}`}>
-      <body className="antialiased ">
+      <body className="antialiased">
         <Header />
-        <main className="px-4 py-8 md:px-8 lg:px-16 xl:px-24">{children}</main>
+        <main className="px-4 py-[60px] md:px-8 md:py-[78px] lg:px-24">
+          {children}
+        </main>
         <footer></footer>
       </body>
     </html>

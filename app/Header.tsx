@@ -3,13 +3,13 @@ import { Leaf } from 'lucide-react'
 
 export const Header = () => {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b w-full">
-      <nav className="py-4 px-4 w-full">
+    <header className="fixed left-0 right-0 top-0 z-50 w-full border-b bg-white shadow-lg">
+      <nav className="w-full px-4 py-4">
         <div className="flex items-center justify-between">
-          <div className="text-xl font-bold flex items-center">
+          <div className="flex items-center text-xl font-bold">
             <Leaf
               size={24}
-              className="text-green-800 translate-x-[10px] -translate-y-[10px]"
+              className="-translate-y-[10px] translate-x-[10px] text-green-800"
               fill="#86EFAC"
             />
             <div>Ivy Home</div>

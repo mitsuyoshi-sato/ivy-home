@@ -1,3 +1,3 @@
 export default function About() {
-  return <div className="p-[100px]">About</div>
+  return <div className="bg-blue-200">About</div>
 }
