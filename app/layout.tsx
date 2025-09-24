@@ -20,7 +20,7 @@ const notosansjp = Noto_Sans_JP({
 })
 
 export const metadata: Metadata = {
-  description: '株式会社アイビーホーム',
+  description: '今、つくるエネルギーが、明日の暮らしを豊かにする。',
   openGraph: {
     images: '/',
     title: '株式会社アイビーホーム',
@@ -37,12 +37,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja" className={`${inter.variable} ${notosansjp.variable}`}>
-      <body className="antialiased">
+      <body className="antialiased overflow-y-auto">
         <Header />
-        <main>
-          {/* <main className="px-4 py-[60px] md:px-8 md:py-[78px] lg:px-24"> */}
-          {children}
-        </main>
+        <main>{children}</main>
         <footer></footer>
       </body>
     </html>

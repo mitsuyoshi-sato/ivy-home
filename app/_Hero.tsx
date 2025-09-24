@@ -57,9 +57,9 @@ export const _Hero = () => {
                 transform: 'translateY(10px)',
               }}
             >
-              再生エネルギーが、
+              今、つくるエネルギーが
               <br />
-              家計も環境も守る。
+              明日の暮らしを豊かにする。
             </h1>
             <p
               ref={refSub}

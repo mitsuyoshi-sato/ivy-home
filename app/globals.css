@@ -255,7 +255,7 @@ button {
     );
   }
   .wrapper {
-    @apply w-[calc(100%-3vw)] md:w-[calc(100%-80px)] mx-auto max-w-[1200px] rounded-2xl lg:rounded-3xl bg-dark2 px-[5vw] lg:px-[72px] py-[18vw] md:py-28;
+    @apply w-[calc(100%-3vw)] md:w-[calc(100%-80px)] mx-auto max-w-[1200px] rounded-2xl lg:rounded-3xl bg-light1 px-[5vw] lg:px-[72px] py-[18vw] md:py-28;
   }
   .scroller {
     overflow: auto;
