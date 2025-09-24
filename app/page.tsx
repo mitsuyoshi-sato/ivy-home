@@ -1,3 +1,7 @@
-export default function Home() {
-  return <div className="">{/* 株式会社アイビーホーム */}</div>;
+import { _Hero } from './_Hero'
+
+const Home = () => {
+  return <_Hero />
 }
+
+export default Home
