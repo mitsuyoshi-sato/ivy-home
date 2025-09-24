@@ -35,12 +35,12 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  console.log('描画された')
   return (
     <html lang="ja" className={`${inter.variable} ${notosansjp.variable}`}>
       <body className="antialiased">
         <Header />
-        <main className="px-4 py-[60px] md:px-8 md:py-[78px] lg:px-24">
+        <main>
+          {/* <main className="px-4 py-[60px] md:px-8 md:py-[78px] lg:px-24"> */}
           {children}
         </main>
         <footer></footer>

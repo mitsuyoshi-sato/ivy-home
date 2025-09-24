@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useLayoutEffect, useMemo, useRef } from 'react'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
-import { motion } from './motion'
+import { motion } from '../motion'
 
 export const Nav = () => {
   const pathname = usePathname()
@@ -12,14 +12,21 @@ export const Nav = () => {
   const refContainer = useRef<HTMLDivElement>(null)
 
   const tabs = [
+    { href: '/', label: 'Home' },
     { href: '/about', label: '会社概要' },
     { href: '/recruit', label: '採用情報' },
     { href: '/contact', label: 'お問い合わせ' },
   ]
 
   const activeIndex = useMemo(() => {
-    const i = tabs.findIndex((t) => pathname?.startsWith(t.href))
-    return i >= 0 ? i : 0
+    if (pathname === '/') return 0
+    const i = tabs
+      .map((t, idx) => ({ idx, href: t.href }))
+      .sort((a, b) => b.href.length - a.href.length)
+      .find(({ href }) =>
+        href === '/' ? pathname === '/' : pathname?.startsWith(href),
+      )?.idx
+    return i ?? 0
   }, [pathname])
 
   useLayoutEffect(() => {
@@ -39,7 +46,7 @@ export const Nav = () => {
   return (
     <div
       ref={refContainer}
-      className="font-semibold text-sm md:flex hidden items-center relative bg-gray-100 border border-gray-200 rounded-full p-1 h-fit"
+      className="font-semibold text-sm md:flex hidden items-center relative rounded-full p-1 h-fit"
     >
       {tabs.map((t, i) => (
         <Link
@@ -47,7 +54,9 @@ export const Nav = () => {
           href={t.href}
           className={cn(
             'px-4 py-2 rounded-full z-10 cursor-pointer text-center',
-            activeIndex === i ? 'text-white' : 'text-gray-500',
+            activeIndex === i
+              ? 'text-white'
+              : 'text-gray-700 cursor-pointer hover:text-gray-900',
           )}
         >
           {t.label}
