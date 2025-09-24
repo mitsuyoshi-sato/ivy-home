@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import { Inter, Noto_Sans_JP } from 'next/font/google'
-import Link from 'next/link'
+import { Header } from './Header'
 
 const inter = Inter({
   display: 'swap',
@@ -35,23 +35,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  console.log('描画された')
   return (
     <html lang="ja" className={`${inter.variable} ${notosansjp.variable}`}>
       <body className="antialiased ">
-        <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b w-full">
-          <nav className="py-4 px-4 w-full">
-            <div className="flex items-center justify-between">
-              <Link href="/" className="text-xl font-bold">
-                アイビーホーム
-              </Link>
-              <div className="md:flex hidden items-center gap-4">
-                <Link href="/about">会社概要</Link>
-                <Link href="/services">サービス</Link>
-                <Link href="/contact">お問い合わせ</Link>
-              </div>
-            </div>
-          </nav>
-        </header>
+        <Header />
         <main className="px-4 py-8 md:px-8 lg:px-16 xl:px-24">{children}</main>
         <footer></footer>
       </body>
