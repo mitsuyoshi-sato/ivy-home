@@ -27,7 +27,7 @@ export const Button = ({
     )}
   >
     {icon && iconPosition === 'left' && (
-      <span className="mr-2 inline-flex items-center group-hover:translate-x-1 transition-all duration-300">
+      <span className="mr-2 inline-flex items-center group-hover:translate-x-2 transition-all duration-300">
         {(() => {
           const Icon = icon
           return <Icon className="h-4 w-4" aria-hidden="true" />
@@ -36,7 +36,7 @@ export const Button = ({
     )}
     {children}
     {icon && iconPosition === 'right' && (
-      <span className="ml-2 inline-flex items-center group-hover:translate-x-1 transition-all duration-300">
+      <span className="ml-2 inline-flex items-center group-hover:translate-x-2 transition-all duration-300">
         {(() => {
           const Icon = icon
           return <Icon className="h-4 w-4" aria-hidden="true" />

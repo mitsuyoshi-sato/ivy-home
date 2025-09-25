@@ -79,7 +79,9 @@ export const TwoColumnSection = (props: {
       <div
         ref={refImage}
         className={`relative z-0 mt-9 overflow-hidden bg-black/10 h-[500px] lg:mt-0 lg:w-[1000px] lg:shrink-0 lg:rounded-3xl ${
-          props.reverse ? 'lg:mr-24 -ml-6 rounded-r-2xl' : 'lg:ml-24 -mr-6 rounded-l-2xl'
+          props.reverse
+            ? 'lg:mr-24 -ml-6 rounded-r-2xl'
+            : 'lg:ml-24 -mr-6 rounded-l-2xl'
         }`}
         style={{ opacity: 0, transform: 'translateY(80px)' }}
       >
