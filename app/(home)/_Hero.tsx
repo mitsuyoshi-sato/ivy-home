@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { motion } from './motion'
+import { motion } from '../motion'
 
 export const _Hero = () => {
   const refImage = useRef<HTMLDivElement>(null)

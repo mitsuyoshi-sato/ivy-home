@@ -4,14 +4,13 @@ import { Button } from '@/components/ui/button'
 import { ArrowRightIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useRef } from 'react'
-import { motion } from './motion'
+import { motion } from '@/app/motion'
 export const TwoColumnSection = (props: {
   title: string
   subtitle: string
   description: string
   image: { src: string; alt: string }
-  link: string
-  buttonText: string
+  button: { href: string; text: string }
   reverse?: boolean
 }) => {
   const reContainer = useRef<HTMLDivElement>(null)
@@ -66,13 +65,13 @@ export const TwoColumnSection = (props: {
         <p className="lg:text-lg text-sm text-gray-600 lg:mt-6 mt-4">
           {props.description}
         </p>
-        <Link href={props.link}>
+        <Link href={props.button.href}>
           <Button
             className="lg:mt-6 mt-4"
             icon={ArrowRightIcon}
             iconPosition="right"
           >
-            {props.buttonText}
+            {props.button.text}
           </Button>
         </Link>
       </div>

@@ -13,9 +13,9 @@ export const Nav = () => {
 
   const tabs = [
     { href: '/', label: 'Home' },
-    { href: '/about', label: '会社概要' },
+    { href: '/company', label: '会社情報' },
+    { href: '/achievements', label: '実績' },
     { href: '/recruit', label: '採用情報' },
-    { href: '/contact', label: 'お問い合わせ' },
   ]
 
   const activeIndex = useMemo(() => {
