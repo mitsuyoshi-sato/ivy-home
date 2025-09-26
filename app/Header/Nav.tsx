@@ -20,8 +20,18 @@ export const Nav = () => {
       label: '会社情報',
       subs: [
         { href: '#policy', label: '理念', icon: 'idea' },
-        { href: '#services', label: '事業内容', icon: 'building' },
         { href: '#info', label: '会社概要', icon: 'info' },
+      ],
+    },
+    {
+      href: '/services',
+      label: '事業内容',
+      subs: [
+        { href: '#solar-panel', label: '太陽光パネル', icon: 'sun' },
+        { href: '#battery-storage', label: '蓄電池', icon: 'battery' },
+        { href: '#eco-cute', label: 'エコキュート', icon: 'bath' },
+        { href: '#all-electric', label: 'オール電化', icon: 'plugZap' },
+        { href: '#exterior-wall', label: '外壁塗装', icon: 'paintbrush' },
       ],
     },
     { href: '/achievements', label: '実績' },

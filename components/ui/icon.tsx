@@ -1,7 +1,20 @@
 'use client'
 
 import { cn } from '@/lib/utils'
-import { Lightbulb, Building2, Info, Layers3, Star, Circle } from 'lucide-react'
+import {
+  Lightbulb,
+  Building2,
+  Info,
+  Layers3,
+  Star,
+  Circle,
+  Paintbrush,
+  Sun,
+  Droplets,
+  BatteryCharging,
+  Bath,
+  PlugZap,
+} from 'lucide-react'
 
 const iconMap: Record<
   string,
@@ -17,6 +30,12 @@ const iconMap: Record<
   info: Info,
   layers: Layers3,
   star: Star,
+  sun: Sun,
+  battery: BatteryCharging,
+  droplets: Droplets,
+  bath: Bath,
+  plugZap: PlugZap,
+  paintbrush: Paintbrush,
 }
 
 export const Icon = (props: {
