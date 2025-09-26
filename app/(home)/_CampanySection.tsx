@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import { motion } from '@/app/motion'
-import { Section } from './Section'
+import { Section } from '../../components/Section'
 export const _CampaignSection = () => {
   const reContainer = useRef<HTMLDivElement>(null)
   const refText = useRef<HTMLDivElement>(null)
