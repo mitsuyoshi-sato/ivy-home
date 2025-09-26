@@ -1,18 +1,9 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
-import { ArrowRightIcon } from 'lucide-react'
-import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 import { motion } from '@/app/motion'
-export const TwoColumnSection = (props: {
-  title: string
-  subtitle: string
-  description: string
-  image: { src: string; alt: string }
-  button: { href: string; text: string }
-  reverse?: boolean
-}) => {
+import { Section } from './Section'
+export const _CampaignSection = () => {
   const reContainer = useRef<HTMLDivElement>(null)
   const refText = useRef<HTMLDivElement>(null)
   const refImage = useRef<HTMLDivElement>(null)
@@ -49,44 +40,24 @@ export const TwoColumnSection = (props: {
   }, [])
 
   return (
-    <div
-      ref={reContainer}
-      className={`wrapper lg:flex lg:items-center ${props.reverse ? 'flex-row-reverse' : ''}`}
-    >
-      <div
+    <div ref={reContainer} className="wrapper lg:flex lg:items-center">
+      <Section
         ref={refText}
         className="lg:w-[380px] lg:shrink-0"
         style={{ opacity: 0, transform: 'translateY(80px)' }}
-      >
-        <p className="text-sm text-gray-500 lg:text-lg">{props.subtitle}</p>
-        <h2 className="lg:text-4xl text-2xl font-bold lg:mt-6 mt-4">
-          {props.title}
-        </h2>
-        <p className="lg:text-lg text-sm text-gray-600 lg:mt-6 mt-4">
-          {props.description}
-        </p>
-        <Link href={props.button.href}>
-          <Button
-            className="lg:mt-6 mt-4"
-            icon={ArrowRightIcon}
-            iconPosition="right"
-          >
-            {props.button.text}
-          </Button>
-        </Link>
-      </div>
+        title="アイビーホームの強み"
+        subtitle="Campany"
+        description="当社は創業以来、住宅用のソーラー・蓄電池・エコキュートの提供を通じて、家計にも環境にも優しい暮らしをサポートしてまいりました。確かな技術と経験に基づき、お客様一人ひとりの生活に寄り添った提案を心がけています。"
+        button={{ href: '/company', text: '詳しく見る' }}
+      />
       <div
         ref={refImage}
-        className={`relative z-0 mt-9 overflow-hidden bg-black/10 h-[500px] lg:mt-0 lg:w-[1000px] lg:shrink-0 lg:rounded-3xl ${
-          props.reverse
-            ? 'lg:mr-24 -ml-6 rounded-r-2xl'
-            : 'lg:ml-24 -mr-6 rounded-l-2xl'
-        }`}
+        className="relative z-0 mt-9 overflow-hidden bg-black/10 h-[500px] lg:mt-0 lg:w-[1000px] lg:shrink-0 lg:rounded-3xl lg:ml-24 -mr-6 rounded-l-2xl"
         style={{ opacity: 0, transform: 'translateY(80px)' }}
       >
         <img
-          src={props.image.src}
-          alt={props.image.alt}
+          src="/sales.jpg"
+          alt="sales"
           className="object-cover w-full h-full"
         />
       </div>
