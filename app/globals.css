@@ -4,11 +4,14 @@
 @tailwind utilities;
 
 :root {
-  --color-dark1: hsl(0, 0%, 40%);
-  --color-dark2: hsl(0, 0%, 35%);
-  --color-dark3: hsl(0, 0%, 30%);
-  --color-dark4: hsl(0, 0%, 20%);
-  --color-dark5: hsl(0, 0%, 9.02%);
+  --color-dark1: hsl(0, 0%, 60%);
+  --color-dark2: hsl(0, 0%, 52.71%);
+  --color-dark3: hsl(0, 0%, 45.42%);
+  --color-dark4: hsl(0, 0%, 38.13%);
+  --color-dark5: hsl(0, 0%, 30.84%);
+  --color-dark6: hsl(0, 0%, 23.55%);
+  --color-dark7: hsl(0, 0%, 16.26%);
+  --color-dark8: hsl(0, 0%, 9.02%);
   --color-ivy1: hsl(151.05, 67.86%, 80%);
   --color-ivy2: hsl(151.05, 67.86%, 70%);
   --color-ivy3: hsl(151.05, 67.86%, 60%);
