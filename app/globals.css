@@ -3,6 +3,14 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-ivy1: hsl(151.05, 67.86%, 75%);
+  --color-ivy2: hsl(151.05, 67.86%, 60%);
+  --color-ivy3: hsl(151.05, 67.86%, 45%);
+  --color-ivy4: hsl(151.05, 67.86%, 30%);
+  --color-ivy5: hsl(151.05, 67.86%, 15%);
+}
+
 *,
 :after,
 :before {

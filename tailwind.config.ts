@@ -13,6 +13,11 @@ const config: Config = {
         light1: '#f8f9fa',
         light: '#e9ecef',
         dark2: '#1f2024',
+        ivy1: 'hsl(151.05,67.86%,75%)',
+        ivy2: 'hsl(151.05,67.86%,60%)',
+        ivy3: 'hsl(151.05,67.86%,45%)',
+        ivy4: 'hsl(151.05,67.86%,30%)',
+        ivy5: 'hsl(151.05,67.86%,15%)',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
