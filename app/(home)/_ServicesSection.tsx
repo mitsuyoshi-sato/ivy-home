@@ -74,7 +74,7 @@ export const _ServicesSection = () => {
                   'p:first-child',
                 ) as HTMLElement
                 if (title) {
-                  motion.to(title, 0.6, 'out', {
+                  motion.to(title, 1.3, 'out', {
                     opacity: 1,
                     translateY: '0px',
                   })
@@ -85,7 +85,7 @@ export const _ServicesSection = () => {
                   'p:last-child',
                 ) as HTMLElement
                 if (description) {
-                  motion.to(description, 0.6, 'out', {
+                  motion.to(description, 1.3, 'out', {
                     opacity: 1,
                     translateY: '0px',
                   })
@@ -105,7 +105,7 @@ export const _ServicesSection = () => {
             })
           }
         },
-        { threshold: 0.5 },
+        { threshold: 0.3 },
       )
       observer.observe(c)
       return () => observer.disconnect()
@@ -201,13 +201,13 @@ function __Bento({
         <div className="text-container py-6 px-3">
           <p
             className="text-lg font-bold"
-            style={{ opacity: 0, transform: 'translateY(20px)' }}
+            style={{ opacity: 0, transform: 'translateY(100px)' }}
           >
             {title}
           </p>
           <p
             className="text-gray-600 mt-2 font-semibold leading-[1.82] break-words whitespace-pre-line text-sm"
-            style={{ opacity: 0, transform: 'translateY(20px)' }}
+            style={{ opacity: 0, transform: 'translateY(100px)' }}
           >
             {description.replace(/\\n/g, '\n')}
           </p>

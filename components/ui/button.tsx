@@ -22,7 +22,7 @@ export const Button = ({
     onClick={onClick}
     disabled={disabled}
     className={cn(
-      'text-ivy8 group hover:bg-ivy3 hover:scale-105 transition-all duration-200 inline-flex items-center justify-center rounded-full bg-ivy2 border border-ivy5 px-6 py-3 font-semibold text-sm lg:text-sm disabled:opacity-50 disabled:pointer-events-none',
+      'text-ivy8 group hover:bg-ivy2 hover:scale-105 transition-all duration-200 inline-flex items-center justify-center rounded-full bg-ivy1 border border-ivy5 px-6 py-3 font-semibold text-sm lg:text-sm disabled:opacity-50 disabled:pointer-events-none',
       className,
     )}
   >

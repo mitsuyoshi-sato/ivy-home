@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react'
 import { motion } from '@/app/motion'
 import { Section } from '../../components/Section'
+
 export const _CampaignSection = () => {
   const reContainer = useRef<HTMLDivElement>(null)
   const refText = useRef<HTMLDivElement>(null)
@@ -18,12 +19,8 @@ export const _CampaignSection = () => {
           async (entries) => {
             const entry = entries[0]
             if (entry.isIntersecting) {
+              // 画像のアニメーション
               motion.to(i, 1.2, 'out', {
-                opacity: 1,
-                translateY: '0px',
-              })
-              await motion.delay(0.3)
-              motion.to(t, 1.2, 'out', {
                 opacity: 1,
                 translateY: '0px',
               })
@@ -44,7 +41,6 @@ export const _CampaignSection = () => {
       <Section
         ref={refText}
         className="lg:w-[380px] lg:shrink-0"
-        style={{ opacity: 0, transform: 'translateY(80px)' }}
         title="アイビーホームの強み"
         subtitle="Campany"
         description="当社は創業以来、住宅用のソーラー・蓄電池・エコキュートの提供を通じて、家計にも環境にも優しい暮らしをサポートしてまいりました。確かな技術と経験に基づき、お客様一人ひとりの生活に寄り添った提案を心がけています。"
