@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 import { motion } from '../motion'
 import { Section } from '@/components/Section'
 
-export const _ServicesBento = () => {
+export const _ServicesSection = () => {
   const refContainer = useRef<HTMLDivElement>(null)
   const refText = useRef<HTMLDivElement>(null)
 
