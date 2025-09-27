@@ -9,11 +9,14 @@
   --color-dark3: hsl(0, 0%, 30%);
   --color-dark4: hsl(0, 0%, 20%);
   --color-dark5: hsl(0, 0%, 9.02%);
-  --color-ivy1: hsl(151.05, 67.86%, 75%);
-  --color-ivy2: hsl(151.05, 67.86%, 60%);
-  --color-ivy3: hsl(151.05, 67.86%, 45%);
-  --color-ivy4: hsl(151.05, 67.86%, 30%);
-  --color-ivy5: hsl(151.05, 67.86%, 15%);
+  --color-ivy1: hsl(151.05, 67.86%, 80%);
+  --color-ivy2: hsl(151.05, 67.86%, 70%);
+  --color-ivy3: hsl(151.05, 67.86%, 60%);
+  --color-ivy4: hsl(151.05, 67.86%, 50%);
+  --color-ivy5: hsl(151.05, 67.86%, 40%);
+  --color-ivy6: hsl(151.05, 67.86%, 30%);
+  --color-ivy7: hsl(151.05, 67.86%, 20%);
+  --color-ivy8: hsl(151.05, 67.86%, 10%);
 }
 
 *,
