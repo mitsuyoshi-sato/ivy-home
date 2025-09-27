@@ -4,6 +4,11 @@
 @tailwind utilities;
 
 :root {
+  --color-dark1: hsl(0, 0%, 40%);
+  --color-dark2: hsl(0, 0%, 35%);
+  --color-dark3: hsl(0, 0%, 30%);
+  --color-dark4: hsl(0, 0%, 20%);
+  --color-dark5: hsl(0, 0%, 9.02%);
   --color-ivy1: hsl(151.05, 67.86%, 75%);
   --color-ivy2: hsl(151.05, 67.86%, 60%);
   --color-ivy3: hsl(151.05, 67.86%, 45%);

@@ -12,7 +12,11 @@ const config: Config = {
       colors: {
         light1: '#f8f9fa',
         light: '#e9ecef',
-        dark2: '#1f2024',
+        dark1: 'hsl(0,0%,40%)',
+        dark2: 'hsl(0,0%,35%)',
+        dark3: 'hsl(0,0%,30%)',
+        dark4: 'hsl(0,0%,20%)',
+        dark5: 'hsl(0,0%,9.02%)',
         ivy1: 'hsl(151.05,67.86%,75%)',
         ivy2: 'hsl(151.05,67.86%,60%)',
         ivy3: 'hsl(151.05,67.86%,45%)',
