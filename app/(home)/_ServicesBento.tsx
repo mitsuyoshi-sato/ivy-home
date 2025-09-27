@@ -61,6 +61,38 @@ export const _ServicesBento = () => {
               scale: 1,
             })
 
+            await motion.delay(0.5)
+            Array.from(c.children).forEach(async (child, index) => {
+              const element = child as HTMLElement
+              const textContainer = element.querySelector(
+                '.text-container',
+              ) as HTMLElement
+              if (textContainer) {
+                await motion.delay(index * 0.1)
+
+                const title = textContainer.querySelector(
+                  'p:first-child',
+                ) as HTMLElement
+                if (title) {
+                  motion.to(title, 0.6, 'out', {
+                    opacity: 1,
+                    translateY: '0px',
+                  })
+                }
+
+                await motion.delay(0.2)
+                const description = textContainer.querySelector(
+                  'p:last-child',
+                ) as HTMLElement
+                if (description) {
+                  motion.to(description, 0.6, 'out', {
+                    opacity: 1,
+                    translateY: '0px',
+                  })
+                }
+              }
+            })
+
             // ホバー効果を追加
             Array.from(c.children).forEach((child) => {
               const element = child as HTMLElement
@@ -73,7 +105,7 @@ export const _ServicesBento = () => {
             })
           }
         },
-        { threshold: 0.7 },
+        { threshold: 0.5 },
       )
       observer.observe(c)
       return () => observer.disconnect()
@@ -150,25 +182,33 @@ function __Bento({
   return (
     <div
       style={{ opacity: 0, transform: 'scale(0.95)' }}
-      className={`hover:border-ivy4 hover:cursor-pointer hover:opacity-70 relative overflow-hidden border-[2px] border-gray-300 flex items-center justify-center rounded-lg col-span-${colSpan}`}
+      className={`hover:border-ivy4 hover:cursor-pointer hover:opacity-70 relative overflow-hidden border-[2px] border-gray-300 flex items-center justify-center rounded-xl col-span-${colSpan}`}
     >
       <img
         src={image}
         alt={title}
-        className="w-full h-full object-cover absolute inset-0 rounded-lg"
+        className="w-full h-full object-cover absolute inset-0 rounded-xl"
       />
       <div className="relative w-full h-full bg-white/80 backdrop-blur-3xl p-3">
         <div
           className={cn(
-            'relative rounded-lg overflow-hidden border-[1px] border-gray-300',
+            'relative rounded-xl overflow-hidden border-[1px] border-gray-300',
             colSpan === '3' || colSpan === '6' ? 'h-[150px]' : 'h-[200px]',
           )}
         >
           <img src={image} alt={title} className="w-full h-full object-cover" />
         </div>
-        <div className="py-6 px-3">
-          <p className="text-lg font-bold">{title}</p>
-          <p className="text-gray-600 mt-2 font-semibold leading-[1.82] break-words whitespace-pre-line text-sm">
+        <div className="text-container py-6 px-3">
+          <p
+            className="text-lg font-bold"
+            style={{ opacity: 0, transform: 'translateY(20px)' }}
+          >
+            {title}
+          </p>
+          <p
+            className="text-gray-600 mt-2 font-semibold leading-[1.82] break-words whitespace-pre-line text-sm"
+            style={{ opacity: 0, transform: 'translateY(20px)' }}
+          >
             {description.replace(/\\n/g, '\n')}
           </p>
         </div>
