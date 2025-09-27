@@ -8,27 +8,6 @@ import { Section } from '@/components/Section'
 
 export const _ServicesSection = () => {
   const refContainer = useRef<HTMLDivElement>(null)
-  const refText = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const t = refText.current
-    if (t) {
-      const observer = new IntersectionObserver(
-        async (entries) => {
-          const entry = entries[0]
-          if (entry.isIntersecting) {
-            motion.to(t, 1.3, 'out', {
-              opacity: 1,
-              translateY: '0px',
-            })
-          }
-        },
-        { threshold: 0.7 },
-      )
-      observer.observe(t)
-      return () => observer.disconnect()
-    }
-  }, [])
 
   useEffect(() => {
     const c = refContainer.current
@@ -105,7 +84,7 @@ export const _ServicesSection = () => {
             })
           }
         },
-        { threshold: 0.3 },
+        { threshold: 0.5 },
       )
       observer.observe(c)
       return () => observer.disconnect()
@@ -113,16 +92,14 @@ export const _ServicesSection = () => {
   }, [])
 
   return (
-    <div className="flex flex-col wrapper py-0">
+    <div className="flex flex-col wrapper pb-0">
       <Section
-        ref={refText}
-        style={{ opacity: 0, transform: 'translateY(80px)' }}
         title="私たちの提供する価値"
         subtitle="Services"
         description="私たちは、快適で安心な暮らしを支える住宅設備の設計・施工を行っています。\nオール電化や蓄電池、エコキュートなど、家庭の暮らしをより便利にするサービスを提供しています。"
         button={{ href: '/services', text: '詳しく見る' }}
       />
-      <div ref={refContainer} className="grid grid-cols-12 gap-3 my-9">
+      <div ref={refContainer} className="grid grid-cols-12 gap-3 mt-9">
         <__Bento
           title={'太陽光パネル'}
           description={
@@ -201,13 +178,13 @@ function __Bento({
         <div className="text-container py-6 px-3">
           <p
             className="text-lg font-bold"
-            style={{ opacity: 0, transform: 'translateY(100px)' }}
+            style={{ opacity: 0, transform: 'translateY(30px)' }}
           >
             {title}
           </p>
           <p
             className="text-gray-600 mt-2 font-semibold leading-[1.82] break-words whitespace-pre-line text-sm"
-            style={{ opacity: 0, transform: 'translateY(100px)' }}
+            style={{ opacity: 0, transform: 'translateY(30px)' }}
           >
             {description.replace(/\\n/g, '\n')}
           </p>

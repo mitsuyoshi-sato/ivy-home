@@ -6,15 +6,12 @@ import { Section } from '../../components/Section'
 
 export const _CampaignSection = () => {
   const reContainer = useRef<HTMLDivElement>(null)
-  const refText = useRef<HTMLDivElement>(null)
   const refImage = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     ;(async () => {
-      const c = reContainer.current
-      const t = refText.current
       const i = refImage.current
-      if (c && t && i) {
+      if (i) {
         const observer = new IntersectionObserver(
           async (entries) => {
             const entry = entries[0]
@@ -29,7 +26,7 @@ export const _CampaignSection = () => {
           { threshold: 0.5 },
         )
 
-        observer.observe(c)
+        observer.observe(i)
 
         return () => observer.disconnect()
       }
@@ -37,9 +34,8 @@ export const _CampaignSection = () => {
   }, [])
 
   return (
-    <div ref={reContainer} className="wrapper lg:flex lg:items-center">
+    <div ref={reContainer} className="wrapper lg:flex lg:items-center pb-0">
       <Section
-        ref={refText}
         className="lg:w-[380px] lg:shrink-0"
         title="アイビーホームの強み"
         subtitle="Campany"
