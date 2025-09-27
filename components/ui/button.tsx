@@ -22,12 +22,12 @@ export const Button = ({
     onClick={onClick}
     disabled={disabled}
     className={cn(
-      'group hover:bg-black/80 hover:scale-105 transition-all duration-300 inline-flex items-center justify-center rounded-full bg-black px-6 py-3 font-semibold text-white text-sm lg:text-sm disabled:opacity-50 disabled:pointer-events-none',
+      'text-ivy8 group hover:bg-ivy3 hover:scale-105 transition-all duration-200 inline-flex items-center justify-center rounded-full bg-ivy2 border border-ivy5 px-6 py-3 font-semibold text-sm lg:text-sm disabled:opacity-50 disabled:pointer-events-none',
       className,
     )}
   >
     {icon && iconPosition === 'left' && (
-      <span className="mr-2 inline-flex items-center group-hover:translate-x-2 transition-all duration-300">
+      <span className="mr-2 inline-flex items-center group-hover:translate-x-1 transition-all duration-200">
         {(() => {
           const Icon = icon
           return <Icon className="h-4 w-4" aria-hidden="true" />
@@ -36,7 +36,7 @@ export const Button = ({
     )}
     {children}
     {icon && iconPosition === 'right' && (
-      <span className="ml-2 inline-flex items-center group-hover:translate-x-2 transition-all duration-300">
+      <span className="ml-2 inline-flex items-center group-hover:translate-x-1 transition-all duration-200">
         {(() => {
           const Icon = icon
           return <Icon className="h-4 w-4" aria-hidden="true" />

@@ -82,7 +82,7 @@ export const Nav = () => {
         />
       ))}
       <div
-        className="absolute top-1 h-[calc(100%-8px)] rounded-full bg-[#262626]"
+        className="absolute top-1 h-[calc(100%-8px)] rounded-full bg-ivy2 shadow-lg border border-ivy3"
         ref={refIndicator}
         style={{ width: '0px', left: '0px' }}
       />
@@ -134,10 +134,10 @@ const Tab = (props: {
       <Link
         href={props.href}
         className={cn(
-          'px-4 py-2 rounded-full z-10 cursor-pointer text-center',
+          'px-4 py-2 rounded-full z-10 cursor-pointer text-center text-dark4',
           props.activeIndex === props.i
-            ? 'text-white'
-            : 'text-gray-700 cursor-pointer hover:text-gray-900',
+            ? 'text-ivy8'
+            : 'text-dark5 cursor-pointer hover:text-dark8',
           props.subs && 'flex items-center gap-1 pr-2',
         )}
       >
@@ -151,7 +151,7 @@ const Tab = (props: {
       {props.subs && (
         <div
           ref={refList}
-          className="absolute left-0 top-full w-[180px] bg-white rounded-lg flex flex-col p-1 whitespace-nowrap text-sm text-gray-600 border border-gray-300 shadow-md"
+          className="absolute left-0 top-full w-[180px] bg-white rounded-lg flex flex-col p-1 whitespace-nowrap text-sm text-dark5 border border-gray-300 shadow-md"
           style={{
             opacity: 0,
             transform: 'translateY(-10px)',
@@ -161,7 +161,7 @@ const Tab = (props: {
           {props.subs.map((sub) => (
             <div
               key={sub.href}
-              className="hover:cursor-pointer shrink-0 py-2 px-3 hover:bg-gray-100 rounded-sm"
+              className="hover:cursor-pointer shrink-0 py-2 px-3 hover:bg-ivy2/30 rounded-md"
             >
               <a href={sub.href} className="flex items-center gap-2">
                 {sub.icon && (
