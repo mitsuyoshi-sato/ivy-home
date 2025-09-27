@@ -16,7 +16,7 @@ export const Section = forwardRef<
 >((props, ref) => {
   return (
     <div ref={ref} className={props.className} style={props.style}>
-      <p className="text-sm text-gray-500 lg:text-lg">{props.subtitle}</p>
+      <p className="text-sm text-ivy5/70 lg:text-lg">{props.subtitle}</p>
       <h2 className="lg:text-4xl text-2xl font-bold lg:mt-6 mt-4">
         {props.title}
       </h2>
