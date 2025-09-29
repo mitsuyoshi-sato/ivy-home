@@ -15,7 +15,7 @@ export const _ArticlesSection = () => {
         async (entries) => {
           const entry = entries[0]
           if (entry.isIntersecting) {
-            await motion.delay(1)
+            await motion.delay(0.5)
             motion.to(s, 1.5, 'out', {
               opacity: 1,
             })
