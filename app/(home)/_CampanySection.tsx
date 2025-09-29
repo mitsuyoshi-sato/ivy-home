@@ -34,7 +34,7 @@ export const _CampaignSection = () => {
   }, [])
 
   return (
-    <div ref={reContainer} className="wrapper lg:flex lg:items-center pb-0">
+    <div ref={reContainer} className="wrapper lg:flex lg:items-center">
       <Section
         className="lg:w-[380px] lg:shrink-0"
         title="アイビーホームの強み"

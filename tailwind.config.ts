@@ -28,6 +28,7 @@ const config: Config = {
         ivy6: 'hsl(151.05,67.86%,30%)',
         ivy7: 'hsl(151.05,67.86%,20%)',
         ivy8: 'hsl(151.05,67.86%,10%)',
+        cleam: '#edf1ed',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
