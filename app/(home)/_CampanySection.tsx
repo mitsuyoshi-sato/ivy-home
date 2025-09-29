@@ -40,7 +40,7 @@ export const _CampaignSection = () => {
         title="アイビーホームの強み"
         subtitle="Campany"
         description="当社は創業以来、住宅用のソーラー・蓄電池・エコキュートの提供を通じて、家計にも環境にも優しい暮らしをサポートしてまいりました。確かな技術と経験に基づき、お客様一人ひとりの生活に寄り添った提案を心がけています。"
-        button={{ href: '/company', text: '詳しく見る' }}
+        button={{ href: '/company', text: '会社情報をみる' }}
       />
       <div
         ref={refImage}

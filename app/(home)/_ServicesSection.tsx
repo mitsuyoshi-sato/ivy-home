@@ -97,7 +97,7 @@ export const _ServicesSection = () => {
         title="私たちの提供する価値"
         subtitle="Services"
         description="私たちは、快適で安心な暮らしを支える住宅設備の設計・施工を行っています。\nオール電化や蓄電池、エコキュートなど、家庭の暮らしをより便利にするサービスを提供しています。"
-        button={{ href: '/services', text: '詳しく見る' }}
+        button={{ href: '/services', text: '事業内容をみる' }}
       />
       <div ref={refContainer} className="grid grid-cols-12 gap-3 mt-9">
         <__Bento

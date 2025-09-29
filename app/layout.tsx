@@ -40,7 +40,9 @@ export default function RootLayout({
       <body className="antialiased overflow-y-auto">
         <Header />
         <main>{children}</main>
-        <footer></footer>
+        <footer>
+          <div className="h-[300px] bg-[#f2f4f3] p-10">Footer</div>
+        </footer>
       </body>
     </html>
   )
