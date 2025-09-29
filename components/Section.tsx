@@ -71,7 +71,7 @@ export const Section = (props: {
     <div ref={refContainer} className={props.className} style={props.style}>
       <p
         ref={refSubtitle}
-        className="text-sm text-ivy5/70 lg:text-lg"
+        className="text-sm text-ivy5/80 lg:text-lg"
         style={{ opacity: 0, transform: 'translateY(100px)' }}
       >
         {props.subtitle}

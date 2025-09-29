@@ -82,7 +82,7 @@ export const Nav = () => {
         />
       ))}
       <div
-        className="absolute top-1 h-[calc(100%-8px)] rounded-full bg-ivy2 shadow-lg border border-ivy3"
+        className="absolute top-1 h-[calc(100%-8px)] rounded-full bg-ivy5 shadow-lg "
         ref={refIndicator}
         style={{ width: '0px', left: '0px' }}
       />
@@ -136,7 +136,7 @@ const Tab = (props: {
         className={cn(
           'px-4 py-2 rounded-full z-10 cursor-pointer text-center text-dark4',
           props.activeIndex === props.i
-            ? 'text-ivy8'
+            ? 'text-white'
             : 'text-dark5 cursor-pointer hover:text-dark8',
           props.subs && 'flex items-center gap-1 pr-2',
         )}
