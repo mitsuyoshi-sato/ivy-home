@@ -12,9 +12,10 @@ export const _ArticlesSection = () => {
     const s = scrollRef.current
     if (s) {
       const observer = new IntersectionObserver(
-        (entries) => {
+        async (entries) => {
           const entry = entries[0]
           if (entry.isIntersecting) {
+            await motion.delay(1)
             motion.to(s, 1.5, 'out', {
               opacity: 1,
             })
