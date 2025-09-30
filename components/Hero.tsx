@@ -1,9 +1,14 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { motion } from '../motion'
+import { motion } from '../app/motion'
 
-export const _Hero = () => {
+export const Hero = (props: {
+  imageSrc: string
+  imageAlt?: string
+  title: string | React.ReactNode
+  subtitle?: string
+}) => {
   const refImage = useRef<HTMLDivElement>(null)
   const refText = useRef<HTMLHeadingElement>(null)
   const refSub = useRef<HTMLParagraphElement>(null)
@@ -43,7 +48,11 @@ export const _Hero = () => {
         }}
         className="absolute inset-0"
       >
-        <img src="/hero2.jpg" alt="" className="object-cover w-full h-full" />
+        <img
+          src={props.imageSrc}
+          alt={props.imageAlt || ''}
+          className="object-cover w-full h-full"
+        />
         <div className="absolute inset-0 bg-black/30" />
       </div>
       <div className="relative z-10 h-full">
@@ -57,20 +66,20 @@ export const _Hero = () => {
                 transform: 'translateY(10px)',
               }}
             >
-              今、つくるエネルギーが
-              <br />
-              明日の暮らしを豊かにする。
+              {props.title}
             </h1>
-            <p
-              ref={refSub}
-              className="text-sm md:text-lg font-bold text-white/80"
-              style={{
-                opacity: 0,
-                transform: 'translateY(10px)',
-              }}
-            >
-              ソーラーパネル・蓄電池・エコキュートの導入をトータルサポートします。
-            </p>
+            {props.subtitle && (
+              <p
+                ref={refSub}
+                className="text-sm md:text-lg font-bold text-white/80"
+                style={{
+                  opacity: 0,
+                  transform: 'translateY(10px)',
+                }}
+              >
+                {props.subtitle}
+              </p>
+            )}
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { _Hero } from './_Hero'
+import { Hero } from '../../components/Hero'
 import { _CampaignSection } from './_CampanySection'
 import { _ServicesSection } from './_ServicesSection'
 import { _NewsSection } from './_NewsSection'
@@ -7,7 +7,17 @@ import { _RecruitsSection } from './_RecruitsSection'
 const Home = () => {
   return (
     <>
-      <_Hero />
+      <Hero
+        imageSrc="/hero2.jpg"
+        title={
+          <>
+            今、つくるエネルギーが
+            <br />
+            明日の暮らしを豊かにする。
+          </>
+        }
+        subtitle="ソーラーパネル・蓄電池・エコキュートの導入をトータルサポートします。"
+      />
       <div className="w-full bg-cleam">
         <_CampaignSection />
       </div>
