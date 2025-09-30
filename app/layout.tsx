@@ -38,24 +38,41 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   const items = [
-    { href: '/', label: 'Home' },
+    {
+      href: '/',
+      label: 'Home',
+      subs: [
+        { href: '/#company', label: '会社情報', icon: 'building' },
+        { href: '/#services', label: '事業内容', icon: 'layers' },
+        { href: '/#news', label: 'お知らせ', icon: 'bellRing' },
+        { href: '/#recruit', label: '採用情報', icon: 'handshake' },
+      ],
+    },
     {
       href: '/company',
       label: '会社情報',
       subs: [
-        { href: '#policy', label: '理念', icon: 'idea' },
-        { href: '#info', label: '会社概要', icon: 'info' },
+        { href: '/company#philosophy', label: '理念', icon: 'idea' },
+        { href: '/company#info', label: '会社概要', icon: 'info' },
       ],
     },
     {
       href: '/services',
       label: '事業内容',
       subs: [
-        { href: '#solar-panel', label: '太陽光パネル', icon: 'sun' },
-        { href: '#battery-storage', label: '蓄電池', icon: 'battery' },
-        { href: '#eco-cute', label: 'エコキュート', icon: 'bath' },
-        { href: '#all-electric', label: 'オール電化', icon: 'plugZap' },
-        { href: '#exterior-wall', label: '外壁塗装', icon: 'paintbrush' },
+        { href: '/services#solar-panel', label: '太陽光パネル', icon: 'sun' },
+        { href: '/services#battery-storage', label: '蓄電池', icon: 'battery' },
+        { href: '/services#eco-cute', label: 'エコキュート', icon: 'bath' },
+        {
+          href: '/services#all-electric',
+          label: 'オール電化',
+          icon: 'plugZap',
+        },
+        {
+          href: '/services#exterior-wall',
+          label: '外壁塗装',
+          icon: 'paintbrush',
+        },
       ],
     },
     { href: '/news', label: 'お知らせ' },
@@ -63,10 +80,14 @@ export default function RootLayout({
       href: '/recruit',
       label: '採用情報',
       subs: [
-        { href: '#sales', label: 'セールス', icon: 'briefcase' },
-        { href: '#back-office', label: 'バックオフィス', icon: 'fileText' },
+        { href: '/recruit#sales', label: 'セールス', icon: 'briefcase' },
         {
-          href: '#marketing',
+          href: '/recruit#back-office',
+          label: 'バックオフィス',
+          icon: 'fileText',
+        },
+        {
+          href: '/recruit#marketing',
           label: 'マーケティング',
           icon: 'chartNoAxesCombined',
         },
@@ -76,7 +97,7 @@ export default function RootLayout({
 
   return (
     <html lang="ja" className={`${inter.variable} ${notosansjp.variable}`}>
-      <body className="antialiased overflow-y-auto">
+      <body className="antialiased">
         <Header items={items} />
         <main>{children}</main>
         <footer>

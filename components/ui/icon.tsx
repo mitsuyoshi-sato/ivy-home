@@ -17,6 +17,8 @@ import {
   Briefcase,
   FileText,
   ChartNoAxesCombined,
+  Handshake,
+  BellRing,
 } from 'lucide-react'
 
 const iconMap: Record<
@@ -42,6 +44,8 @@ const iconMap: Record<
   briefcase: Briefcase,
   fileText: FileText,
   chartNoAxesCombined: ChartNoAxesCombined,
+  handshake: Handshake,
+  bellRing: BellRing,
 }
 
 export const Icon = (props: {

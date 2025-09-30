@@ -81,7 +81,7 @@ export const _ServicesSection = () => {
   }, [])
 
   return (
-    <div className="flex flex-col wrapper">
+    <div id="services" className="flex flex-col wrapper">
       <Section
         title="私たちの提供する価値"
         subtitle="Services"

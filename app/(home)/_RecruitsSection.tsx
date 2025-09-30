@@ -37,7 +37,7 @@ export const _RecruitsSection = () => {
     }
   }, [])
   return (
-    <div className="wrapper flex justify-between">
+    <div id="recruit" className="wrapper flex justify-between">
       <Section
         className=""
         title="採用情報"

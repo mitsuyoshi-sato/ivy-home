@@ -18,11 +18,11 @@ const Home = () => {
         }
         description="ソーラーパネル・蓄電池・エコキュートの導入をトータルサポートします。"
       />
-      <div className="w-full bg-cleam">
+      <div id="company" className="w-full bg-cleam">
         <_CampaignSection />
       </div>
       <_ServicesSection />
-      <div className="w-full bg-cleam">
+      <div id="news" className="w-full bg-cleam">
         <_NewsSection />
       </div>
       <_RecruitsSection />

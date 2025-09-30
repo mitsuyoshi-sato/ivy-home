@@ -187,19 +187,18 @@ const Tab = (props: {
           }}
         >
           {props.subs.map((sub) => (
-            <div
+            <Link
               key={sub.href}
-              className="hover:cursor-pointer shrink-0 py-2 px-3 hover:bg-ivy2/30 rounded-md"
+              href={sub.href}
+              className="shrink-0 py-2 px-3 rounded-md hover:bg-ivy2/30 hover:cursor-pointer flex items-center gap-2"
             >
-              <a href={sub.href} className="flex items-center gap-2">
-                {sub.icon && (
-                  <span className="shrink-0">
-                    <Icon name={sub.icon} />
-                  </span>
-                )}
-                <span>{sub.label}</span>
-              </a>
-            </div>
+              {sub.icon && (
+                <span className="shrink-0">
+                  <Icon name={sub.icon} />
+                </span>
+              )}
+              <span>{sub.label}</span>
+            </Link>
           ))}
         </div>
       )}

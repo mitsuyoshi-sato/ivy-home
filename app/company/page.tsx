@@ -11,7 +11,7 @@ export default function Company() {
         title="会社情報"
         description=""
       />
-      <div className="bg-cleam">
+      <div id="philosophy" className="bg-cleam">
         <_PhilosophySection />
       </div>
       <_InfoSection />
