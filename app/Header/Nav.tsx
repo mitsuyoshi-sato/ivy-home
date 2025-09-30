@@ -8,58 +8,27 @@ import { motion } from '../motion'
 import { ChevronDown } from 'lucide-react'
 import { Icon } from '@/components/ui/icon'
 
-export const Nav = () => {
+export const Nav = (props: {
+  items: {
+    href: string
+    label: string
+    subs?: { href: string; label: string; icon?: string }[]
+  }[]
+}) => {
   const pathname = usePathname()
   const refIndicator = useRef<HTMLDivElement>(null)
   const refContainer = useRef<HTMLDivElement>(null)
 
-  const tabs = [
-    { href: '/', label: 'Home' },
-    {
-      href: '/company',
-      label: '会社情報',
-      subs: [
-        { href: '#policy', label: '理念', icon: 'idea' },
-        { href: '#info', label: '会社概要', icon: 'info' },
-      ],
-    },
-    {
-      href: '/services',
-      label: '事業内容',
-      subs: [
-        { href: '#solar-panel', label: '太陽光パネル', icon: 'sun' },
-        { href: '#battery-storage', label: '蓄電池', icon: 'battery' },
-        { href: '#eco-cute', label: 'エコキュート', icon: 'bath' },
-        { href: '#all-electric', label: 'オール電化', icon: 'plugZap' },
-        { href: '#exterior-wall', label: '外壁塗装', icon: 'paintbrush' },
-      ],
-    },
-    { href: '/news', label: 'ニュース' },
-    {
-      href: '/recruit',
-      label: '採用情報',
-      subs: [
-        { href: '#sales', label: 'セールス', icon: 'briefcase' },
-        { href: '#back-office', label: 'バックオフィス', icon: 'fileText' },
-        {
-          href: '#marketing',
-          label: 'マーケティング',
-          icon: 'chartNoAxesCombined',
-        },
-      ],
-    },
-  ]
-
   const activeIndex = useMemo(() => {
     if (pathname === '/') return 0
-    const i = tabs
-      .map((t, idx) => ({ idx, href: t.href }))
+    const i = props.items
+      .map((t, idx) => ({ idx, href: t.href || '' }))
       .sort((a, b) => b.href.length - a.href.length)
       .find(({ href }) =>
         href === '/' ? pathname === '/' : pathname?.startsWith(href),
       )?.idx
     return i ?? 0
-  }, [pathname])
+  }, [pathname, props.items])
 
   useLayoutEffect(() => {
     ;(async () => {
@@ -83,7 +52,7 @@ export const Nav = () => {
       ref={refContainer}
       className="font-semibold text-sm md:flex hidden items-center relative rounded-full p-1 h-fit"
     >
-      {tabs.map((t, i) => (
+      {props.items.map((t, i) => (
         <Tab
           key={t.href}
           href={t.href}

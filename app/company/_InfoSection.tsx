@@ -55,7 +55,7 @@ export const _InfoSection = () => {
   return (
     <div className="wrapper">
       <div ref={refContainer} className="flex flex-col gap-20">
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col">
           <p
             ref={refSubtitle}
             className="text-sm text-ivy5/80 lg:text-lg"
@@ -65,7 +65,7 @@ export const _InfoSection = () => {
           </p>
           <h2
             ref={refTitle}
-            className="lg:text-4xl text-2xl font-bold"
+            className="lg:text-4xl text-2xl font-bold mt-6"
             style={{ opacity: 0, transform: 'translateY(100px)' }}
           >
             会社情報

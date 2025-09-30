@@ -37,10 +37,47 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const items = [
+    { href: '/', label: 'Home' },
+    {
+      href: '/company',
+      label: '会社情報',
+      subs: [
+        { href: '#policy', label: '理念', icon: 'idea' },
+        { href: '#info', label: '会社概要', icon: 'info' },
+      ],
+    },
+    {
+      href: '/services',
+      label: '事業内容',
+      subs: [
+        { href: '#solar-panel', label: '太陽光パネル', icon: 'sun' },
+        { href: '#battery-storage', label: '蓄電池', icon: 'battery' },
+        { href: '#eco-cute', label: 'エコキュート', icon: 'bath' },
+        { href: '#all-electric', label: 'オール電化', icon: 'plugZap' },
+        { href: '#exterior-wall', label: '外壁塗装', icon: 'paintbrush' },
+      ],
+    },
+    { href: '/news', label: 'ニュース' },
+    {
+      href: '/recruit',
+      label: '採用情報',
+      subs: [
+        { href: '#sales', label: 'セールス', icon: 'briefcase' },
+        { href: '#back-office', label: 'バックオフィス', icon: 'fileText' },
+        {
+          href: '#marketing',
+          label: 'マーケティング',
+          icon: 'chartNoAxesCombined',
+        },
+      ],
+    },
+  ]
+
   return (
     <html lang="ja" className={`${inter.variable} ${notosansjp.variable}`}>
       <body className="antialiased overflow-y-auto">
-        <Header />
+        <Header items={items} />
         <main>{children}</main>
         <footer>
           <div className="bg-cleam">
@@ -51,33 +88,14 @@ export default function RootLayout({
                 className="w-[120px] -translate-y-[10px]"
               />
               <div className="flex gap-20">
-                <__Section
-                  title="Home"
-                  links={[
-                    { href: '/', text: 'アイビーホームの強み' },
-                    { href: '/', text: '私たちの提供する価値' },
-                    { href: '/', text: '事業内容をみる' },
-                  ]}
-                />
-                <__Section
-                  title="Company"
-                  links={[
-                    { href: '/', text: '理念' },
-                    { href: '/', text: '会社概要' },
-                  ]}
-                />
-                <__Section
-                  title="Services"
-                  links={[
-                    { href: '/', text: '太陽光パネル' },
-                    { href: '/', text: '蓄電池' },
-                    { href: '/', text: 'エコキュート' },
-                    { href: '/', text: 'オール電化' },
-                    { href: '/', text: '外壁塗装' },
-                  ]}
-                />
-                <__Section title="Articles" links={[]} />
-                <__Section title="Recruit" links={[]} />
+                {items.map((item) => (
+                  <__Section
+                    key={item.href}
+                    title={item.label}
+                    href={item.href}
+                    links={item.subs || []}
+                  />
+                ))}
               </div>
             </div>
           </div>
@@ -89,17 +107,21 @@ export default function RootLayout({
 
 function __Section(props: {
   title: string
-  links: { href: string; text: string }[]
+  href: string
+  links: { href: string; label: string; icon?: string }[]
 }) {
   return (
     <div className="flex flex-col gap-6">
-      <div className="font-bold text-ivy8 text-xl hover:text-dark8 cursor-pointer">
+      <Link
+        href={props.href}
+        className="font-bold text-ivy8 text-xl hover:text-dark8 cursor-pointer"
+      >
         {props.title}
-      </div>
+      </Link>
       <div className="text-dark5 flex flex-col gap-4 text-sm font-medium">
         {props.links.map((link) => (
-          <Link key={link.text} href={link.href} className="hover:text-dark8">
-            {link.text}
+          <Link key={link.label} href={link.href} className="hover:text-black">
+            {link.label}
           </Link>
         ))}
       </div>
