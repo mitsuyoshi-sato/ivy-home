@@ -1,15 +1,38 @@
 import { Section } from '@/components/Section'
+import { ArrowRightIcon } from 'lucide-react'
 
 export const _RecruitsSection = () => {
   return (
-    <div className="wrapper">
+    <div className="wrapper flex justify-between">
       <Section
         className=""
-        title="一緒に働きませんか？"
+        title="採用情報"
         subtitle="Recuruit"
-        description="•	フレックスタイム制で自由な働き方\n•	成長できる環境とサポート体制\n•	チームワークを大切にするカルチャー"
-        button={{ href: '/recruit', text: '採用情報をみる' }}
+        description=""
       />
+      <div className="w-[50%] flex flex-col text-sm font-medium gap-4 mt-12">
+        <div className="group hover:text-ivy5 cursor-pointer font-semibold w-full flex items-center justify-between border-b border-gray-300 pb-2 pt-4">
+          セールス／カスタマーサポート
+          <ArrowRightIcon
+            size={20}
+            className="group-hover:translate-x-1 transition-all duration-300 ease-out"
+          />
+        </div>
+        <div className="group hover:text-ivy5 cursor-pointer font-semibold w-full flex items-center justify-between border-b border-gray-300 pb-2 pt-4">
+          バックオフィス（経理／その他の事務）
+          <ArrowRightIcon
+            size={20}
+            className="group-hover:translate-x-1 transition-all duration-300 ease-out"
+          />
+        </div>
+        <div className="group hover:text-ivy5 cursor-pointer font-semibold w-full flex items-center justify-between border-b border-gray-300 pb-2 pt-4">
+          マーケティング
+          <ArrowRightIcon
+            size={20}
+            className="group-hover:translate-x-1 transition-all duration-300 ease-out"
+          />
+        </div>
+      </div>
     </div>
   )
 }

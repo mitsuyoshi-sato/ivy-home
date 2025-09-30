@@ -1,7 +1,7 @@
 import { _Hero } from './_Hero'
 import { _CampaignSection } from './_CampanySection'
 import { _ServicesSection } from './_ServicesSection'
-import { _ArticlesSection } from './_ArticlesSection'
+import { _NewsSection } from './_NewsSection'
 import { _RecruitsSection } from './_RecruitsSection'
 
 const Home = () => {
@@ -13,7 +13,7 @@ const Home = () => {
       </div>
       <_ServicesSection />
       <div className="w-full bg-cleam">
-        <_ArticlesSection />
+        <_NewsSection />
       </div>
       <_RecruitsSection />
     </>

@@ -10,7 +10,7 @@ export const Section = (props: {
   title: string
   subtitle: string
   description: string
-  button: { href: string; text: string }
+  button?: { href: string; text: string }
   className?: string
   style?: React.CSSProperties
 }) => {
@@ -94,13 +94,13 @@ export const Section = (props: {
         style={{ opacity: 0, transform: 'translateY(100px)' }}
         ref={refButton}
       >
-        <Link href={props.button.href}>
+        <Link href={props.button?.href || ''} hidden={!props.button}>
           <Button
             className="lg:mt-6 mt-4"
             icon={ArrowRight}
             iconPosition="right"
           >
-            {props.button.text}
+            {props.button?.text}
           </Button>
         </Link>
       </div>

@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 import { motion } from '../motion'
 import Image from 'next/image'
 
-export const _ArticlesSection = () => {
+export const _NewsSection = () => {
   const scrollRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -73,11 +73,11 @@ export const _ArticlesSection = () => {
     <div className="flex flex-col pb-[112px]">
       <div className="wrapper pb-0">
         <Section
-          title="お客様の声"
-          subtitle="Articles"
+          title="お知らせ"
+          subtitle="News"
           description="実際にご利用いただいたお客様から寄せられた感想や体験談をご紹介します。\n
 私たちのサービスが、日々の暮らしやお仕事にどのように役立っているのか、リアルな声を通してぜひご覧ください。"
-          button={{ href: '/articles', text: 'お客様の声をみる' }}
+          button={{ href: '/news', text: 'お知らせをみる' }}
         />
       </div>
 
