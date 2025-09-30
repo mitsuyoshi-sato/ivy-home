@@ -71,17 +71,6 @@ export const _ServicesSection = () => {
                 }
               }
             })
-
-            // ホバー効果を追加
-            Array.from(c.children).forEach((child) => {
-              const element = child as HTMLElement
-              element.addEventListener('mouseenter', () => {
-                motion.to(element, 0.2, 'out', { opacity: 0.9 })
-              })
-              element.addEventListener('mouseleave', () => {
-                motion.to(element, 0.2, 'out', { opacity: 1 })
-              })
-            })
           }
         },
         { threshold: 0.5 },
@@ -113,7 +102,7 @@ export const _ServicesSection = () => {
           description={
             ' 昼間に発電した電気を貯めて夜間に活用することで、エネルギーの自給自足を実現し、停電時の安心も提供します。'
           }
-          image={'/tikudenti.png'}
+          image={'/battery.jpg'}
           colSpan={'5'}
         />
         <__Bento
@@ -159,14 +148,15 @@ function __Bento({
   return (
     <div
       style={{ opacity: 0, transform: 'scale(0.95)' }}
-      className={`hover:border-ivy4 hover:cursor-pointer hover:opacity-70 relative overflow-hidden border border-gray-300 flex items-center justify-center rounded-xl col-span-${colSpan}`}
+      className={`group transition-all duration-300 ease-out hover:border-ivy5 hover:cursor-pointer hover:scale-[1.02] relative overflow-hidden border border-gray-300 flex items-center justify-center rounded-xl col-span-${colSpan}`}
     >
+      <div className="absolute inset-0 bg-white/30 opacity-0 group-hover:opacity-80 transition-opacity duration-300 ease-out rounded-xl z-10 pointer-events-none" />
       <img
         src={image}
         alt={title}
         className="w-full h-full object-cover absolute inset-0 rounded-xl"
       />
-      <div className="relative w-full h-full bg-white/90 backdrop-blur-3xl p-3">
+      <div className="relative w-full h-full bg-cleam backdrop-blur-3xl p-3 z-0">
         <div
           className={cn(
             'relative rounded-xl overflow-hidden border-[1px] border-gray-300',
