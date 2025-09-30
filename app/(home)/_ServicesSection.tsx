@@ -105,7 +105,7 @@ export const _ServicesSection = () => {
           description={
             ' 住宅向けに太陽光パネルの販売・設置・メンテナンスを行っています。\nお客様のライフスタイルや設備に合わせた最適なプランをご提案し、省エネと電気料金の削減をサポートします。'
           }
-          image={'/hero.jpg'}
+          image={'/solar-panel.jpg'}
           colSpan={'7'}
         />
         <__Bento
@@ -121,15 +121,15 @@ export const _ServicesSection = () => {
           description={
             '空気熱を活用することで光熱費を抑え、環境負荷の軽減にも貢献します。設置から保守まで、きめ細やかなサポートを提供しています。'
           }
-          image={'/eco-cute.jpg'}
+          image={'/bathroom.jpg'}
           colSpan={'6'}
         />
         <__Bento
-          title={'オール家電'}
+          title={'オール電化'}
           description={
             '太陽光発電や蓄電池との連携で効率的なエネルギー利用を実現し、快適な暮らしをサポートします。'
           }
-          image={'/all-kaden.jpeg'}
+          image={'/cooking.jpg'}
           colSpan={'3'}
         />
         <__Bento
@@ -137,7 +137,7 @@ export const _ServicesSection = () => {
           description={
             '建物の外壁塗装・補修工事を通じて、美観の維持と耐久性の向上を提供しています。'
           }
-          image={'/hero.jpg'}
+          image={'/print.jpg'}
           colSpan={'3'}
         />
       </div>
