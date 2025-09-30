@@ -80,14 +80,61 @@ const Tab = (props: {
 }) => {
   const refList = useRef<HTMLDivElement>(null)
   const refChevron = useRef<HTMLDivElement>(null)
+  const refContainer = useRef<HTMLDivElement>(null)
+  const adjustModalPosition = () => {
+    const modal = refList.current
+    const container = refContainer.current
+    if (!modal || !container) return
+
+    const modalRect = modal.getBoundingClientRect()
+    const viewportWidth = window.innerWidth
+    const viewportHeight = window.innerHeight
+
+    let leftPosition = '0px'
+    let topPosition = '100%'
+    let transformOrigin = 'top left'
+
+    // 右端チェック
+    if (modalRect.right > viewportWidth) {
+      leftPosition = 'auto'
+      transformOrigin = 'top right'
+    }
+
+    // 下端チェック
+    if (modalRect.bottom > viewportHeight) {
+      topPosition = 'auto'
+      if (leftPosition === 'auto') {
+        transformOrigin = 'bottom right'
+      } else {
+        transformOrigin = 'bottom left'
+      }
+    }
+
+    // 両方の境界に接触している場合
+    if (modalRect.right > viewportWidth && modalRect.bottom > viewportHeight) {
+      leftPosition = 'auto'
+      topPosition = 'auto'
+      transformOrigin = 'bottom right'
+    }
+
+    modal.style.left = leftPosition
+    modal.style.right = leftPosition === 'auto' ? '0px' : 'auto'
+    modal.style.top = topPosition
+    modal.style.bottom = topPosition === 'auto' ? '100%' : 'auto'
+    modal.style.transformOrigin = transformOrigin
+  }
+
   return (
     <div
+      ref={refContainer}
       className="relative inline-flex"
       onMouseEnter={() => {
         const l = refList.current
         const c = refChevron.current
         if (l && c) {
           motion.set(l, { display: 'block' })
+          // 位置調整を実行
+          setTimeout(adjustModalPosition, 0)
           motion.to(l, 0.5, 'out', {
             opacity: 1,
             translateY: '0px',
@@ -132,7 +179,7 @@ const Tab = (props: {
       {props.subs && (
         <div
           ref={refList}
-          className="absolute left-0 top-full w-[180px] bg-white rounded-lg flex flex-col p-1 whitespace-nowrap text-sm text-dark5 border border-gray-300 shadow-md"
+          className="absolute left-0 top-full w-[180px] bg-white rounded-lg flex flex-col p-1 whitespace-nowrap text-sm text-dark5 border border-gray-300 shadow-md z-50"
           style={{
             opacity: 0,
             transform: 'translateY(-10px)',
