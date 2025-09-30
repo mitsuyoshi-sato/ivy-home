@@ -58,7 +58,7 @@ export default function RootLayout({
         { href: '#exterior-wall', label: '外壁塗装', icon: 'paintbrush' },
       ],
     },
-    { href: '/news', label: 'ニュース' },
+    { href: '/news', label: 'お知らせ' },
     {
       href: '/recruit',
       label: '採用情報',
