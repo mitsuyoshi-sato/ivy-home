@@ -16,7 +16,7 @@ const Home = () => {
             明日の暮らしを豊かにする。
           </>
         }
-        subtitle="ソーラーパネル・蓄電池・エコキュートの導入をトータルサポートします。"
+        description="ソーラーパネル・蓄電池・エコキュートの導入をトータルサポートします。"
       />
       <div className="w-full bg-cleam">
         <_CampaignSection />
