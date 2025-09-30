@@ -34,8 +34,20 @@ export const Nav = () => {
         { href: '#exterior-wall', label: '外壁塗装', icon: 'paintbrush' },
       ],
     },
-    { href: '/achievements', label: '実績' },
-    { href: '/recruit', label: '採用情報' },
+    { href: '/news', label: 'ニュース' },
+    {
+      href: '/recruit',
+      label: '採用情報',
+      subs: [
+        { href: '#sales', label: 'セールス', icon: 'briefcase' },
+        { href: '#back-office', label: 'バックオフィス', icon: 'fileText' },
+        {
+          href: '#marketing',
+          label: 'マーケティング',
+          icon: 'chartNoAxesCombined',
+        },
+      ],
+    },
   ]
 
   const activeIndex = useMemo(() => {

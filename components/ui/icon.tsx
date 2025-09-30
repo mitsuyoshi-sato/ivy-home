@@ -14,6 +14,9 @@ import {
   BatteryCharging,
   Bath,
   PlugZap,
+  Briefcase,
+  FileText,
+  ChartNoAxesCombined,
 } from 'lucide-react'
 
 const iconMap: Record<
@@ -36,6 +39,9 @@ const iconMap: Record<
   bath: Bath,
   plugZap: PlugZap,
   paintbrush: Paintbrush,
+  briefcase: Briefcase,
+  fileText: FileText,
+  chartNoAxesCombined: ChartNoAxesCombined,
 }
 
 export const Icon = (props: {
