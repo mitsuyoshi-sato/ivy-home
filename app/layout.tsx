@@ -44,15 +44,12 @@ export default function RootLayout({
         <main>{children}</main>
         <footer>
           <div className="bg-cleam">
-            <div className="wrapper flex gap-40">
-              <div className="flex text-xl font-bold">
-                <Leaf
-                  size={24}
-                  className="-translate-y-[10px] translate-x-[10px] text-green-800"
-                  fill="#86EFAC"
-                />
-                <div>Ivy Home</div>
-              </div>
+            <div className="wrapper flex gap-40 items-start">
+              <img
+                src="/ivy-home.svg"
+                alt="logo"
+                className="w-[120px] -translate-y-[10px]"
+              />
               <div className="flex gap-20">
                 <__Section
                   title="Home"
