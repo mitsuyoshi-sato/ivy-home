@@ -1,14 +1,20 @@
 import { motion } from '@/app/motion'
-import { cn } from '@/lib/utils'
-import { ChevronDown } from 'lucide-react'
-import { useRef, useState } from 'react'
+import { forwardRef, useRef } from 'react'
 import { Icon } from './icon'
 
-export const Acordion = (props: {
-  items: { question: string; answer: string }[]
-}) => {
+export const Acordion = forwardRef<
+  HTMLDivElement,
+  {
+    style?: React.CSSProperties
+    items: { question: string; answer: string }[]
+  }
+>((props, ref) => {
   return (
-    <div className="flex flex-col mt-6 w-full border-t border-gray-300">
+    <div
+      ref={ref}
+      style={props.style}
+      className="flex flex-col mt-6 w-full border-t border-gray-300"
+    >
       {props.items.map((item) => (
         <AcordionItem
           key={item.question}
@@ -18,7 +24,9 @@ export const Acordion = (props: {
       ))}
     </div>
   )
-}
+})
+
+Acordion.displayName = 'Acordion'
 
 const AcordionItem = (props: { question: string; answer: string }) => {
   const refAnswer = useRef<HTMLDivElement>(null)
