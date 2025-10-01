@@ -133,8 +133,8 @@ const Tab = (props: {
         const c = refChevron.current
         if (l && c) {
           motion.set(l, { display: 'block' })
-          // 位置調整を実行
           await motion.delay(0)
+          adjustModalPosition()
           motion.to(l, 0.5, 'out', {
             opacity: 1,
             translateY: '0px',
