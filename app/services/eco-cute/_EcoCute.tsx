@@ -5,7 +5,7 @@ import { motion } from '../../motion'
 import { _InfoCard } from '../_InfoCard'
 import { Acordion } from '@/components/ui/Acordion'
 
-export const _EcoKyuto = () => {
+export const _EcoCute = () => {
   const refCards = useRef<HTMLDivElement>(null)
   const refSubtitle = useRef<HTMLParagraphElement>(null)
   const refTitle = useRef<HTMLHeadingElement>(null)
@@ -118,7 +118,6 @@ export const _EcoKyuto = () => {
           エコキュートは、空気の熱を利用してお湯を沸かす省エネ給湯システムです。
           <br />
           深夜の安い電力を使ってお湯を作り、光熱費を大幅に削減できます。
-          <br />
           環境にやさしく、経済的な給湯設備として多くのご家庭で選ばれています。
         </p>
       </div>
@@ -131,7 +130,7 @@ export const _EcoKyuto = () => {
             image="/bathroom.jpg"
             alt="eco-kyuto"
             title="エコキュートの仕組み"
-            description="空気の熱を利用してお湯を沸かす省エネ給湯システムです。電気代の安い深夜電力を使ってお湯を作り、タンクに貯めておくので経済的です。"
+            description="空気中の熱を取り込み、電気でわずかに加熱することでお湯を作るため、従来の電気温水器よりも少ない電力で大量のお湯をためられます。作ったお湯はタンクに貯められ、必要なときに家庭内で使用可能です。"
           />
         </div>
         <div
@@ -153,7 +152,8 @@ export const _EcoKyuto = () => {
             image="/after-follow.jpg"
             alt="eco-kyuto"
             title="安心のアフターフォロー"
-            description="設置後も、トラブル時やご不明点に迅速に対応。\n地域に根ざした会社だからこそ、いつでも頼れる安心のサポートをご提供いたします。"
+            description={`設置後も、トラブル時やご不明点に迅速に対応。
+地域に根ざした会社だからこそ、いつでも頼れる安心のサポートをご提供いたします。`}
           />
         </div>
       </div>
@@ -170,18 +170,18 @@ export const _EcoKyuto = () => {
         items={[
           {
             question: 'エコキュートは本当に電気代が安くなるの？',
-            answer:
-              'はい、従来のガス給湯器や電気温水器と比べて、年間の光熱費を約60～70%削減できます。\n深夜の安い電力を使ってお湯を作るため、大幅なコスト削減が可能です。',
+            answer: `はい、従来のガス給湯器や電気温水器と比べて、年間の光熱費を約60～70%削減できます。
+深夜の安い電力を使ってお湯を作るため、大幅なコスト削減が可能です。`,
           },
           {
             question: '冬でもちゃんとお湯は出ますか？',
-            answer:
-              'はい、問題ありません。エコキュートは寒冷地対応モデルもあり、マイナス25度でも稼働します。\n北海道などの寒冷地でも多数の導入実績があります。',
+            answer: `はい、問題ありません。エコキュートは寒冷地対応モデルもあり、マイナス25度でも稼働します。
+北海道などの寒冷地でも多数の導入実績があります。`,
           },
           {
             question: 'エコキュートの寿命はどのくらいですか？',
-            answer:
-              '一般的に10～15年程度です。定期的なメンテナンスを行うことで、より長く安心してお使いいただけます。\nメーカー保証も充実しており、万が一の故障時も安心です。',
+            answer: `一般的に10～15年程度です。定期的なメンテナンスを行うことで、より長く安心してお使いいただけます。
+メーカー保証も充実しており、万が一の故障時も安心です。`,
           },
         ]}
       />

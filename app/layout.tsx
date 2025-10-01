@@ -62,7 +62,7 @@ export default function RootLayout({
       subs: [
         { href: '/services/solar-panel', label: '太陽光パネル', icon: 'sun' },
         { href: '/services/battery', label: '蓄電池', icon: 'battery' },
-        { href: '/services/eco-kyuto', label: 'エコキュート', icon: 'bath' },
+        { href: '/services/eco-cute', label: 'エコキュート', icon: 'bath' },
         {
           href: '/services/termite-control',
           label: 'シロアリ駆除',

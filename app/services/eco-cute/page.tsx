@@ -1,12 +1,12 @@
 import { Hero } from '@/components/Hero'
-import { _EcoKyuto } from './_EcoKyuto'
+import { _EcoCute } from './_EcoCute'
 
-export default function EcoKyutoPage() {
+export default function EcoCutePage() {
   return (
     <>
       <Hero imageSrc="/bathroom.jpg" subtitle="EcoCute" title="エコキュート" />
       <div className="wrapper">
-        <_EcoKyuto />
+        <_EcoCute />
       </div>
     </>
   )

@@ -45,7 +45,7 @@ export default function ServicesPage() {
               深夜電力を活用した環境に優しい給湯システムです。
             </p>
             <a
-              href="/services/eco-kyuto"
+              href="/services/eco-cute"
               className="text-blue-600 hover:text-blue-800"
             >
               詳しく見る →

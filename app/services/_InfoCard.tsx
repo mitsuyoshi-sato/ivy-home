@@ -1,7 +1,5 @@
 'use client'
 
-import { Fragment } from 'react'
-
 export const _InfoCard = (props: {
   image?: string
   alt?: string
@@ -20,13 +18,8 @@ export const _InfoCard = (props: {
           {props.title}
         </h3>
         {props.description && (
-          <p className="text-sm text-gray-800 mt-2 leading-[1.8]">
-            {props.description.split('\n').map((line, index) => (
-              <Fragment key={index}>
-                {index > 0 && <br />}
-                {line}
-              </Fragment>
-            ))}
+          <p className="text-sm text-gray-800 mt-2 leading-[1.8] whitespace-pre-line">
+            {props.description}
           </p>
         )}
       </div>
