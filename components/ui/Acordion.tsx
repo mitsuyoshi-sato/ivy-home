@@ -40,6 +40,8 @@ const AcordionItem = (props: { question: string; answer: string }) => {
           const a = refAnswer.current
           const i = refIcon.current
           if (a && i && !refOpen.current) {
+            motion.set(a, { display: 'block' })
+            await motion.delay(0)
             motion.to(a, 0.2, 'linear', {
               height: `${a.scrollHeight + 16}px`,
             })
@@ -57,6 +59,8 @@ const AcordionItem = (props: { question: string; answer: string }) => {
             motion.set(a, { transition: '' })
             motion.to(i, 0.2, 'out', { rotate: '0deg' })
             await motion.to(a, 0.2, 'linear', { height: '0px' })
+            await motion.delay(0)
+            motion.set(a, { display: 'none' })
             refOpen.current = false
           }
         }}
@@ -67,7 +71,7 @@ const AcordionItem = (props: { question: string; answer: string }) => {
         </div>
         <div
           ref={refAnswer}
-          style={{ height: '0px', opacity: 0 }}
+          style={{ height: '0px', opacity: 0, display: 'none' }}
           className="text-sm whitespace-pre-line"
         >
           {props.answer}
