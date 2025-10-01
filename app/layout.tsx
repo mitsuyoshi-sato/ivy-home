@@ -60,16 +60,16 @@ export default function RootLayout({
       href: '/services',
       label: '事業内容',
       subs: [
-        { href: '/services#solar-panel', label: '太陽光パネル', icon: 'sun' },
-        { href: '/services#battery-storage', label: '蓄電池', icon: 'battery' },
-        { href: '/services#eco-cute', label: 'エコキュート', icon: 'bath' },
+        { href: '/services/solar-panel', label: '太陽光パネル', icon: 'sun' },
+        { href: '/services/battery', label: '蓄電池', icon: 'battery' },
+        { href: '/services/eco-kyuto', label: 'エコキュート', icon: 'bath' },
         {
-          href: '/services#termite-control',
+          href: '/services/termite-control',
           label: 'シロアリ駆除',
           icon: 'sprayCan',
         },
         {
-          href: '/services#renovation',
+          href: '/services/reform',
           label: 'リフォーム',
           icon: 'home',
         },
