@@ -139,7 +139,7 @@ export const _EcoCute = () => {
         >
           <_InfoCard
             title="エコキュートのメリット"
-            image="/cooking.jpg"
+            image="/bathroom.jpg"
             alt="eco-kyuto"
             description="従来のガス給湯器と比べて光熱費を大幅に削減できます。深夜の安い電力を使うため、ランニングコストが低く、災害時にはタンクの水を生活用水として利用できます。"
           />
