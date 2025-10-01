@@ -1,8 +1,8 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { motion } from '../motion'
-import { _InfoCard } from './_InfoCard'
+import { motion } from '../../motion'
+import { _InfoCard } from '../_InfoCard'
 import { Acordion } from '@/components/ui/Acordion'
 
 export const _EcoKyuto = () => {
@@ -160,7 +160,7 @@ export const _EcoKyuto = () => {
       <h4
         ref={refAcordionTitle}
         style={{ opacity: 0, transform: 'translateY(100px)' }}
-        className="text-lg font-bold mt-16 text-center"
+        className="text-xl font-bold mt-16 text-center"
       >
         エコキュートに関するよくある疑問
       </h4>

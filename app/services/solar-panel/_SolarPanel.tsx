@@ -159,7 +159,7 @@ export const _SolarPanel = () => {
       <h4
         ref={refAcordionTitle}
         style={{ opacity: 0, transform: 'translateY(100px)' }}
-        className="text-lg font-bold mt-16 text-center"
+        className="text-xl font-bold mt-16 text-center"
       >
         太陽光パネルに関するよくある疑問
       </h4>
