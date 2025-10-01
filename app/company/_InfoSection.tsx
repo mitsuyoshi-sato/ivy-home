@@ -102,7 +102,7 @@ export const _InfoSection = () => {
           <div className="flex w-full items-center border-b border-gray-200 pb-2">
             <h3 className="w-1/4 text-gray-600">設立</h3>
             <p className="text-base text-dark6 font-semibold shrink-0 w-3/4">
-              2025年10月〇〇日
+              2025年10月
             </p>
           </div>
           <div className="flex w-full items-center border-b border-gray-200 pb-2">

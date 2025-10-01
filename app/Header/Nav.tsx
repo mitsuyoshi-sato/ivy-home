@@ -128,13 +128,13 @@ const Tab = (props: {
     <div
       ref={refContainer}
       className="relative inline-flex"
-      onMouseEnter={() => {
+      onMouseEnter={async () => {
         const l = refList.current
         const c = refChevron.current
         if (l && c) {
           motion.set(l, { display: 'block' })
           // 位置調整を実行
-          setTimeout(adjustModalPosition, 0)
+          await motion.delay(0)
           motion.to(l, 0.5, 'out', {
             opacity: 1,
             translateY: '0px',

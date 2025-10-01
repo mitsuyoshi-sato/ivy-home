@@ -64,14 +64,14 @@ export default function RootLayout({
         { href: '/services#battery-storage', label: '蓄電池', icon: 'battery' },
         { href: '/services#eco-cute', label: 'エコキュート', icon: 'bath' },
         {
-          href: '/services#all-electric',
-          label: 'オール電化',
-          icon: 'plugZap',
+          href: '/services#termite-control',
+          label: 'シロアリ駆除',
+          icon: 'sprayCan',
         },
         {
-          href: '/services#exterior-wall',
-          label: '外壁塗装',
-          icon: 'paintbrush',
+          href: '/services#renovation',
+          label: 'リフォーム',
+          icon: 'home',
         },
       ],
     },
@@ -135,7 +135,7 @@ function __Section(props: {
     <div className="flex flex-col gap-6">
       <Link
         href={props.href}
-        className="font-bold text-ivy8 text-xl hover:text-dark8 cursor-pointer"
+        className="font-bold text-ivy8 text-xl hover:opacity-70 cursor-pointer"
       >
         {props.title}
       </Link>
