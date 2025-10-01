@@ -1,84 +1,121 @@
+'use client'
+
 import { Hero } from '@/components/Hero'
+import { Section } from '@/components/Section'
+import { Button } from '@/components/ui/button'
+import { ArrowRightIcon } from 'lucide-react'
+import Link from 'next/link'
+import { useEffect, useRef } from 'react'
+import { motion } from '../motion'
 
 export default function ServicesPage() {
   return (
     <>
       <Hero imageSrc="/hero2.jpg" subtitle="Services" title="事業内容" />
       <div className="wrapper">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold mb-8">私たちのサービス</h2>
-          <p className="text-lg text-gray-600 mb-12">
-            お客様の暮らしをより快適で安心なものにするため、様々なサービスを提供しています。
-          </p>
-        </div>
+        <Section
+          title="事業内容の一覧"
+          subtitle="Services"
+          description="私たちは、暮らしをより快適で安心にするさまざまなサービスを提供しています。\n日常のささいな不安や課題に目を向け、家庭や暮らしの安全を守るとともに、将来に向けた備えや安心のある生活を支える取り組みを行っています。"
+        />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-xl font-bold mb-4">太陽光パネル</h3>
-            <p className="text-gray-600 mb-4">
-              クリーンなエネルギーで電気代を削減し、環境に優しい暮らしを実現します。
-            </p>
-            <a
-              href="/services/solar-panel"
-              className="text-blue-600 hover:text-blue-800"
-            >
-              詳しく見る →
-            </a>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-xl font-bold mb-4">蓄電池</h3>
-            <p className="text-gray-600 mb-4">
-              発電した電力を蓄えて、必要な時に使用。災害時にも安心です。
-            </p>
-            <a
-              href="/services/battery"
-              className="text-blue-600 hover:text-blue-800"
-            >
-              詳しく見る →
-            </a>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-xl font-bold mb-4">エコキュート</h3>
-            <p className="text-gray-600 mb-4">
-              深夜電力を活用した環境に優しい給湯システムです。
-            </p>
-            <a
-              href="/services/eco-cute"
-              className="text-blue-600 hover:text-blue-800"
-            >
-              詳しく見る →
-            </a>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-xl font-bold mb-4">シロアリ防除</h3>
-            <p className="text-gray-600 mb-4">
-              お住まいをシロアリから守る専門的な防除サービスです。
-            </p>
-            <a
-              href="/services/termite-control"
-              className="text-blue-600 hover:text-blue-800"
-            >
-              詳しく見る →
-            </a>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-xl font-bold mb-4">リフォーム</h3>
-            <p className="text-gray-600 mb-4">
-              お客様のご要望に合わせた住まいのリフォームサービスです。
-            </p>
-            <a
-              href="/services/reform"
-              className="text-blue-600 hover:text-blue-800"
-            >
-              詳しく見る →
-            </a>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-24 gap-y-12 mt-12">
+          <_ServiceCard
+            title="太陽光発電パネル"
+            description="未来のエネルギーをつくるための安心の選択肢です。"
+            src="/solar-panel.jpg"
+            index={0}
+            href="/services/solar-panel"
+          />
+          <_ServiceCard
+            title="蓄電池"
+            description="電気をためて夜間や緊急時にも活用できます。"
+            src="/print.jpg"
+            index={1}
+            href="/services/battery"
+          />
+          <_ServiceCard
+            title="エコキュート"
+            description="空気の熱を利用して効率よくお湯をつくる給湯器です。"
+            src="/bathroom.jpg"
+            index={2}
+            href="/services/eco-cute"
+          />
+          <_ServiceCard
+            title="シロアリ駆除"
+            description="住宅を食害から守る専門サービス。大切な家の資産価値を守ります。"
+            src="/after-follow.jpg"
+            index={3}
+            href="/services/termite-control"
+          />
+          <_ServiceCard
+            title="リフォーム"
+            description="マイホームをリフォームして、これからも長く住み続けられるように。"
+            src="/family.jpg"
+            index={4}
+            href="/services/reform"
+          />
         </div>
       </div>
     </>
+  )
+}
+
+const _ServiceCard = (props: {
+  title: string
+  description: string
+  src: string
+  index: number
+  href: string
+}) => {
+  const refCard = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const c = refCard.current
+    if (c) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              motion.to(c, 2, 'out', { opacity: 1, translateY: '0px' })
+            }
+          })
+        },
+        { threshold: 0.3 },
+      )
+
+      observer.observe(c)
+
+      return () => observer.disconnect()
+    }
+  }, [])
+
+  return (
+    <div
+      className="flex flex-col"
+      ref={refCard}
+      style={{ opacity: 0, transform: 'translateY(100px)' }}
+    >
+      <p className="text-lg font-semibold">{props.title}</p>
+      <img
+        src={props.src}
+        alt={props.title}
+        className="w-full h-full object-cover rounded-sm mt-4"
+      />
+      <p className="text-gray-800 mt-4 leading-[1.82] break-words whitespace-pre-line text-sm">
+        {props.description}
+      </p>
+      <div className="mt-4 w-full flex justify-end">
+        <Link href={props.href}>
+          <Button
+            icon={ArrowRightIcon}
+            iconPosition="right"
+            variant="secondary"
+          >
+            詳しく見る
+          </Button>
+        </Link>
+      </div>
+    </div>
   )
 }

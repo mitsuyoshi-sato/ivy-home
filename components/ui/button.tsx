@@ -8,6 +8,7 @@ export const Button = ({
   disabled,
   icon,
   iconPosition = 'left',
+  variant = 'primary',
 }: {
   children: React.ReactNode
   className?: string
@@ -16,13 +17,18 @@ export const Button = ({
   disabled?: boolean
   icon?: React.ElementType
   iconPosition?: 'left' | 'right'
+  variant?: 'primary' | 'secondary'
 }) => (
   <button
     type={type}
     onClick={onClick}
     disabled={disabled}
     className={cn(
-      'shadow-lg text-white group hover:bg-ivy6 hover:scale-105 transition-all duration-200 inline-flex items-center justify-center rounded-full bg-ivy5 border border-ivy6 px-6 py-3 font-semibold text-sm lg:text-sm disabled:opacity-50 disabled:pointer-events-none',
+      variant === 'primary' &&
+        'bg-[#2f855a] text-white border border-[#2f855a] hover:bg-[#276749] hover:border-[#276749]',
+      variant === 'secondary' &&
+        'bg-white text-[#2f855a] border border-[#2f855a] hover:bg-ivy6 hover:text-white',
+      'group shadow-lg text-sm rounded-full px-5 py-3 font-bold inline-flex items-center justify-center transition-all duration-200 disabled:opacity-50 disabled:pointer-events-none',
       className,
     )}
   >
