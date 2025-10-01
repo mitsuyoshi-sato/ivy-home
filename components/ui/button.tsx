@@ -25,9 +25,9 @@ export const Button = ({
     disabled={disabled}
     className={cn(
       variant === 'primary' &&
-        'bg-[#2f855a] text-white border border-[#2f855a] hover:bg-[#276749] hover:border-[#276749]',
+        'bg-ivy6 text-white border border-ivy7 hover:bg-ivy7',
       variant === 'secondary' &&
-        'bg-white text-[#2f855a] border border-[#2f855a] hover:bg-ivy6 hover:text-white',
+        'bg-white text-ivy6 border border-ivy7 hover:bg-ivy6 hover:text-white',
       'group shadow-lg text-sm rounded-full px-5 py-3 font-bold inline-flex items-center justify-center transition-all duration-200 disabled:opacity-50 disabled:pointer-events-none',
       className,
     )}
