@@ -1,5 +1,6 @@
 'use client'
 
+import { forwardRef } from 'react'
 import { cn } from '@/lib/utils'
 import {
   Lightbulb,
@@ -19,6 +20,9 @@ import {
   ChartNoAxesCombined,
   Handshake,
   BellRing,
+  Home,
+  SprayCan,
+  ChevronDown,
 } from 'lucide-react'
 
 const iconMap: Record<
@@ -46,18 +50,27 @@ const iconMap: Record<
   chartNoAxesCombined: ChartNoAxesCombined,
   handshake: Handshake,
   bellRing: BellRing,
+  sprayCan: SprayCan,
+  home: Home,
+  chevronDown: ChevronDown,
 }
 
-export const Icon = (props: {
-  name: string
-  className?: string
-  size?: number | string
-}) => {
+export const Icon = forwardRef<
+  SVGSVGElement,
+  {
+    name: string
+    className?: string
+    size?: number | string
+  }
+>((props, ref) => {
   const Comp = iconMap[props.name] ?? Circle
   return (
     <Comp
+      ref={ref}
       className={cn(!props.size && 'w-4 h-4', props.className)}
       size={props.size}
     />
   )
-}
+})
+
+Icon.displayName = 'Icon'

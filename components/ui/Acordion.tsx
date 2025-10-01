@@ -1,0 +1,70 @@
+import { motion } from '@/app/motion'
+import { cn } from '@/lib/utils'
+import { ChevronDown } from 'lucide-react'
+import { useRef, useState } from 'react'
+import { Icon } from './icon'
+
+export const Acordion = (props: {
+  items: { question: string; answer: string }[]
+}) => {
+  return (
+    <div className="flex flex-col mt-6 w-full border-t border-gray-300">
+      {props.items.map((item) => (
+        <AcordionItem
+          key={item.question}
+          question={item.question}
+          answer={item.answer}
+        />
+      ))}
+    </div>
+  )
+}
+
+const AcordionItem = (props: { question: string; answer: string }) => {
+  const refAnswer = useRef<HTMLDivElement>(null)
+  const refOpen = useRef(false)
+  const refIcon = useRef<SVGSVGElement>(null)
+  return (
+    <div className="flex flex-col">
+      <div
+        className="flex flex-col w-full border-b border-gray-300"
+        onClick={async () => {
+          const a = refAnswer.current
+          const i = refIcon.current
+          if (a && i && !refOpen.current) {
+            motion.to(a, 0.2, 'linear', {
+              height: `${a.scrollHeight + 16}px`,
+            })
+            motion.to(i, 0.2, 'out', { rotate: '180deg' })
+            await motion.delay(0.1)
+            motion.set(a, { opacity: 1 })
+            await motion.delay(0.1)
+            // アニメーション閉じる際の、opacityのアニメーションを無効にする
+            motion.set(a, { transition: 'none' })
+            refOpen.current = true
+          } else if (a && i && refOpen.current) {
+            motion.set(a, { opacity: 0 })
+            await motion.delay(0)
+            // アニメーション戻す
+            motion.set(a, { transition: '' })
+            motion.to(i, 0.2, 'out', { rotate: '0deg' })
+            await motion.to(a, 0.2, 'linear', { height: '0px' })
+            refOpen.current = false
+          }
+        }}
+      >
+        <div className="cursor-pointer text-sm flex justify-between items-center py-4 font-semibold">
+          {props.question}
+          <Icon ref={refIcon} name="chevronDown" size={20} />
+        </div>
+        <div
+          ref={refAnswer}
+          style={{ height: '0px', opacity: 0 }}
+          className="text-sm whitespace-pre-line"
+        >
+          {props.answer}
+        </div>
+      </div>
+    </div>
+  )
+}
