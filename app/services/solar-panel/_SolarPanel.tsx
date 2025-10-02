@@ -115,10 +115,11 @@ export const _SolarPanel = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
           className="lg:text-lg text-sm text-gray-600 lg:mt-6 mt-4"
         >
-          太陽光パネルは、家庭の電気代を抑えるだけでなく、未来のエネルギー問題にもつながる選択肢です。
+          電気代、最近どんどん上がってますよね…。
           <br />
-          環境にやさしく、安心できる暮らしを支える仕組みとして注目されています。
-          ご家庭の将来に向けた賢い投資として、多くの方に選ばれています。
+          そんな今だからこそ、太陽光パネルで将来の家計を守る賢い投資としておすすめです。
+          <br />
+          さらに、環境にもやさしく、安心できる暮らしを支える仕組みとして、多くのご家庭で選ばれています。
         </p>
       </div>
       <div ref={refCards} className="flex gap-6 mt-12">
@@ -138,7 +139,7 @@ export const _SolarPanel = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            title="太陽光発電のメリット"
+            title="家計を助ける投資"
             image="/family.jpg"
             alt="solar-panel"
             description="光熱費を削減しながら、電力自給率を高めることができます。余った電力は蓄電池に保存したり、電力会社に売ることも可能です。"
@@ -160,7 +161,7 @@ export const _SolarPanel = () => {
       <h4
         ref={refAcordionTitle}
         style={{ opacity: 0, transform: 'translateY(100px)' }}
-        className="text-xl font-bold mt-16 text-center"
+        className="text-xl font-bold mt-40 text-center"
       >
         太陽光パネルに関するよくある疑問
       </h4>
@@ -169,9 +170,19 @@ export const _SolarPanel = () => {
         style={{ opacity: 0, transform: 'translateY(100px)' }}
         items={[
           {
+            question: '太陽光パネル設置は本当にお得なの？',
+            answer: `太陽光は「自分で電気をつくる」仕組みなので、今後の電気代高騰への保険としてもお得といえると思います。
+実際にどのくらい削減できるかは、電気代の明細を見て具体的に試算いたします。`,
+          },
+          {
             question: '雨の日は発電できますか？',
             answer: `はい、発電します。ただし、晴天時に比べて発電量は少なくなります。
 天候に左右されるため、蓄電池を組み合わせることで効率的に電力を利用できます`,
+          },
+          {
+            question: '設置に向いている屋根はありますか？',
+            answer: `南向きで日当たりの良い屋根が最適です。
+            北向きや影が多い場合でも設置は可能ですが、南向きと比較すると発電効率はやや下がります。`,
           },
           {
             question: '停電時にも電気が使えるのですか？',
@@ -179,10 +190,9 @@ export const _SolarPanel = () => {
 特に災害時には非常用電源として活用可能です。`,
           },
           {
-            question: '太陽光パネル設置は本当にお得なの？',
-            answer: `電気代はここ数年で上がり続けていますよね。
-太陽光は「自分で電気をつくる」仕組みなので、今後の電気代高騰への保険としてもお得といえると思います。
-実際にどのくらい削減できるかは、電気代の明細を見て具体的に試算いたします。`,
+            question: 'メンテナンスは必要ですか？',
+            answer: `日常的な掃除や簡単な確認だけで十分です。
+            内部の点検や故障対応は専門スタッフがサポートするため、手間はほとんどかかりません。`,
           },
         ]}
       />
