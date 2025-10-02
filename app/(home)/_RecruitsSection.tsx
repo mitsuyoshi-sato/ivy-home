@@ -42,9 +42,15 @@ export const _RecruitsSection = () => {
         className=""
         title="採用情報"
         subtitle="Recuruit"
-        description=""
+        description="私たちIvy-Homeでは、お客様に最適な住まいと暮らしを提案する 営業担当 を募集しています。
+\n人と話すことが好きな方、住まいやライフスタイルに関心のある方を歓迎します。
+未経験の方でも先輩スタッフが丁寧にサポートいたしますので、安心してチャレンジいただけます。"
+        button={{
+          href: '/recruit',
+          text: '採用情報を見る',
+        }}
       />
-      <div
+      {/* <div
         ref={refContainer}
         className="w-[50%] flex flex-col text-sm font-medium gap-4 mt-12"
       >
@@ -78,7 +84,7 @@ export const _RecruitsSection = () => {
             className="group-hover:translate-x-1 transition-all duration-300 ease-out"
           />
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
