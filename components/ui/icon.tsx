@@ -77,8 +77,8 @@ export const Icon = forwardRef<
       ref={ref}
       className={cn(!props.size && 'w-4 h-4', props.className)}
       size={props.size}
-      fill={props.fill}
-      stroke={props.stroke}
+      fill={props.fill ?? 'none'}
+      stroke={props.stroke ?? 'black'}
     />
   )
 })
