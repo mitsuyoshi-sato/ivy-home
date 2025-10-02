@@ -88,17 +88,17 @@ export default function RootLayout({
       label: '採用情報',
       subs: [
         { href: '/recruit', label: 'Top', icon: 'handshake' },
-        { href: '/recruit#sales', label: 'セールス', icon: 'briefcase' },
-        {
-          href: '/recruit#back-office',
-          label: 'バックオフィス',
-          icon: 'fileText',
-        },
-        {
-          href: '/recruit#marketing',
-          label: 'マーケティング',
-          icon: 'chartNoAxesCombined',
-        },
+        // { href: '/recruit#sales', label: 'セールス', icon: 'briefcase' },
+        // {
+        //   href: '/recruit#back-office',
+        //   label: 'バックオフィス',
+        //   icon: 'fileText',
+        // },
+        // {
+        //   href: '/recruit#marketing',
+        //   label: 'マーケティング',
+        //   icon: 'chartNoAxesCombined',
+        // },
       ],
     },
   ]

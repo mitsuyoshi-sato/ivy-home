@@ -1,3 +1,5 @@
+import { _RecruitSection } from './_RecruitSection'
+
 export default function Recruit() {
-  return <div className="">Recruit</div>
+  return <_RecruitSection />
 }
