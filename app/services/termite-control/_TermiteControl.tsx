@@ -129,8 +129,8 @@ export const _TermiteControl = () => {
           <_InfoCard
             image="/family.jpg"
             alt="termite-control"
-            title="シロアリ駆除の重要性"
-            description="シロアリは家の土台や柱を食い荒らし、建物の耐震性を著しく低下させます。早期発見・早期対処が、大切な住まいを守る鍵となります。"
+            title="早期発見が重要！"
+            description="早期発見・早期対処が、大切な住まいを守ります。まずはお気軽にご相談ください。"
           />
         </div>
         <div
@@ -138,10 +138,10 @@ export const _TermiteControl = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            title="当社の駆除方法"
+            title="ペットや家族にも安心"
             image="/sales.jpg"
             alt="termite-control"
-            description="経験豊富な専門スタッフが、最新の駆除技術と安全な薬剤を使用して施工します。5年間の保証付きで、施工後も定期的な点検を実施いたします。"
+            description="当社の使用するシロアリ薬剤は、人体やペットへの毒性が低いものが選択しています。"
           />
         </div>
         <div
@@ -151,16 +151,15 @@ export const _TermiteControl = () => {
           <_InfoCard
             image="/after-follow.jpg"
             alt="termite-control"
-            title="安心のアフターフォロー"
-            description={`設置後も、トラブル時やご不明点に迅速に対応。
-地域に根ざした会社だからこそ、いつでも頼れる安心のサポートをご提供いたします。`}
+            title="５年保証"
+            description={`5年間の保証付きで、施工後も定期的な点検を実施いたします。`}
           />
         </div>
       </div>
       <h4
         ref={refAcordionTitle}
         style={{ opacity: 0, transform: 'translateY(100px)' }}
-        className="text-xl font-bold mt-16 text-center"
+        className="text-xl font-bold mt-40 text-center"
       >
         シロアリ駆除に関するよくある疑問
       </h4>
@@ -182,6 +181,14 @@ export const _TermiteControl = () => {
             question: '駆除後の保証はありますか？',
             answer: `はい、施工後5年間の保証をお付けしています。
 保証期間中に万が一シロアリが再発した場合は、無償で再施工いたします。`,
+          },
+          {
+            question: '相談だけでも対応してもらえますか？',
+            answer: `はい。まずは現状の確認やアドバイスだけでも大丈夫です。強引な駆除勧誘は行いませんので、お気軽にお問い合わせください`,
+          },
+          {
+            question: '駆除にかかる費用はどのくらいですか？',
+            answer: `家の規模や被害状況、選ぶ駆除方法によって異なります。まずは無料見積もり・相談をおすすめしています。`,
           },
         ]}
       />
