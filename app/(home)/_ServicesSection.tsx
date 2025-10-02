@@ -148,7 +148,7 @@ function __Bento({
   return (
     <div
       style={{ opacity: 0, transform: 'scale(0.95)' }}
-      className={`group transition-all duration-300 ease-out hover:border-ivy5 hover:cursor-pointer hover:scale-[1.02] relative overflow-hidden border border-gray-300 flex items-center justify-center rounded-xl col-span-${colSpan}`}
+      className={`group transition-all duration-300 ease-out hover:cursor-pointer hover:scale-[1.02] relative overflow-hidden border border-gray-300 flex items-center justify-center rounded-xl col-span-${colSpan}`}
     >
       <div className="absolute inset-0 bg-white/30 opacity-0 group-hover:opacity-80 transition-opacity duration-300 ease-out rounded-xl z-10 pointer-events-none" />
       <img
@@ -156,7 +156,7 @@ function __Bento({
         alt={title}
         className="w-full h-full object-cover absolute inset-0 rounded-xl"
       />
-      <div className="relative w-full h-full bg-cleam backdrop-blur-3xl p-3 z-0">
+      <div className="relative w-full h-full bg-white/80 backdrop-blur-3xl p-3 z-0">
         <div
           className={cn(
             'relative rounded-xl overflow-hidden border-[1px] border-gray-300',
@@ -168,13 +168,13 @@ function __Bento({
         <div className="text-container py-6 px-3">
           <p
             className="text-lg font-bold"
-            style={{ opacity: 0, transform: 'translateY(30px)' }}
+            // style={{ opacity: 0, transform: 'translateY(30px)' }}
           >
             {title}
           </p>
           <p
             className="text-gray-600 mt-2 font-semibold leading-[1.82] break-words whitespace-pre-line text-sm"
-            style={{ opacity: 0, transform: 'translateY(30px)' }}
+            // style={{ opacity: 0, transform: 'translateY(30px)' }}
           >
             {description.replace(/\\n/g, '\n')}
           </p>
