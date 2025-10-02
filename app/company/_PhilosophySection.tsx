@@ -58,7 +58,7 @@ export const _PhilosophySection = () => {
 
   return (
     <div className="wrapper">
-      <div className="flex gap-40 items-center">
+      <div className="flex gap-40 items-center py-8">
         <div
           ref={refLogo}
           style={{ opacity: 0, transform: 'translateY(100px)' }}
