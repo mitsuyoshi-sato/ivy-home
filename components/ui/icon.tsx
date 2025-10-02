@@ -23,6 +23,7 @@ import {
   Home,
   SprayCan,
   ChevronDown,
+  Leaf,
 } from 'lucide-react'
 
 const iconMap: Record<
@@ -53,6 +54,7 @@ const iconMap: Record<
   sprayCan: SprayCan,
   home: Home,
   chevronDown: ChevronDown,
+  leaf: Leaf,
 }
 
 export const Icon = forwardRef<
