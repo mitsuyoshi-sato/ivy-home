@@ -115,7 +115,7 @@ export const _Battery = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
           className="lg:text-lg text-sm text-gray-600 lg:mt-6 mt-4"
         >
-          蓄電池は、家庭で使う電気を効率よくためて、夜間に有効活用できる装置です。
+          蓄電池は太陽光発電や深夜電力などで作った電気を蓄えて、必要な時に使える「電気の貯金」のような仕組みです。
           <br />
           昼間に太陽光で発電した電力を夜や緊急時に使えるため、電気代の不安を軽減し、災害時にも安心です。
           将来の電力不安に備える賢い選択肢として、多くのご家庭で選ばれています。
@@ -127,21 +127,11 @@ export const _Battery = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            image="/battery.jpg"
-            alt="battery"
-            title="蓄電池の仕組み"
-            description="太陽光発電や深夜電力などで作った電気を蓄えて、必要な時に使えるようにするシステムです。電気の「貯金」のようなイメージです。"
-          />
-        </div>
-        <div
-          className="w-1/3"
-          style={{ opacity: 0, transform: 'translateY(100px)' }}
-        >
-          <_InfoCard
-            title="蓄電池のメリット"
+            title="賢くエネルギーを節約"
             image="/family.jpg"
             alt="battery"
-            description="電気代の削減はもちろん、停電時にも電力を供給できるため災害時の備えとしても安心です。太陽光発電と組み合わせることで、より効率的なエネルギー活用が可能になります。"
+            description={`電気代を削減するだけでなく、将来の電力価格変動にも備えられます。
+              賢いエネルギー管理を実現できます。`}
           />
         </div>
         <div
@@ -151,16 +141,27 @@ export const _Battery = () => {
           <_InfoCard
             image="/after-follow.jpg"
             alt="battery"
-            title="安心のアフターフォロー"
-            description={`設置後も、トラブル時やご不明点に迅速に対応。
-地域に根ざした会社だからこそ、いつでも頼れる安心のサポートをご提供いたします。`}
+            title="停電時に大活躍！"
+            description={`停電時でも冷蔵庫や照明、テレビなど必要な家電を数時間安心して使えます。
+              災害時も家族の生活を守るバックアップ電源です。`}
+          />
+        </div>
+        <div
+          className="w-1/3"
+          style={{ opacity: 0, transform: 'translateY(100px)' }}
+        >
+          <_InfoCard
+            image="/after-follow.jpg"
+            alt="battery"
+            title="手間なく長持ち"
+            description="耐久性に優れ、長期使用でも安心。設置後は専門スタッフの点検サポートもあり、日常のお手入れはほとんど不要です。"
           />
         </div>
       </div>
       <h4
         ref={refAcordionTitle}
         style={{ opacity: 0, transform: 'translateY(100px)' }}
-        className="text-xl font-bold mt-16 text-center"
+        className="text-xl font-bold mt-40 text-center"
       >
         蓄電池に関するよくある疑問
       </h4>
@@ -170,9 +171,8 @@ export const _Battery = () => {
         items={[
           {
             question: '蓄電池は太陽光パネルがないと使えないの？',
-            answer: `いいえ、蓄電池だけでも使えます。
-深夜の安い電力を蓄えて昼間に使うことで電気代を削減できます。
-もちろん太陽光パネルと併用すればより効果的です。`,
+            answer: `いいえ、蓄電池だけでも使えます。深夜の安い電力を蓄えて昼間に使うことで電気代を削減できます。
+もちろん！太陽光パネルと併用すればより効果的です。`,
           },
           {
             question: '停電時にはどのくらい使えますか？',
@@ -183,6 +183,16 @@ export const _Battery = () => {
             question: '蓄電池の寿命はどのくらいですか？',
             answer: `一般的に10～15年程度です。メーカーによっては10年保証が付いている製品もあります。
 定期的なメンテナンスで、より長く安心してお使いいただけます。`,
+          },
+          {
+            question: '本当に電気代が節約できますか？',
+            answer: `夜間電力や太陽光の余剰電力を効率的に蓄えることで、毎月の電気代を節約できます。
+            家庭の使用状況や蓄電容量によって差はありますが、無料でお見積もり可能です。`,
+          },
+          {
+            question: '設置スペースはどのくらい必要ですか？',
+            answer: `家庭用の蓄電池は比較的コンパクトで、屋外壁面や屋内の空きスペースに設置可能です。
+            設置場所の条件に合わせて最適なプランをご提案します。`,
           },
         ]}
       />
