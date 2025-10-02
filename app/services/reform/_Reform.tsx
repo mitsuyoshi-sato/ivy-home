@@ -115,10 +115,9 @@ export const _Reform = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
           className="lg:text-lg text-sm text-gray-600 lg:mt-6 mt-4"
         >
-          リフォームは、住み慣れた家を新築同様に蘇らせる賢い選択です。
+          リフォームは、住み慣れた家を快適で長持ちする住まいに生まれ変わらせる選択です。
           <br />
-          キッチン、浴室、トイレなどの水回りから、外壁塗装まで幅広く対応します。
-          建て替えよりもコストを抑えながら、快適性や省エネ性能を向上させることが可能です。
+          内装・水回り・外装など幅広く対応し、ライフスタイルや将来の安心まで考えたご提案をさせていただきます。
         </p>
       </div>
       <div ref={refCards} className="flex gap-6 mt-12">
@@ -130,18 +129,7 @@ export const _Reform = () => {
             image="/bathroom.jpg"
             alt="reform"
             title="多様なリフォームに対応"
-            description="キッチン、浴室、トイレなどの水回りから、外壁塗装、屋根工事まで、住まいのあらゆるリフォームに対応します。小さな修繕から大規模改修まで、お気軽にご相談ください。"
-          />
-        </div>
-        <div
-          className="w-1/3"
-          style={{ opacity: 0, transform: 'translateY(100px)' }}
-        >
-          <_InfoCard
-            title="リフォームのメリット"
-            image="/cooking2.jpg"
-            alt="reform"
-            description="住み慣れた家を新築同様に蘇らせることができます。建て替えよりもコストを抑えながら、快適性や省エネ性能を向上させることが可能です。"
+            description="キッチン、浴室、トイレなどの水回りから、外壁塗装、屋根工事まで、住まいのあらゆるリフォームに対応します。"
           />
         </div>
         <div
@@ -151,16 +139,26 @@ export const _Reform = () => {
           <_InfoCard
             image="/after-follow.jpg"
             alt="reform"
-            title="安心のアフターフォロー"
-            description={`設置後も、トラブル時やご不明点に迅速に対応。
-地域に根ざした会社だからこそ、いつでも頼れる安心のサポートをご提供いたします。`}
+            title="コストを抑えつつ理想の住まいを"
+            description={`建て替えより費用を抑えつつ、ライフスタイルに合わせた理想の住まいを実現します。無駄を減らしたプランで、予算も安心です。`}
+          />
+        </div>
+        <div
+          className="w-1/3"
+          style={{ opacity: 0, transform: 'translateY(100px)' }}
+        >
+          <_InfoCard
+            title="省エネ・快適な暮らしへ"
+            image="/cooking2.jpg"
+            alt="reform"
+            description="断熱や設備改善で光熱費削減。長期的には省エネによるコスト削減と住まいの資産価値向上にもつながります。"
           />
         </div>
       </div>
       <h4
         ref={refAcordionTitle}
         style={{ opacity: 0, transform: 'translateY(100px)' }}
-        className="text-xl font-bold mt-16 text-center"
+        className="text-xl font-bold mt-40 text-center"
       >
         リフォームに関するよくある疑問
       </h4>
@@ -168,6 +166,11 @@ export const _Reform = () => {
         ref={refAcordion}
         style={{ opacity: 0, transform: 'translateY(100px)' }}
         items={[
+          {
+            question: 'リフォームできる範囲は？',
+            answer: `キッチン・浴室・トイレなどの水回りはもちろん、外壁塗装や屋根補修まで幅広く対応可能です。
+            ライフスタイルに合わせた間取り変更もご相談ください。`,
+          },
           {
             question: 'リフォーム中も住みながら工事できますか？',
             answer: `はい、可能です。工事内容や規模によりますが、多くの場合は住みながらのリフォームが可能です。
@@ -182,6 +185,10 @@ export const _Reform = () => {
             question: '工事期間はどのくらいかかりますか？',
             answer: `工事内容によって異なりますが、水回り単体なら1週間程度、全面改修なら1～2ヶ月程度が目安です。
 事前に詳細なスケジュールをご説明いたします。`,
+          },
+          {
+            question: '施工後のサポートはありますか？',
+            answer: `はい。トラブルや不明点には迅速に対応し、地域に根ざした会社ならではの安心のアフターフォローをご提供いたします。`,
           },
         ]}
       />
