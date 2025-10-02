@@ -61,14 +61,14 @@ export const _InfoSection = () => {
             className="text-sm text-ivy5/80 lg:text-lg"
             style={{ opacity: 0, transform: 'translateY(100px)' }}
           >
-            Information
+            Overview
           </p>
           <h2
             ref={refTitle}
             className="lg:text-4xl text-2xl font-bold mt-6"
             style={{ opacity: 0, transform: 'translateY(100px)' }}
           >
-            会社情報
+            会社概要
           </h2>
         </div>
       </div>
