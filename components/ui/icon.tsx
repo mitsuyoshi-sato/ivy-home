@@ -24,6 +24,7 @@ import {
   SprayCan,
   ChevronDown,
   Leaf,
+  Droplet,
 } from 'lucide-react'
 
 const iconMap: Record<
@@ -55,6 +56,7 @@ const iconMap: Record<
   home: Home,
   chevronDown: ChevronDown,
   leaf: Leaf,
+  droplet: Droplet,
 }
 
 export const Icon = forwardRef<
@@ -63,14 +65,20 @@ export const Icon = forwardRef<
     name: string
     className?: string
     size?: number | string
+    fill?: string
+    stroke?: string
+    style?: React.CSSProperties
   }
 >((props, ref) => {
   const Comp = iconMap[props.name] ?? Circle
   return (
     <Comp
+      style={props.style}
       ref={ref}
       className={cn(!props.size && 'w-4 h-4', props.className)}
       size={props.size}
+      fill={props.fill}
+      stroke={props.stroke}
     />
   )
 })

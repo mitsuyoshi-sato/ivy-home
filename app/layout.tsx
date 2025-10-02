@@ -3,7 +3,7 @@ import './globals.css'
 import Link from 'next/link'
 import { Inter, Noto_Sans_JP } from 'next/font/google'
 import { Header } from './Header'
-import { Leaf } from 'lucide-react'
+import _OpeningAnimation from './_OpeningAnimation'
 
 const inter = Inter({
   display: 'swap',
@@ -107,7 +107,9 @@ export default function RootLayout({
     <html lang="ja" className={`${inter.variable} ${notosansjp.variable}`}>
       <body className="antialiased">
         <Header items={items} />
-        <main>{children}</main>
+        <main>
+          <_OpeningAnimation>{children}</_OpeningAnimation>
+        </main>
         <footer>
           <div className="bg-cleam">
             <div className="wrapper flex gap-40 items-start">
@@ -118,7 +120,7 @@ export default function RootLayout({
               />
               <div className="flex gap-20">
                 {items.map((item) => (
-                  <__Section
+                  <__FooterSection
                     key={item.href}
                     title={item.label}
                     href={item.href}
@@ -134,7 +136,7 @@ export default function RootLayout({
   )
 }
 
-function __Section(props: {
+function __FooterSection(props: {
   title: string
   href: string
   links: { href: string; label: string; icon?: string }[]
