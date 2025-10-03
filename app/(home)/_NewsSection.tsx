@@ -70,7 +70,7 @@ export const _NewsSection = () => {
   ]
 
   return (
-    <div className="flex flex-col pb-[112px]">
+    <section className="flex flex-col pb-[112px]">
       <div className="wrapper pb-0">
         <SectionHeader
           title="ニュース"
@@ -84,7 +84,7 @@ export const _NewsSection = () => {
       <div ref={scrollRef} className="w-full  mt-9" style={{ opacity: 0 }}>
         <div className="flex gap-4 w-fit animate-scroll">
           {cards.map((card) => (
-            <div
+            <article
               key={card.id}
               className="flex flex-col cursor-pointer hover:scale-105 transition-all duration-300"
             >
@@ -92,7 +92,7 @@ export const _NewsSection = () => {
                 <div className="relative w-full h-full overflow-hidden rounded-lg">
                   <Image
                     src={card.image}
-                    alt=""
+                    alt={card.text}
                     fill
                     className="object-cover"
                     sizes="300px"
@@ -100,13 +100,15 @@ export const _NewsSection = () => {
                 </div>
               </div>
               <div className="flex flex-col p-2">
-                <p className="text-sm text-gray-500">{card.date}</p>
-                <p className="text-sm text-dark7 font-semibold">{card.text}</p>
+                <time className="text-sm text-gray-500">{card.date}</time>
+                <h3 className="text-sm text-dark7 font-semibold">
+                  {card.text}
+                </h3>
               </div>
-            </div>
+            </article>
           ))}
           {cards.map((card) => (
-            <div
+            <article
               key={`duplicate-${card.id}`}
               className="flex flex-col cursor-pointer hover:scale-105 transition-all duration-300"
             >
@@ -114,7 +116,7 @@ export const _NewsSection = () => {
                 <div className="relative w-full h-full overflow-hidden rounded-lg">
                   <Image
                     src={card.image}
-                    alt=""
+                    alt={card.text}
                     fill
                     className="object-cover"
                     sizes="300px"
@@ -122,14 +124,15 @@ export const _NewsSection = () => {
                 </div>
               </div>
               <div className="flex flex-col p-2">
-                <p className="text-sm text-gray-500">{card.date}</p>
-                <p className="text-sm text-dark7 font-semibold">{card.text}</p>
+                <time className="text-sm text-gray-500">{card.date}</time>
+                <h3 className="text-sm text-dark7 font-semibold">
+                  {card.text}
+                </h3>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>
-
       <style jsx>{`
         @keyframes scroll {
           0% {
@@ -144,6 +147,6 @@ export const _NewsSection = () => {
           animation: scroll 25s linear infinite;
         }
       `}</style>
-    </div>
+    </section>
   )
 }
