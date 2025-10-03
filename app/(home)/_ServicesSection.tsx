@@ -112,7 +112,7 @@ export const _ServicesSection = () => {
           href="/services/eco-cute"
           title={'エコキュート'}
           description={
-            '空気熱を活用することで光熱費を抑え、環境負荷の軽減にも貢献します。設置から保守まで、きめ細やかなサポートを提供しています。'
+            '空気熱を活用することでガズを使用せずお湯が沸かせます。\n光熱費を抑え、環境負荷の軽減にも貢献します。設置から保守まで、きめ細やかなサポートを提供しています。'
           }
           image={'/bathroom.jpg'}
           colSpan={'6'}
@@ -120,14 +120,18 @@ export const _ServicesSection = () => {
         <__Bento
           href="/services/termite-control"
           title={'シロアリ駆除'}
-          description={''}
+          description={
+            '早期発見・早期対応でご自宅を守りましょう！まずはお気軽にご相談ください。'
+          }
           image={'/cooking.jpg'}
           colSpan={'3'}
         />
         <__Bento
           href="/services/reform"
           title={'リフォーム'}
-          description={''}
+          description={
+            '様々なご要望に柔軟かつ丁寧にお応えし、ご自宅を理想の住まいへとリフォームいたします。'
+          }
           image={'/print.jpg'}
           colSpan={'3'}
         />
@@ -150,26 +154,34 @@ function __Bento({
   href: string
 }) {
   return (
-    <Link
-      href={href}
+    <article
       className={`group transition-all duration-300 ease-out hover:cursor-pointer hover:scale-[1.02] relative overflow-hidden border border-gray-300 flex items-center justify-center rounded-xl col-span-${colSpan}`}
     >
+      <Link href={href} className="absolute inset-0 z-20">
+        <span className="sr-only">{title}の詳細を見る</span>
+      </Link>
       <div className="absolute inset-0 bg-white/30 opacity-0 group-hover:opacity-80 transition-opacity duration-300 ease-out rounded-xl z-10 pointer-events-none" />
       <img
         src={image}
-        alt={title}
+        alt={`${title}のサービス画像`}
         className="w-full h-full object-cover absolute inset-0 rounded-xl p-1"
       />
       <div className="relative w-full h-full bg-white/80 backdrop-blur-3xl p-3 z-0">
-        <div
-          className={cn(
-            'relative rounded-xl overflow-hidden border-[1px] border-gray-300',
-            colSpan === '3' || colSpan === '6' ? 'h-[150px]' : 'h-[200px]',
-          )}
-        >
-          <img src={image} alt={title} className="w-full h-full object-cover" />
-        </div>
-        <div className="text-container py-6 px-3">
+        <header>
+          <div
+            className={cn(
+              'relative rounded-xl overflow-hidden border-[1px] border-gray-300',
+              colSpan === '3' || colSpan === '6' ? 'h-[150px]' : 'h-[200px]',
+            )}
+          >
+            <img
+              src={image}
+              alt={`${title}の詳細画像`}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </header>
+        <div className="text-container pt-4 px-3">
           <h3
             className="text-lg font-bold"
             // style={{ opacity: 0, transform: 'translateY(30px)' }}
@@ -184,6 +196,6 @@ function __Bento({
           </p>
         </div>
       </div>
-    </Link>
+    </article>
   )
 }
