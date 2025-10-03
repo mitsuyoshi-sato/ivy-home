@@ -69,8 +69,8 @@ export const Hero = (props: {
         />
         <div className="absolute inset-0 bg-black/30" />
       </div>
-      <div className="relative z-10 h-full">
-        <div className="mx-auto h-full flex items-center lg:px-[150px] sm:px-14 px-4">
+      <div className="relative z-10 h-full wrapper">
+        <div className="mx-auto h-full flex items-center">
           <div className="text-white space-y-4">
             <p
               ref={refSubtitle}
