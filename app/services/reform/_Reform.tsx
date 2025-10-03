@@ -121,7 +121,7 @@ export const _Reform = () => {
         </p>
       </div>
       <div ref={refCards} className="flex gap-6 mt-12">
-        <div
+        <article
           className="w-1/3"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
@@ -131,8 +131,8 @@ export const _Reform = () => {
             title="多様なリフォームに対応"
             description="キッチン、浴室、トイレなどの水回りから、外壁塗装、屋根工事まで、住まいのあらゆるリフォームに対応します。"
           />
-        </div>
-        <div
+        </article>
+        <article
           className="w-1/3"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
@@ -142,8 +142,8 @@ export const _Reform = () => {
             title="コストを抑えつつ理想の住まいを"
             description={`建て替えより費用を抑えつつ、ライフスタイルに合わせた理想の住まいを実現します。無駄を減らしたプランで、予算も安心です。`}
           />
-        </div>
-        <div
+        </article>
+        <article
           className="w-1/3"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
@@ -153,15 +153,15 @@ export const _Reform = () => {
             alt="reform"
             description="断熱や設備改善で光熱費削減。長期的には省エネによるコスト削減と住まいの資産価値向上にもつながります。"
           />
-        </div>
+        </article>
       </div>
-      <h4
+      <h3
         ref={refAcordionTitle}
         style={{ opacity: 0, transform: 'translateY(100px)' }}
         className="text-xl font-bold mt-40 text-center"
       >
         リフォームに関するよくある疑問
-      </h4>
+      </h3>
       <Acordion
         ref={refAcordion}
         style={{ opacity: 0, transform: 'translateY(100px)' }}

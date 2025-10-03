@@ -122,7 +122,7 @@ export const _TermiteControl = () => {
         </p>
       </div>
       <div ref={refCards} className="flex gap-6 mt-12">
-        <div
+        <article
           className="w-1/3"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
@@ -132,8 +132,8 @@ export const _TermiteControl = () => {
             title="早期発見が重要！"
             description="早期発見・早期対処が、大切な住まいを守ります。まずはお気軽にご相談ください。"
           />
-        </div>
-        <div
+        </article>
+        <article
           className="w-1/3"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
@@ -143,8 +143,8 @@ export const _TermiteControl = () => {
             alt="termite-control"
             description="当社の使用するシロアリ薬剤は、人体やペットへの毒性が低いものが選択しています。"
           />
-        </div>
-        <div
+        </article>
+        <article
           className="w-1/3"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
@@ -154,15 +154,15 @@ export const _TermiteControl = () => {
             title="５年保証"
             description={`5年間の保証付きで、施工後も定期的な点検を実施いたします。`}
           />
-        </div>
+        </article>
       </div>
-      <h4
+      <h3
         ref={refAcordionTitle}
         style={{ opacity: 0, transform: 'translateY(100px)' }}
         className="text-xl font-bold mt-40 text-center"
       >
         シロアリ駆除に関するよくある疑問
-      </h4>
+      </h3>
       <Acordion
         ref={refAcordion}
         style={{ opacity: 0, transform: 'translateY(100px)' }}

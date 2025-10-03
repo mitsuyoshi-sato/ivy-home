@@ -122,7 +122,7 @@ export const _Battery = () => {
         </p>
       </div>
       <div ref={refCards} className="flex gap-6 mt-12">
-        <div
+        <article
           className="w-1/3"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
@@ -133,8 +133,8 @@ export const _Battery = () => {
             description={`電気代を削減するだけでなく、将来の電力価格変動にも備えられます。
               賢いエネルギー管理を実現できます。`}
           />
-        </div>
-        <div
+        </article>
+        <article
           className="w-1/3"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
@@ -145,8 +145,8 @@ export const _Battery = () => {
             description={`停電時でも冷蔵庫や照明、テレビなど必要な家電を数時間安心して使えます。
               災害時も家族の生活を守るバックアップ電源です。`}
           />
-        </div>
-        <div
+        </article>
+        <article
           className="w-1/3"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
@@ -156,15 +156,15 @@ export const _Battery = () => {
             title="手間なく長持ち"
             description="耐久性に優れ、長期使用でも安心。設置後は専門スタッフの点検サポートもあり、日常のお手入れはほとんど不要です。"
           />
-        </div>
+        </article>
       </div>
-      <h4
+      <h3
         ref={refAcordionTitle}
         style={{ opacity: 0, transform: 'translateY(100px)' }}
         className="text-xl font-bold mt-40 text-center"
       >
         蓄電池に関するよくある疑問
-      </h4>
+      </h3>
       <Acordion
         ref={refAcordion}
         style={{ opacity: 0, transform: 'translateY(100px)' }}

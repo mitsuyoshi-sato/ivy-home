@@ -122,7 +122,7 @@ export const _EcoCute = () => {
         </p>
       </div>
       <div ref={refCards} className="flex gap-6 mt-12">
-        <div
+        <article
           className="w-1/3"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
@@ -133,8 +133,8 @@ export const _EcoCute = () => {
             description={`夜間の安い電力を利用して効率よくお湯を沸かすので、毎月の光熱費を大幅に抑えられます。
               長期的には家計の負担軽減にもつながります。`}
           />
-        </div>
-        <div
+        </article>
+        <article
           className="w-1/3"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
@@ -145,8 +145,8 @@ export const _EcoCute = () => {
             description={`大量タンクにより、お風呂や洗面所、キッチンなど複数箇所で快適に給湯。
               忙しい朝も家族全員がストレスなく使えます。`}
           />
-        </div>
-        <div
+        </article>
+        <article
           className="w-1/3"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
@@ -156,15 +156,15 @@ export const _EcoCute = () => {
             title="火を使わず安心・安全"
             description={`火を使わず安全にお湯を供給できる点や、環境負荷を抑えられる点もメリットとして考慮すると、経済性だけでなく暮らし全体の安心にもつながります。`}
           />
-        </div>
+        </article>
       </div>
-      <h4
+      <h3
         ref={refAcordionTitle}
         style={{ opacity: 0, transform: 'translateY(100px)' }}
         className="text-xl font-bold mt-40 text-center"
       >
         エコキュートに関するよくある疑問
-      </h4>
+      </h3>
       <Acordion
         ref={refAcordion}
         style={{ opacity: 0, transform: 'translateY(100px)' }}
