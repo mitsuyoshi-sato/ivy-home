@@ -82,7 +82,7 @@ export const _ServicesSection = () => {
   }, [])
 
   return (
-    <section id="services" className="flex flex-col wrapper">
+    <div id="services" className="flex flex-col wrapper">
       <SectionHeader
         title="私たちの提供する価値"
         subtitle="Services"
@@ -132,7 +132,7 @@ export const _ServicesSection = () => {
           colSpan={'3'}
         />
       </div>
-    </section>
+    </div>
   )
 }
 
@@ -150,45 +150,40 @@ function __Bento({
   href: string
 }) {
   return (
-    <article
+    <Link
+      href={href}
       className={`group transition-all duration-300 ease-out hover:cursor-pointer hover:scale-[1.02] relative overflow-hidden border border-gray-300 flex items-center justify-center rounded-xl col-span-${colSpan}`}
     >
-      <Link href={href} className="absolute inset-0 z-20">
-        <div className="absolute inset-0 bg-white/30 opacity-0 group-hover:opacity-80 transition-opacity duration-300 ease-out rounded-xl z-10 pointer-events-none" />
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-full object-cover absolute inset-0 rounded-xl p-1"
-        />
-        <div className="relative w-full h-full bg-white/80 backdrop-blur-3xl p-3 z-0">
-          <div
-            className={cn(
-              'relative rounded-xl overflow-hidden border-[1px] border-gray-300',
-              colSpan === '3' || colSpan === '6' ? 'h-[150px]' : 'h-[200px]',
-            )}
-          >
-            <img
-              src={image}
-              alt={title}
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="text-container py-6 px-3">
-            <h3
-              className="text-lg font-bold"
-              // style={{ opacity: 0, transform: 'translateY(30px)' }}
-            >
-              {title}
-            </h3>
-            <p
-              className="text-gray-600 mt-2 font-semibold leading-[1.82] break-words whitespace-pre-line text-sm"
-              // style={{ opacity: 0, transform: 'translateY(30px)' }}
-            >
-              {description.replace(/\\n/g, '\n')}
-            </p>
-          </div>
+      <div className="absolute inset-0 bg-white/30 opacity-0 group-hover:opacity-80 transition-opacity duration-300 ease-out rounded-xl z-10 pointer-events-none" />
+      <img
+        src={image}
+        alt={title}
+        className="w-full h-full object-cover absolute inset-0 rounded-xl p-1"
+      />
+      <div className="relative w-full h-full bg-white/80 backdrop-blur-3xl p-3 z-0">
+        <div
+          className={cn(
+            'relative rounded-xl overflow-hidden border-[1px] border-gray-300',
+            colSpan === '3' || colSpan === '6' ? 'h-[150px]' : 'h-[200px]',
+          )}
+        >
+          <img src={image} alt={title} className="w-full h-full object-cover" />
         </div>
-      </Link>
-    </article>
+        <div className="text-container py-6 px-3">
+          <h3
+            className="text-lg font-bold"
+            // style={{ opacity: 0, transform: 'translateY(30px)' }}
+          >
+            {title}
+          </h3>
+          <p
+            className="text-gray-600 mt-2 font-semibold leading-[1.82] break-words whitespace-pre-line text-sm"
+            // style={{ opacity: 0, transform: 'translateY(30px)' }}
+          >
+            {description.replace(/\\n/g, '\n')}
+          </p>
+        </div>
+      </div>
+    </Link>
   )
 }
