@@ -3,79 +3,7 @@
 import { useEffect, useRef, type ReactNode } from 'react'
 import { motion } from '../motion'
 
-const Row = ({ children }: { children: ReactNode }) => {
-  const refRow = useRef<HTMLDivElement | null>(null)
-
-  useEffect(() => {
-    const row = refRow.current
-    if (!row) return
-    const observer = new IntersectionObserver(
-      async (entries) => {
-        for (let e = 0; e < entries.length; e++) {
-          const entry = entries[e]
-          if (entry.isIntersecting) {
-            const itemNodes = Array.from(
-              row.querySelectorAll(':scope > *'),
-            ) as HTMLElement[]
-            for (let i = 0; i < itemNodes.length; i++) {
-              const el =
-                (itemNodes[i].firstElementChild as HTMLElement) ?? itemNodes[i]
-              await motion.delay(0.15)
-              motion.to(el, 1.3, 'out', { opacity: 1, translateY: '0px' })
-            }
-            observer.unobserve(row)
-          }
-        }
-      },
-      { threshold: 0.3 },
-    )
-    observer.observe(row)
-  }, [])
-
-  return (
-    <div ref={refRow} className="grid grid-cols-1 gap-6 md:grid-cols-3 js-row">
-      {children}
-    </div>
-  )
-}
-
-const __ArticleCard = ({
-  imageSrc,
-  date,
-  title,
-  description,
-}: {
-  imageSrc: string
-  date: string
-  title: string
-  description?: string
-}) => {
-  return (
-    <div
-      style={{ opacity: 0, transform: 'translateY(100px)' }}
-      className="flex flex-col transition-all duration-300 hover:opacity-80 cursor-pointer"
-    >
-      <div className="w-full h-[250px] rounded-lg overflow-hidden border border-gray-200">
-        <img src={imageSrc} alt={title} className="w-full h-full " />
-      </div>
-      <div className="flex flex-col">
-        <p className="text-sm text-gray-500 mt-2">{date}</p>
-        <h2
-          className={`text-lg mt-1 font-bold${description ? ' line-clamp-1' : ''}`}
-        >
-          {title}
-        </h2>
-        {description && (
-          <p className="mt-1 text-sm text-gray-500 line-clamp-3">
-            {description}
-          </p>
-        )}
-      </div>
-    </div>
-  )
-}
-
-export const __ArticlesClient = () => {
+export const _ArticlesClient = () => {
   const refContainer = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
@@ -111,7 +39,7 @@ export const __ArticlesClient = () => {
   }, [])
 
   return (
-    <div className="flex flex-col gap-6" ref={refContainer}>
+    <section className="flex flex-col gap-6" ref={refContainer}>
       {[
         {
           imageSrc: '/battery.jpg',
@@ -163,19 +91,101 @@ export const __ArticlesClient = () => {
           [] as (typeof Array.prototype)[],
         )
         .map((row, rIndex) => (
-          <Row key={rIndex}>
+          <__Row key={rIndex}>
             {row.map((item, i) => (
-              <div key={i}>
+              <article key={i} role="listitem">
                 <__ArticleCard
                   imageSrc={item.imageSrc}
                   date={item.date}
                   title={item.title}
                   description={item.description}
                 />
-              </div>
+              </article>
             ))}
-          </Row>
+          </__Row>
         ))}
+    </section>
+  )
+}
+
+const __Row = ({ children }: { children: ReactNode }) => {
+  const refRow = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    const row = refRow.current
+    if (!row) return
+    const observer = new IntersectionObserver(
+      async (entries) => {
+        for (let e = 0; e < entries.length; e++) {
+          const entry = entries[e]
+          if (entry.isIntersecting) {
+            const itemNodes = Array.from(
+              row.querySelectorAll(':scope > *'),
+            ) as HTMLElement[]
+            for (let i = 0; i < itemNodes.length; i++) {
+              const el =
+                (itemNodes[i].firstElementChild as HTMLElement) ?? itemNodes[i]
+              await motion.delay(0.15)
+              motion.to(el, 1.3, 'out', { opacity: 1, translateY: '0px' })
+            }
+            observer.unobserve(row)
+          }
+        }
+      },
+      { threshold: 0.3 },
+    )
+    observer.observe(row)
+  }, [])
+
+  return (
+    <div
+      ref={refRow}
+      className="grid grid-cols-1 gap-6 md:grid-cols-3 js-row"
+      role="list"
+    >
+      {children}
+    </div>
+  )
+}
+
+const __ArticleCard = ({
+  imageSrc,
+  date,
+  title,
+  description,
+}: {
+  imageSrc: string
+  date: string
+  title: string
+  description?: string
+}) => {
+  return (
+    <div
+      style={{ opacity: 0, transform: 'translateY(100px)' }}
+      className="flex flex-col transition-all duration-300 hover:opacity-80 cursor-pointer"
+    >
+      <figure className="w-full h-[250px] rounded-lg overflow-hidden border border-gray-200">
+        <img
+          src={imageSrc}
+          alt={title}
+          className="w-full h-full object-cover"
+        />
+      </figure>
+      <div className="flex flex-col">
+        <time className="text-sm text-gray-500 mt-2" dateTime={date}>
+          {date}
+        </time>
+        <h3
+          className={`text-lg mt-1 font-bold${description ? ' line-clamp-1' : ''}`}
+        >
+          {title}
+        </h3>
+        {description && (
+          <p className="mt-1 text-sm text-gray-500 line-clamp-3">
+            {description}
+          </p>
+        )}
+      </div>
     </div>
   )
 }

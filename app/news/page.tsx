@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Hero } from '@/components/Hero'
-import { __ArticlesClient } from './_ArticlesClient'
+import { _ArticlesClient } from './_ArticlesClient'
 
 export const metadata: Metadata = {
   title: 'お知らせ',
@@ -21,7 +21,7 @@ export default function Articles() {
     <>
       <Hero imageSrc="/hero2.jpg" subtitle="News" title="お知らせ" />
       <section className="wrapper flex flex-col gap-20">
-        <__ArticlesClient />
+        <_ArticlesClient />
       </section>
     </>
   )
