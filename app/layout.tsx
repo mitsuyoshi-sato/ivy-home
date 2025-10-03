@@ -23,14 +23,19 @@ const notosansjp = Noto_Sans_JP({
 })
 
 export const metadata: Metadata = {
-  description: '今、つくるエネルギーが、明日の暮らしを豊かにする。',
-  openGraph: {
-    images: '/',
-    title: '株式会社アイビーホーム',
-  },
   title: {
     default: '株式会社アイビーホーム',
     template: '%s / 株式会社アイビーホーム',
+  },
+  description: '今、つくるエネルギーが、明日の暮らしを豊かにする。',
+  icons: {
+    icon: '/favicon.png',
+  },
+  openGraph: {
+    images: {
+      url: '/ivy-home.png',
+    },
+    title: '株式会社アイビーホーム',
   },
 }
 export default function RootLayout({

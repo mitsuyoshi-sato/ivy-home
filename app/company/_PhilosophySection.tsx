@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from 'react'
 import { motion } from '../motion'
-import { Section } from '@/components/Section'
 
 export const _PhilosophySection = () => {
   const refDescription1 = useRef<HTMLParagraphElement>(null)
@@ -65,7 +64,11 @@ export const _PhilosophySection = () => {
           className="flex flex-col items-center shrink-0"
         >
           <img src="/ivy-home.svg" alt="ivy-home" className="w-[300px]" />
-          <h2 className="text-4xl mt-8 font-bold">"地域の、未来を創る"</h2>
+          <h2 className="leading-relaxed text-4xl mt-8 font-bold">
+            今、つくるエネルギーが
+            <br />
+            明日の暮らしを豊かにする
+          </h2>
         </div>
         <div className="text-dark7 leading-6 ">
           <p
@@ -80,10 +83,12 @@ export const _PhilosophySection = () => {
 
           <p
             ref={refDescription2}
-            className="mt-8 text-2xl text-ivy5 font-bold"
+            className="mt-8 text-xl text-ivy5 font-bold"
             style={{ opacity: 0, transform: 'translateY(100px)' }}
           >
-            "快適で笑顔あふれる暮らし"
+            今、作るエネルギーが
+            <br />
+            明日の暮らしを豊かにする
           </p>
 
           <p
@@ -91,9 +96,9 @@ export const _PhilosophySection = () => {
             className="mt-8"
             style={{ opacity: 0, transform: 'translateY(100px)' }}
           >
-            私たちはこの言葉を旨に、家族や大切な人との{' '}
+            私たちはこの言葉を大切に、お客様との{' '}
             <strong className="text-xl">絆</strong> を育みながら、
-            暮らしをサポートすることを使命としています。
+            未来の暮らしを創ることを使命としています。
           </p>
           <p
             ref={refDescription4}
