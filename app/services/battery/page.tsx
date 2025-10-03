@@ -19,7 +19,11 @@ export const metadata: Metadata = {
 export default function BatteryPage() {
   return (
     <>
-      <Hero imageSrc="/battery.jpg" subtitle="Battery" title="蓄電池" />
+      <Hero
+        image={{ src: '/battery.jpg', alt: '蓄電池' }}
+        subtitle="Battery"
+        title="蓄電池"
+      />
       <section className="wrapper">
         <_Battery />
       </section>

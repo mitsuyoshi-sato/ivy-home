@@ -20,7 +20,11 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <>
-      <Hero imageSrc="/hero2.jpg" subtitle="Services" title="事業内容" />
+      <Hero
+        image={{ src: '/hero2.jpg', alt: '事業内容' }}
+        subtitle="Services"
+        title="事業内容"
+      />
       <section className="wrapper">
         <SectionHeader
           title="事業内容の一覧"

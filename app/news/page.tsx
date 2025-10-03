@@ -19,7 +19,11 @@ export const metadata: Metadata = {
 export default function Articles() {
   return (
     <>
-      <Hero imageSrc="/hero2.jpg" subtitle="News" title="お知らせ" />
+      <Hero
+        image={{ src: '/hero2.jpg', alt: 'お知らせ' }}
+        subtitle="News"
+        title="お知らせ"
+      />
       <section className="wrapper flex flex-col gap-20">
         <_ArticlesClient />
       </section>

@@ -19,7 +19,11 @@ export const metadata: Metadata = {
 export default function ReformPage() {
   return (
     <>
-      <Hero imageSrc="/cooking2.jpg" subtitle="Reform" title="リフォーム" />
+      <Hero
+        image={{ src: '/cooking2.jpg', alt: 'リフォーム' }}
+        subtitle="Reform"
+        title="リフォーム"
+      />
       <section className="wrapper">
         <_Reform />
       </section>

@@ -19,7 +19,11 @@ export const metadata: Metadata = {
 export default function EcoCutePage() {
   return (
     <>
-      <Hero imageSrc="/bathroom.jpg" subtitle="EcoCute" title="エコキュート" />
+      <Hero
+        image={{ src: '/bathroom.jpg', alt: 'エコキュート' }}
+        subtitle="EcoCute"
+        title="エコキュート"
+      />
       <section className="wrapper">
         <_EcoCute />
       </section>

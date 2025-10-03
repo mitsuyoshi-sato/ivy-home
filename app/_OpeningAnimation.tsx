@@ -41,7 +41,6 @@ export default function _OpeningAnimation({
         motion.set(c, { display: 'none' })
         motion.set(l, { display: 'none' })
         refOpeningAnimation.current = true
-        console.log('終わった')
       }
     })()
   }, [])

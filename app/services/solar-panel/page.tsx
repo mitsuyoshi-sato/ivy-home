@@ -20,7 +20,7 @@ export default function SolarPanelPage() {
   return (
     <>
       <Hero
-        imageSrc="/solar-panel.jpg"
+        image={{ src: '/solar-panel.jpg', alt: '太陽光パネル' }}
         subtitle="Solar Panel"
         title="太陽光パネル"
       />

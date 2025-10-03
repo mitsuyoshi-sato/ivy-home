@@ -51,7 +51,11 @@ export const _RecruitSection = () => {
   }, [])
   return (
     <>
-      <Hero imageSrc="/hero2.jpg" subtitle="Recuruit" title="採用情報" />
+      <Hero
+        image={{ src: '/hero2.jpg', alt: '採用情報' }}
+        subtitle="Recuruit"
+        title="採用情報"
+      />
       <section className="wrapper">
         <SectionHeader
           title="採用情報の詳細"

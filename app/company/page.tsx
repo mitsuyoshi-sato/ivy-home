@@ -21,7 +21,7 @@ export default function Company() {
   return (
     <>
       <Hero
-        imageSrc="/hero2.jpg"
+        image={{ src: '/hero2.jpg', alt: '会社情報' }}
         subtitle="Company"
         title="会社情報"
         description=""

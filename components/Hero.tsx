@@ -6,8 +6,7 @@ import { cn } from '@/lib/utils'
 import { useAnimation } from '../app/AnimationContext'
 
 export const Hero = (props: {
-  imageSrc: string
-  imageAlt?: string
+  image?: { src: string; alt: string }
   subtitle?: string
   title: string | React.ReactNode
   description?: string
@@ -62,11 +61,13 @@ export const Hero = (props: {
         }}
         className="absolute inset-0"
       >
+        {props.image && (
         <img
-          src={props.imageSrc}
-          alt={props.imageAlt || ''}
+            src={props.image?.src}
+            alt={props.image?.alt || ''}
           className="object-cover w-full h-full"
         />
+        )}
         <div className="absolute inset-0 bg-black/30" />
       </div>
       <div className="relative z-10 h-full wrapper">

@@ -8,7 +8,10 @@ const Home = () => {
   return (
     <>
       <Hero
-        imageSrc="/hero2.jpg"
+        image={{
+          src: '/hero2.jpg',
+          alt: '今、つくるエネルギーが明日の暮らしを豊かにする',
+        }}
         title={
           <>
             今、つくるエネルギーが
