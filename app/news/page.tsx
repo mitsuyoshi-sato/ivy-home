@@ -1,5 +1,20 @@
+import type { Metadata } from 'next'
 import { Hero } from '@/components/Hero'
 import { __ArticlesClient } from './_ArticlesClient'
+
+export const metadata: Metadata = {
+  title: 'お知らせ',
+  description:
+    '株式会社アイビーホームのお知らせページ。新サービスやイベント情報など、お客様に役立つ情報を随時更新しています。',
+  openGraph: {
+    title: 'お知らせ / 株式会社アイビーホーム',
+    description:
+      '株式会社アイビーホームのお知らせページ。新サービスやイベント情報など、お客様に役立つ情報を随時更新しています。',
+    images: {
+      url: '/ivy-home.png',
+    },
+  },
+}
 
 export default function Articles() {
   return (
