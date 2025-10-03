@@ -158,7 +158,7 @@ function __Bento({
       <img
         src={image}
         alt={title}
-        className="w-full h-full object-cover absolute inset-0 rounded-xl"
+        className="w-full h-full object-cover absolute inset-0 rounded-xl p-1"
       />
       <div className="relative w-full h-full bg-white/80 backdrop-blur-3xl p-3 z-0">
         <div
