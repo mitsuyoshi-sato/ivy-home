@@ -1,14 +1,16 @@
 'use client'
 
 import { Icon } from '@/components/ui/icon'
-import { useState, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { motion } from './motion'
+import { useAnimation } from './AnimationContext'
 
 export default function _OpeningAnimation({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const { refOpeningAnimation } = useAnimation()
   const refContainer = useRef<HTMLDivElement>(null)
   const refDrop = useRef<SVGSVGElement>(null)
   const refLeaf = useRef<SVGSVGElement>(null)
@@ -38,6 +40,7 @@ export default function _OpeningAnimation({
         await motion.delay(1.3)
         motion.set(c, { display: 'none' })
         motion.set(l, { display: 'none' })
+        refOpeningAnimation.current = true
         console.log('終わった')
       }
     })()

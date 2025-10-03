@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Inter, Noto_Sans_JP } from 'next/font/google'
 import { Header } from './Header'
 import _OpeningAnimation from './_OpeningAnimation'
+import { AnimationProvider } from './AnimationContext'
 
 const inter = Inter({
   display: 'swap',
@@ -106,31 +107,33 @@ export default function RootLayout({
   return (
     <html lang="ja" className={`${inter.variable} ${notosansjp.variable}`}>
       <body className="antialiased">
-        <Header items={items} />
-        <main>
-          <_OpeningAnimation>{children}</_OpeningAnimation>
-        </main>
-        <footer>
-          <div className="bg-cleam">
-            <div className="wrapper flex gap-40 items-start">
-              <img
-                src="/ivy-home.svg"
-                alt="logo"
-                className="w-[120px] -translate-y-[10px]"
-              />
-              <div className="flex gap-20">
-                {items.map((item) => (
-                  <__FooterSection
-                    key={item.href}
-                    title={item.label}
-                    href={item.href}
-                    links={item.subs || []}
-                  />
-                ))}
+        <AnimationProvider>
+          <Header items={items} />
+          <main>
+            <_OpeningAnimation>{children}</_OpeningAnimation>
+          </main>
+          <footer>
+            <div className="bg-cleam">
+              <div className="wrapper flex gap-40 items-start">
+                <img
+                  src="/ivy-home.svg"
+                  alt="logo"
+                  className="w-[120px] -translate-y-[10px]"
+                />
+                <div className="flex gap-20">
+                  {items.map((item) => (
+                    <__FooterSection
+                      key={item.href}
+                      title={item.label}
+                      href={item.href}
+                      links={item.subs || []}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        </footer>
+          </footer>
+        </AnimationProvider>
       </body>
     </html>
   )

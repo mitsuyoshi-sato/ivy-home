@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react'
 import { motion } from '../app/motion'
 import { cn } from '@/lib/utils'
+import { useAnimation } from '../app/AnimationContext'
 
 export const Hero = (props: {
   imageSrc: string
@@ -11,6 +12,7 @@ export const Hero = (props: {
   title: string | React.ReactNode
   description?: string
 }) => {
+  const { refOpeningAnimation } = useAnimation()
   const refImage = useRef<HTMLDivElement>(null)
   const refText = useRef<HTMLHeadingElement>(null)
   const refDescription = useRef<HTMLParagraphElement>(null)
@@ -22,6 +24,10 @@ export const Hero = (props: {
       const d = refDescription.current
       const s = refSubtitle.current
       if (i && t && d && s) {
+        if (!refOpeningAnimation.current) {
+          await motion.delay(3.5)
+        }
+
         motion.to(i, 1.3, 'out', {
           opacity: 1,
           scale: 1,
