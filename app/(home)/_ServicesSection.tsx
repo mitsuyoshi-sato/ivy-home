@@ -156,6 +156,7 @@ function __Bento({
   return (
     <article
       className={`group transition-all duration-300 ease-out hover:cursor-pointer hover:scale-[1.02] relative overflow-hidden border border-gray-300 flex items-center justify-center rounded-xl col-span-${colSpan}`}
+      style={{ opacity: 0, transform: 'scale(0.8)' }}
     >
       <Link href={href} className="absolute inset-0 z-20">
         <span className="sr-only">{title}の詳細を見る</span>
@@ -182,16 +183,8 @@ function __Bento({
           </div>
         </header>
         <div className="text-container pt-4 px-3">
-          <h3
-            className="text-lg font-bold"
-            // style={{ opacity: 0, transform: 'translateY(30px)' }}
-          >
-            {title}
-          </h3>
-          <p
-            className="text-gray-600 mt-2 font-semibold leading-[1.82] break-words whitespace-pre-line text-sm"
-            // style={{ opacity: 0, transform: 'translateY(30px)' }}
-          >
+          <h3 className="text-lg font-bold">{title}</h3>
+          <p className="text-gray-600 mt-2 font-semibold leading-[1.82] break-words whitespace-pre-line text-sm">
             {description.replace(/\\n/g, '\n')}
           </p>
         </div>
