@@ -6,7 +6,7 @@ import { ArrowRight } from 'lucide-react'
 import { useEffect, useRef } from 'react'
 import { motion } from '@/app/motion'
 
-export const Section = (props: {
+export const SectionHeader = (props: {
   title: string
   subtitle: string
   description: string

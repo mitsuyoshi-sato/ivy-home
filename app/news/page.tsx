@@ -20,9 +20,9 @@ export default function Articles() {
   return (
     <>
       <Hero imageSrc="/hero2.jpg" subtitle="News" title="お知らせ" />
-      <div className="wrapper flex flex-col gap-20">
+      <section className="wrapper flex flex-col gap-20">
         <__ArticlesClient />
-      </div>
+      </section>
     </>
   )
 }

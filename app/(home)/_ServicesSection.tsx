@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react'
 
 import { cn } from '@/lib/utils'
 import { motion } from '../motion'
-import { Section } from '@/components/Section'
+import { SectionHeader } from '@/components/Section'
 import Link from 'next/link'
 
 export const _ServicesSection = () => {
@@ -83,7 +83,7 @@ export const _ServicesSection = () => {
 
   return (
     <div id="services" className="flex flex-col wrapper">
-      <Section
+      <SectionHeader
         title="私たちの提供する価値"
         subtitle="Services"
         description="私たちは、快適で安心な暮らしを支える住宅設備の設計・施工を行っています。\nオール電化や蓄電池、エコキュートなど、家庭の暮らしをより便利にするサービスを提供しています。"

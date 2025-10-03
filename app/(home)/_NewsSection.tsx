@@ -1,6 +1,6 @@
 'use client'
 
-import { Section } from '@/components/Section'
+import { SectionHeader } from '@/components/Section'
 import { useEffect, useRef, useState } from 'react'
 import { motion } from '../motion'
 import Image from 'next/image'
@@ -72,7 +72,7 @@ export const _NewsSection = () => {
   return (
     <div className="flex flex-col pb-[112px]">
       <div className="wrapper pb-0">
-        <Section
+        <SectionHeader
           title="ニュース"
           subtitle="News"
           description="実際にご利用いただいたお客様から寄せられた感想や体験談をご紹介します。\n

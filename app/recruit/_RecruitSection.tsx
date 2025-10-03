@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import { motion } from '../motion'
-import { Section } from '@/components/Section'
+import { SectionHeader } from '@/components/Section'
 import { Hero } from '@/components/Hero'
 
 export const _RecruitSection = () => {
@@ -50,24 +50,23 @@ export const _RecruitSection = () => {
     }
   }, [])
   return (
-    <div className="">
+    <>
       <Hero imageSrc="/hero2.jpg" subtitle="Recuruit" title="採用情報" />
-      <div className="wrapper">
-        <Section title="採用情報の詳細" subtitle="Recuruit" description="" />
+      <section className="wrapper">
+        <SectionHeader
+          title="採用情報の詳細"
+          subtitle="Recuruit"
+          description=""
+        />
         <div
           ref={refInfo}
           className="mt-16 flex flex-col w-full"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
-          <div className="flex flex-col gap-6">
-            <div className="flex w-full items-center border-b border-gray-200 pb-2">
-              <h3 className="w-1/4 text-gray-600">職種</h3>
-              <p className="text-base text-dark6 font-semibold shrink-0 w-3/4">
-                営業担当
-              </p>
-            </div>
+          <article className="flex flex-col gap-6">
+            <h3 className="text-xl font-semibold mb-4">営業担当</h3>
             <div className="flex w-full items-start border-b border-gray-200 pb-2">
-              <h3 className="w-1/4 text-gray-600 leading-relaxed">業務内容</h3>
+              <h4 className="w-1/4 text-gray-600 leading-relaxed">業務内容</h4>
               <p className="text-base text-dark6 font-semibold shrink-0 w-3/4">
                 •
                 お客様の住まいや暮らしに関するご要望を伺い、最適なプランをご提案します。
@@ -76,9 +75,9 @@ export const _RecruitSection = () => {
               </p>
             </div>
             <div className="flex w-full items-start border-b border-gray-200 pb-2">
-              <h3 className="w-1/4 text-gray-600 leading-relaxed">
+              <h4 className="w-1/4 text-gray-600 leading-relaxed">
                 求める人物像
-              </h3>
+              </h4>
               <p className="text-base text-dark6 font-semibold shrink-0 w-3/4">
                 ・人と話すことが好きな方
                 <br />
@@ -88,7 +87,7 @@ export const _RecruitSection = () => {
               </p>
             </div>
             <div className="flex w-full items-start border-b border-gray-200 pb-2">
-              <h3 className="w-1/4 text-gray-600 leading-relaxed">応募条件</h3>
+              <h4 className="w-1/4 text-gray-600 leading-relaxed">応募条件</h4>
               <p className="text-base text-dark6 font-semibold shrink-0 w-3/4">
                 ・学歴不問、未経験歓迎
                 <br />
@@ -96,16 +95,16 @@ export const _RecruitSection = () => {
               </p>
             </div>
             <div className="flex w-full items-center border-b border-gray-200 pb-2">
-              <h3 className="w-1/4 text-gray-600">休日</h3>
+              <h4 className="w-1/4 text-gray-600">休日</h4>
               <p className="text-base text-dark6 font-semibold shrink-0 w-3/4">
                 業務委託だからどうする？
               </p>
             </div>
-          </div>
+          </article>
         </div>
-      </div>
-      <div className="wrapper pt-0">
-        <Section title="応募方法" subtitle="Entry" description="" />
+      </section>
+      <section className="wrapper pt-0">
+        <SectionHeader title="応募方法" subtitle="Entry" description="" />
         <div className="mt-12 flex flex-col gap-6">
           <div
             ref={refTell}
@@ -138,7 +137,7 @@ export const _RecruitSection = () => {
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   )
 }

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Hero } from '@/components/Hero'
-import { Section } from '@/components/Section'
+import { SectionHeader } from '@/components/Section'
 import { _ServiceCard } from './_ServiceCard'
 
 export const metadata: Metadata = {
@@ -21,8 +21,8 @@ export default function ServicesPage() {
   return (
     <>
       <Hero imageSrc="/hero2.jpg" subtitle="Services" title="事業内容" />
-      <div className="wrapper">
-        <Section
+      <section className="wrapper">
+        <SectionHeader
           title="事業内容の一覧"
           subtitle="Services"
           description="私たちは、暮らしをより快適で安心にするさまざまなサービスを提供しています。\n日常のささいな不安や課題に目を向け、家庭や暮らしの安全を守るとともに、将来に向けた備えや安心のある生活を支える取り組みを行っています。"
@@ -65,7 +65,7 @@ export default function ServicesPage() {
             href="/services/reform"
           />
         </div>
-      </div>
+      </section>
     </>
   )
 }

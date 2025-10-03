@@ -52,7 +52,7 @@ export const Hero = (props: {
   }, [])
 
   return (
-    <section className="relative h-[70vh]">
+    <header className="relative h-[70vh]">
       <div
         ref={refImage}
         style={{
@@ -112,6 +112,6 @@ export const Hero = (props: {
           </div>
         </div>
       </div>
-    </section>
+    </header>
   )
 }

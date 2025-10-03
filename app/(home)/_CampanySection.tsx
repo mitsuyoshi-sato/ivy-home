@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import { motion } from '@/app/motion'
-import { Section } from '../../components/Section'
+import { SectionHeader } from '../../components/Section'
 
 export const _CampaignSection = () => {
   const reContainer = useRef<HTMLDivElement>(null)
@@ -35,7 +35,7 @@ export const _CampaignSection = () => {
 
   return (
     <div ref={reContainer} className="wrapper lg:flex lg:items-center">
-      <Section
+      <SectionHeader
         className="lg:w-[380px] lg:shrink-0"
         title="アイビーホームの強み"
         subtitle="Campany"

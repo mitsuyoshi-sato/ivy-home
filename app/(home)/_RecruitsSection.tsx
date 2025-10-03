@@ -1,6 +1,6 @@
 'use client'
 
-import { Section } from '@/components/Section'
+import { SectionHeader } from '@/components/Section'
 import { ArrowRightIcon } from 'lucide-react'
 import { useEffect, useRef } from 'react'
 import { motion } from '../motion'
@@ -38,7 +38,7 @@ export const _RecruitsSection = () => {
   }, [])
   return (
     <div id="recruit" className="wrapper flex justify-between">
-      <Section
+      <SectionHeader
         className=""
         title="採用情報"
         subtitle="Recuruit"
