@@ -5,6 +5,7 @@ import { useEffect, useRef } from 'react'
 import { cn } from '@/lib/utils'
 import { motion } from '../motion'
 import { Section } from '@/components/Section'
+import Link from 'next/link'
 
 export const _ServicesSection = () => {
   const refContainer = useRef<HTMLDivElement>(null)
@@ -90,6 +91,7 @@ export const _ServicesSection = () => {
       />
       <div ref={refContainer} className="grid grid-cols-12 gap-3 mt-9">
         <__Bento
+          href="/services/solar-panel"
           title={'太陽光パネル'}
           description={
             ' 住宅向けに太陽光パネルの販売・設置・メンテナンスを行っています。\nお客様のライフスタイルや設備に合わせた最適なプランをご提案し、省エネと電気料金の削減をサポートします。'
@@ -98,6 +100,7 @@ export const _ServicesSection = () => {
           colSpan={'7'}
         />
         <__Bento
+          href="/services/battery"
           title={'蓄電池'}
           description={
             ' 昼間に発電した電気を貯めて夜間に活用することで、エネルギーの自給自足を実現し、停電時の安心も提供します。'
@@ -106,6 +109,7 @@ export const _ServicesSection = () => {
           colSpan={'5'}
         />
         <__Bento
+          href="/services/eco-cute"
           title={'エコキュート'}
           description={
             '空気熱を活用することで光熱費を抑え、環境負荷の軽減にも貢献します。設置から保守まで、きめ細やかなサポートを提供しています。'
@@ -114,18 +118,16 @@ export const _ServicesSection = () => {
           colSpan={'6'}
         />
         <__Bento
-          title={'オール電化'}
-          description={
-            '太陽光発電や蓄電池との連携で効率的なエネルギー利用を実現し、快適な暮らしをサポートします。'
-          }
+          href="/services/termite-control"
+          title={'シロアリ駆除'}
+          description={''}
           image={'/cooking.jpg'}
           colSpan={'3'}
         />
         <__Bento
-          title={'外壁塗装'}
-          description={
-            '建物の外壁塗装・補修工事を通じて、美観の維持と耐久性の向上を提供しています。'
-          }
+          href="/services/reform"
+          title={'リフォーム'}
+          description={''}
           image={'/print.jpg'}
           colSpan={'3'}
         />
@@ -139,15 +141,17 @@ function __Bento({
   description,
   image,
   colSpan,
+  href,
 }: {
   title: string
   description: string
   image: string
   colSpan: string
+  href: string
 }) {
   return (
-    <div
-      style={{ opacity: 0, transform: 'scale(0.95)' }}
+    <Link
+      href={href}
       className={`group transition-all duration-300 ease-out hover:cursor-pointer hover:scale-[1.02] relative overflow-hidden border border-gray-300 flex items-center justify-center rounded-xl col-span-${colSpan}`}
     >
       <div className="absolute inset-0 bg-white/30 opacity-0 group-hover:opacity-80 transition-opacity duration-300 ease-out rounded-xl z-10 pointer-events-none" />
@@ -180,6 +184,6 @@ function __Bento({
           </p>
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
