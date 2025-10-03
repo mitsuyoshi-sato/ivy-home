@@ -63,7 +63,7 @@ export const Nav = (props: {
         />
       ))}
       <div
-        className="absolute top-1 h-[calc(100%-8px)] rounded-full bg-ivy5 shadow-lg "
+        className="absolute top-1 h-[calc(100%-8px)] rounded-full bg-ivy6 border border-ivy7 shadow-lg "
         ref={refIndicator}
         style={{ width: '0px', left: '0px' }}
       />
