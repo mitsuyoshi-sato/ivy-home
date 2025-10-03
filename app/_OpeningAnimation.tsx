@@ -33,9 +33,12 @@ export default function _OpeningAnimation({
           transformOrigin: 'center center',
         })
         await motion.delay(1.3)
-        await motion.to(c, 1.5, 'out', { opacity: 0 })
+        motion.to(c, 1.3, 'out', { opacity: 0 })
+        motion.set(c, { pointerEvents: 'none' })
+        await motion.delay(1.3)
         motion.set(c, { display: 'none' })
         motion.set(l, { display: 'none' })
+        console.log('終わった')
       }
     })()
   }, [])
