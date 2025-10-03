@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/ui/button'
 import { ArrowRightIcon } from 'lucide-react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 import { motion } from '../motion'
@@ -36,7 +37,7 @@ export const _ServiceCard = (props: {
   }, [])
 
   return (
-    <div
+    <article
       className="flex flex-col"
       ref={refCard}
       style={{ opacity: 0, transform: 'translateY(100px)' }}
@@ -51,7 +52,7 @@ export const _ServiceCard = (props: {
         {props.description}
       </p>
       <div className="mt-4 w-full flex justify-end">
-        <Link href={props.href}>
+        <Link href={props.href} aria-label={`${props.title}の詳細を見る`}>
           <Button
             icon={ArrowRightIcon}
             iconPosition="right"
@@ -61,6 +62,6 @@ export const _ServiceCard = (props: {
           </Button>
         </Link>
       </div>
-    </div>
+    </article>
   )
 }
