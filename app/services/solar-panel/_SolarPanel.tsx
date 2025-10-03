@@ -123,7 +123,7 @@ export const _SolarPanel = () => {
         </p>
       </div>
       <div ref={refCards} className="flex gap-6 mt-12">
-        <div
+        <article
           className="w-1/3"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
@@ -133,8 +133,8 @@ export const _SolarPanel = () => {
             title="太陽光パネルの仕組み"
             description="太陽の光を電気に変えるクリーンエネルギーシステムです。屋根や敷地に設置したパネルが太陽光を吸収し、家庭で使える電力を供給します。"
           />
-        </div>
-        <div
+        </article>
+        <article
           className="w-1/3"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
@@ -144,8 +144,8 @@ export const _SolarPanel = () => {
             alt="solar-panel"
             description="光熱費を削減しながら、電力自給率を高めることができます。余った電力は蓄電池に保存したり、電力会社に売ることも可能です。"
           />
-        </div>
-        <div
+        </article>
+        <article
           className="w-1/3"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
@@ -156,15 +156,15 @@ export const _SolarPanel = () => {
             description={`設置後も、トラブル時やご不明点に迅速に対応。
 地域に根ざした会社だからこそ、いつでも頼れる安心のサポートをご提供いたします。`}
           />
-        </div>
+        </article>
       </div>
-      <h4
+      <h3
         ref={refAcordionTitle}
         style={{ opacity: 0, transform: 'translateY(100px)' }}
         className="text-xl font-bold mt-40 text-center"
       >
         太陽光パネルに関するよくある疑問
-      </h4>
+      </h3>
       <Acordion
         ref={refAcordion}
         style={{ opacity: 0, transform: 'translateY(100px)' }}
