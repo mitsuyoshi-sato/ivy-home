@@ -20,9 +20,9 @@ export default function BatteryPage() {
   return (
     <>
       <Hero imageSrc="/battery.jpg" subtitle="Battery" title="蓄電池" />
-      <div className="wrapper">
+      <section className="wrapper">
         <_Battery />
-      </div>
+      </section>
     </>
   )
 }

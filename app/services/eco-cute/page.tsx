@@ -20,9 +20,9 @@ export default function EcoCutePage() {
   return (
     <>
       <Hero imageSrc="/bathroom.jpg" subtitle="EcoCute" title="エコキュート" />
-      <div className="wrapper">
+      <section className="wrapper">
         <_EcoCute />
-      </div>
+      </section>
     </>
   )
 }

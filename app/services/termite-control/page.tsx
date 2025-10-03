@@ -24,9 +24,9 @@ export default function TermiteControlPage() {
         subtitle="Termite Control"
         title="シロアリ駆除"
       />
-      <div className="wrapper">
+      <section className="wrapper">
         <_TermiteControl />
-      </div>
+      </section>
     </>
   )
 }

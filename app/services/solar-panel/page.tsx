@@ -24,9 +24,9 @@ export default function SolarPanelPage() {
         subtitle="Solar Panel"
         title="太陽光パネル"
       />
-      <div className="wrapper">
+      <section className="wrapper">
         <_SolarPanel />
-      </div>
+      </section>
     </>
   )
 }
