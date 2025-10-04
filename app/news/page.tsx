@@ -20,7 +20,7 @@ export default function Articles() {
   return (
     <>
       <Hero
-        video={{ src: '/newspaper.mp4', alt: '' }}
+        video={{ src: '/newspaper.mp4', alt: '', playbackRate: 0.5 }}
         subtitle="News"
         title="お知らせ"
       />

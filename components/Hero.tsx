@@ -11,13 +11,21 @@ export const Hero = (props: {
   title: string | React.ReactNode
   description?: string
   overlayHidden?: boolean
-  video?: { src: string; alt: string }
+  video?: { src: string; alt: string; playbackRate?: number }
 }) => {
   const { refOpeningAnimation } = useAnimation()
   const refImage = useRef<HTMLDivElement>(null)
   const refText = useRef<HTMLHeadingElement>(null)
   const refDescription = useRef<HTMLParagraphElement>(null)
   const refSubtitle = useRef<HTMLParagraphElement>(null)
+  const refVideo = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    if (props.video?.playbackRate && refVideo.current) {
+      refVideo.current.playbackRate = props.video.playbackRate
+    }
+  }, [props.video?.playbackRate])
+
   useEffect(() => {
     ;(async () => {
       const i = refImage.current
@@ -73,6 +81,7 @@ export const Hero = (props: {
         {props.video && (
           <>
             <video
+              ref={refVideo}
               className="w-full h-full object-cover"
               autoPlay
               muted
@@ -85,7 +94,7 @@ export const Hero = (props: {
           </>
         )}
         {!props.overlayHidden && (
-          <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 bg-black/50" />
         )}
       </div>
       <div className="relative z-10 h-full wrapper">
