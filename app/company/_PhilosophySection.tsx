@@ -65,9 +65,7 @@ export const _PhilosophySection = () => {
         >
           <img src="/ivy-home.svg" alt="ivy-home" className="w-[300px]" />
           <h2 className="leading-relaxed text-4xl mt-8 font-bold">
-            今、つくるエネルギーが
-            <br />
-            明日の暮らしを豊かにする
+            未来の暮らしを、つくる。
           </h2>
         </div>
         <div className="text-dark7 leading-6 ">
@@ -75,7 +73,7 @@ export const _PhilosophySection = () => {
             ref={refDescription1}
             style={{ opacity: 0, transform: 'translateY(100px)' }}
           >
-            社名 "Ivy-Home" には、ツタ（Ivy）の花言葉である
+            社名 "Ivy-Home" には、植物のアイビーの花言葉である
             <br />
             <strong className="text-xl">誠実</strong> や{' '}
             <strong className="text-xl">絆</strong> といった意味を込めています。
@@ -86,9 +84,7 @@ export const _PhilosophySection = () => {
             className="mt-8 text-xl text-ivy5 font-bold"
             style={{ opacity: 0, transform: 'translateY(100px)' }}
           >
-            今、作るエネルギーが
-            <br />
-            明日の暮らしを豊かにする
+            未来の暮らしを、つくる。
           </p>
 
           <p

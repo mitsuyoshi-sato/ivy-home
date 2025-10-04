@@ -2,7 +2,6 @@
 
 import { Button } from '@/components/ui/button'
 import { ArrowRightIcon } from 'lucide-react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 import { motion } from '../motion'

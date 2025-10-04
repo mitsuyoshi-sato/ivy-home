@@ -14,7 +14,10 @@ const Home = () => {
         // }}
         title={<>未来の暮らしを、つくる。</>}
         description="暮らしを支えるエネルギーづくりを、今から始めよう。"
-        srcVideo="home-hero.mp4"
+        video={{
+          src: 'home-hero.mp4',
+          alt: '屋根にソーラーパネルを設置している住宅',
+        }}
         overlayHidden
       />
       <section id="company" className="w-full bg-cleam">

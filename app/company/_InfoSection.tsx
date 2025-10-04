@@ -77,7 +77,7 @@ export const _InfoSection = () => {
         className="text-base text-dark6 mt-6"
         style={{ opacity: 0, transform: 'translateY(100px)' }}
       >
-        当社は、太陽光発電やエコキュート、蓄電池、外壁塗装、オール電化といった住まいに関わる設備の販売・施工を行っております。
+        当社は、太陽光発電やエコキュート、蓄電池、シロアリ駆除、リフォームといった住まいに関わる設備の販売・施工を行っております。
         <br />
         環境にやさしく、安心して長くお使いいただける住まいづくりをサポートしています。
       </p>
@@ -120,7 +120,7 @@ export const _InfoSection = () => {
           <div className="flex w-full items-center border-b border-gray-200 pb-2">
             <h3 className="w-1/4 text-gray-600">事業内容</h3>
             <p className="text-base text-dark6 font-semibold shrink-0 w-3/4">
-              太陽光パネル、蓄電池、エコキュート、オール電化、外壁塗装
+              太陽光パネル、蓄電池、エコキュート、シロアリ駆除、リフォーム
             </p>
           </div>
         </div>

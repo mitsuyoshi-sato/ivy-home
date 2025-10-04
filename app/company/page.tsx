@@ -21,7 +21,10 @@ export default function Company() {
   return (
     <>
       <Hero
-        image={{ src: '/hero2.jpg', alt: '会社情報' }}
+        video={{
+          src: '/coffee.mp4',
+          alt: '',
+        }}
         subtitle="Company"
         title="会社情報"
         description=""

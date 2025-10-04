@@ -48,8 +48,8 @@ export const _CampaignSection = () => {
         style={{ opacity: 0, transform: 'translateY(80px)' }}
       >
         <img
-          src="/sales.jpg"
-          alt="sales"
+          src="/unity.jpg"
+          alt="手を重ねて団結する社員"
           className="object-cover w-full h-full"
         />
       </div>

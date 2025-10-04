@@ -123,7 +123,7 @@ export const _ServicesSection = () => {
           description={
             '早期発見・早期対応でご自宅を守りましょう！まずはお気軽にご相談ください。'
           }
-          image={'/cooking.jpg'}
+          image={'/pest-control.jpg'}
           colSpan={'3'}
         />
         <__Bento
@@ -132,7 +132,7 @@ export const _ServicesSection = () => {
           description={
             '様々なご要望に柔軟かつ丁寧にお応えし、ご自宅を理想の住まいへとリフォームいたします。'
           }
-          image={'/print.jpg'}
+          image={'/reform.jpg'}
           colSpan={'3'}
         />
       </div>

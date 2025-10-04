@@ -21,7 +21,10 @@ export default function ServicesPage() {
   return (
     <>
       <Hero
-        image={{ src: '/hero2.jpg', alt: '事業内容' }}
+        video={{
+          src: 'house.mp4',
+          alt: '太陽が差し込む住宅内',
+        }}
         subtitle="Services"
         title="事業内容"
       />
