@@ -52,7 +52,7 @@ export const _RecruitSection = () => {
   return (
     <>
       <Hero
-        image={{ src: '/hero2.jpg', alt: '採用情報' }}
+        image={{ src: 'walk.jpg', alt: '' }}
         subtitle="Recuruit"
         title="採用情報"
       />
