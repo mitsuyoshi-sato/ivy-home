@@ -9,8 +9,12 @@ export const _InfoCard = (props: {
   return (
     <div className="w-full flex flex-col">
       {props.image && (
-        <div className="w-full h-full border border-gray-300 rounded-sm overflow-hidden">
-          <img src={props.image} alt={props.alt} className="w-full h-full" />
+        <div className="w-full h-60 border border-gray-300 rounded-sm overflow-hidden">
+          <img
+            src={props.image}
+            alt={props.alt}
+            className="w-full h-full object-cover"
+          />
         </div>
       )}
       <div>

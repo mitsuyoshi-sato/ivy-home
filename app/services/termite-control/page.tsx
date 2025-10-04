@@ -20,7 +20,7 @@ export default function TermiteControlPage() {
   return (
     <>
       <Hero
-        image={{ src: '/family.jpg', alt: 'シロアリ駆除' }}
+        image={{ src: '/damaged-wood.jpg', alt: 'シロアリ駆除' }}
         subtitle="Termite Control"
         title="シロアリ駆除"
       />

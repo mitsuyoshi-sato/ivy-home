@@ -84,7 +84,7 @@ export const _PhilosophySection = () => {
             className="mt-8 text-xl text-ivy5 font-bold"
             style={{ opacity: 0, transform: 'translateY(100px)' }}
           >
-            未来の暮らしを、つくる。
+            "未来の暮らしを、つくる"
           </p>
 
           <p
