@@ -9,7 +9,7 @@ import { motion } from '../motion'
 export const _ServiceCard = (props: {
   title: string
   description: string
-  src: string
+  image: { src: string; alt: string }
   index: number
   href: string
 }) => {
@@ -43,8 +43,8 @@ export const _ServiceCard = (props: {
     >
       <p className="text-lg font-semibold">{props.title}</p>
       <img
-        src={props.src}
-        alt={props.title}
+        src={props.image.src}
+        alt={props.image.alt}
         className="w-full h-full object-cover rounded-sm mt-4"
       />
       <p className="text-gray-800 mt-4 leading-[1.82] break-words whitespace-pre-line text-sm">

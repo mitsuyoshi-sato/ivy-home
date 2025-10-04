@@ -20,7 +20,7 @@ export default function Articles() {
   return (
     <>
       <Hero
-        image={{ src: '/hero2.jpg', alt: 'お知らせ' }}
+        video={{ src: '/newspaper.mp4', alt: '' }}
         subtitle="News"
         title="お知らせ"
       />

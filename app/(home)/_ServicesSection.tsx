@@ -132,7 +132,7 @@ export const _ServicesSection = () => {
           description={
             '様々なご要望に柔軟かつ丁寧にお応えし、ご自宅を理想の住まいへとリフォームいたします。'
           }
-          image={'/reform.jpg'}
+          image={'/kitchen.jpg'}
           colSpan={'3'}
         />
       </div>

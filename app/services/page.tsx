@@ -22,8 +22,8 @@ export default function ServicesPage() {
     <>
       <Hero
         video={{
-          src: 'house.mp4',
-          alt: '太陽が差し込む住宅内',
+          src: 'sun-light.mp4',
+          alt: '',
         }}
         subtitle="Services"
         title="事業内容"
@@ -39,35 +39,41 @@ export default function ServicesPage() {
           <_ServiceCard
             title="太陽光発電パネル"
             description="未来のエネルギーをつくるための安心の選択肢です。"
-            src="/solar-panel.jpg"
+            image={{
+              src: '/solar-panel.jpg',
+              alt: '太陽光発電パネルを設置した住宅',
+            }}
             index={0}
             href="/services/solar-panel"
           />
           <_ServiceCard
             title="蓄電池"
             description="電気をためて夜間や緊急時にも活用できます。"
-            src="/print.jpg"
+            image={{ src: '/print.jpg', alt: '蓄電池の画像' }}
             index={1}
             href="/services/battery"
           />
           <_ServiceCard
             title="エコキュート"
             description="空気の熱を利用して効率よくお湯をつくる給湯器です。"
-            src="/bathroom.jpg"
+            image={{ src: '/bathroom.jpg', alt: 'お湯の溜まったお風呂' }}
             index={2}
             href="/services/eco-cute"
           />
           <_ServiceCard
             title="シロアリ駆除"
             description="住宅を食害から守る専門サービス。大切な家の資産価値を守ります。"
-            src="/after-follow.jpg"
+            image={{
+              src: '/pest-control.jpg',
+              alt: 'シロアリを虫眼鏡で発見しているイメージ',
+            }}
             index={3}
             href="/services/termite-control"
           />
           <_ServiceCard
             title="リフォーム"
             description="マイホームをリフォームして、これからも長く住み続けられるように。"
-            src="/family.jpg"
+            image={{ src: '/kitchen.jpg', alt: 'リフォームされたキッチン' }}
             index={4}
             href="/services/reform"
           />
