@@ -11,6 +11,7 @@ export const Hero = (props: {
   title: string | React.ReactNode
   description?: string
   overlayHidden?: boolean
+  overlayOpacity?: string
   video?: { src: string; alt: string; playbackRate?: number }
 }) => {
   const { refOpeningAnimation } = useAnimation()
@@ -94,7 +95,9 @@ export const Hero = (props: {
           </>
         )}
         {!props.overlayHidden && (
-          <div className="absolute inset-0 bg-black/50" />
+          <div
+            className={`absolute inset-0 bg-black/${props.overlayOpacity || '30'}`}
+          />
         )}
       </div>
       <div className="relative z-10 h-full wrapper">

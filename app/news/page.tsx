@@ -23,6 +23,7 @@ export default function Articles() {
         video={{ src: '/newspaper.mp4', alt: '', playbackRate: 0.5 }}
         subtitle="News"
         title="お知らせ"
+        overlayOpacity="50"
       />
       <section className="wrapper flex flex-col gap-20">
         <_ArticlesClient />
