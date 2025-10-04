@@ -10,6 +10,8 @@ export const Hero = (props: {
   subtitle?: string
   title: string | React.ReactNode
   description?: string
+  overlayHidden: boolean
+  srcVideo: string
 }) => {
   const { refOpeningAnimation } = useAnimation()
   const refImage = useRef<HTMLDivElement>(null)
@@ -62,13 +64,26 @@ export const Hero = (props: {
         className="absolute inset-0"
       >
         {props.image && (
-        <img
+          <img
             src={props.image?.src}
             alt={props.image?.alt || ''}
-          className="object-cover w-full h-full"
-        />
+            className="object-cover w-full h-full"
+          />
         )}
-        <div className="absolute inset-0 bg-black/30" />
+        {props.srcVideo && (
+          <video
+            className="w-full h-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+          >
+            <source src={props.srcVideo} type="video/mp4" />
+          </video>
+        )}
+        {!props.overlayHidden && (
+          <div className="absolute inset-0 bg-black/30" />
+        )}
       </div>
       <div className="relative z-10 h-full wrapper">
         <div className="mx-auto h-full flex items-center">

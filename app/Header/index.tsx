@@ -26,6 +26,7 @@ export const Header = (props: {
           </div>
 
           <Nav items={props.items} />
+          <div className="font-semibold text-sm md:hidden flex bg-amber-300 items-center relative rounded-full p-1 h-fit"></div>
         </div>
       </nav>
     </header>

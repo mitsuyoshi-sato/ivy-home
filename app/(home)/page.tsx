@@ -8,18 +8,14 @@ const Home = () => {
   return (
     <>
       <Hero
-        image={{
-          src: '/hero2.jpg',
-          alt: '今、つくるエネルギーが明日の暮らしを豊かにする',
-        }}
-        title={
-          <>
-            今、つくるエネルギーが
-            <br />
-            明日の暮らしを豊かにする。
-          </>
-        }
-        description="ソーラーパネル・蓄電池・エコキュートの導入をトータルサポートします。"
+        // image={{
+        //   src: '/hero2.jpg',
+        //   alt: '今、つくるエネルギーが明日の暮らしを豊かにする',
+        // }}
+        title={<>未来の暮らしを、つくる。</>}
+        description="暮らしを支えるエネルギーづくりを、今から始めよう。"
+        srcVideo="home-hero.mp4"
+        overlayHidden
       />
       <section id="company" className="w-full bg-cleam">
         <_CampaignSection />

@@ -118,8 +118,8 @@ export const _RecruitSection = () => {
             <h3 className="text-xl font-semibold">電話でのお問い合わせ</h3>
             <div className="">
               <p className="text-base text-dark6 font-semibold">
-                <span className="w-[120px] inline-block">TEL</span> 099-951-4333
-                (採用担当宛)
+                <span className="w-[120px] inline-block">TEL</span>{' '}
+                090-7629-7452
               </p>
               <p className="text-base text-dark6 font-semibold">
                 <span className="w-[120px] inline-block">受付時間</span> 平日
@@ -136,7 +136,7 @@ export const _RecruitSection = () => {
             <div className="">
               <p className="text-base text-dark6 font-semibold">
                 <span className="w-[120px] inline-block">Email</span>
-                info@ivy-home.co.jp
+                ivyhome.corp2025@outlook.jp
               </p>
             </div>
           </div>
