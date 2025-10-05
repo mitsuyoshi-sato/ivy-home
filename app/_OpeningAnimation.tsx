@@ -52,7 +52,7 @@ export default function _OpeningAnimation({
       >
         <div ref={refLogo} className="relative w-[200px]">
           <div>
-            <img src="/ivyHomeText.svg" alt="Ivy Home" className="w-full" />
+            <img src="/logo-text.svg" alt="Ivy Home" className="w-full" />
           </div>
           <Icon
             ref={refLeaf}

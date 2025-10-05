@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     images: {
-      url: '/ivy-home.png',
+      url: '/ivy-home.svg',
     },
     title: '株式会社アイビーホーム',
   },

@@ -20,9 +20,10 @@ export default function SolarPanelPage() {
   return (
     <>
       <Hero
-        image={{ src: '/solar-panel.jpg', alt: '太陽光パネル' }}
+        image={{ src: '/houses2.jpg', alt: '太陽光パネルの住宅が連なっている' }}
         subtitle="Solar Panel"
         title="太陽光パネル"
+        overlayOpacity="10"
       />
       <section className="wrapper">
         <_SolarPanel />

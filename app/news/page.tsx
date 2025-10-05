@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     description:
       '株式会社アイビーホームのお知らせページ。新サービスやイベント情報など、お客様に役立つ情報を随時更新しています。',
     images: {
-      url: '/ivy-home.png',
+      url: '/ivy-home.svg',
     },
   },
 }

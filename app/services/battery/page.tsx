@@ -20,9 +20,10 @@ export default function BatteryPage() {
   return (
     <>
       <Hero
-        image={{ src: '/battery.jpg', alt: '蓄電池' }}
+        image={{ src: '/light.jpg', alt: '' }}
         subtitle="Battery"
         title="蓄電池"
+        overlayOpacity="40"
       />
       <section className="wrapper">
         <_Battery />

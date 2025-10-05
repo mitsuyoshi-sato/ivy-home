@@ -149,7 +149,7 @@ export const _TermiteControl = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            image="/floor.jpg"
+            image="/foot.jpg"
             alt="綺麗な木材の床"
             title="大切な家の資産を守りましょう"
             description={`床下の隅々までチェックし、シロアリの被害を防ぎます。木材の健康を守ることで、大切な家を長く維持できます。`}

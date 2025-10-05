@@ -96,7 +96,8 @@ export const Hero = (props: {
         )}
         {!props.overlayHidden && (
           <div
-            className={`absolute inset-0 bg-black/${props.overlayOpacity || '30'}`}
+            className="absolute inset-0 bg-black"
+            style={{ opacity: (parseInt(props.overlayOpacity || '30')) / 100 }}
           />
         )}
       </div>

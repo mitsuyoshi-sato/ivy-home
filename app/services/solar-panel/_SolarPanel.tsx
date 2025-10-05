@@ -128,8 +128,8 @@ export const _SolarPanel = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            image="/solar-panel-detail.jpg"
-            alt="solar-panel"
+            image="/solar-panel-construction.jpg"
+            alt="ソーラーパネルの設置工事"
             title="太陽光パネルの仕組み"
             description="太陽の光を電気に変えるクリーンエネルギーシステムです。屋根や敷地に設置したパネルが太陽光を吸収し、家庭で使える電力を供給します。"
           />
@@ -139,9 +139,9 @@ export const _SolarPanel = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
+            image="/houses.jpg"
+            alt="ソーラーパネルが設置された住宅街"
             title="家計を助ける投資"
-            image="/family.jpg"
-            alt="solar-panel"
             description="光熱費を削減しながら、電力自給率を高めることができます。余った電力は蓄電池に保存したり、電力会社に売ることも可能です。"
           />
         </article>
@@ -150,7 +150,7 @@ export const _SolarPanel = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            image="/after-follow.jpg"
+            image="/afterfollow.jpg"
             alt="solar-panel"
             title="安心のアフターフォロー"
             description={`設置後も、トラブル時やご不明点に迅速に対応。

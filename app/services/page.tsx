@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     description:
       '太陽光パネル、蓄電池、エコキュート、リフォームなど、暮らしの安全と安心を守る取り組みをご紹介します。',
     images: {
-      url: '/ivy-home.png',
+      url: '/ivy-home.svg',
     },
   },
 }
@@ -40,7 +40,7 @@ export default function ServicesPage() {
             title="太陽光発電パネル"
             description="未来のエネルギーをつくるための安心の選択肢です。"
             image={{
-              src: '/solar-panel.jpg',
+              src: '/houses.jpg',
               alt: '太陽光発電パネルを設置した住宅',
             }}
             index={0}
@@ -49,7 +49,7 @@ export default function ServicesPage() {
           <_ServiceCard
             title="蓄電池"
             description="電気をためて夜間や緊急時にも活用できます。"
-            image={{ src: '/print.jpg', alt: '蓄電池の画像' }}
+            image={{ src: '/battery.jpg', alt: '蓄電池の画像' }}
             index={1}
             href="/services/battery"
           />

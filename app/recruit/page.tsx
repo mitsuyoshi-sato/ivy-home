@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     description:
       '株式会社アイビーホームの採用情報をご紹介します。私たちと一緒に、お客様の暮らしを支えるサービスを提供しませんか。',
     images: {
-      url: '/ivy-home.png',
+      url: '/ivy-home.svg',
     },
   },
 }

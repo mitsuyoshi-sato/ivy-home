@@ -20,9 +20,10 @@ export default function ReformPage() {
   return (
     <>
       <Hero
-        image={{ src: '/cooking2.jpg', alt: 'リフォーム' }}
+        image={{ src: '/kitchen.jpg', alt: 'リフォーム' }}
         subtitle="Reform"
         title="リフォーム"
+        overlayOpacity="40"
       />
       <section className="wrapper">
         <_Reform />

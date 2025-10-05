@@ -127,9 +127,20 @@ export const _Battery = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
+            image="/battery.jpg"
+            alt="屋外に設置された蓄電池"
+            title="蓄電池の仕組み"
+            description="太陽光発電や深夜電力などで作った電気を蓄えて、必要なとき、緊急時に使用できます。電気を「賢くためて使う」ことで、経済的に生活をサポートします。"
+          />
+        </article>
+        <article
+          className="w-1/3"
+          style={{ opacity: 0, transform: 'translateY(100px)' }}
+        >
+          <_InfoCard
+            image="/kettle.jpg"
+            alt="電気ケトル"
             title="賢くエネルギーを節約"
-            image="/family.jpg"
-            alt="battery"
             description={`電気代を削減するだけでなく、将来の電力価格変動にも備えられます。
               賢いエネルギー管理を実現できます。`}
           />
@@ -139,22 +150,11 @@ export const _Battery = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            image="/after-follow.jpg"
-            alt="battery"
+            image="/room-light.jpg"
+            alt="室内照明"
             title="停電時に大活躍！"
             description={`停電時でも冷蔵庫や照明、テレビなど必要な家電を数時間安心して使えます。
               災害時も家族の生活を守るバックアップ電源です。`}
-          />
-        </article>
-        <article
-          className="w-1/3"
-          style={{ opacity: 0, transform: 'translateY(100px)' }}
-        >
-          <_InfoCard
-            image="/after-follow.jpg"
-            alt="battery"
-            title="手間なく長持ち"
-            description="耐久性に優れ、長期使用でも安心。設置後は専門スタッフの点検サポートもあり、日常のお手入れはほとんど不要です。"
           />
         </article>
       </div>

@@ -127,8 +127,8 @@ export const _EcoCute = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            image="/bathroom.jpg"
-            alt="eco-kyuto"
+            image="/eco-cute.jpg"
+            alt="エコキュート"
             title="長期的に大きなメリット"
             description={`夜間の安い電力を利用して効率よくお湯を沸かすので、毎月の光熱費を大幅に抑えられます。
               長期的には家計の負担軽減にもつながります。`}
@@ -140,8 +140,8 @@ export const _EcoCute = () => {
         >
           <_InfoCard
             title="家族みんなが快適に使える"
-            image="/bathroom.jpg"
-            alt="eco-kyuto"
+            image="/hand-wash.jpg"
+            alt="子供が手を洗っている様子"
             description={`大量タンクにより、お風呂や洗面所、キッチンなど複数箇所で快適に給湯。
               忙しい朝も家族全員がストレスなく使えます。`}
           />
@@ -151,9 +151,9 @@ export const _EcoCute = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            image="/after-follow.jpg"
-            alt="eco-kyuto"
-            title="火を使わず安心・安全"
+            image="/shower.jpg"
+            alt="エコキュート"
+            title="火を使わずにお湯を沸かす"
             description={`火を使わず安全にお湯を供給できる点や、環境負荷を抑えられる点もメリットとして考慮すると、経済性だけでなく暮らし全体の安心にもつながります。`}
           />
         </article>
