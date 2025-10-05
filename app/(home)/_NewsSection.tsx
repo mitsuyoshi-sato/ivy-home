@@ -53,7 +53,7 @@ export const _NewsSection = () => {
       id: 4,
       image: '/cooking.jpg',
       date: '2025.12',
-      text: 'オール電化でガス契約が不要になりました。',
+      text: 'ガス契約が不要になりました。',
     },
     {
       id: 5,
