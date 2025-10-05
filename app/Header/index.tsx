@@ -14,7 +14,11 @@ export const Header = (props: {
         <div className="flex items-center justify-between pl-6">
           <div className="relative w-[110px] translate-y-[2px]">
             <div>
-              <img src="/logo-text.svg" alt="Ivy Home" className="w-full" />
+              <img
+                src="/logo-text.svg"
+                alt="アイビーホームのロゴ"
+                className="w-full"
+              />
             </div>
             <Icon
               stroke="#166534"

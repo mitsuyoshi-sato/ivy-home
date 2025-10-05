@@ -49,7 +49,7 @@ export const _CampaignSection = () => {
       >
         <img
           src="/unity.jpg"
-          alt="手を重ねて団結する社員"
+          alt="手を重ねて団結する様子"
           className="object-cover w-full h-full"
         />
       </div>

@@ -122,7 +122,7 @@ export default function RootLayout({
               <div className="wrapper flex gap-40 items-start">
                 <img
                   src="/ivy-home.svg"
-                  alt="logo"
+                  alt="アイビーホームのロゴ"
                   className="w-[120px] -translate-y-[10px]"
                 />
                 <div className="flex gap-20">

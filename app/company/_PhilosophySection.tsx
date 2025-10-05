@@ -63,7 +63,11 @@ export const _PhilosophySection = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
           className="flex flex-col items-center shrink-0"
         >
-          <img src="/ivy-home.svg" alt="ivy-home" className="w-[300px]" />
+          <img
+            src="/ivy-home.svg"
+            alt="アイビーホームのロゴ"
+            className="w-[300px]"
+          />
           <h2 className="leading-relaxed text-4xl mt-8 font-bold">
             未来の暮らしを、つくる。
           </h2>

@@ -164,7 +164,7 @@ function __Bento({
       <div className="absolute inset-0 bg-white/30 opacity-0 group-hover:opacity-80 transition-opacity duration-300 ease-out rounded-xl z-10 pointer-events-none" />
       <img
         src={image}
-        alt={`${title}のサービス画像`}
+        alt=""
         className="w-full h-full object-cover absolute inset-0 rounded-xl p-1"
       />
       <div className="relative w-full h-full bg-white/80 backdrop-blur-3xl p-3 z-0">
@@ -177,7 +177,7 @@ function __Bento({
           >
             <img
               src={image}
-              alt={`${title}の詳細画像`}
+              alt={title}
               className="w-full h-full object-cover"
             />
           </div>

@@ -151,7 +151,7 @@ export const _SolarPanel = () => {
         >
           <_InfoCard
             image="/afterfollow.jpg"
-            alt="solar-panel"
+            alt="営業担当者が自宅でお客様の話を聞く様子"
             title="安心のアフターフォロー"
             description={`設置後も、トラブル時やご不明点に迅速に対応。
 地域に根ざした会社だからこそ、いつでも頼れる安心のサポートをご提供いたします。`}
