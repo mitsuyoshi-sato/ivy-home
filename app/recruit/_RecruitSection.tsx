@@ -64,45 +64,44 @@ export const _RecruitSection = () => {
         />
         <div
           ref={refInfo}
-          className="mt-16 flex flex-col w-full"
+          className="mt-12 flex flex-col w-full"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <article className="flex flex-col gap-6">
-            <h3 className="text-xl font-semibold mb-4">営業担当</h3>
-            <div className="flex w-full items-start border-b border-gray-200 pb-2">
-              <h4 className="w-1/4 text-gray-600 leading-relaxed">業務内容</h4>
-              <p className="text-base text-dark6 font-semibold shrink-0 w-3/4">
-                •
-                お客様の住まいや暮らしに関するご要望を伺い、最適なプランをご提案します。
-                <br />•
-                新規のお客様対応だけでなく、既存のお客様との関係構築やアフターフォローも行います。
-              </p>
-            </div>
-            <div className="flex w-full items-start border-b border-gray-200 pb-2">
-              <h4 className="w-1/4 text-gray-600 leading-relaxed">
-                求める人物像
+            <h3 className="text-xl font-semibold">営業担当</h3>
+            <div className="flex w-full items-start border-b border-gray-200 pb-2 sm:mt-4">
+              <h4 className="text-sm sm:text-base w-1/4 text-gray-600 leading-relaxed">
+                業務内容
               </h4>
-              <p className="text-base text-dark6 font-semibold shrink-0 w-3/4">
-                ・人と話すことが好きな方
-                <br />
-                ・報告・連絡・相談をしっかりできる方
-                <br />
-                ・新しいことに前向きに挑戦できる方
-              </p>
+              <ul className="text-sm sm:text-base text-dark6 font-semibold shrink-0 w-3/4 list-disc list-outside pl-5">
+                <li>
+                  お客様の住まいや暮らしに関するご要望を伺い、最適なプランをご提案します。
+                </li>
+                <li>
+                  新規のお客様対応だけでなく、既存のお客様との関係構築やアフターフォローも行います。
+                </li>
+              </ul>
             </div>
             <div className="flex w-full items-start border-b border-gray-200 pb-2">
-              <h4 className="w-1/4 text-gray-600 leading-relaxed">応募条件</h4>
-              <p className="text-base text-dark6 font-semibold shrink-0 w-3/4">
-                ・学歴不問、未経験歓迎
-                <br />
-                ・普通自動車免許があると望ましい
-              </p>
+              <h4 className="text-sm sm:text-base w-1/4 text-gray-600 leading-relaxed">
+                求める
+                <br className="sm:hidden" />
+                人物像
+              </h4>
+              <ul className="text-sm sm:text-base text-dark6 font-semibold shrink-0 w-3/4 list-disc list-outside pl-5">
+                <li>人と話すことが好きな方</li>
+                <li>報告・連絡・相談をしっかりできる方</li>
+                <li>新しいことに前向きに挑戦できる方</li>
+              </ul>
             </div>
-            <div className="flex w-full items-center border-b border-gray-200 pb-2">
-              <h4 className="w-1/4 text-gray-600">休日</h4>
-              <p className="text-base text-dark6 font-semibold shrink-0 w-3/4">
-                業務委託だからどうする？
-              </p>
+            <div className="flex w-full items-start border-b border-gray-200 pb-2">
+              <h4 className="text-sm sm:text-base w-1/4 text-gray-600 leading-relaxed">
+                応募条件
+              </h4>
+              <ul className="text-sm sm:text-base text-dark6 font-semibold shrink-0 w-3/4 list-disc list-outside pl-5">
+                <li>学歴不問、未経験歓迎</li>
+                <li>普通自動車免許があると望ましい</li>
+              </ul>
             </div>
           </article>
         </div>
@@ -117,13 +116,17 @@ export const _RecruitSection = () => {
           >
             <h3 className="text-xl font-semibold">電話でのお問い合わせ</h3>
             <div className="">
-              <p className="text-base text-dark6 font-semibold">
-                <span className="w-[120px] inline-block">TEL</span>{' '}
+              <p className="text-sm sm:text-base font-semibold">
+                <span className="text-gray-600 w-[120px] inline-block">
+                  TEL
+                </span>{' '}
                 090-7629-7452
               </p>
-              <p className="text-base text-dark6 font-semibold">
-                <span className="w-[120px] inline-block">受付時間</span> 平日
-                10:00～18:00
+              <p className="text-sm sm:text-base font-semibold">
+                <span className="text-gray-600 w-[120px] inline-block">
+                  受付時間
+                </span>{' '}
+                平日 10:00～18:00
               </p>
             </div>
           </div>
@@ -133,9 +136,11 @@ export const _RecruitSection = () => {
             className="flex flex-col gap-2 mt-6"
           >
             <h3 className="text-xl font-semibold">メールでのお問い合わせ</h3>
-            <div className="">
-              <p className="text-base text-dark6 font-semibold">
-                <span className="w-[120px] inline-block">Email</span>
+            <div className="text-sm sm:text-base">
+              <p className="font-semibold flex">
+                <span className="w-[120px] inline-block text-gray-600">
+                  Email
+                </span>
                 ivyhome.corp2025@outlook.jp
               </p>
             </div>
