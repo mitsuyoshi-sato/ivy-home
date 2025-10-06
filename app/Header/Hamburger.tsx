@@ -12,6 +12,7 @@ export const Hamburger = (props: {
     label: string
     subs?: { href: string; label: string; icon?: string }[]
   }[]
+  refBackground: React.RefObject<HTMLDivElement | null>
 }) => {
   const [stateMounted, setMounted] = useState(false)
   const [stateAnimating, setAnimating] = useState(false)
@@ -34,8 +35,8 @@ export const Hamburger = (props: {
     const el1 = refHamburger.current?.children[1]
     const el2 = refHamburger.current?.children[2]
     const tc = refTextContainer.current
-
-    if (m && el0 && el1 && el2 && tc) {
+    const bg = props.refBackground.current
+    if (m && el0 && el1 && el2 && tc && bg) {
       motion.to(el0, 0.3, 'out', {
         rotate: '0deg',
         translateY: '-6px',
@@ -51,8 +52,11 @@ export const Hamburger = (props: {
         opacity: '0',
         filter: 'blur(10px)',
       })
+      motion.to(bg, 1.8, 'out', {
+        opacity: '1',
+      })
       await motion.delay(0.5)
-      console.log('スクロール可能')
+
       motion.set(m, { pointerEvents: 'none' })
       await motion.delay(1.3)
       motion.set(m, {
@@ -83,7 +87,8 @@ export const Hamburger = (props: {
           const el1 = refHamburger.current?.children[1]
           const el2 = refHamburger.current?.children[2]
           const tc = refTextContainer.current
-          if (m && el0 && el1 && el2 && tc) {
+          const bg = props.refBackground.current
+          if (m && el0 && el1 && el2 && tc && bg) {
             if (refOpen.current === false) {
               motion.to(el0, 0.3, 'out', {
                 rotate: '45deg',
@@ -102,6 +107,9 @@ export const Hamburger = (props: {
               motion.to(m, 0.5, 'inout', {
                 height: '100vh',
                 transformOrigin: 'bottom',
+              })
+              motion.to(bg, 0.5, 'inout', {
+                opacity: '0',
               })
               await motion.delay(0.7)
               motion.to(tc, 1.5, 'out', {
