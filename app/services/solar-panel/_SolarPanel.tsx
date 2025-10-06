@@ -39,7 +39,7 @@ export const _SolarPanel = () => {
             }
           })
         },
-        { threshold: 0.5 },
+        { threshold: 0.3 },
       )
       observer.observe(s)
       return () => observer.disconnect()
@@ -48,7 +48,11 @@ export const _SolarPanel = () => {
 
   useEffect(() => {
     const c = refCards.current
-    if (c) {
+    if (!c) return
+    const isMd =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(min-width: 768px)').matches
+    if (isMd) {
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach(async (entry) => {
@@ -69,6 +73,23 @@ export const _SolarPanel = () => {
       observer.observe(c)
       return () => observer.disconnect()
     }
+    const children = Array.from(c.children) as HTMLElement[]
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(async (entry) => {
+          if (entry.isIntersecting) {
+            motion.to(entry.target as HTMLElement, 1.8, 'out', {
+              opacity: 1,
+              translateY: '0px',
+            })
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.3 },
+    )
+    children.forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
   }, [])
 
   useEffect(() => {
