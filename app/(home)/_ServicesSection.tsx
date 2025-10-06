@@ -96,7 +96,7 @@ export const _ServicesSection = () => {
           description={
             ' 住宅向けに太陽光パネルの販売・設置・メンテナンスを行っています。\nお客様のライフスタイルや設備に合わせた最適なプランをご提案し、省エネと電気料金の削減をサポートします。'
           }
-          image={'/solar-panel.jpg'}
+          image={'/solar-panel-construction.jpg'}
           colSpan={'7'}
         />
         <__Bento

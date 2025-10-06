@@ -50,7 +50,7 @@ export const Nav = (props: {
   return (
     <div
       ref={refContainer}
-      className="font-semibold text-sm md:flex hidden items-center relative rounded-full p-1 h-fit"
+      className="font-semibold text-sm md:flex hidden items-center relative rounded-full p-1"
     >
       {props.items.map((t, i) => (
         <Tab

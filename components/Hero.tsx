@@ -70,7 +70,7 @@ export const Hero = (props: {
           transform: 'scale(1.05)',
           transformOrigin: 'center',
         }}
-        className="absolute inset-0"
+        className="absolute inset-0 z-[-1]"
       >
         {props.image && (
           <img
@@ -97,7 +97,7 @@ export const Hero = (props: {
         {!props.overlayHidden && (
           <div
             className="absolute inset-0 bg-black"
-            style={{ opacity: (parseInt(props.overlayOpacity || '30')) / 100 }}
+            style={{ opacity: parseInt(props.overlayOpacity || '30') / 100 }}
           />
         )}
       </div>
