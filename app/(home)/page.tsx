@@ -8,10 +8,6 @@ const Home = () => {
   return (
     <>
       <Hero
-        // image={{
-        //   src: '/hero2.jpg',
-        //   alt: '今、つくるエネルギーが明日の暮らしを豊かにする',
-        // }}
         title={<>未来の暮らしを、つくる。</>}
         description="暮らしを支えるエネルギーづくりを、今から始めよう。"
         video={{

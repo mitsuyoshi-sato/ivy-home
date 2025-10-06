@@ -34,9 +34,12 @@ export const _CampaignSection = () => {
   }, [])
 
   return (
-    <div ref={reContainer} className="wrapper lg:flex lg:items-center">
+    <div
+      ref={reContainer}
+      className="wrapper lg:flex lg:flex-col xl:flex-row xl:items-center"
+    >
       <SectionHeader
-        className="lg:w-[380px] lg:shrink-0"
+        className="lg:w-full xl:w-[380px] xl:shrink-0"
         title="アイビーホームの強み"
         subtitle="Campany"
         description="私たちが大切にしているのは、誠実にお客様と向き合うこと。\n快適な暮らしから生まれる 笑顔や思い出 が、私たちの原点です。"
@@ -44,7 +47,7 @@ export const _CampaignSection = () => {
       />
       <div
         ref={refImage}
-        className="relative z-0 mt-9 overflow-hidden bg-black/10 h-[500px] lg:mt-0 lg:w-[1000px] lg:shrink-0 lg:rounded-3xl lg:ml-24 -mr-6 rounded-l-2xl"
+        className="relative z-0 mt-9 overflow-hidden bg-black/10 h-[500px] lg:mt-8 lg:w-full lg:rounded-3xl lg:mr-0 xl:mt-0 xl:w-[1000px] xl:shrink-0 xl:rounded-3xl xl:ml-24 xl:mr-0 -mr-6 rounded-l-2xl"
         style={{ opacity: 0, transform: 'translateY(80px)' }}
       >
         <img
