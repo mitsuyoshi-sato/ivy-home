@@ -82,6 +82,13 @@ export default function RootLayout({
     },
   ]
 
+  const itemWithSubs = items.find(
+    (i) => Array.isArray(i.subs) && i.subs.length > 0,
+  )
+  const itemsWithoutSubs = items.filter(
+    (i) => !Array.isArray(i.subs) || i.subs.length === 0,
+  )
+
   return (
     <html lang="ja" className={`${inter.variable} ${notosansjp.variable}`}>
       <body className="antialiased">
@@ -91,22 +98,43 @@ export default function RootLayout({
             <_OpeningAnimation>{children}</_OpeningAnimation>
           </main>
           <footer>
-            <div className="bg-cleam">
-              <div className="wrapper flex gap-40 items-start">
+            <div className="bg-cleam py-10">
+              <div className="wrapper flex flex-col items-start gap-10 md:flex-row md:gap-20 lg:gap-40 xl:w-full xl:justify-between">
                 <img
                   src="/ivy-home.svg"
                   alt="アイビーホームのロゴ"
-                  className="w-[120px] -translate-y-[10px]"
+                  className="w-24 md:w-[120px] md:-translate-y-[10px] shrink-0"
                 />
-                <div className="flex gap-20">
-                  {items.map((item) => (
+                <div className="grid w-full flex-1 grid-cols-2 xl:grid-cols-5 gap-x-10 gap-y-8 lg:gap-x-14">
+                  {itemsWithoutSubs.map((item) => (
                     <__FooterSection
                       key={item.href}
                       title={item.label}
                       href={item.href}
-                      links={item.subs || []}
+                      links={[]}
                     />
                   ))}
+                  {itemWithSubs && (
+                    <div className="col-span-2 xl:col-span-1">
+                      <Link
+                        href={itemWithSubs.href}
+                        className="font-bold text-ivy8 text-xl hover:opacity-70 cursor-pointer"
+                      >
+                        {itemWithSubs.label}
+                      </Link>
+                      <div className="mt-6 text-dark5 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-1 gap-4 font-medium">
+                        {itemWithSubs.subs!.map((link) => (
+                          <Link
+                            key={link.label}
+                            href={link.href}
+                            className="hover:text-black"
+                          >
+                            {link.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
