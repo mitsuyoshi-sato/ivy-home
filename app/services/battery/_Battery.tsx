@@ -121,9 +121,9 @@ export const _Battery = () => {
           将来の電力不安に備える賢い選択肢として、多くのご家庭で選ばれています。
         </p>
       </div>
-      <div ref={refCards} className="flex gap-6 mt-12">
+      <div ref={refCards} className="flex flex-col md:flex-row gap-6 mt-12">
         <article
-          className="w-1/3"
+          className="w-full md:w-1/3"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
@@ -134,7 +134,7 @@ export const _Battery = () => {
           />
         </article>
         <article
-          className="w-1/3"
+          className="w-full md:w-1/3"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
@@ -146,7 +146,7 @@ export const _Battery = () => {
           />
         </article>
         <article
-          className="w-1/3"
+          className="w-full md:w-1/3"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
