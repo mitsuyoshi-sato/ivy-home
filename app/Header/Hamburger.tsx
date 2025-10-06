@@ -63,8 +63,9 @@ export const Hamburger = (props: {
         filter: 'blur(0px)',
         height: '0px',
         transformOrigin: 'bottom',
-        pointerEvents: 'auto',
       })
+      await motion.delay(0.5)
+      motion.set(m, { pointerEvents: 'auto' })
       motion.set(tc, {
         opacity: '0',
       })
@@ -104,7 +105,7 @@ export const Hamburger = (props: {
               motion.set(m, {
                 opacity: '1',
               })
-              motion.to(m, 0.5, 'inout', {
+              motion.to(m, 0.8, 'out', {
                 height: '100vh',
                 transformOrigin: 'bottom',
               })
@@ -146,7 +147,7 @@ export const Hamburger = (props: {
               opacity: '0',
               pointerEvents: 'auto',
             }}
-            className="fixed bottom-0 left-0 right-0 z-40 w-full bg-white/70 flex items-center gap-16 backdrop-blur-md backdrop-saturate-150"
+            className="md:hidden fixed bottom-0 left-0 right-0 z-40 w-full bg-white/70 flex items-center gap-16 backdrop-blur-md backdrop-saturate-150"
           >
             <div className="w-[150px] h-full">
               <img
