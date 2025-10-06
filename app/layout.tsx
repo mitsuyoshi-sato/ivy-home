@@ -47,22 +47,10 @@ export default function RootLayout({
     {
       href: '/',
       label: 'Home',
-      subs: [
-        { href: '/', label: 'Top', icon: 'leaf' },
-        { href: '/#company', label: '会社情報', icon: 'building' },
-        { href: '/#services', label: '事業内容', icon: 'layers' },
-        { href: '/#news', label: 'お知らせ', icon: 'bellRing' },
-        { href: '/#recruit', label: '採用情報', icon: 'handshake' },
-      ],
     },
     {
       href: '/company',
       label: '会社情報',
-      subs: [
-        { href: '/company', label: 'Top', icon: 'building' },
-        { href: '/company#philosophy', label: '理念', icon: 'idea' },
-        { href: '/company#info', label: '会社概要', icon: 'info' },
-      ],
     },
     {
       href: '/services',
@@ -87,25 +75,10 @@ export default function RootLayout({
     {
       href: '/news',
       label: 'お知らせ',
-      subs: [{ href: '/news', label: 'Top', icon: 'bellRing' }],
     },
     {
       href: '/recruit',
       label: '採用情報',
-      subs: [
-        { href: '/recruit', label: 'Top', icon: 'handshake' },
-        // { href: '/recruit#sales', label: 'セールス', icon: 'briefcase' },
-        // {
-        //   href: '/recruit#back-office',
-        //   label: 'バックオフィス',
-        //   icon: 'fileText',
-        // },
-        // {
-        //   href: '/recruit#marketing',
-        //   label: 'マーケティング',
-        //   icon: 'chartNoAxesCombined',
-        // },
-      ],
     },
   ]
 
