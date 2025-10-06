@@ -1,6 +1,5 @@
 'use client'
 
-import { cn } from '@/lib/utils'
 import { motion } from '../motion'
 import { useRef, useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
@@ -20,25 +19,69 @@ export const Hamburger = (props: {
   const pathname = usePathname()
   const refOpen = useRef(false)
   const refTextContainer = useRef<HTMLDivElement>(null)
+  const refHamburger = useRef<HTMLButtonElement>(null)
+
   useEffect(() => {
     setMounted(true)
   }, [])
 
+  const closeMenu = async () => {
+    if (stateAnimating || !refOpen.current) return
+    setAnimating(true)
+
+    const m = refMenu.current
+    const el0 = refHamburger.current?.children[0]
+    const el1 = refHamburger.current?.children[1]
+    const el2 = refHamburger.current?.children[2]
+    const tc = refTextContainer.current
+
+    if (m && el0 && el1 && el2 && tc) {
+      motion.to(el0, 0.3, 'out', {
+        rotate: '0deg',
+        translateY: '-6px',
+      })
+      motion.to(el1, 0.3, 'out', {
+        opacity: '1',
+      })
+      motion.to(el2, 0.3, 'out', {
+        rotate: '0deg',
+        translateY: '6px',
+      })
+      motion.to(m, 1.8, 'out', {
+        opacity: '0',
+        filter: 'blur(10px)',
+      })
+      await motion.delay(0.5)
+      console.log('スクロール可能')
+      motion.set(m, { pointerEvents: 'none' })
+      await motion.delay(1.3)
+      motion.set(m, {
+        filter: 'blur(0px)',
+        height: '0px',
+        transformOrigin: 'bottom',
+        pointerEvents: 'auto',
+      })
+      motion.set(tc, {
+        opacity: '0',
+      })
+      refOpen.current = false
+      setAnimating(false)
+    }
+  }
+
   return (
     <>
-      <div
-        className={cn(
-          'relative z-[60] mr-3 h-5 w-5 md:hidden',
-          stateAnimating && 'pointer-events-none',
-        )}
-        onClick={async (e) => {
+      <button
+        ref={refHamburger}
+        className="relative z-[60] mr-3 h-5 w-5 md:hidden"
+        disabled={stateAnimating}
+        onClick={async () => {
           if (stateAnimating) return
-
           setAnimating(true)
           const m = refMenu.current
-          const el0 = e.currentTarget.children[0]
-          const el1 = e.currentTarget.children[1]
-          const el2 = e.currentTarget.children[2]
+          const el0 = refHamburger.current?.children[0]
+          const el1 = refHamburger.current?.children[1]
+          const el2 = refHamburger.current?.children[2]
           const tc = refTextContainer.current
           if (m && el0 && el1 && el2 && tc) {
             if (refOpen.current === false) {
@@ -67,31 +110,7 @@ export const Hamburger = (props: {
               refOpen.current = true
               setAnimating(false)
             } else if (refOpen.current === true) {
-              motion.to(el0, 0.3, 'out', {
-                rotate: '0deg',
-                translateY: '-6px',
-              })
-              motion.to(el1, 0.3, 'out', {
-                opacity: '1',
-              })
-              motion.to(el2, 0.3, 'out', {
-                rotate: '0deg',
-                translateY: '6px',
-              })
-              await motion.to(m, 1.8, 'out', {
-                opacity: '0',
-                filter: 'blur(10px)',
-              })
-              motion.set(m, {
-                filter: 'blur(0px)',
-                height: '0px',
-                transformOrigin: 'bottom',
-              })
-              motion.set(tc, {
-                opacity: '0',
-              })
-              refOpen.current = false
-              setAnimating(false)
+              await closeMenu()
             }
           }
         }}
@@ -109,7 +128,7 @@ export const Hamburger = (props: {
           }}
           className="absolute inset-y-0 right-0 my-auto h-[1px] origin-center bg-black duration-300 w-full"
         />
-      </div>
+      </button>
       {stateMounted &&
         createPortal(
           <div
@@ -117,6 +136,7 @@ export const Hamburger = (props: {
             style={{
               height: '0px',
               opacity: '0',
+              pointerEvents: 'auto',
             }}
             className="fixed bottom-0 left-0 right-0 z-40 w-full bg-white/70 flex items-center gap-16 backdrop-blur-md backdrop-saturate-150"
           >
@@ -138,6 +158,7 @@ export const Hamburger = (props: {
                   key={item.href}
                   href={item.href}
                   className="flex flex-col"
+                  onClick={closeMenu}
                 >
                   <div className="text-gray-500 text-xs">
                     {item.href === '/' ? 'Home' : item.href.split('/')[1]}
