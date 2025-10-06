@@ -74,7 +74,7 @@ export const _InfoSection = () => {
       </div>
       <p
         ref={refDescription}
-        className="text-base text-dark6 mt-6"
+        className="text-base text-dark6 mt-6 hidden sm:block"
         style={{ opacity: 0, transform: 'translateY(100px)' }}
       >
         当社は、太陽光発電やエコキュート、蓄電池、シロアリ駆除、リフォームといった住まいに関わる設備の販売・施工を行っております。
@@ -83,43 +83,43 @@ export const _InfoSection = () => {
       </p>
       <div
         ref={refInfo}
-        className="mt-16 flex flex-col w-full"
+        className="mt-8 sm:mt-16 flex flex-col w-full"
         style={{ opacity: 0, transform: 'translateY(100px)' }}
       >
         <div className="flex flex-col gap-6">
-          <div className="flex w-full items-center border-b border-gray-200 pb-2">
-            <h3 className="w-1/4 text-gray-600">会社名</h3>
-            <p className="text-base text-dark6 font-semibold shrink-0 w-3/4">
+          <div className="flex w-full items-stretch border-b border-gray-200">
+            <h3 className="w-1/4 text-gray-600 py-2 leading-6">会社名</h3>
+            <p className="text-base text-dark6 font-semibold shrink-0 w-3/4 py-2 leading-6">
               株式会社アイビーホーム
             </p>
           </div>
-          <div className="flex w-full items-center border-b border-gray-200 pb-2">
-            <h3 className="w-1/4 text-gray-600">所在地</h3>
-            <p className="text-base text-dark6 font-semibold shrink-0 w-3/4">
+          <div className="flex w-full items-stretch border-b border-gray-200">
+            <h3 className="w-1/4 text-gray-600 py-2 leading-6">所在地</h3>
+            <p className="text-base text-dark6 font-semibold shrink-0 w-3/4 py-2 leading-6">
               愛媛県松山市朝生田町7丁目2-22大興ビル201
             </p>
           </div>
-          <div className="flex w-full items-center border-b border-gray-200 pb-2">
-            <h3 className="w-1/4 text-gray-600">設立</h3>
-            <p className="text-base text-dark6 font-semibold shrink-0 w-3/4">
+          <div className="flex w-full items-stretch border-b border-gray-200">
+            <h3 className="w-1/4 text-gray-600 py-2 leading-6">設立</h3>
+            <p className="text-base text-dark6 font-semibold shrink-0 w-3/4 py-2 leading-6">
               2025年10月
             </p>
           </div>
-          <div className="flex w-full items-center border-b border-gray-200 pb-2">
-            <h3 className="w-1/4 text-gray-600">代表者</h3>
-            <p className="text-base text-dark6 font-semibold shrink-0 w-3/4">
+          <div className="flex w-full items-stretch border-b border-gray-200">
+            <h3 className="w-1/4 text-gray-600 py-2 leading-6">代表者</h3>
+            <p className="text-base text-dark6 font-semibold shrink-0 w-3/4 py-2 leading-6">
               小西　裕也
             </p>
           </div>
-          <div className="flex w-full items-center border-b border-gray-200 pb-2">
-            <h3 className="w-1/4 text-gray-600">資本金</h3>
-            <p className="text-base text-dark6 font-semibold shrink-0 w-3/4">
+          <div className="flex w-full items-stretch border-b border-gray-200">
+            <h3 className="w-1/4 text-gray-600 py-2 leading-6">資本金</h3>
+            <p className="text-base text-dark6 font-semibold shrink-0 w-3/4 py-2 leading-6">
               300万円
             </p>
           </div>
-          <div className="flex w-full items-center border-b border-gray-200 pb-2">
-            <h3 className="w-1/4 text-gray-600">事業内容</h3>
-            <p className="text-base text-dark6 font-semibold shrink-0 w-3/4">
+          <div className="flex w-full items-stretch border-b border-gray-200">
+            <h3 className="w-1/4 text-gray-600 py-2 leading-6">事業内容</h3>
+            <p className="text-base text-dark6 font-semibold shrink-0 w-3/4 py-2 leading-6">
               太陽光パネル、蓄電池、エコキュート、シロアリ駆除、リフォーム
             </p>
           </div>

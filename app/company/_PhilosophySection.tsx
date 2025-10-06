@@ -57,7 +57,7 @@ export const _PhilosophySection = () => {
 
   return (
     <div className="wrapper">
-      <div className="flex gap-40 items-center py-8">
+      <div className="xl:flex xl:gap-40 xl:items-center py-8">
         <div
           ref={refLogo}
           style={{ opacity: 0, transform: 'translateY(100px)' }}
@@ -66,19 +66,19 @@ export const _PhilosophySection = () => {
           <img
             src="/ivy-home.svg"
             alt="アイビーホームのロゴ"
-            className="w-[300px]"
+            className="w-60 sm:w-[300px]"
           />
-          <h2 className="leading-relaxed text-4xl mt-8 font-bold">
+          <h2 className="leading-relaxed text-2xl sm:text-4xl xl:mt-8 font-bold">
             未来の暮らしを、つくる。
           </h2>
         </div>
-        <div className="text-dark7 leading-6 ">
+        <div className="text-sm sm:text-base text-dark7 leading-6 mt-8 xl:mt-0 text-center xl:text-left">
           <p
             ref={refDescription1}
             style={{ opacity: 0, transform: 'translateY(100px)' }}
           >
             社名 "Ivy-Home" には、植物のアイビーの花言葉である
-            <br />
+            <br className="hidden sm:block" />
             <strong className="text-xl">誠実</strong> や{' '}
             <strong className="text-xl">絆</strong> といった意味を込めています。
           </p>
