@@ -169,7 +169,7 @@ export const Hamburger = (props: {
                   className="flex flex-col"
                   onClick={closeMenu}
                 >
-                  <div className="text-gray-500 text-xs">
+                  <div className="text-ivy5 text-xs">
                     {item.href === '/' ? 'Home' : item.href.split('/')[1]}
                   </div>
                   <div className="text-lg font-semibold text-gray-800">
