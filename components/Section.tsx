@@ -78,7 +78,7 @@ export const SectionHeader = (props: {
       </p>
       <h2
         ref={refTitle}
-        className="lg:text-4xl text-2xl font-bold lg:mt-6 mt-4"
+        className="lg:text-4xl text-2xl font-bold lg:mt-6 mt-4 whitespace-pre-line"
         style={{ opacity: 0, transform: 'translateY(100px)' }}
       >
         {props.title}

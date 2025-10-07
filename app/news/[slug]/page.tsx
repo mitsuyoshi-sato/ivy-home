@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation'
 import Script from 'next/script'
 import { _News } from './_News'
 import { dataNews } from '@/app/data/newsData'
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { FooterLinks } from '@/components/FooterLinks'
 
 type Props = {
   params: { slug: string }
@@ -83,7 +85,27 @@ export default function ArticlePage({ params }: Props) {
           }),
         }}
       />
-      <_News data={data} />
+      <div className="bg-cleam">
+        <Breadcrumb
+          className="pt-24"
+          items={[
+            { title: 'ホーム', href: '/', icon: 'home' },
+            { title: 'お知らせ', href: '/news', icon: 'bellRing' },
+            {
+              title: data.title,
+              href: `/news/${params.slug}`,
+              icon: 'newspaper',
+              current: true,
+            },
+          ]}
+        />
+      </div>
+      <section>
+        <_News data={data} />
+      </section>
+      <FooterLinks
+        items={[{ title: '記事一覧に戻る', href: '/news', icon: 'newspaper' }]}
+      />
     </>
   )
 }

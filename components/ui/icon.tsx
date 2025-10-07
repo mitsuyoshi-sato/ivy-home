@@ -26,6 +26,8 @@ import {
   Leaf,
   Droplet,
   Footprints,
+  Newspaper,
+  ArrowLeft,
 } from 'lucide-react'
 
 const iconMap: Record<
@@ -59,6 +61,8 @@ const iconMap: Record<
   leaf: Leaf,
   droplet: Droplet,
   footprints: Footprints,
+  newspaper: Newspaper,
+  arrowLeft: ArrowLeft,
 }
 
 export const Icon = forwardRef<

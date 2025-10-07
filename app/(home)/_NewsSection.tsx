@@ -68,7 +68,7 @@ export const _NewsSection = () => {
                   <time className="text-sm text-gray-500">
                     {format(data.publishedAt, 'yyyy.M.d')}
                   </time>
-                  <h3 className="text-sm text-dark7 font-semibold">
+                  <h3 className="text-sm text-dark7 font-semibold whitespace-pre-line">
                     {data.title}
                   </h3>
                 </div>
@@ -103,7 +103,7 @@ export const _NewsSection = () => {
                   <time className="text-sm text-gray-500">
                     {format(data.publishedAt, 'yyyy.M.d')}
                   </time>
-                  <h3 className="text-sm text-dark7 font-semibold">
+                  <h3 className="text-sm text-dark7 font-semibold whitespace-pre-line">
                     {data.title}
                   </h3>
                 </div>
