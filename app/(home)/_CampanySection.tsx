@@ -47,7 +47,7 @@ export const _CampaignSection = () => {
       />
       <div
         ref={refImage}
-        className="relative z-0 mt-9 overflow-hidden bg-black/10 h-[500px] lg:mt-8 lg:w-full lg:rounded-3xl lg:mr-0 xl:mt-0 xl:w-[1000px] xl:shrink-0 xl:rounded-3xl xl:ml-24 xl:mr-0 -mr-6 rounded-l-2xl"
+        className="relative z-0 mt-9 overflow-hidden bg-black/10 h-[300px] md:h-[500px] lg:mt-8 md:w-full md:rounded-3xl lg:mr-0 xl:mt-0 xl:w-[1000px] xl:shrink-0 xl:rounded-3xl xl:ml-24 xl:mr-0 -mr-7 rounded-l-2xl"
         style={{ opacity: 0, transform: 'translateY(80px)' }}
       >
         <img
