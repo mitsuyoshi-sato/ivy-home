@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { Hero } from '@/components/Hero'
 import { _TermiteControl } from './_TermiteControl'
 import { Breadcrumb } from '@/components/Breadcrumb'
@@ -21,6 +22,36 @@ export const metadata: Metadata = {
 export default function TermiteControlPage() {
   return (
     <>
+      <Script
+        id="breadcrumb-services-termiteControl"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'ホーム',
+                item: 'https://ivyho.me/',
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: '事業内容一覧',
+                item: 'https://ivyho.me/services',
+              },
+              {
+                '@type': 'ListItem',
+                position: 3,
+                name: 'シロアリ駆除',
+                item: 'https://ivyho.me/services/termite-control',
+              },
+            ],
+          }),
+        }}
+      />
       <Hero
         image={{ src: '/damaged-wood.jpg', alt: 'シロアリ駆除' }}
         subtitle="Termite Control"

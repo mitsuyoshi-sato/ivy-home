@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { Hero } from '@/components/Hero'
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { _ArticlesClient } from './_ArticlesClient'
@@ -20,6 +21,30 @@ export const metadata: Metadata = {
 export default function Articles() {
   return (
     <>
+      <Script
+        id="breadcrumb-news"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'ホーム',
+                item: 'https://ivyho.me/',
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'お知らせ',
+                item: 'https://ivyho.me/news',
+              },
+            ],
+          }),
+        }}
+      />
       <Hero
         video={{ src: '/newspaper.mp4', alt: '', playbackRate: 0.5 }}
         subtitle="News"

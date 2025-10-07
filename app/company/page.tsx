@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { Hero } from '@/components/Hero'
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { _PhilosophySection } from './_PhilosophySection'
@@ -21,6 +22,30 @@ export const metadata: Metadata = {
 export default function Company() {
   return (
     <>
+      <Script
+        id="breadcrumb-company"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'ホーム',
+                item: 'https://ivyho.me/',
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: '会社情報',
+                item: 'https://ivyho.me/company',
+              },
+            ],
+          }),
+        }}
+      />
       <Hero
         video={{
           src: '/coffee.mp4',

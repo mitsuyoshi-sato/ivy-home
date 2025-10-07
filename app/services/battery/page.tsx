@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { Hero } from '@/components/Hero'
 import { _Battery } from './_Battery'
 import { Breadcrumb } from '@/components/Breadcrumb'
@@ -21,6 +22,36 @@ export const metadata: Metadata = {
 export default function BatteryPage() {
   return (
     <>
+      <Script
+        id="breadcrumb-services-battery"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'ホーム',
+                item: 'https://ivyho.me/',
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: '事業内容一覧',
+                item: 'https://ivyho.me/services',
+              },
+              {
+                '@type': 'ListItem',
+                position: 3,
+                name: '蓄電池',
+                item: 'https://ivyho.me/services/battery',
+              },
+            ],
+          }),
+        }}
+      />
       <Hero
         image={{ src: '/light.jpg', alt: '' }}
         subtitle="Battery"
