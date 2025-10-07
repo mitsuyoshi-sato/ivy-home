@@ -7,7 +7,10 @@ export const FooterLinks = (props: {
   return (
     <div className="mb-6 flex items-center justify-end gap-2 flex-wrap w-[calc(100%-3vw)] md:w-[calc(100%-80px)] mx-auto max-w-[1200px] px-[5vw] lg:px-[72px]">
       {props.items.map((item, i) => (
-        <div key={item.title} className="flex gap-2 shrink-0 text-gray-500">
+        <div
+          key={item.title}
+          className="flex gap-1 items-center shrink-0 text-gray-500"
+        >
           <Link
             href={item.href}
             className="flex items-center gap-2 hover:text-gray-900"

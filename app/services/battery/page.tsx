@@ -30,7 +30,7 @@ export default function BatteryPage() {
       <Breadcrumb
         items={[
           { title: 'Home', href: '/', icon: 'home' },
-          { title: '事業内容一覧', href: '/services', icon: 'layers' },
+          { title: '事業内容一覧', href: '/services', icon: 'briefcase' },
           {
             title: '蓄電池',
             href: '/services/battery',
@@ -45,7 +45,7 @@ export default function BatteryPage() {
       </section>
       <FooterLinks
         items={[
-          { title: '一覧へ戻る', href: '/services', icon: 'layers' },
+          { title: '一覧へ戻る', href: '/services', icon: 'briefcase' },
           { title: '太陽光パネル', href: '/services/solar-panel', icon: 'sun' },
           { title: 'エコキュート', href: '/services/eco-cute', icon: 'bath' },
           {

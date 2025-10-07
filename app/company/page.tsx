@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Hero } from '@/components/Hero'
+import { Breadcrumb } from '@/components/Breadcrumb'
 import { _PhilosophySection } from './_PhilosophySection'
 import { _InfoSection } from './_InfoSection'
 
@@ -28,6 +29,17 @@ export default function Company() {
         subtitle="Company"
         title="会社情報"
         description=""
+      />
+      <Breadcrumb
+        items={[
+          { title: 'ホーム', href: '/', icon: 'home' },
+          {
+            title: '会社情報',
+            href: '/company',
+            icon: 'building-2',
+            current: true,
+          },
+        ]}
       />
       <section id="philosophy" className="bg-cleam">
         <_PhilosophySection />

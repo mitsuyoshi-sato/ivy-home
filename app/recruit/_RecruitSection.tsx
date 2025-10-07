@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react'
 import { motion } from '../motion'
 import { SectionHeader } from '@/components/Section'
 import { Hero } from '@/components/Hero'
+import { Breadcrumb } from '@/components/Breadcrumb'
 
 export const _RecruitSection = () => {
   const refInfo = useRef<HTMLDivElement>(null)
@@ -55,6 +56,12 @@ export const _RecruitSection = () => {
         image={{ src: 'walk.jpg', alt: '' }}
         subtitle="Recuruit"
         title="採用情報"
+      />
+      <Breadcrumb
+        items={[
+          { title: 'ホーム', href: '/', icon: 'home' },
+          { title: '採用情報', href: '/recruit', icon: 'users', current: true },
+        ]}
       />
       <section className="wrapper">
         <SectionHeader

@@ -57,7 +57,7 @@ export default function RootLayout({
       href: '/services',
       label: '事業内容',
       subs: [
-        { href: '/services', label: 'Top', icon: 'layers' },
+        { href: '/services', label: 'Top', icon: 'briefcase' },
         { href: '/services/solar-panel', label: '太陽光パネル', icon: 'sun' },
         { href: '/services/battery', label: '蓄電池', icon: 'battery' },
         { href: '/services/eco-cute', label: 'エコキュート', icon: 'bath' },

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Hero } from '@/components/Hero'
+import { Breadcrumb } from '@/components/Breadcrumb'
 import { SectionHeader } from '@/components/Section'
 import { _ServiceCard } from './_ServiceCard'
 
@@ -27,6 +28,17 @@ export default function ServicesPage() {
         }}
         subtitle="Services"
         title="事業内容"
+      />
+      <Breadcrumb
+        items={[
+          { title: 'ホーム', href: '/', icon: 'home' },
+          {
+            title: '事業内容',
+            href: '/services',
+            icon: 'briefcase',
+            current: true,
+          },
+        ]}
       />
       <section className="wrapper">
         <SectionHeader

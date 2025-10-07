@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Hero } from '@/components/Hero'
+import { Breadcrumb } from '@/components/Breadcrumb'
 import { _ArticlesClient } from './_ArticlesClient'
 
 export const metadata: Metadata = {
@@ -24,6 +25,17 @@ export default function Articles() {
         subtitle="News"
         title="お知らせ"
         overlayOpacity="50"
+      />
+      <Breadcrumb
+        items={[
+          { title: 'ホーム', href: '/', icon: 'home' },
+          {
+            title: 'お知らせ',
+            href: '/news',
+            icon: 'newspaper',
+            current: true,
+          },
+        ]}
       />
       <section className="wrapper flex flex-col gap-20">
         <_ArticlesClient />
