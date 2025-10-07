@@ -3,13 +3,12 @@
 import { useEffect, useRef } from 'react'
 import { motion } from '../motion'
 import { SectionHeader } from '@/components/Section'
-import { Hero } from '@/components/Hero'
-import { Breadcrumb } from '@/components/Breadcrumb'
 
 export const _RecruitSection = () => {
   const refInfo = useRef<HTMLDivElement>(null)
   const refTell = useRef<HTMLDivElement>(null)
   const refMail = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
     const i = refInfo.current
     if (i) {
@@ -50,19 +49,9 @@ export const _RecruitSection = () => {
       return () => observer.disconnect()
     }
   }, [])
+
   return (
     <>
-      <Hero
-        image={{ src: 'walk.jpg', alt: '' }}
-        subtitle="Recuruit"
-        title="採用情報"
-      />
-      <Breadcrumb
-        items={[
-          { title: 'ホーム', href: '/', icon: 'home' },
-          { title: '採用情報', href: '/recruit', icon: 'users', current: true },
-        ]}
-      />
       <section className="wrapper">
         <SectionHeader
           title="採用情報の詳細"
@@ -123,17 +112,17 @@ export const _RecruitSection = () => {
           >
             <h3 className="text-xl font-semibold">電話でのお問い合わせ</h3>
             <div className="">
-              <p className="text-sm sm:text-base font-semibold">
+              <p className="text-sm sm:text-base">
                 <span className="text-gray-600 w-[120px] inline-block">
                   TEL
-                </span>{' '}
-                090-7629-7452
+                </span>
+                <span className="font-semibold">090-7629-7452</span>
               </p>
-              <p className="text-sm sm:text-base font-semibold">
+              <p className="text-sm sm:text-base">
                 <span className="text-gray-600 w-[120px] inline-block">
                   受付時間
-                </span>{' '}
-                平日 10:00～18:00
+                </span>
+                <span className="font-semibold">平日 10:00～18:00</span>
               </p>
             </div>
           </div>
@@ -144,11 +133,13 @@ export const _RecruitSection = () => {
           >
             <h3 className="text-xl font-semibold">メールでのお問い合わせ</h3>
             <div className="text-sm sm:text-base">
-              <p className="font-semibold flex">
+              <p className="flex">
                 <span className="w-[120px] inline-block text-gray-600">
                   Email
                 </span>
-                ivyhome.corp2025@outlook.jp
+                <span className="font-semibold">
+                  ivyhome.corp2025@outlook.jp
+                </span>
               </p>
             </div>
           </div>

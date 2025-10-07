@@ -30,17 +30,19 @@ export default function Company() {
         title="会社情報"
         description=""
       />
-      <Breadcrumb
-        items={[
-          { title: 'ホーム', href: '/', icon: 'home' },
-          {
-            title: '会社情報',
-            href: '/company',
-            icon: 'building-2',
-            current: true,
-          },
-        ]}
-      />
+      <div className="bg-cleam">
+        <Breadcrumb
+          items={[
+            { title: 'ホーム', href: '/', icon: 'home' },
+            {
+              title: '会社情報',
+              href: '/company',
+              icon: 'building',
+              current: true,
+            },
+          ]}
+        />
+      </div>
       <section id="philosophy" className="bg-cleam">
         <_PhilosophySection />
       </section>

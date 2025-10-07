@@ -32,7 +32,7 @@ export default function Articles() {
           {
             title: 'お知らせ',
             href: '/news',
-            icon: 'newspaper',
+            icon: 'bellRing',
             current: true,
           },
         ]}
