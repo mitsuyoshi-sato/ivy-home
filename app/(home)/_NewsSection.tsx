@@ -1,9 +1,12 @@
 'use client'
 
 import { SectionHeader } from '@/components/Section'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { motion } from '../motion'
 import Image from 'next/image'
+import Link from 'next/link'
+import { dataNews } from '../data/newsData'
+import { format } from 'date-fns'
 
 export const _NewsSection = () => {
   const scrollRef = useRef<HTMLDivElement>(null)
@@ -30,45 +33,6 @@ export const _NewsSection = () => {
     }
   }, [])
 
-  const cards = [
-    {
-      id: 1,
-      image: '/home.jpg',
-      date: '2025.9',
-      text: '電気代がここまで下がるなんて！',
-    },
-    {
-      id: 2,
-      image: '/light.jpg',
-      date: '2025.9',
-      text: '毎月の請求書をみるのが怖くなくなりました。',
-    },
-    {
-      id: 3,
-      image: '/solar-panel.jpg',
-      date: '2025.12',
-      text: '自分でエネルギーを作れるようになりました。',
-    },
-    {
-      id: 4,
-      image: '/cooking.jpg',
-      date: '2025.12',
-      text: 'ガス契約が不要になりました。',
-    },
-    {
-      id: 5,
-      image: '/tikudenti.png',
-      date: '2025.6',
-      text: '停電時も安心です。',
-    },
-    {
-      id: 6,
-      image: '/paint.jpeg',
-      date: '2025.9',
-      text: '生まれ変わりました！',
-    },
-  ]
-
   return (
     <section className="flex flex-col pb-[112px]">
       <div className="wrapper pb-0">
@@ -83,54 +47,76 @@ export const _NewsSection = () => {
 
       <div ref={scrollRef} className="w-full  mt-9" style={{ opacity: 0 }}>
         <div className="flex gap-4 w-fit animate-scroll">
-          {cards.map((card) => (
-            <article
-              key={card.id}
-              className="flex flex-col cursor-pointer hover:scale-105 transition-all duration-300"
-            >
-              <div className="border border-gray-300 w-[300px] h-[200px]  rounded-lg flex-shrink-0">
-                <div className="relative w-full h-full overflow-hidden rounded-lg">
-                  <Image
-                    src={card.image}
-                    alt={card.text}
-                    fill
-                    className="object-cover"
-                    sizes="300px"
-                  />
+          {dataNews.map((data) => {
+            const content = (
+              <article
+                key={data.id}
+                className="flex flex-col cursor-pointer hover:scale-105 transition-all duration-300"
+              >
+                <div className="border border-gray-300 w-[300px] h-[200px]  rounded-lg flex-shrink-0">
+                  <div className="relative w-full h-full overflow-hidden rounded-lg">
+                    <Image
+                      src={data.image}
+                      alt={data.title}
+                      fill
+                      className="object-cover"
+                      sizes="300px"
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="flex flex-col p-2">
-                <time className="text-sm text-gray-500">{card.date}</time>
-                <h3 className="text-sm text-dark7 font-semibold">
-                  {card.text}
-                </h3>
-              </div>
-            </article>
-          ))}
-          {cards.map((card) => (
-            <article
-              key={`duplicate-${card.id}`}
-              className="flex flex-col cursor-pointer hover:scale-105 transition-all duration-300"
-            >
-              <div className="border border-gray-300 w-[300px] h-[200px]  rounded-lg flex-shrink-0">
-                <div className="relative w-full h-full overflow-hidden rounded-lg">
-                  <Image
-                    src={card.image}
-                    alt={card.text}
-                    fill
-                    className="object-cover"
-                    sizes="300px"
-                  />
+                <div className="flex flex-col p-2">
+                  <time className="text-sm text-gray-500">
+                    {format(data.publishedAt, 'yyyy.M.d')}
+                  </time>
+                  <h3 className="text-sm text-dark7 font-semibold">
+                    {data.title}
+                  </h3>
                 </div>
-              </div>
-              <div className="flex flex-col p-2">
-                <time className="text-sm text-gray-500">{card.date}</time>
-                <h3 className="text-sm text-dark7 font-semibold">
-                  {card.text}
-                </h3>
-              </div>
-            </article>
-          ))}
+              </article>
+            )
+            return data.href ? (
+              <Link key={data.id} href={data.href}>
+                {content}
+              </Link>
+            ) : (
+              content
+            )
+          })}
+          {dataNews.map((data) => {
+            const content = (
+              <article
+                key={`duplicate-${data.id}`}
+                className="flex flex-col cursor-pointer hover:scale-105 transition-all duration-300"
+              >
+                <div className="border border-gray-300 w-[300px] h-[200px]  rounded-lg flex-shrink-0">
+                  <div className="relative w-full h-full overflow-hidden rounded-lg">
+                    <Image
+                      src={data.image}
+                      alt={data.title}
+                      fill
+                      className="object-cover"
+                      sizes="300px"
+                    />
+                  </div>
+                </div>
+                <div className="flex flex-col p-2">
+                  <time className="text-sm text-gray-500">
+                    {format(data.publishedAt, 'yyyy.M.d')}
+                  </time>
+                  <h3 className="text-sm text-dark7 font-semibold">
+                    {data.title}
+                  </h3>
+                </div>
+              </article>
+            )
+            return data.href ? (
+              <Link key={`duplicate-${data.id}`} href={data.href}>
+                {content}
+              </Link>
+            ) : (
+              content
+            )
+          })}
         </div>
       </div>
       <style jsx>{`
@@ -139,7 +125,9 @@ export const _NewsSection = () => {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(calc(-300px * 6 - 16px * 6));
+            transform: translateX(
+              calc(-300px * ${dataNews.length} - 16px * ${dataNews.length})
+            );
           }
         }
 
