@@ -26,7 +26,7 @@ export const _News = (props: { data: News }) => {
     ;(async () => {
       const cb = refCreatedBy.current
       const i = refImage.current
-      await motion.delay(1)
+      await motion.delay(0.5)
       if (cb && i) {
         motion.to(cb, 1.3, 'out', {
           opacity: 1,
