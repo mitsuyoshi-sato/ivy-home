@@ -21,7 +21,7 @@ export const dataNews: News[] = [
     id: 1,
     slug: 'ivy-home-establishment',
     image: '/unity.jpg',
-    publishedAt: '2025-09-01T00:00:00+09:00',
+    publishedAt: '2025-10-07T00:00:00+09:00',
     title: '株式会社アイビーホーム設立',
     subtitle:
       'お客様の未来の暮らしをつくる株式会社アイビーホーム。太陽光発電や住宅リフォームで安心と快適を提供します。',
@@ -47,7 +47,7 @@ export const dataNews: News[] = [
     id: 2,
     slug: 'monthly-bill',
     image: '/news-battery.jpg',
-    publishedAt: '2025-09-15T00:00:00+09:00',
+    publishedAt: '2025-10-07T00:00:00+09:00',
     title: '太陽光と蓄電池の組み合わせで家の電力活用効率アップ！',
     subtitle:
       '太陽光発電で作った電気を蓄電池に貯め、昼は自家消費、夜や停電時にも安心して使える家庭向けの新しいエネルギーライフをご提案します。',
