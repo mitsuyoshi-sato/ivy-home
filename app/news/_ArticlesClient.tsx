@@ -77,11 +77,7 @@ const __ArticleCard = ({
         <time className="text-sm text-gray-500 mt-2" dateTime={date}>
           {date}
         </time>
-        <h3
-          className={`text-lg mt-1 font-bold${description ? ' line-clamp-1' : ''}`}
-        >
-          {title}
-        </h3>
+        <h3 className="text-lg mt-1 font-bold">{title}</h3>
         {description && (
           <p className="mt-1 text-sm text-gray-500 line-clamp-3">
             {description}
