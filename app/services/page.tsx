@@ -48,7 +48,7 @@ export default function ServicesPage() {
       />
       <Hero
         video={{
-          src: 'sun-light.mp4',
+          src: '/sun-light.mp4',
           alt: '',
         }}
         subtitle="Services"
