@@ -98,15 +98,15 @@ export const _PhilosophySection = () => {
           >
             私たちはこの言葉を大切に、お客様との{' '}
             <strong className="text-xl">絆</strong> を育みながら、
-            未来の暮らしを創ることを使命としています。
+            未来の暮らしをつくることを使命としています。
           </p>
           <p
             ref={refDescription4}
             className="mt-8"
             style={{ opacity: 0, transform: 'translateY(100px)' }}
           >
-            Ivy-Homeは、 <strong className="text-xl ">誠実</strong>{' '}
-            な姿勢でお客様一人ひとりに寄り添い、暮らしの豊かさを実現するパートナーであり続けます。
+            Ivy-Homeは <strong className="text-xl ">誠実</strong>{' '}
+            な姿勢でお客様一人ひとりに寄り添い、理想の暮らしを実現するパートナーであり続けます。
           </p>
         </div>
       </div>
