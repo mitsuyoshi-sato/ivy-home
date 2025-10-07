@@ -85,9 +85,8 @@ export default function ArticlePage({ params }: Props) {
           }),
         }}
       />
-      <div className="bg-cleam">
+      <div className="bg-cleam pt-24">
         <Breadcrumb
-          className="pt-24"
           items={[
             { title: 'ホーム', href: '/', icon: 'home' },
             { title: 'お知らせ', href: '/news', icon: 'bellRing' },
