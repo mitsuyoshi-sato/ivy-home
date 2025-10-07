@@ -184,7 +184,7 @@ export const _SolarPanel = (props: { className?: string }) => {
         style={{ opacity: 0, transform: 'translateY(100px)' }}
         className="text-xl font-bold mt-40 text-center"
       >
-        太陽光パネルに関するよくある疑問
+        太陽光パネルに関するよくある質問
       </h3>
       <Acordion
         ref={refAcordion}

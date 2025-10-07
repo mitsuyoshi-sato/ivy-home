@@ -182,7 +182,7 @@ export const _TermiteControl = () => {
         style={{ opacity: 0, transform: 'translateY(100px)' }}
         className="text-xl font-bold mt-40 text-center"
       >
-        シロアリ駆除に関するよくある疑問
+        シロアリ駆除に関するよくある質問
       </h3>
       <Acordion
         ref={refAcordion}

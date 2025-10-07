@@ -184,7 +184,7 @@ export const _Battery = () => {
         style={{ opacity: 0, transform: 'translateY(100px)' }}
         className="text-xl font-bold mt-40 text-center"
       >
-        蓄電池に関するよくある疑問
+        蓄電池に関するよくある質問
       </h3>
       <Acordion
         ref={refAcordion}
