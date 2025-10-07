@@ -99,9 +99,7 @@ export default function ArticlePage({ params }: Props) {
           ]}
         />
       </div>
-      <section>
-        <_News data={data} />
-      </section>
+      <_News data={data} />
       <FooterLinks
         items={[{ title: '記事一覧に戻る', href: '/news', icon: 'newspaper' }]}
       />

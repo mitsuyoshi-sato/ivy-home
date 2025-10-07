@@ -42,8 +42,8 @@ export const _News = (props: { data: News }) => {
   }, [])
 
   return (
-    <>
-      <div className="bg-cleam">
+    <article>
+      <header className="bg-cleam">
         <div className="wrapper">
           <div className="flex flex-col md:flex-row md:items-center gap-12">
             <div className="w-full md:w-[50%]">
@@ -58,10 +58,10 @@ export const _News = (props: { data: News }) => {
                 className="flex items-center lg:justify-end gap-2 mt-4"
                 style={{ opacity: 0, transform: 'translateY(100px)' }}
               >
-                <div className="text-sm">
+                <time dateTime={props.data.publishedAt} className="text-sm">
                   {format(props.data.publishedAt, 'yyyy.MM.dd')}
-                </div>
-                <div className="text-gray-500 text-sm">created by</div>
+                </time>
+                <span className="text-gray-500 text-sm">created by</span>
                 <div className="w-7 h-7 rounded-full overflow-hidden">
                   <img
                     src={props.data.createdByImage}
@@ -72,7 +72,7 @@ export const _News = (props: { data: News }) => {
                 <p className="text-sm font-bold">{props.data.createdByJp}</p>
               </div>
             </div>
-            <div
+            <figure
               ref={refImage}
               className="w-full md:w-[50%] rounded-lg overflow-hidden"
               style={{ opacity: 0, transform: 'translateY(100px)' }}
@@ -82,10 +82,10 @@ export const _News = (props: { data: News }) => {
                 alt={props.data.title}
                 className="w-full h-full object-cover"
               />
-            </div>
+            </figure>
           </div>
         </div>
-      </div>
+      </header>
       <div className="wrapper pt-0">
         <div className="mt-12 space-y-24">
           {props.data.sections.map((section, index) => (
@@ -93,12 +93,12 @@ export const _News = (props: { data: News }) => {
           ))}
         </div>
       </div>
-    </>
+    </article>
   )
 }
 
 const _SectionItem = (props: { section: News['sections'][0] }) => {
-  const refContainer = useRef<HTMLDivElement>(null)
+  const refContainer = useRef<HTMLElement>(null)
 
   useEffect(() => {
     const c = refContainer.current
@@ -129,22 +129,22 @@ const _SectionItem = (props: { section: News['sections'][0] }) => {
   }, [])
 
   return (
-    <div
+    <section
       ref={refContainer}
       className="translate-y-8 transition-all duration-700 ease-out"
     >
-      <h3
+      <h2
         style={{ opacity: 0, transform: 'translateY(100px)' }}
         className="text-2xl font-bold mb-4"
       >
         {props.section.title}
-      </h3>
+      </h2>
       <p
         style={{ opacity: 0, transform: 'translateY(100px)' }}
         className="text-gray-800 whitespace-pre-line leading-loose"
       >
         {parseText(props.section.description)}
       </p>
-    </div>
+    </section>
   )
 }
