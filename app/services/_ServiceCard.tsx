@@ -42,11 +42,13 @@ export const _ServiceCard = (props: {
       style={{ opacity: 0, transform: 'translateY(100px)' }}
     >
       <p className="text-lg font-semibold">{props.title}</p>
-      <img
-        src={props.image.src}
-        alt={props.image.alt}
-        className="w-full h-full object-cover rounded-sm mt-4"
-      />
+      <figure className="w-full h-[250px] rounded-lg overflow-hidden border border-gray-200 mt-4">
+        <img
+          src={props.image.src}
+          alt={props.image.alt}
+          className="w-full h-full object-cover"
+        />
+      </figure>
       <p className="text-gray-800 mt-4 leading-[1.82] break-words whitespace-pre-line text-sm">
         {props.description}
       </p>

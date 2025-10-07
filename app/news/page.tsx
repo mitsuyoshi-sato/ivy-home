@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Script from 'next/script'
 import { Hero } from '@/components/Hero'
 import { Breadcrumb } from '@/components/Breadcrumb'
+import { SectionHeader } from '@/components/Section'
 import { _ArticlesClient } from './_ArticlesClient'
 
 export const metadata: Metadata = {
@@ -63,6 +64,11 @@ export default function Articles() {
         ]}
       />
       <section className="wrapper flex flex-col gap-20">
+        <SectionHeader
+          title="お知らせ一覧"
+          subtitle="News"
+          description="株式会社アイビーホームの最新情報をお届けします。\n新サービスやイベント情報など、お客様に役立つ情報を随時更新しています。"
+        />
         <_ArticlesClient />
       </section>
     </>

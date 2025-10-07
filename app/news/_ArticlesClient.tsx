@@ -11,7 +11,7 @@ import { dataNews } from '../data/newsData'
 export const _ArticlesClient = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-24 gap-y-12">
-      {dataNews.map((news, index) => (
+      {[...dataNews].reverse().map((news, index) => (
         <__ArticleCard
           key={index}
           imageSrc={news.image}
