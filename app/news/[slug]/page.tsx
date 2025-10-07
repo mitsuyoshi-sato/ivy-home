@@ -7,10 +7,11 @@ import { Breadcrumb } from '@/components/Breadcrumb'
 import { FooterLinks } from '@/components/FooterLinks'
 
 type Props = {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params
   // 記事データを取得してメタデータを生成
   return {
     title: '記事タイトル',
@@ -18,14 +19,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default function ArticlePage({ params }: Props) {
-  const data = dataNews.find((data) => data.href === `/news/${params.slug}`)
+export default async function ArticlePage({ params }: Props) {
+  const { slug } = await params
+  const data = dataNews.find((data) => data.href === `/news/${slug}`)
   if (!data) notFound()
 
   return (
     <>
       <Script
-        id={`breadcrumb-article-${params.slug}`}
+        id={`breadcrumb-article-${slug}`}
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -48,14 +50,14 @@ export default function ArticlePage({ params }: Props) {
                 '@type': 'ListItem',
                 position: 3,
                 name: data.title,
-                item: `https://ivyho.me/news/${params.slug}`,
+                item: `https://ivyho.me/news/${slug}`,
               },
             ],
           }),
         }}
       />
       <Script
-        id={`article-${params.slug}`}
+        id={`article-${slug}`}
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -67,7 +69,7 @@ export default function ArticlePage({ params }: Props) {
             description: data.subtitle,
             mainEntityOfPage: {
               '@type': 'WebPage',
-              '@id': `https://ivyho.me/news/${params.slug}`,
+              '@id': `https://ivyho.me/news/${slug}`,
             },
             author: {
               '@type': 'Person',
@@ -92,7 +94,7 @@ export default function ArticlePage({ params }: Props) {
             { title: 'お知らせ一覧', href: '/news', icon: 'bellRing' },
             {
               title: data.title,
-              href: `/news/${params.slug}`,
+              href: `/news/${slug}`,
               icon: 'newspaper',
               current: true,
             },
