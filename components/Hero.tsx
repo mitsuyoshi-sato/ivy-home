@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react'
 import { motion } from '../app/motion'
 import { cn } from '@/lib/utils'
-import { useAnimation } from '../app/AnimationContext'
+import { useAnimation } from '../app/(layout)/AnimationContext'
 
 export const Hero = (props: {
   image?: { src: string; alt: string }

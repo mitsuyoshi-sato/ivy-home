@@ -1,8 +1,8 @@
 'use client'
 
-import { Icon } from '@/components/ui/icon'
+import { Icon } from '@/components/ui/Icon'
 import { useEffect, useRef } from 'react'
-import { motion } from './motion'
+import { motion } from '../motion'
 import { useAnimation } from './AnimationContext'
 
 export default function _OpeningAnimation({

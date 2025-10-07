@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import { motion } from '../motion'
 import { ChevronDown } from 'lucide-react'
-import { Icon } from '@/components/ui/icon'
+import { Icon } from '@/components/ui/Icon'
 
 export const Nav = (props: {
   items: {

@@ -1,6 +1,6 @@
 import { motion } from '@/app/motion'
 import { forwardRef, useRef } from 'react'
-import { Icon } from './icon'
+import { Icon } from './Icon'
 
 export const Acordion = forwardRef<
   HTMLDivElement,

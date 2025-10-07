@@ -2,9 +2,10 @@ import type { Metadata } from 'next'
 import './globals.css'
 import Link from 'next/link'
 import { Inter, Noto_Sans_JP } from 'next/font/google'
+
+import _OpeningAnimation from './(layout)/_OpeningAnimation'
+import { AnimationProvider } from './(layout)/AnimationContext'
 import { Header } from './Header'
-import _OpeningAnimation from './_OpeningAnimation'
-import { AnimationProvider } from './AnimationContext'
 
 const inter = Inter({
   display: 'swap',

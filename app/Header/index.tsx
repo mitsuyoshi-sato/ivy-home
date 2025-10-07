@@ -2,7 +2,7 @@
 import { useRef } from 'react'
 import { Hamburger } from './Hamburger'
 import { Nav } from './Nav'
-import { Icon } from '@/components/ui/icon'
+import { Icon } from '@/components/ui/Icon'
 
 export const Header = (props: {
   items: {
