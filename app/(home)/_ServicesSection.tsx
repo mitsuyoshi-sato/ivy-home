@@ -56,7 +56,7 @@ export const _ServicesSection = () => {
       <SectionHeader
         title="私たちの提供する価値"
         subtitle="Services"
-        description="私たちは、快適で安心な暮らしを支える住宅設備の設計・施工を行っています。\n太陽光パネルや蓄電池、エコキュートなど、家庭の暮らしをより便利にするサービスを提供しています。"
+        description="私たちは、快適で安心な暮らしを支える住宅設備の販売・施工を行っています。\n太陽光パネルや蓄電池、エコキュートなど、家庭の暮らしをより便利にするサービスを提供しています。"
         button={{ href: '/services', text: '事業内容をみる' }}
       />
       <div
