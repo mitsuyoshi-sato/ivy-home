@@ -74,7 +74,7 @@ export const _News = (props: { data: News }) => {
             </div>
             <figure
               ref={refImage}
-              className="w-full md:w-[50%] rounded-lg overflow-hidden"
+              className="w-full h-[300px] md:w-[50%] rounded-lg overflow-hidden"
               style={{ opacity: 0, transform: 'translateY(100px)' }}
             >
               <img
