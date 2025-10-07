@@ -28,28 +28,34 @@ export const Hero = (props: {
   }, [props.video?.playbackRate])
 
   useEffect(() => {
-    const v = refVideo.current
-    let observer: IntersectionObserver | undefined
+    ;(async () => {
+      const v = refVideo.current
 
-    if (v) {
-      observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              console.log('再生')
-              refVideo.current?.play()
-            } else {
-              console.log('ポーズ')
-              refVideo.current?.pause()
-            }
-          })
-        },
-        { threshold: 0.2 },
-      )
-      observer.observe(v)
-    }
+      if (v) {
+        if (!refOpeningAnimation.current) {
+          await motion.delay(3.5)
+        }
 
-    return () => observer?.disconnect()
+        let observer: IntersectionObserver | undefined
+        observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                console.log('再生')
+                refVideo.current?.play()
+              } else {
+                console.log('ポーズ')
+                refVideo.current?.pause()
+              }
+            })
+          },
+          { threshold: 0.2 },
+        )
+        observer.observe(v)
+
+        return () => observer?.disconnect()
+      }
+    })()
   }, [])
 
   useEffect(() => {
