@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <>
       <Hero
-        title={<>未来の暮らしを、つくる。</>}
+        title="未来の暮らしを、つくる。"
         description="暮らしを支えるエネルギーづくりを、今から始めよう。"
         video={{
           src: 'home-hero.mp4',

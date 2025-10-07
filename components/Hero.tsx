@@ -28,6 +28,31 @@ export const Hero = (props: {
   }, [props.video?.playbackRate])
 
   useEffect(() => {
+    const v = refVideo.current
+    let observer: IntersectionObserver | undefined
+
+    if (v) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              console.log('再生')
+              refVideo.current?.play()
+            } else {
+              console.log('ポーズ')
+              refVideo.current?.pause()
+            }
+          })
+        },
+        { threshold: 0.2 },
+      )
+      observer.observe(v)
+    }
+
+    return () => observer?.disconnect()
+  }, [])
+
+  useEffect(() => {
     ;(async () => {
       const i = refImage.current
       const t = refText.current
@@ -84,7 +109,6 @@ export const Hero = (props: {
             <video
               ref={refVideo}
               className="w-full h-full object-cover"
-              autoPlay
               muted
               loop
               playsInline
