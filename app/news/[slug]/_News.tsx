@@ -45,8 +45,8 @@ export const _News = (props: { data: News }) => {
     <>
       <div className="bg-cleam">
         <div className="wrapper">
-          <div className="flex items-center gap-12">
-            <div className="w-[50%]">
+          <div className="flex flex-col md:flex-row md:items-center gap-12">
+            <div className="w-full md:w-[50%]">
               <SectionHeader
                 title={props.data.title}
                 subtitle={props.data.category}
@@ -55,7 +55,7 @@ export const _News = (props: { data: News }) => {
               />
               <div
                 ref={refCreatedBy}
-                className="flex items-center justify-end gap-2 mt-4"
+                className="flex items-center lg:justify-end gap-2 mt-4"
                 style={{ opacity: 0, transform: 'translateY(100px)' }}
               >
                 <div className="text-sm">
@@ -74,7 +74,7 @@ export const _News = (props: { data: News }) => {
             </div>
             <div
               ref={refImage}
-              className="w-[50%] rounded-lg overflow-hidden"
+              className="w-full md:w-[50%] rounded-lg overflow-hidden"
               style={{ opacity: 0, transform: 'translateY(100px)' }}
             >
               <img
