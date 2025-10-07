@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Hero } from '@/components/Hero'
 import { _TermiteControl } from './_TermiteControl'
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { FooterLinks } from '@/components/FooterLinks'
 
 export const metadata: Metadata = {
   title: 'シロアリ駆除',
@@ -24,9 +26,30 @@ export default function TermiteControlPage() {
         subtitle="Termite Control"
         title="シロアリ駆除"
       />
+      <Breadcrumb
+        items={[
+          { title: 'Home', href: '/', icon: 'home' },
+          { title: '事業内容一覧', href: '/services', icon: 'layers' },
+          {
+            title: 'シロアリ駆除',
+            href: '/services/termite-control',
+            icon: 'sprayCan',
+            current: true,
+          },
+        ]}
+      />
       <section className="wrapper">
         <_TermiteControl />
       </section>
+      <FooterLinks
+        items={[
+          { title: '一覧へ戻る', href: '/services', icon: 'layers' },
+          { title: '太陽光パネル', href: '/services/solar-panel', icon: 'sun' },
+          { title: '蓄電池', href: '/services/battery', icon: 'battery' },
+          { title: 'エコキュート', href: '/services/eco-cute', icon: 'bath' },
+          { title: 'リフォーム', href: '/services/reform', icon: 'paintbrush' },
+        ]}
+      />
     </>
   )
 }

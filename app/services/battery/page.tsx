@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Hero } from '@/components/Hero'
 import { _Battery } from './_Battery'
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { FooterLinks } from '@/components/FooterLinks'
 
 export const metadata: Metadata = {
   title: '蓄電池',
@@ -25,9 +27,35 @@ export default function BatteryPage() {
         title="蓄電池"
         overlayOpacity="40"
       />
+      <Breadcrumb
+        items={[
+          { title: 'Home', href: '/', icon: 'home' },
+          { title: '事業内容一覧', href: '/services', icon: 'layers' },
+          {
+            title: '蓄電池',
+            href: '/services/battery',
+            icon: 'battery',
+            current: true,
+          },
+        ]}
+      />
+
       <section className="wrapper">
         <_Battery />
       </section>
+      <FooterLinks
+        items={[
+          { title: '一覧へ戻る', href: '/services', icon: 'layers' },
+          { title: '太陽光パネル', href: '/services/solar-panel', icon: 'sun' },
+          { title: 'エコキュート', href: '/services/eco-cute', icon: 'bath' },
+          {
+            title: 'シロアリ駆除',
+            href: '/services/termite-control',
+            icon: 'sprayCan',
+          },
+          { title: 'リフォーム', href: '/services/reform', icon: 'paintbrush' },
+        ]}
+      />
     </>
   )
 }

@@ -5,7 +5,7 @@ import { motion } from '../../motion'
 import { _InfoCard } from '../_InfoCard'
 import { Acordion } from '@/components/ui/Acordion'
 
-export const _SolarPanel = () => {
+export const _SolarPanel = (props: { className?: string }) => {
   const refCards = useRef<HTMLDivElement>(null)
   const refSubtitle = useRef<HTMLParagraphElement>(null)
   const refTitle = useRef<HTMLHeadingElement>(null)
@@ -115,7 +115,7 @@ export const _SolarPanel = () => {
   }, [])
 
   return (
-    <div>
+    <div className={props.className}>
       <div className="flex flex-col">
         <p
           ref={refSubtitle}
