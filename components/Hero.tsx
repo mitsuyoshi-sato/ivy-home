@@ -41,10 +41,8 @@ export const Hero = (props: {
           (entries) => {
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
-                console.log('再生')
                 refVideo.current?.play()
               } else {
-                console.log('ポーズ')
                 refVideo.current?.pause()
               }
             })
