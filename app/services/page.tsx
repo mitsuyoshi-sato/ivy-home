@@ -6,11 +6,11 @@ import { SectionHeader } from '@/components/Section'
 import { _ServiceCard } from './_ServiceCard'
 
 export const metadata: Metadata = {
-  title: '事業内容',
+  title: '事業内容一覧',
   description:
     '太陽光パネル、蓄電池、エコキュート、リフォームなど、暮らしの安全と安心を守る取り組みをご紹介します。',
   openGraph: {
-    title: '事業内容 / 株式会社アイビーホーム',
+    title: '事業内容一覧 / 株式会社アイビーホーム',
     description:
       '太陽光パネル、蓄電池、エコキュート、リフォームなど、暮らしの安全と安心を守る取り組みをご紹介します。',
     images: {
@@ -39,7 +39,7 @@ export default function ServicesPage() {
               {
                 '@type': 'ListItem',
                 position: 2,
-                name: '事業内容',
+                name: '事業内容一覧',
                 item: 'https://ivyho.me/services',
               },
             ],
@@ -58,7 +58,7 @@ export default function ServicesPage() {
         items={[
           { title: 'ホーム', href: '/', icon: 'home' },
           {
-            title: '事業内容',
+            title: '事業内容一覧',
             href: '/services',
             icon: 'briefcase',
             current: true,

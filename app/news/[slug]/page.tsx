@@ -41,7 +41,7 @@ export default function ArticlePage({ params }: Props) {
               {
                 '@type': 'ListItem',
                 position: 2,
-                name: 'お知らせ',
+                name: 'お知らせ一覧',
                 item: 'https://ivyho.me/news',
               },
               {
@@ -89,7 +89,7 @@ export default function ArticlePage({ params }: Props) {
         <Breadcrumb
           items={[
             { title: 'ホーム', href: '/', icon: 'home' },
-            { title: 'お知らせ', href: '/news', icon: 'bellRing' },
+            { title: 'お知らせ一覧', href: '/news', icon: 'bellRing' },
             {
               title: data.title,
               href: `/news/${params.slug}`,

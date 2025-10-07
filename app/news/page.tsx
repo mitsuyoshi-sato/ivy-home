@@ -6,11 +6,11 @@ import { SectionHeader } from '@/components/Section'
 import { _ArticlesClient } from './_ArticlesClient'
 
 export const metadata: Metadata = {
-  title: 'お知らせ',
+  title: 'お知らせ一覧',
   description:
     '株式会社アイビーホームのお知らせページ。新サービスやイベント情報など、お客様に役立つ情報を随時更新しています。',
   openGraph: {
-    title: 'お知らせ / 株式会社アイビーホーム',
+    title: 'お知らせ一覧 / 株式会社アイビーホーム',
     description:
       '株式会社アイビーホームのお知らせページ。新サービスやイベント情報など、お客様に役立つ情報を随時更新しています。',
     images: {
@@ -39,7 +39,7 @@ export default function Articles() {
               {
                 '@type': 'ListItem',
                 position: 2,
-                name: 'お知らせ',
+                name: 'お知らせ一覧',
                 item: 'https://ivyho.me/news',
               },
             ],
@@ -56,7 +56,7 @@ export default function Articles() {
         items={[
           { title: 'ホーム', href: '/', icon: 'home' },
           {
-            title: 'お知らせ',
+            title: 'お知らせ一覧',
             href: '/news',
             icon: 'bellRing',
             current: true,
