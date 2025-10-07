@@ -48,7 +48,7 @@ export const dataNews: News[] = [
     slug: 'monthly-bill',
     image: '/news-battery.jpg',
     publishedAt: '2025-09-15T00:00:00+09:00',
-    title: '太陽光と蓄電池の組み合わせで家の電力活用効率アップ',
+    title: '太陽光と蓄電池の組み合わせで家の電力活用効率アップ！',
     subtitle:
       '太陽光発電で作った電気を蓄電池に貯め、昼は自家消費、夜や停電時にも安心して使える家庭向けの新しいエネルギーライフをご提案します。',
     href: '/news/monthly-bill',
