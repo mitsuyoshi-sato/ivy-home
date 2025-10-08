@@ -85,7 +85,7 @@ export const _ServicesSection = () => {
           description={
             ' 住宅向けに太陽光パネルの販売・設置・メンテナンスを行っています。\nお客様のライフスタイルや設備に合わせた最適なプランをご提案し、省エネと電気料金の削減をサポートします。'
           }
-          image={'/solar-panel-construction.jpg'}
+          image={'/images/solar-panel-construction.jpg'}
           colSpan={'7'}
           mdSpan={'12'}
         />
@@ -95,7 +95,7 @@ export const _ServicesSection = () => {
           description={
             ' 昼間に発電した電気を貯めて夜間に活用することで、エネルギーの自給自足を実現し、停電時の安心も提供します。'
           }
-          image={'/battery.jpg'}
+          image={'/images/battery.jpg'}
           colSpan={'5'}
           mdSpan={'5'}
         />
@@ -105,7 +105,7 @@ export const _ServicesSection = () => {
           description={
             '空気熱を活用することでガズを使用せずお湯が沸かせます。\n光熱費を抑え、環境負荷の軽減にも貢献します。設置から保守まで、きめ細やかなサポートを提供しています。'
           }
-          image={'/bathroom.jpg'}
+          image={'/images/bathroom.jpg'}
           colSpan={'6'}
           mdSpan={'7'}
           mdTrimAfterNewline
@@ -116,7 +116,7 @@ export const _ServicesSection = () => {
           description={
             '早期発見・早期対応でご自宅を守りましょう！まずはお気軽にご相談ください。'
           }
-          image={'/pest-control.jpg'}
+          image={'/images/pest-control.jpg'}
           colSpan={'3'}
           mdSpan={'7'}
         />
@@ -126,7 +126,7 @@ export const _ServicesSection = () => {
           description={
             '様々なご要望に柔軟かつ丁寧にお応えし、ご自宅を理想の住まいへとリフォームいたします。'
           }
-          image={'/kitchen.jpg'}
+          image={'/images/kitchen.jpg'}
           colSpan={'3'}
           mdSpan={'5'}
         />

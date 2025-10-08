@@ -148,7 +148,7 @@ export const _TermiteControl = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            image="/pest-control.jpg"
+            image="/images/pest-control.jpg"
             alt="傷んだ木材"
             title="早期発見が重要！"
             description="早期発見・早期対処が、大切な住まいを守ります。床下や木材に気になる変化や羽アリの発生があれば、迷わずご連絡ください。。"
@@ -160,7 +160,7 @@ export const _TermiteControl = () => {
         >
           <_InfoCard
             title="ペットや家族にも安心"
-            image="/dog.jpg"
+            image="/images/dog.jpg"
             alt="家にいる犬"
             description="当社の使用するシロアリ薬剤は、人体やペットへの毒性が低いものが選択しています。"
           />
@@ -170,7 +170,7 @@ export const _TermiteControl = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            image="/foot.jpg"
+            image="/images/foot.jpg"
             alt="綺麗な木材の床と足"
             title="大切な家の資産を守りましょう"
             description={`床下の隅々までチェックし、シロアリの被害を防ぎます。木材の健康を守ることで、大切な家を長く維持できます。`}

@@ -20,7 +20,7 @@ export const dataNews: News[] = [
   {
     id: 1,
     slug: 'ivy-home-establishment',
-    image: '/unity.jpg',
+    image: '/images/unity.jpg',
     publishedAt: '2025-10-07T00:00:00+09:00',
     title: '株式会社アイビーホーム設立',
     subtitle:
@@ -29,7 +29,7 @@ export const dataNews: News[] = [
     category: '事務連絡',
     createdByJp: '小西　裕也',
     createdByEn: 'Yuya Konishi',
-    createdByImage: '/yuya-konishi.jpg',
+    createdByImage: '/images/yuya-konishi.jpg',
     sections: [
       {
         title: '設立のご報告',
@@ -46,7 +46,7 @@ export const dataNews: News[] = [
   {
     id: 2,
     slug: 'monthly-bill',
-    image: '/news-battery.jpg',
+    image: '/images/news-battery.jpg',
     publishedAt: '2025-10-07T00:00:00+09:00',
     title: '太陽光と蓄電池の組み合わせで家の電力活用効率アップ！',
     subtitle:
@@ -55,7 +55,7 @@ export const dataNews: News[] = [
     category: '蓄電池・太陽光パネル',
     createdByJp: '小西　裕也',
     createdByEn: 'Yuya Konishi',
-    createdByImage: '/yuya-konishi.jpg',
+    createdByImage: '/images/yuya-konishi.jpg',
     sections: [
       {
         title: '太陽光パネルで作って、蓄電池で貯める！',
@@ -72,7 +72,7 @@ export const dataNews: News[] = [
   {
     id: 3,
     slug: 'termite-checklist',
-    image: '/pest-control.jpg',
+    image: '/images/pest-control.jpg',
     publishedAt: '2025-10-07T00:00:00+09:00',
     category: 'シロアリ対策',
     title: '家を守る！\nシロアリを見抜くためのチェックリスト',
@@ -81,7 +81,7 @@ export const dataNews: News[] = [
     href: '/news/termite-checklist',
     createdByJp: '小西　裕也',
     createdByEn: 'Yuya Konishi',
-    createdByImage: '/yuya-konishi.jpg',
+    createdByImage: '/images/yuya-konishi.jpg',
     sections: [
       {
         title: '小さなサインを見逃さない 〜シロアリ被害の初期症状〜',

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description:
       '空気の熱を利用して効率よくお湯をつくるエコキュート。電気代を大幅に削減し、環境にやさしい給湯システムです。',
     images: {
-      url: '/bathroom.jpg',
+      url: '/images/bathroom.jpg',
     },
   },
 }
@@ -53,7 +53,7 @@ export default function EcoCutePage() {
         }}
       />
       <Hero
-        image={{ src: '/bathroom.jpg', alt: 'エコキュート' }}
+        image={{ src: '/images/bathroom.jpg', alt: 'エコキュート' }}
         subtitle="EcoCute"
         title="エコキュート"
       />

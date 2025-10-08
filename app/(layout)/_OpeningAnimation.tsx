@@ -53,7 +53,7 @@ export default function _OpeningAnimation({
         <div ref={refLogo} className="relative w-[200px]">
           <div>
             <img
-              src="/logo-text.svg"
+              src="/images/logo-text.svg"
               alt="アイビーホームのロゴ"
               className="w-full"
             />

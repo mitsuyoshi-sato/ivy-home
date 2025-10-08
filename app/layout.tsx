@@ -30,11 +30,11 @@ export const metadata: Metadata = {
   },
   description: '今、つくるエネルギーが、明日の暮らしを豊かにする。',
   icons: {
-    icon: '/favicon.png',
+    icon: '/images/favicon.png',
   },
   openGraph: {
     images: {
-      url: '/ivy-home.svg',
+      url: '/images/ivy-home.svg',
     },
     title: '株式会社アイビーホーム',
   },
@@ -102,7 +102,7 @@ export default function RootLayout({
             <div className="bg-cleam py-10">
               <div className="wrapper flex flex-col items-start gap-10 md:flex-row md:gap-20 lg:gap-40 xl:w-full xl:justify-between">
                 <img
-                  src="/ivy-home.svg"
+                  src="/images/ivy-home.svg"
                   alt="アイビーホームのロゴ"
                   className="w-24 md:w-[120px] md:-translate-y-[10px] shrink-0"
                 />

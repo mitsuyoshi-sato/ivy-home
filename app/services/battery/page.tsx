@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description:
       '電気をためて夜間や緊急時にも活用できる蓄電池システム。停電時にも安心の電力を供給し、光熱費の削減にも貢献します。',
     images: {
-      url: '/battery.jpg',
+      url: '/images/battery.jpg',
     },
   },
 }
@@ -53,7 +53,7 @@ export default function BatteryPage() {
         }}
       />
       <Hero
-        image={{ src: '/light.jpg', alt: '' }}
+        image={{ src: '/images/light.jpg', alt: '' }}
         subtitle="Battery"
         title="蓄電池"
         overlayOpacity="40"

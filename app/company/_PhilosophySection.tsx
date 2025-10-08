@@ -64,7 +64,7 @@ export const _PhilosophySection = () => {
           className="flex flex-col items-center shrink-0"
         >
           <img
-            src="/ivy-home.svg"
+            src="/images/ivy-home.svg"
             alt="アイビーホームのロゴ"
             className="w-60 sm:w-[300px]"
           />

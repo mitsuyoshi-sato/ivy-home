@@ -53,7 +53,7 @@ export default function ReformPage() {
         }}
       />
       <Hero
-        image={{ src: '/kitchen.jpg', alt: 'リフォーム' }}
+        image={{ src: '/images/kitchen.jpg', alt: 'リフォーム' }}
         subtitle="Reform"
         title="リフォーム"
         overlayOpacity="40"

@@ -26,7 +26,7 @@ export const Header = (props: {
           <div className="relative w-[110px] translate-y-[2px]">
             <div>
               <img
-                src="/logo-text.svg"
+                src="/images/logo-text.svg"
                 alt="アイビーホームのロゴ"
                 className="w-full"
               />

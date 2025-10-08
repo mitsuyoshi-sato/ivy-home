@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description:
       '株式会社アイビーホームのニュースページ。新サービスやイベント情報など、お客様に役立つ情報を随時更新しています。',
     images: {
-      url: '/ivy-home.svg',
+      url: '/images/ivy-home.svg',
     },
   },
 }
@@ -47,7 +47,7 @@ export default function Articles() {
         }}
       />
       <Hero
-        video={{ src: '/newspaper.mp4', alt: '', playbackRate: 0.5 }}
+        video={{ src: '/videos/newspaper.mp4', alt: '', playbackRate: 0.5 }}
         subtitle="News"
         title="ニュース"
         overlayOpacity="50"

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description:
       '住宅を食害から守る専門サービス。大切な家の資産価値を守るため、プロの技術でシロアリを徹底駆除します。',
     images: {
-      url: '/family.jpg',
+      url: '/images/family.jpg',
     },
   },
 }
@@ -53,7 +53,7 @@ export default function TermiteControlPage() {
         }}
       />
       <Hero
-        image={{ src: '/damaged-wood.jpg', alt: 'シロアリ駆除' }}
+        image={{ src: '/images/damaged-wood.jpg', alt: 'シロアリ駆除' }}
         subtitle="Termite Control"
         title="シロアリ駆除"
       />

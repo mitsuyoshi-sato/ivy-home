@@ -81,7 +81,7 @@ export default async function ArticlePage({ params }: Props) {
               name: '株式会社アイビーホーム',
               logo: {
                 '@type': 'ImageObject',
-                url: 'https://ivyho.me/ivy-home.svg',
+                url: 'https://ivyho.me/images/ivy-home.svg',
               },
             },
           }),

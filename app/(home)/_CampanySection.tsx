@@ -50,7 +50,7 @@ export const _CampaignSection = () => {
         style={{ opacity: 0, transform: 'translateY(80px)' }}
       >
         <img
-          src="/unity.jpg"
+          src="/images/unity.jpg"
           alt="手を重ねて団結する様子"
           className="object-cover w-full h-full"
         />

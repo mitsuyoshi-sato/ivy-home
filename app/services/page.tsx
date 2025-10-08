@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description:
       '太陽光パネル、蓄電池、エコキュート、リフォームなど、暮らしの安全と安心を守る取り組みをご紹介します。',
     images: {
-      url: '/ivy-home.svg',
+      url: '/images/ivy-home.svg',
     },
   },
 }
@@ -48,7 +48,7 @@ export default function ServicesPage() {
       />
       <Hero
         video={{
-          src: '/sun-light.mp4',
+          src: '/videos/sun-light.mp4',
           alt: '',
         }}
         subtitle="Services"
@@ -77,7 +77,7 @@ export default function ServicesPage() {
             title="太陽光発電パネル"
             description="未来のエネルギーをつくるための安心の選択肢です。"
             image={{
-              src: '/houses.jpg',
+              src: '/images/houses.jpg',
               alt: '太陽光発電パネルを設置した住宅',
             }}
             index={0}
@@ -86,14 +86,14 @@ export default function ServicesPage() {
           <_ServiceCard
             title="蓄電池"
             description="電気をためて夜間や緊急時にも活用できます。"
-            image={{ src: '/battery.jpg', alt: '蓄電池の画像' }}
+            image={{ src: '/images/battery.jpg', alt: '蓄電池の画像' }}
             index={1}
             href="/services/battery"
           />
           <_ServiceCard
             title="エコキュート"
             description="空気の熱を利用して効率よくお湯をつくる給湯器です。"
-            image={{ src: '/bathroom.jpg', alt: 'お湯の溜まったお風呂' }}
+            image={{ src: '/images/bathroom.jpg', alt: 'お湯の溜まったお風呂' }}
             index={2}
             href="/services/eco-cute"
           />
@@ -101,7 +101,7 @@ export default function ServicesPage() {
             title="シロアリ駆除"
             description="住宅を食害から守る専門サービス。大切な家の資産価値を守ります。"
             image={{
-              src: '/pest-control.jpg',
+              src: '/images/pest-control.jpg',
               alt: 'シロアリを虫眼鏡で発見しているイメージ',
             }}
             index={3}
@@ -110,7 +110,7 @@ export default function ServicesPage() {
           <_ServiceCard
             title="リフォーム"
             description="マイホームをリフォームして、これからも長く住み続けられるように。"
-            image={{ src: '/kitchen.jpg', alt: 'リフォームされたキッチン' }}
+            image={{ src: '/images/kitchen.jpg', alt: 'リフォームされたキッチン' }}
             index={4}
             href="/services/reform"
           />

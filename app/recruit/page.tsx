@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     description:
       '株式会社アイビーホームの採用情報をご紹介します。私たちと一緒に、お客様の暮らしを支えるサービスを提供しませんか。',
     images: {
-      url: '/ivy-home.svg',
+      url: '/images/ivy-home.svg',
     },
   },
 }
@@ -46,7 +46,7 @@ export default function Recruit() {
         }}
       />
       <Hero
-        image={{ src: 'walk.jpg', alt: '' }}
+        image={{ src: '/images/walk.jpg', alt: '' }}
         subtitle="Recuruit"
         title="採用情報"
       />
