@@ -24,6 +24,9 @@ const notosansjp = Noto_Sans_JP({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000',
+  ),
   title: {
     default: '株式会社アイビーホーム',
     template: '%s / 株式会社アイビーホーム',
@@ -33,10 +36,17 @@ export const metadata: Metadata = {
     icon: '/images/favicon.png',
   },
   openGraph: {
-    images: {
-      url: '/images/ivy-home.png',
-    },
     title: '株式会社アイビーホーム',
+    description: '未来の暮らしを、つくる。',
+    type: 'website',
+    images: [
+      {
+        url: '/images/ivy-home.png',
+        width: 1200,
+        height: 630,
+        alt: '株式会社アイビーホーム',
+      },
+    ],
   },
 }
 export default function RootLayout({
