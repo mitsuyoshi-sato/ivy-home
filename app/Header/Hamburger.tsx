@@ -151,7 +151,7 @@ export const Hamburger = (props: {
           >
             <div className="w-[150px] h-full">
               <img
-                src={`/hero-${pathname === '/' ? 'home' : pathname.split('/')[1]}.jpg`}
+                src={`/images/hero-${pathname === '/' ? 'home' : pathname.split('/')[1]}.jpg`}
                 className="w-full h-full object-cover"
               />
             </div>
