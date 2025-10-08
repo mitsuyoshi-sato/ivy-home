@@ -29,13 +29,15 @@ export const metadata: Metadata = {
     default: '株式会社アイビーホーム',
     template: '%s / 株式会社アイビーホーム',
   },
-  description: '未来の暮らしを、つくる。',
+  description:
+    '太陽光・蓄電池・エコキュート・シロアリ対策・リフォーム。“未来の暮らしを、つくる。“をテーマに、お客様の快適で安心な毎日を、エコで安全な住まいとともにサポートします。',
   icons: {
     icon: '/images/favicon.png',
   },
   openGraph: {
     title: '株式会社アイビーホーム',
-    description: '未来の暮らしを、つくる。',
+    description:
+      '太陽光・蓄電池・エコキュート・シロアリ対策・リフォーム。“未来の暮らしを、つくる。“をテーマに、お客様の快適で安心な毎日を、エコで安全な住まいとともにサポートします。',
     type: 'website',
     images: [
       {
