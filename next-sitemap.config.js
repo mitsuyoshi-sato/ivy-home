@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 const config = {
-  siteUrl: 'https://ivyho.me',
+  siteUrl: 'https://www.ivyho.me',
   generateRobotsTxt: true,
   changefreq: 'monthly',
   transform: async (config, path) => {
