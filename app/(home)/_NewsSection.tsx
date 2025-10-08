@@ -7,9 +7,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { dataNews } from '../data/newsData'
 import { format } from 'date-fns'
+import { Button } from '@/components/ui/Button'
+import { ArrowRightIcon } from 'lucide-react'
 
 export const _NewsSection = () => {
   const scrollRef = useRef<HTMLDivElement>(null)
+  const refButtonMb = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const s = scrollRef.current
@@ -19,9 +22,15 @@ export const _NewsSection = () => {
           const entry = entries[0]
           if (entry.isIntersecting) {
             await motion.delay(0.5)
-            motion.to(s, 1.5, 'out', {
+            await motion.to(s, 1.5, 'out', {
               opacity: 1,
             })
+            if (refButtonMb.current) {
+              motion.to(refButtonMb.current, 0.8, 'out', {
+                opacity: 1,
+                translateY: '0px',
+              })
+            }
           }
         },
         { threshold: 0.7 },
@@ -41,7 +50,11 @@ export const _NewsSection = () => {
           subtitle="News"
           description="実際にご利用いただいたお客様から寄せられた感想や体験談をご紹介します。\n
 私たちのサービスが、日々の暮らしやお仕事にどのように役立っているのか、リアルな声を通してぜひご覧ください。"
-          button={{ href: '/news', text: 'お知らせをみる' }}
+          button={{
+            href: '/news',
+            text: 'お知らせをみる',
+            className: 'hidden md:block',
+          }}
         />
       </div>
 
@@ -118,7 +131,19 @@ export const _NewsSection = () => {
             )
           })}
         </div>
+        <div
+          ref={refButtonMb}
+          className="md:hidden flex justify-end w-full mt-4 wrapper py-0"
+          style={{ opacity: 0, transform: 'translateY(20px)' }}
+        >
+          <Link href="/news">
+            <Button icon={ArrowRightIcon} iconPosition="right">
+              ニュース一覧をみる
+            </Button>
+          </Link>
+        </div>
       </div>
+
       <style jsx>{`
         @keyframes scroll {
           0% {
