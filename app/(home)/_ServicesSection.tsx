@@ -185,11 +185,7 @@ function __Bento({
         colSpan === '2' && 'lg:col-span-2',
         colSpan === '1' && 'lg:col-span-1',
       )}
-      style={{
-        opacity: 0,
-        transform: 'scale(0.8)',
-        willChange: 'transform, opacity',
-      }}
+      style={{ opacity: 0, transform: 'scale(0.8)' }}
     >
       <Link href={href} className="absolute inset-0 z-20">
         <span className="sr-only">{title}の詳細を見る</span>
@@ -198,12 +194,9 @@ function __Bento({
       <img
         src={image}
         alt=""
-        className="w-full h-full object-cover absolute inset-0 rounded-xl p-1"
+        className="opacity-80 w-full h-full object-cover absolute inset-0 rounded-xl"
       />
-      <div
-        className="relative w-full h-full bg-cleam/70 backdrop-blur-3xl p-2 md:p-3 z-0"
-        style={{ transform: 'translateZ(0)' }}
-      >
+      <div className="relative w-full h-full bg-cleam/80 p-2 md:p-3 z-0">
         <div className="flex flex-row md:flex-col gap-3 h-full">
           <header className="shrink-0 w-[80px] md:w-full">
             <div
