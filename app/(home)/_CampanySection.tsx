@@ -16,14 +16,13 @@ export const _CampaignSection = () => {
           async (entries) => {
             const entry = entries[0]
             if (entry.isIntersecting) {
-              // 画像のアニメーション
               motion.to(i, 1.2, 'out', {
                 opacity: 1,
                 translateY: '0px',
               })
             }
           },
-          { threshold: 0.5 },
+          { threshold: 0.3 },
         )
 
         observer.observe(i)
