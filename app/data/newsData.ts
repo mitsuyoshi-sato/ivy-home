@@ -27,7 +27,7 @@ export const dataNews: News[] = [
       'お客様の未来の暮らしをつくる株式会社アイビーホーム。太陽光発電や住宅リフォームで安心と快適を提供します。',
     href: '/news/ivy-home-establishment',
     category: '事務連絡',
-    createdByJp: '小西　裕也',
+    createdByJp: '小西 裕也',
     createdByEn: 'Yuya Konishi',
     createdByImage: '/images/yuya-konishi.jpg',
     sections: [
@@ -53,7 +53,7 @@ export const dataNews: News[] = [
       '太陽光発電で作った電気を蓄電池に貯め、昼は自家消費、夜や停電時にも安心して使える家庭向けの新しいエネルギーライフをご提案します。',
     href: '/news/monthly-bill',
     category: '蓄電池・太陽光パネル',
-    createdByJp: '小西　裕也',
+    createdByJp: '小西 裕也',
     createdByEn: 'Yuya Konishi',
     createdByImage: '/images/yuya-konishi.jpg',
     sections: [
@@ -79,7 +79,7 @@ export const dataNews: News[] = [
     subtitle:
       '家を守る！シロアリの初期症状とチェックリストを解説。小さな穴や木材の変色など、見逃しやすいサインに気づく方法も紹介します。',
     href: '/news/termite-checklist',
-    createdByJp: '小西　裕也',
+    createdByJp: '小西 裕也',
     createdByEn: 'Yuya Konishi',
     createdByImage: '/images/yuya-konishi.jpg',
     sections: [
