@@ -6,13 +6,13 @@ import { SectionHeader } from '@/components/Section'
 import { _ArticlesClient } from './_ArticlesClient'
 
 export const metadata: Metadata = {
-  title: 'お知らせ一覧',
+  title: 'ニュース一覧',
   description:
-    '株式会社アイビーホームのお知らせページ。新サービスやイベント情報など、お客様に役立つ情報を随時更新しています。',
+    '株式会社アイビーホームのニュースページ。新サービスやイベント情報など、お客様に役立つ情報を随時更新しています。',
   openGraph: {
-    title: 'お知らせ一覧 / 株式会社アイビーホーム',
+    title: 'ニュース一覧 / 株式会社アイビーホーム',
     description:
-      '株式会社アイビーホームのお知らせページ。新サービスやイベント情報など、お客様に役立つ情報を随時更新しています。',
+      '株式会社アイビーホームのニュースページ。新サービスやイベント情報など、お客様に役立つ情報を随時更新しています。',
     images: {
       url: '/ivy-home.svg',
     },
@@ -39,7 +39,7 @@ export default function Articles() {
               {
                 '@type': 'ListItem',
                 position: 2,
-                name: 'お知らせ一覧',
+                name: 'ニュース一覧',
                 item: 'https://ivyho.me/news',
               },
             ],
@@ -49,14 +49,14 @@ export default function Articles() {
       <Hero
         video={{ src: '/newspaper.mp4', alt: '', playbackRate: 0.5 }}
         subtitle="News"
-        title="お知らせ"
+        title="ニュース"
         overlayOpacity="50"
       />
       <Breadcrumb
         items={[
           { title: 'ホーム', href: '/', icon: 'home' },
           {
-            title: 'お知らせ一覧',
+            title: 'ニュース一覧',
             href: '/news',
             icon: 'bellRing',
             current: true,
@@ -65,7 +65,7 @@ export default function Articles() {
       />
       <section className="wrapper flex flex-col gap-20">
         <SectionHeader
-          title="お知らせ一覧"
+          title="ニュース一覧"
           subtitle="News"
           description="株式会社アイビーホームの最新情報をお届けします。\n新サービスやイベント情報など、お客様に役立つ情報を随時更新しています。"
         />

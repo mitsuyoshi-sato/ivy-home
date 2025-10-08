@@ -75,7 +75,7 @@ export default function RootLayout({
     },
     {
       href: '/news',
-      label: 'お知らせ',
+      label: 'ニュース',
     },
     {
       href: '/recruit',
