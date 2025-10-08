@@ -108,7 +108,7 @@ export const _InfoSection = () => {
           <div className="flex w-full items-stretch border-b border-gray-200">
             <h3 className="w-1/4 text-gray-600 py-2 leading-6">代表取締役</h3>
             <p className="text-base text-dark6 font-semibold shrink-0 w-3/4 py-2 leading-6">
-              小西　裕也
+              小西 裕也
             </p>
           </div>
           <div className="flex w-full items-stretch border-b border-gray-200">
