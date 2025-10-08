@@ -10,7 +10,7 @@ export const SectionHeader = (props: {
   title: string
   subtitle: string
   description: string
-  button?: { href: string; text: string }
+  button?: { href: string; text: string; className?: string }
   className?: string
   style?: React.CSSProperties
 }) => {
@@ -93,6 +93,7 @@ export const SectionHeader = (props: {
       <div
         style={{ opacity: 0, transform: 'translateY(100px)' }}
         ref={refButton}
+        className={props.button?.className}
       >
         <Link href={props.button?.href || ''} hidden={!props.button}>
           <Button

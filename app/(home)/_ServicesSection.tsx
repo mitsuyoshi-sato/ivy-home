@@ -6,14 +6,17 @@ import { cn } from '@/lib/utils'
 import { motion } from '../motion'
 import { SectionHeader } from '@/components/Section'
 import Link from 'next/link'
+import { Button } from '@/components/ui/Button'
+import { ArrowRightIcon } from 'lucide-react'
 
 export const _ServicesSection = () => {
   const refContainer = useRef<HTMLDivElement>(null)
-
+  const refButtonMb = useRef<HTMLDivElement>(null)
   useEffect(() => {
     const c = refContainer.current
     if (!c) return
     const items = Array.from(c.children) as HTMLElement[]
+    let completedCount = 0
     const observer = new IntersectionObserver(
       async (entries) => {
         await Promise.all(
@@ -36,11 +39,20 @@ export const _ServicesSection = () => {
               const description = textContainer.querySelector(
                 'p:last-child',
               ) as HTMLElement | null
-              if (description)
-                motion.to(description, 1.0, 'out', {
+              if (description && description.offsetParent !== null)
+                await motion.to(description, 1.0, 'out', {
                   opacity: 1,
                   translateY: '0px',
                 })
+
+              completedCount++
+              if (completedCount === items.length && refButtonMb.current) {
+                motion.to(refButtonMb.current, 0.8, 'out', {
+                  opacity: 1,
+                  translateY: '0px',
+                })
+              }
+
               observer.unobserve(el)
             }),
         )
@@ -57,11 +69,15 @@ export const _ServicesSection = () => {
         title="私たちの提供する価値"
         subtitle="Services"
         description="私たちは、快適で安心な暮らしを支える住宅設備の販売・施工を行っています。\n太陽光パネルや蓄電池、エコキュートなど、家庭の暮らしをより便利にするサービスを提供しています。"
-        button={{ href: '/services', text: '事業内容をみる' }}
+        button={{
+          href: '/services',
+          text: '事業内容一覧をみる',
+          className: 'hidden md:block',
+        }}
       />
       <div
         ref={refContainer}
-        className="grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 gap-3 mt-9"
+        className="grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 gap-2 md:gap-3 mt-9"
       >
         <__Bento
           href="/services/solar-panel"
@@ -115,6 +131,17 @@ export const _ServicesSection = () => {
           mdSpan={'5'}
         />
       </div>
+      <div
+        ref={refButtonMb}
+        className="md:hidden flex justify-end w-full mt-4"
+        style={{ opacity: 0, transform: 'translateY(20px)' }}
+      >
+        <Link href="/services">
+          <Button icon={ArrowRightIcon} iconPosition="right">
+            事業内容一覧をみる
+          </Button>
+        </Link>
+      </div>
     </div>
   )
 }
@@ -140,6 +167,7 @@ function __Bento({
     <article
       className={cn(
         'group transition-all duration-300 ease-out hover:cursor-pointer hover:scale-[1.02] relative overflow-hidden border border-gray-300 flex items-center justify-center rounded-xl col-span-1',
+        'md:h-auto',
         mdSpan === '12' && 'md:col-span-12',
         mdSpan === '8' && 'md:col-span-8',
         mdSpan === '7' && 'md:col-span-7',
@@ -168,38 +196,35 @@ function __Bento({
         alt=""
         className="w-full h-full object-cover absolute inset-0 rounded-xl p-1"
       />
-      <div className="relative w-full h-full bg-white/80 backdrop-blur-3xl p-3 z-0">
-        <header>
-          <div
-            className={cn(
-              'relative rounded-xl overflow-hidden border-[1px] border-gray-300',
-              'h-[200px] md:h-[220px] lg:h-[220px]',
-            )}
-          >
-            <img
-              src={image}
-              alt={title}
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </header>
-        <div className="text-container pt-4 px-3">
-          <h3 className="text-lg font-bold">{title}</h3>
-          {!mdTrimAfterNewline && (
-            <p className="text-gray-600 mt-2 font-semibold leading-[1.82] break-words whitespace-pre-line text-sm">
-              {description.replace(/\\n/g, '\n')}
-            </p>
-          )}
-          {mdTrimAfterNewline && (
-            <>
-              <p className="text-gray-600 mt-2 font-semibold leading-[1.82] break-words whitespace-pre-line text-sm md:hidden">
+      <div className="relative w-full h-full bg-white/80 backdrop-blur-3xl p-2 md:p-3 z-0">
+        <div className="flex flex-row md:flex-col gap-3 h-full">
+          <header className="shrink-0 w-[80px] md:w-full">
+            <div
+              className={cn(
+                'relative rounded-xl overflow-hidden border-[1px] border-gray-300',
+                'h-[80px] md:h-[220px] lg:h-[220px]',
+              )}
+            >
+              <img
+                src={image}
+                alt={title}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </header>
+          <div className="text-container flex-1 flex flex-col justify-center md:pt-4 md:px-3">
+            <h3 className="text-lg font-bold">{title}</h3>
+            {!mdTrimAfterNewline && (
+              <p className="text-gray-600 mt-2 font-semibold leading-[1.82] break-words whitespace-pre-line text-sm hidden md:block">
                 {description.replace(/\\n/g, '\n')}
               </p>
+            )}
+            {mdTrimAfterNewline && (
               <p className="text-gray-600 mt-2 font-semibold leading-[1.82] break-words text-sm hidden md:block">
                 {description.split('\\n')[0]}
               </p>
-            </>
-          )}
+            )}
+          </div>
         </div>
       </div>
     </article>
