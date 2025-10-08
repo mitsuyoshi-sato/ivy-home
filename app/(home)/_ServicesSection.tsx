@@ -196,7 +196,7 @@ function __Bento({
         alt=""
         className="opacity-80 w-full h-full object-cover absolute inset-0 rounded-xl"
       />
-      <div className="relative w-full h-full bg-cleam/80 p-2 md:p-3 z-0">
+      <div className="relative w-full h-full bg-cleam/80 p-2 md:p-3 md:backdrop-blur-3xl z-0">
         <div className="flex flex-row md:flex-col gap-3 h-full">
           <header className="shrink-0 w-[80px] md:w-full">
             <div
