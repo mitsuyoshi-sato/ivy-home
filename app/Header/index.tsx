@@ -20,7 +20,7 @@ export const Header = (props: {
           style={{
             opacity: '1',
           }}
-          className="inset-0 absolute rounded-full border border-white/30 bg-white/40 shadow-lg shadow-white/20 backdrop-blur-md backdrop-saturate-150"
+          className="inset-0 absolute rounded-full border border-gray-300 bg-white/40 shadow-lg shadow-white/20 backdrop-blur-md backdrop-saturate-150"
         />
         <div className="flex items-center justify-between pl-6 w-full">
           <div className="relative w-[110px] translate-y-[2px]">
