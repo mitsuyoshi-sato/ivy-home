@@ -28,13 +28,13 @@ export const metadata: Metadata = {
     default: '株式会社アイビーホーム',
     template: '%s / 株式会社アイビーホーム',
   },
-  description: '今、つくるエネルギーが、明日の暮らしを豊かにする。',
+  description: '未来の暮らしを、つくる。',
   icons: {
     icon: '/images/favicon.png',
   },
   openGraph: {
     images: {
-      url: '/images/ivy-home.svg',
+      url: '/images/ivy-home.png',
     },
     title: '株式会社アイビーホーム',
   },
