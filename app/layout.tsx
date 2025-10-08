@@ -24,9 +24,7 @@ const notosansjp = Noto_Sans_JP({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000',
-  ),
+  metadataBase: new URL('https://www.ivyho.me'),
   title: {
     default: '株式会社アイビーホーム',
     template: '%s / 株式会社アイビーホーム',
