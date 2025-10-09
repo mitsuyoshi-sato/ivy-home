@@ -45,7 +45,7 @@ export const dataNews: News[] = [
   },
   {
     id: 2,
-    slug: 'monthly-bill',
+    slug: 'solar-battery-combination',
     image: '/images/news-battery.jpg',
     publishedAt: '2025-10-07T00:00:00+09:00',
     title: '太陽光と蓄電池の組み合わせで家の電力活用効率アップ！',
