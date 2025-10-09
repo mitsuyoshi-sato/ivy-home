@@ -77,7 +77,7 @@ export const _PhilosophySection = () => {
             ref={refDescription1}
             style={{ opacity: 0, transform: 'translateY(100px)' }}
           >
-            社名 "Ivy-Home" には、植物のアイビーの花言葉である
+            社名 &quot;Ivy-Home&quot; には、植物のアイビーの花言葉である
             <br className="hidden sm:block" />
             <strong className="text-xl">誠実</strong> や{' '}
             <strong className="text-xl">絆</strong> といった意味を込めています。
@@ -88,7 +88,7 @@ export const _PhilosophySection = () => {
             className="mt-8 text-xl text-ivy5 font-bold"
             style={{ opacity: 0, transform: 'translateY(100px)' }}
           >
-            "未来の暮らしを、つくる"
+            &quot;未来の暮らしを、つくる&quot;
           </p>
 
           <p

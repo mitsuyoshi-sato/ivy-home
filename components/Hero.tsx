@@ -36,8 +36,7 @@ export const Hero = (props: {
           await motion.delay(3.5)
         }
 
-        let observer: IntersectionObserver | undefined
-        observer = new IntersectionObserver(
+        const observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
               if (entry.isIntersecting) {

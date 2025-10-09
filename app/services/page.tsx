@@ -110,7 +110,10 @@ export default function ServicesPage() {
           <_ServiceCard
             title="リフォーム"
             description="マイホームをリフォームして、これからも長く住み続けられるように。"
-            image={{ src: '/images/kitchen.jpg', alt: 'リフォームされたキッチン' }}
+            image={{
+              src: '/images/kitchen.jpg',
+              alt: 'リフォームされたキッチン',
+            }}
             index={4}
             href="/services/reform"
           />

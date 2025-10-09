@@ -12,10 +12,18 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  // 記事データを取得してメタデータを生成
+  const data = dataNews.find((item) => item.href === `/news/${slug}`)
+
+  if (!data) {
+    return {
+      title: '記事が見つかりません',
+      description: '指定された記事は見つかりませんでした',
+    }
+  }
+
   return {
-    title: '記事タイトル',
-    description: '記事の説明',
+    title: data.title,
+    description: data.subtitle,
   }
 }
 
