@@ -1,9 +1,11 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+
+import { Acordion } from '@/components/ui/Acordion'
+
 import { motion } from '../../motion'
 import { _InfoCard } from '../_InfoCard'
-import { Acordion } from '@/components/ui/Acordion'
 
 export const _Reform = () => {
   const refCards = useRef<HTMLDivElement>(null)
@@ -126,31 +128,31 @@ export const _Reform = () => {
         </p>
         <h2
           ref={refTitle}
-          className="lg:text-4xl text-2xl font-bold mt-6"
+          className="mt-6 text-2xl font-bold lg:text-4xl"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           リフォーム
         </h2>
         <p
           ref={refDescription}
+          className="mt-4 text-sm text-gray-600 lg:mt-6 lg:text-lg"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
-          className="lg:text-lg text-sm text-gray-600 lg:mt-6 mt-4"
         >
           リフォームは、住み慣れた家を快適で長持ちする住まいに生まれ変わらせる選択です。
           <br />
           内装・水回り・外装など幅広く対応し、ライフスタイルや将来の安心まで考えたご提案をさせていただきます。
         </p>
       </div>
-      <div ref={refCards} className="flex flex-col md:flex-row gap-6 mt-12">
+      <div ref={refCards} className="mt-12 flex flex-col gap-6 md:flex-row">
         <article
           className="w-full md:w-1/3"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            image="/images/shink.jpg"
             alt="シンク"
-            title="多様なリフォームに対応"
             description="キッチン、浴室、トイレなどの水回りから、外壁塗装、屋根工事まで、住まいのあらゆるリフォームに対応します。"
+            image="/images/shink.jpg"
+            title="多様なリフォームに対応"
           />
         </article>
         <article
@@ -158,10 +160,10 @@ export const _Reform = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            image="/images/ih-cooking.jpg"
             alt="IHで料理をしている"
-            title="コストを抑えつつ理想の住まいを"
             description={`建て替えより費用を抑えつつ、ライフスタイルに合わせた理想の住まいを実現します。無駄を減らしたプランで、予算も安心です。`}
+            image="/images/ih-cooking.jpg"
+            title="コストを抑えつつ理想の住まいを"
           />
         </article>
         <article
@@ -169,23 +171,22 @@ export const _Reform = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            title="省エネ・快適な暮らしへ"
-            image="/images/family.jpg"
             alt="家族団欒の様子"
             description="断熱や設備改善で光熱費削減。長期的には省エネによるコスト削減と住まいの資産価値向上にもつながります。"
+            image="/images/family.jpg"
+            title="省エネ・快適な暮らしへ"
           />
         </article>
       </div>
       <h3
         ref={refAcordionTitle}
+        className="mt-40 text-center text-xl font-bold"
         style={{ opacity: 0, transform: 'translateY(100px)' }}
-        className="text-xl font-bold mt-40 text-center"
       >
         リフォームに関するよくある質問
       </h3>
       <Acordion
         ref={refAcordion}
-        style={{ opacity: 0, transform: 'translateY(100px)' }}
         items={[
           {
             question: 'リフォームできる範囲は？',
@@ -212,6 +213,7 @@ export const _Reform = () => {
             answer: `はい。トラブルや不明点には迅速に対応し、地域に根ざした会社ならではの安心のアフターフォローをご提供いたします。`,
           },
         ]}
+        style={{ opacity: 0, transform: 'translateY(100px)' }}
       />
     </div>
   )

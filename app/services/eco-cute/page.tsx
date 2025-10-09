@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
-import { Hero } from '@/components/Hero'
-import { _EcoCute } from './_EcoCute'
+
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { FooterLinks } from '@/components/FooterLinks'
+import { Hero } from '@/components/Hero'
+
+import { _EcoCute } from './_EcoCute'
 
 export const metadata: Metadata = {
   title: 'エコキュート',
@@ -23,8 +25,6 @@ export default function EcoCutePage() {
   return (
     <>
       <Script
-        id="breadcrumb-services-ecoCute"
-        type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
@@ -51,6 +51,8 @@ export default function EcoCutePage() {
             ],
           }),
         }}
+        id="breadcrumb-services-ecoCute"
+        type="application/ld+json"
       />
       <Hero
         image={{ src: '/images/bathroom.jpg', alt: 'エコキュート' }}

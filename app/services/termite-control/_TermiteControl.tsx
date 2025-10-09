@@ -1,9 +1,11 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+
+import { Acordion } from '@/components/ui/Acordion'
+
 import { motion } from '../../motion'
 import { _InfoCard } from '../_InfoCard'
-import { Acordion } from '@/components/ui/Acordion'
 
 export const _TermiteControl = () => {
   const refCards = useRef<HTMLDivElement>(null)
@@ -126,15 +128,15 @@ export const _TermiteControl = () => {
         </p>
         <h2
           ref={refTitle}
-          className="lg:text-4xl text-2xl font-bold mt-6"
+          className="mt-6 text-2xl font-bold lg:text-4xl"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           シロアリ駆除
         </h2>
         <p
           ref={refDescription}
+          className="mt-4 text-sm text-gray-600 lg:mt-6 lg:text-lg"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
-          className="lg:text-lg text-sm text-gray-600 lg:mt-6 mt-4"
         >
           シロアリは家の土台や柱を食い荒らし、建物の耐震性を著しく低下させます。
           <br />
@@ -142,16 +144,16 @@ export const _TermiteControl = () => {
           経験豊富な専門スタッフが、最新の駆除技術でお住まいを守ります。
         </p>
       </div>
-      <div ref={refCards} className="flex flex-col md:flex-row gap-6 mt-12">
+      <div ref={refCards} className="mt-12 flex flex-col gap-6 md:flex-row">
         <article
           className="w-full md:w-1/3"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            image="/images/pest-control.jpg"
             alt="傷んだ木材"
-            title="早期発見が重要！"
             description="早期発見・早期対処が、大切な住まいを守ります。床下や木材に気になる変化や羽アリの発生があれば、迷わずご連絡ください。。"
+            image="/images/pest-control.jpg"
+            title="早期発見が重要！"
           />
         </article>
         <article
@@ -159,10 +161,10 @@ export const _TermiteControl = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            title="ペットや家族にも安心"
-            image="/images/dog.jpg"
             alt="家にいる犬"
             description="当社の使用するシロアリ薬剤は、人体やペットへの毒性が低いものが選択しています。"
+            image="/images/dog.jpg"
+            title="ペットや家族にも安心"
           />
         </article>
         <article
@@ -170,23 +172,22 @@ export const _TermiteControl = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            image="/images/foot.jpg"
             alt="綺麗な木材の床と足"
-            title="大切な家の資産を守りましょう"
             description={`床下の隅々までチェックし、シロアリの被害を防ぎます。木材の健康を守ることで、大切な家を長く維持できます。`}
+            image="/images/foot.jpg"
+            title="大切な家の資産を守りましょう"
           />
         </article>
       </div>
       <h3
         ref={refAcordionTitle}
+        className="mt-40 text-center text-xl font-bold"
         style={{ opacity: 0, transform: 'translateY(100px)' }}
-        className="text-xl font-bold mt-40 text-center"
       >
         シロアリ駆除に関するよくある質問
       </h3>
       <Acordion
         ref={refAcordion}
-        style={{ opacity: 0, transform: 'translateY(100px)' }}
         items={[
           {
             question: 'シロアリがいるかどうか、どうやって分かるの？',
@@ -212,6 +213,7 @@ export const _TermiteControl = () => {
             answer: `家の規模や被害状況、選ぶ駆除方法によって異なります。まずは無料見積もり・相談をおすすめしています。`,
           },
         ]}
+        style={{ opacity: 0, transform: 'translateY(100px)' }}
       />
     </div>
   )

@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
-import { Hero } from '@/components/Hero'
-import { _Battery } from './_Battery'
+
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { FooterLinks } from '@/components/FooterLinks'
+import { Hero } from '@/components/Hero'
+
+import { _Battery } from './_Battery'
 
 export const metadata: Metadata = {
   title: '蓄電池',
@@ -23,8 +25,6 @@ export default function BatteryPage() {
   return (
     <>
       <Script
-        id="breadcrumb-services-battery"
-        type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
@@ -51,12 +51,14 @@ export default function BatteryPage() {
             ],
           }),
         }}
+        id="breadcrumb-services-battery"
+        type="application/ld+json"
       />
       <Hero
         image={{ src: '/images/light.jpg', alt: '' }}
+        overlayOpacity="40"
         subtitle="Battery"
         title="蓄電池"
-        overlayOpacity="40"
       />
       <Breadcrumb
         items={[

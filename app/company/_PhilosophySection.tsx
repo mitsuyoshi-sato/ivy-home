@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+
 import { motion } from '../motion'
 
 export const _PhilosophySection = () => {
@@ -57,22 +58,22 @@ export const _PhilosophySection = () => {
 
   return (
     <div className="wrapper">
-      <div className="xl:flex xl:gap-40 xl:items-center py-8">
+      <div className="py-8 xl:flex xl:items-center xl:gap-40">
         <div
           ref={refLogo}
+          className="flex shrink-0 flex-col items-center"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
-          className="flex flex-col items-center shrink-0"
         >
           <img
-            src="/images/ivy-home.svg"
             alt="アイビーホームのロゴ"
             className="w-60 sm:w-[300px]"
+            src="/images/ivy-home.svg"
           />
-          <h2 className="leading-relaxed text-2xl sm:text-4xl xl:mt-8 font-bold">
+          <h2 className="text-2xl font-bold leading-relaxed sm:text-4xl">
             未来の暮らしを、つくる。
           </h2>
         </div>
-        <div className="text-sm sm:text-base text-dark7 leading-6 mt-8 xl:mt-0 text-center xl:text-left">
+        <div className="mt-8 text-center text-sm leading-6 text-dark7 sm:text-base xl:mt-0 xl:text-left">
           <p
             ref={refDescription1}
             style={{ opacity: 0, transform: 'translateY(100px)' }}
@@ -85,7 +86,7 @@ export const _PhilosophySection = () => {
 
           <p
             ref={refDescription2}
-            className="mt-8 text-xl text-ivy5 font-bold"
+            className="mt-8 text-xl font-bold text-ivy5"
             style={{ opacity: 0, transform: 'translateY(100px)' }}
           >
             &quot;未来の暮らしを、つくる&quot;
@@ -105,7 +106,7 @@ export const _PhilosophySection = () => {
             className="mt-8"
             style={{ opacity: 0, transform: 'translateY(100px)' }}
           >
-            Ivy-Homeは <strong className="text-xl ">誠実</strong>{' '}
+            Ivy-Homeは <strong className="text-xl">誠実</strong>{' '}
             な姿勢でお客様一人ひとりに寄り添い、理想の暮らしを実現するパートナーであり続けます。
           </p>
         </div>

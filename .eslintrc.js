@@ -1,9 +1,20 @@
 module.exports = {
-  extends: '@soichiro_nitta/eslint-config/presets/react-typescript-prettier',
-  plugins: ['sort-keys-fix'],
+  extends: [
+    '@soichiro_nitta/eslint-config/presets/react-typescript-prettier',
+    'plugin:tailwindcss/recommended',
+  ],
   rules: {
-    'sort-keys-fix/sort-keys-fix': 'warn',
-    'typescript-sort-keys/interface': 'warn',
-    'react/jsx-sort-props': 'warn',
+    'tailwindcss/no-custom-classname': 'warn',
+    'tailwindcss/classnames-order': 'warn',
+    'react/no-unknown-property': [
+      'error',
+      {
+        ignore: ['jsx', 'global'],
+      },
+    ],
+    'sort-keys-fix/sort-keys-fix': 'off',
+    'sort-destructure-keys/sort-destructure-keys': 'off',
+    'typescript-sort-keys/interface': 'off',
+    'react/jsx-sort-props': 'off',
   },
 }

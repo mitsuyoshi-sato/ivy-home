@@ -1,5 +1,7 @@
-import { motion } from '@/app/motion'
 import { forwardRef, useRef } from 'react'
+
+import { motion } from '@/app/motion'
+
 import { Icon } from './Icon'
 
 export const Acordion = forwardRef<
@@ -12,14 +14,14 @@ export const Acordion = forwardRef<
   return (
     <div
       ref={ref}
+      className="mt-6 flex w-full flex-col border-t border-gray-300"
       style={props.style}
-      className="flex flex-col mt-6 w-full border-t border-gray-300"
     >
       {props.items.map((item) => (
         <AcordionItem
           key={item.question}
-          question={item.question}
           answer={item.answer}
+          question={item.question}
         />
       ))}
     </div>
@@ -34,7 +36,7 @@ const AcordionItem = (props: { question: string; answer: string }) => {
   const refIcon = useRef<SVGSVGElement>(null)
   return (
     <article
-      className="flex flex-col w-full border-b border-gray-300"
+      className="flex w-full flex-col border-b border-gray-300"
       onClick={async () => {
         const a = refAnswer.current
         const i = refIcon.current
@@ -64,16 +66,16 @@ const AcordionItem = (props: { question: string; answer: string }) => {
         }
       }}
     >
-      <h4 className="cursor-pointer text-sm flex justify-between items-center py-4 font-semibold">
+      <h4 className="flex cursor-pointer items-center justify-between py-4 text-sm font-semibold">
         Q. {props.question}
         <Icon ref={refIcon} name="chevronDown" size={20} />
       </h4>
       <div
         ref={refAnswer}
+        className="gap-1 whitespace-pre-line text-sm"
         style={{ height: '0px', opacity: 0, display: 'none' }}
-        className="text-sm whitespace-pre-line gap-1"
       >
-        <span className="flex-shrink-0">A.</span>
+        <span className="shrink-0">A.</span>
         <p className="flex-1">{props.answer}</p>
       </div>
     </article>

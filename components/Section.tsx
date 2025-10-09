@@ -1,10 +1,12 @@
 'use client'
 
-import { Button } from './ui/Button'
-import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 import { useEffect, useRef } from 'react'
+
 import { motion } from '@/app/motion'
+
+import { Button } from './ui/Button'
 
 export const SectionHeader = (props: {
   title: string
@@ -78,14 +80,14 @@ export const SectionHeader = (props: {
       </p>
       <h2
         ref={refTitle}
-        className="lg:text-4xl text-2xl font-bold lg:mt-6 mt-4 whitespace-pre-line"
+        className="mt-4 whitespace-pre-line text-2xl font-bold lg:mt-6 lg:text-4xl"
         style={{ opacity: 0, transform: 'translateY(100px)' }}
       >
         {props.title}
       </h2>
       <p
         ref={refDescription}
-        className="leading-relaxed lg:text-lg text-sm text-gray-600 lg:mt-6 mt-4"
+        className="mt-4 text-sm leading-relaxed text-gray-600 lg:mt-6 lg:text-lg"
         style={{ opacity: 0, transform: 'translateY(100px)' }}
       >
         {props.description.split('\\n').map((line, index, array) => (
@@ -96,13 +98,13 @@ export const SectionHeader = (props: {
         ))}
       </p>
       <div
-        style={{ opacity: 0, transform: 'translateY(100px)' }}
         ref={refButton}
         className={props.button?.className}
+        style={{ opacity: 0, transform: 'translateY(100px)' }}
       >
-        <Link href={props.button?.href || ''} hidden={!props.button}>
+        <Link hidden={!props.button} href={props.button?.href || ''}>
           <Button
-            className="lg:mt-6 mt-4"
+            className="mt-4 lg:mt-6"
             icon={ArrowRight}
             iconPosition="right"
           >

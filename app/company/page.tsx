@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
-import { Hero } from '@/components/Hero'
+
 import { Breadcrumb } from '@/components/Breadcrumb'
-import { _PhilosophySection } from './_PhilosophySection'
+import { Hero } from '@/components/Hero'
+
 import { _InfoSection } from './_InfoSection'
+import { _PhilosophySection } from './_PhilosophySection'
 
 export const metadata: Metadata = {
   title: '会社情報',
@@ -23,8 +25,6 @@ export default function Company() {
   return (
     <>
       <Script
-        id="breadcrumb-company"
-        type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
@@ -45,15 +45,17 @@ export default function Company() {
             ],
           }),
         }}
+        id="breadcrumb-company"
+        type="application/ld+json"
       />
       <Hero
+        description=""
+        subtitle="Company"
+        title="会社情報"
         video={{
           src: '/videos/coffee.mp4',
           alt: '',
         }}
-        subtitle="Company"
-        title="会社情報"
-        description=""
       />
       <div className="bg-cleam">
         <Breadcrumb
@@ -68,7 +70,7 @@ export default function Company() {
           ]}
         />
       </div>
-      <section id="philosophy" className="bg-cleam">
+      <section className="bg-cleam" id="philosophy">
         <_PhilosophySection />
       </section>
       <_InfoSection />

@@ -1,7 +1,9 @@
 'use client'
 
-import { Icon } from '@/components/ui/Icon'
 import { useEffect, useRef } from 'react'
+
+import { Icon } from '@/components/ui/Icon'
+
 import { motion } from '../motion'
 import { useAnimation } from './AnimationContext'
 
@@ -48,32 +50,32 @@ export default function _OpeningAnimation({
     <>
       <div
         ref={refContainer}
-        className="fixed inset-0 flex items-center justify-center bg-white z-50 transition-opacity duration-500"
+        className="fixed inset-0 z-50 flex items-center justify-center bg-white transition-opacity duration-500"
       >
         <div ref={refLogo} className="relative w-[200px]">
           <div>
             <img
-              src="/images/logo-text.svg"
               alt="アイビーホームのロゴ"
               className="w-full"
+              src="/images/logo-text.svg"
             />
           </div>
           <Icon
             ref={refLeaf}
-            stroke="#166534"
+            className="absolute left-[-18px] top-[-21.61px]"
             fill="#86EFAC"
             name="leaf"
             size={42.4}
-            className="absolute -top-[21.61px] -left-[18px]"
+            stroke="#166534"
             style={{ transformOrigin: '50% 50%', transformBox: 'fill-box' }}
           />
 
           <Icon
             ref={refDrop}
+            className="absolute left-[-23px] top-[5px] h-[30px] w-[15px] rounded-full"
             fill="skyblue"
-            stroke="#0ea5e9"
             name="droplet"
-            className="w-[15px] h-[30px] absolute top-[5px] -left-[23px] rounded-full"
+            stroke="#0ea5e9"
             style={{
               animation: 'drop 2s ease-in infinite',
               animationDelay: `0s`,
@@ -83,7 +85,7 @@ export default function _OpeningAnimation({
         </div>
       </div>
       {children}
-      <style jsx global>{`
+      <style global jsx>{`
         @keyframes shake {
           0% {
             transform: rotate(0deg);

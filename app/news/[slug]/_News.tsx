@@ -1,9 +1,10 @@
 'use client'
+import { format } from 'date-fns'
+import { useEffect, useRef } from 'react'
+
 import { News } from '@/app/data/newsData'
 import { motion } from '@/app/motion'
 import { SectionHeader } from '@/components/Section'
-import { format } from 'date-fns'
-import { useEffect, useRef } from 'react'
 
 const parseText = (text: string) => {
   const parts = text.split(/(\*\*.*?\*\*)/g)
@@ -45,8 +46,8 @@ export const _News = (props: { data: News }) => {
     <article>
       <header className="bg-cleam">
         <div className="wrapper">
-          <div className="flex flex-col md:flex-row md:items-center gap-12">
-            <div className="w-full md:w-[50%]">
+          <div className="flex flex-col gap-12 md:flex-row md:items-center">
+            <div className="w-full md:w-1/2">
               <SectionHeader
                 title={props.data.title}
                 subtitle={props.data.category}
@@ -55,18 +56,18 @@ export const _News = (props: { data: News }) => {
               />
               <div
                 ref={refCreatedBy}
-                className="flex items-center lg:justify-end gap-2 mt-4"
+                className="mt-4 flex items-center gap-2 lg:justify-end"
                 style={{ opacity: 0, transform: 'translateY(100px)' }}
               >
-                <time dateTime={props.data.publishedAt} className="text-sm">
+                <time className="text-sm" dateTime={props.data.publishedAt}>
                   {format(props.data.publishedAt, 'yyyy.MM.dd')}
                 </time>
-                <span className="text-gray-500 text-sm">created by</span>
-                <div className="w-7 h-7 rounded-full overflow-hidden">
+                <span className="text-sm text-gray-500">created by</span>
+                <div className="size-7 overflow-hidden rounded-full">
                   <img
-                    src={props.data.createdByImage}
                     alt={props.data.createdByJp}
-                    className="w-full h-full object-cover"
+                    className="size-full object-cover"
+                    src={props.data.createdByImage}
                   />
                 </div>
                 <p className="text-sm font-bold">{props.data.createdByJp}</p>
@@ -74,13 +75,13 @@ export const _News = (props: { data: News }) => {
             </div>
             <figure
               ref={refImage}
-              className="w-full h-[300px] md:w-[50%] rounded-lg overflow-hidden"
+              className="h-[300px] w-full overflow-hidden rounded-lg md:w-1/2"
               style={{ opacity: 0, transform: 'translateY(100px)' }}
             >
               <img
-                src={props.data.image}
                 alt={props.data.title}
-                className="w-full h-full object-cover"
+                className="size-full object-cover"
+                src={props.data.image}
               />
             </figure>
           </div>
@@ -134,14 +135,14 @@ const _SectionItem = (props: { section: News['sections'][0] }) => {
       className="translate-y-8 transition-all duration-700 ease-out"
     >
       <h2
+        className="mb-4 text-2xl font-bold"
         style={{ opacity: 0, transform: 'translateY(100px)' }}
-        className="text-2xl font-bold mb-4"
       >
         {props.section.title}
       </h2>
       <p
+        className="whitespace-pre-line leading-loose text-gray-800"
         style={{ opacity: 0, transform: 'translateY(100px)' }}
-        className="text-gray-800 whitespace-pre-line leading-loose"
       >
         {parseText(props.section.description)}
       </p>

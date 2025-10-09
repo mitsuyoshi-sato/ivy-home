@@ -1,9 +1,11 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+
+import { Acordion } from '@/components/ui/Acordion'
+
 import { motion } from '../../motion'
 import { _InfoCard } from '../_InfoCard'
-import { Acordion } from '@/components/ui/Acordion'
 
 export const _EcoCute = () => {
   const refCards = useRef<HTMLDivElement>(null)
@@ -126,15 +128,15 @@ export const _EcoCute = () => {
         </p>
         <h2
           ref={refTitle}
-          className="lg:text-4xl text-2xl font-bold mt-6"
+          className="mt-6 text-2xl font-bold lg:text-4xl"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           エコキュート
         </h2>
         <p
           ref={refDescription}
+          className="mt-4 text-sm text-gray-600 lg:mt-6 lg:text-lg"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
-          className="lg:text-lg text-sm text-gray-600 lg:mt-6 mt-4"
         >
           空気中の熱を取り込み、電気でわずかに加熱することでお湯を作るため、少ない電力で大量のお湯をためられます。
           <br />
@@ -142,17 +144,17 @@ export const _EcoCute = () => {
           環境にやさしく、経済的な給湯設備として多くのご家庭で選ばれています。
         </p>
       </div>
-      <div ref={refCards} className="flex flex-col md:flex-row gap-6 mt-12">
+      <div ref={refCards} className="mt-12 flex flex-col gap-6 md:flex-row">
         <article
           className="w-full md:w-1/3"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            image="/images/eco-cute.jpg"
             alt="エコキュート"
-            title="長期的に大きなメリット"
             description={`夜間の安い電力を利用して効率よくお湯を沸かすので、毎月の光熱費を大幅に抑えられます。
               長期的には家計の負担軽減にもつながります。`}
+            image="/images/eco-cute.jpg"
+            title="長期的に大きなメリット"
           />
         </article>
         <article
@@ -160,11 +162,11 @@ export const _EcoCute = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            title="家族みんなが快適に使える"
-            image="/images/hand-wash.jpg"
             alt="子供が手を洗っている様子"
             description={`大量タンクにより、お風呂や洗面所、キッチンなど複数箇所で快適に給湯。
               忙しい朝も家族全員がストレスなく使えます。`}
+            image="/images/hand-wash.jpg"
+            title="家族みんなが快適に使える"
           />
         </article>
         <article
@@ -172,23 +174,22 @@ export const _EcoCute = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            image="/images/shower.jpg"
             alt="シャワーヘッドから水が出ている様子"
-            title="火を使わずにお湯を沸かす"
             description={`火を使わず安全にお湯を供給できる点や、環境負荷を抑えられる点もメリットとして考慮すると、経済性だけでなく暮らし全体の安心にもつながります。`}
+            image="/images/shower.jpg"
+            title="火を使わずにお湯を沸かす"
           />
         </article>
       </div>
       <h3
         ref={refAcordionTitle}
+        className="mt-40 text-center text-xl font-bold"
         style={{ opacity: 0, transform: 'translateY(100px)' }}
-        className="text-xl font-bold mt-40 text-center"
       >
         エコキュートに関するよくある質問
       </h3>
       <Acordion
         ref={refAcordion}
-        style={{ opacity: 0, transform: 'translateY(100px)' }}
         items={[
           {
             question: '	家族4人だとお湯は足りますか？',
@@ -215,6 +216,7 @@ export const _EcoCute = () => {
             内部の点検や故障対応は専門スタッフがサポートしますので、安心してご利用いただけます。`,
           },
         ]}
+        style={{ opacity: 0, transform: 'translateY(100px)' }}
       />
     </div>
   )

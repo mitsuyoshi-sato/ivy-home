@@ -1,6 +1,8 @@
-import { cn } from '@/lib/utils'
 import { ChevronRight } from 'lucide-react'
 import Link from 'next/link'
+
+import { cn } from '@/lib/utils'
+
 import { Icon } from './ui/Icon'
 
 export const Breadcrumb = (props: {
@@ -10,21 +12,21 @@ export const Breadcrumb = (props: {
   return (
     <div
       className={cn(
-        'pt-4 flex items-center gap-2 flex-wrap w-[calc(100%-3vw)] md:w-[calc(100%-80px)] mx-auto max-w-[1200px] px-[5vw] lg:px-[72px]',
+        'mx-auto flex w-[calc(100%-3vw)] max-w-[1200px] flex-wrap items-center gap-2 px-[5vw] pt-4 md:w-[calc(100%-80px)] lg:px-[72px]',
         props.className,
       )}
     >
       {props.items.map((item, i) => (
-        <div key={item.title} className="flex gap-2 shrink-0 items-center">
+        <div key={item.title} className="flex shrink-0 items-center gap-2">
           <Link
-            href={item.href}
+            aria-disabled={item.current}
             className={cn(
-              'text-sm md:text-base flex gap-1 items-center',
+              'flex items-center gap-1 text-sm md:text-base',
               item.current &&
-                'text-gray-900 font-bold pointer-events-none cursor-default',
+                'pointer-events-none cursor-default font-bold text-gray-900',
               !item.current && 'text-gray-500 hover:text-gray-900',
             )}
-            aria-disabled={item.current}
+            href={item.href}
           >
             <Icon name={item.icon} size={16} />
             <div className={cn(!item.current && 'text-sm md:text-base')}>
@@ -32,7 +34,7 @@ export const Breadcrumb = (props: {
             </div>
           </Link>
           {i !== props.items.length - 1 && (
-            <ChevronRight className="w-4 h-4 text-gray-500" />
+            <ChevronRight className="size-4 text-gray-500" />
           )}
         </div>
       ))}

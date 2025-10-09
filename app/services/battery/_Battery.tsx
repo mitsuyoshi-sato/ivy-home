@@ -1,9 +1,11 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+
+import { Acordion } from '@/components/ui/Acordion'
+
 import { motion } from '../../motion'
 import { _InfoCard } from '../_InfoCard'
-import { Acordion } from '@/components/ui/Acordion'
 
 export const _Battery = () => {
   const refCards = useRef<HTMLDivElement>(null)
@@ -126,15 +128,15 @@ export const _Battery = () => {
         </p>
         <h2
           ref={refTitle}
-          className="lg:text-4xl text-2xl font-bold mt-6"
+          className="mt-6 text-2xl font-bold lg:text-4xl"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           蓄電池
         </h2>
         <p
           ref={refDescription}
+          className="mt-4 text-sm text-gray-600 lg:mt-6 lg:text-lg"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
-          className="lg:text-lg text-sm text-gray-600 lg:mt-6 mt-4"
         >
           蓄電池は太陽光発電や深夜電力などで作った電気を蓄えて、必要な時に使える「電気の貯金」のような仕組みです。
           <br />
@@ -142,16 +144,16 @@ export const _Battery = () => {
           将来の電力不安に備える賢い選択肢として、多くのご家庭で選ばれています。
         </p>
       </div>
-      <div ref={refCards} className="flex flex-col md:flex-row gap-6 mt-12">
+      <div ref={refCards} className="mt-12 flex flex-col gap-6 md:flex-row">
         <article
           className="w-full md:w-1/3"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            image="/images/battery.jpg"
             alt="屋外に設置された蓄電池"
-            title="蓄電池の仕組み"
             description="太陽光発電や深夜電力などで作った電気を蓄えて、必要なとき、緊急時に使用できます。電気を「賢くためて使う」ことで、経済的に生活をサポートします。"
+            image="/images/battery.jpg"
+            title="蓄電池の仕組み"
           />
         </article>
         <article
@@ -159,11 +161,11 @@ export const _Battery = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            image="/images/kettle.jpg"
             alt="電気ケトル"
-            title="賢くエネルギーを節約"
             description={`電気代を削減するだけでなく、将来の電力価格変動にも備えられます。
               賢いエネルギー管理を実現できます。`}
+            image="/images/kettle.jpg"
+            title="賢くエネルギーを節約"
           />
         </article>
         <article
@@ -171,24 +173,23 @@ export const _Battery = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            image="/images/room-light.jpg"
             alt="室内照明"
-            title="停電時に大活躍！"
             description={`停電時でも冷蔵庫や照明、テレビなど必要な家電を数時間安心して使えます。
               災害時も家族の生活を守るバックアップ電源です。`}
+            image="/images/room-light.jpg"
+            title="停電時に大活躍！"
           />
         </article>
       </div>
       <h3
         ref={refAcordionTitle}
+        className="mt-40 text-center text-xl font-bold"
         style={{ opacity: 0, transform: 'translateY(100px)' }}
-        className="text-xl font-bold mt-40 text-center"
       >
         蓄電池に関するよくある質問
       </h3>
       <Acordion
         ref={refAcordion}
-        style={{ opacity: 0, transform: 'translateY(100px)' }}
         items={[
           {
             question: '蓄電池は太陽光パネルがないと使えないの？',
@@ -216,6 +217,7 @@ export const _Battery = () => {
             設置場所の条件に合わせて最適なプランをご提案します。`,
           },
         ]}
+        style={{ opacity: 0, transform: 'translateY(100px)' }}
       />
     </div>
   )

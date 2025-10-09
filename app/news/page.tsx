@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
-import { Hero } from '@/components/Hero'
+
 import { Breadcrumb } from '@/components/Breadcrumb'
+import { Hero } from '@/components/Hero'
 import { SectionHeader } from '@/components/Section'
+
 import { _ArticlesClient } from './_ArticlesClient'
 
 export const metadata: Metadata = {
@@ -23,8 +25,6 @@ export default function Articles() {
   return (
     <>
       <Script
-        id="breadcrumb-news"
-        type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
@@ -45,12 +45,14 @@ export default function Articles() {
             ],
           }),
         }}
+        id="breadcrumb-news"
+        type="application/ld+json"
       />
       <Hero
-        video={{ src: '/videos/newspaper.mp4', alt: '', playbackRate: 0.5 }}
+        overlayOpacity="50"
         subtitle="News"
         title="ニュース"
-        overlayOpacity="50"
+        video={{ src: '/videos/newspaper.mp4', alt: '', playbackRate: 0.5 }}
       />
       <Breadcrumb
         items={[
@@ -65,9 +67,9 @@ export default function Articles() {
       />
       <section className="wrapper flex flex-col gap-20">
         <SectionHeader
-          title="ニュース一覧"
-          subtitle="News"
           description="株式会社アイビーホームの最新情報をお届けします。\n新サービスやイベント情報など、お客様に役立つ情報を随時更新しています。"
+          subtitle="News"
+          title="ニュース一覧"
         />
         <_ArticlesClient />
       </section>
