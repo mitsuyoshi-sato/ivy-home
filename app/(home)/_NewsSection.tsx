@@ -6,7 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 
-import { SectionHeader } from '@/components/Section'
+import { SectionHeader } from '@/components/SectionHeader'
 import { Button } from '@/components/ui/Button'
 
 import { dataNews } from '../data/newsData'

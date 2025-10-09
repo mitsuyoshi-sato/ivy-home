@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react'
 
 import { News } from '@/app/data/newsData'
 import { motion } from '@/app/motion'
-import { SectionHeader } from '@/components/Section'
+import { SectionHeader } from '@/components/SectionHeader'
 
 const parseText = (text: string) => {
   const parts = text.split(/(\*\*.*?\*\*)/g)

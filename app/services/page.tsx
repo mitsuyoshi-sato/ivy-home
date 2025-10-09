@@ -3,7 +3,7 @@ import Script from 'next/script'
 
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { Hero } from '@/components/Hero'
-import { SectionHeader } from '@/components/Section'
+import { SectionHeader } from '@/components/SectionHeader'
 
 import { _ServiceCard } from './_ServiceCard'
 

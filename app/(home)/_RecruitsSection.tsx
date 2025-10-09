@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 
-import { SectionHeader } from '@/components/Section'
+import { SectionHeader } from '@/components/SectionHeader'
 
 import { motion } from '../motion'
 

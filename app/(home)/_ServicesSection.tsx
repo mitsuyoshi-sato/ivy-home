@@ -4,7 +4,7 @@ import { ArrowRightIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 
-import { SectionHeader } from '@/components/Section'
+import { SectionHeader } from '@/components/SectionHeader'
 import { Button } from '@/components/ui/Button'
 import { cn } from '@/lib/utils'
 
