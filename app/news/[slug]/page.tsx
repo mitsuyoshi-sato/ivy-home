@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Script from 'next/script'
-import { _News } from './_News'
+
 import { dataNews } from '@/app/data/newsData'
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { FooterLinks } from '@/components/FooterLinks'
+
+import { _News } from './_News'
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -35,8 +37,6 @@ export default async function ArticlePage({ params }: Props) {
   return (
     <>
       <Script
-        id={`breadcrumb-article-${slug}`}
-        type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
@@ -63,10 +63,10 @@ export default async function ArticlePage({ params }: Props) {
             ],
           }),
         }}
+        id={`breadcrumb-article-${slug}`}
+        type="application/ld+json"
       />
       <Script
-        id={`article-${slug}`}
-        type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
@@ -94,6 +94,8 @@ export default async function ArticlePage({ params }: Props) {
             },
           }),
         }}
+        id={`article-${slug}`}
+        type="application/ld+json"
       />
       <div className="bg-cleam pt-24">
         <Breadcrumb

@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useRef, ReactNode } from 'react'
+import { createContext, ReactNode, useContext, useRef } from 'react'
 
 type AnimationContextType = {
   refOpeningAnimation: React.RefObject<boolean>

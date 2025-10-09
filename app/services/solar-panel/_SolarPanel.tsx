@@ -1,9 +1,11 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+
+import { Acordion } from '@/components/ui/Acordion'
+
 import { motion } from '../../motion'
 import { _InfoCard } from '../_InfoCard'
-import { Acordion } from '@/components/ui/Acordion'
 
 export const _SolarPanel = (props: { className?: string }) => {
   const refCards = useRef<HTMLDivElement>(null)
@@ -126,15 +128,15 @@ export const _SolarPanel = (props: { className?: string }) => {
         </p>
         <h2
           ref={refTitle}
-          className="lg:text-4xl text-2xl font-bold mt-6"
+          className="mt-6 text-2xl font-bold lg:text-4xl"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           太陽光パネル
         </h2>
         <p
           ref={refDescription}
+          className="mt-4 text-sm text-gray-600 lg:mt-6 lg:text-lg"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
-          className="lg:text-lg text-sm text-gray-600 lg:mt-6 mt-4"
         >
           電気代、最近どんどん上がってますよね…。
           <br />
@@ -143,16 +145,16 @@ export const _SolarPanel = (props: { className?: string }) => {
           さらに、環境にもやさしく、安心できる暮らしを支える仕組みとして、多くのご家庭で選ばれています。
         </p>
       </div>
-      <div ref={refCards} className="flex flex-col md:flex-row gap-6 mt-12">
+      <div ref={refCards} className="mt-12 flex flex-col gap-6 md:flex-row">
         <article
           className="w-full md:w-1/3"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            image="/images/solar-panel-construction.jpg"
             alt="ソーラーパネルの設置工事"
-            title="太陽光パネルの仕組み"
             description="太陽の光を電気に変えるクリーンエネルギーシステムです。屋根や敷地に設置したパネルが太陽光を吸収し、家庭で使える電力を供給します。"
+            image="/images/solar-panel-construction.jpg"
+            title="太陽光パネルの仕組み"
           />
         </article>
         <article
@@ -160,10 +162,10 @@ export const _SolarPanel = (props: { className?: string }) => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            image="/images/houses.jpg"
             alt="ソーラーパネルが設置された住宅街"
-            title="家計を助ける投資"
             description="光熱費を削減しながら、電力自給率を高めることができます。余った電力は蓄電池に保存したり、電力会社に売ることも可能です。"
+            image="/images/houses.jpg"
+            title="家計を助ける投資"
           />
         </article>
         <article
@@ -171,24 +173,23 @@ export const _SolarPanel = (props: { className?: string }) => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            image="/images/afterfollow.jpg"
             alt="営業担当者が自宅でお客様の話を聞く様子"
-            title="安心のアフターフォロー"
             description={`設置後も、トラブル時やご不明点に迅速に対応。
 地域に根ざした会社だからこそ、いつでも頼れる安心のサポートをご提供いたします。`}
+            image="/images/afterfollow.jpg"
+            title="安心のアフターフォロー"
           />
         </article>
       </div>
       <h3
         ref={refAcordionTitle}
+        className="mt-40 text-center text-xl font-bold"
         style={{ opacity: 0, transform: 'translateY(100px)' }}
-        className="text-xl font-bold mt-40 text-center"
       >
         太陽光パネルに関するよくある質問
       </h3>
       <Acordion
         ref={refAcordion}
-        style={{ opacity: 0, transform: 'translateY(100px)' }}
         items={[
           {
             question: '太陽光パネル設置は本当にお得なの？',
@@ -216,6 +217,7 @@ export const _SolarPanel = (props: { className?: string }) => {
             内部の点検や故障対応は専門スタッフがサポートするため、手間はほとんどかかりません。`,
           },
         ]}
+        style={{ opacity: 0, transform: 'translateY(100px)' }}
       />
     </div>
   )

@@ -7,13 +7,13 @@ export const _InfoCard = (props: {
   description?: string
 }) => {
   return (
-    <div className="w-full flex flex-col">
+    <div className="flex w-full flex-col">
       {props.image && (
-        <div className="w-full h-60 border border-gray-300 rounded-sm overflow-hidden">
+        <div className="h-60 w-full overflow-hidden rounded-sm border border-gray-300">
           <img
-            src={props.image}
             alt={props.alt}
-            className="w-full h-full object-cover"
+            className="size-full object-cover"
+            src={props.image}
           />
         </div>
       )}
@@ -22,7 +22,7 @@ export const _InfoCard = (props: {
           {props.title}
         </h3>
         {props.description && (
-          <p className="text-sm text-gray-800 mt-2 leading-[1.8] whitespace-pre-line">
+          <p className="mt-2 whitespace-pre-line text-sm leading-[1.8] text-gray-800">
             {props.description}
           </p>
         )}

@@ -1,9 +1,11 @@
 'use client'
 
-import { Button } from '@/components/ui/Button'
 import { ArrowRightIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useRef } from 'react'
+
+import { Button } from '@/components/ui/Button'
+
 import { motion } from '../motion'
 
 export const _ServiceCard = (props: {
@@ -37,23 +39,23 @@ export const _ServiceCard = (props: {
 
   return (
     <article
-      className="flex flex-col"
       ref={refCard}
+      className="flex flex-col"
       style={{ opacity: 0, transform: 'translateY(100px)' }}
     >
       <p className="text-lg font-semibold">{props.title}</p>
-      <figure className="w-full h-[250px] rounded-lg overflow-hidden border border-gray-200 mt-4">
+      <figure className="mt-4 h-[250px] w-full overflow-hidden rounded-lg border border-gray-200">
         <img
-          src={props.image.src}
           alt={props.image.alt}
-          className="w-full h-full object-cover"
+          className="size-full object-cover"
+          src={props.image.src}
         />
       </figure>
-      <p className="text-gray-800 mt-4 leading-[1.82] break-words whitespace-pre-line text-sm">
+      <p className="mt-4 whitespace-pre-line break-words text-sm leading-[1.82] text-gray-800">
         {props.description}
       </p>
-      <div className="mt-4 w-full flex justify-end">
-        <Link href={props.href} aria-label={`${props.title}の詳細を見る`}>
+      <div className="mt-4 flex w-full justify-end">
+        <Link aria-label={`${props.title}の詳細を見る`} href={props.href}>
           <Button
             icon={ArrowRightIcon}
             iconPosition="right"

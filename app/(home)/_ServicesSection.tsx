@@ -1,13 +1,14 @@
 'use client'
 
+import { ArrowRightIcon } from 'lucide-react'
+import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 
-import { cn } from '@/lib/utils'
-import { motion } from '../motion'
 import { SectionHeader } from '@/components/Section'
-import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
-import { ArrowRightIcon } from 'lucide-react'
+import { cn } from '@/lib/utils'
+
+import { motion } from '../motion'
 
 export const _ServicesSection = () => {
   const refContainer = useRef<HTMLDivElement>(null)
@@ -59,76 +60,76 @@ export const _ServicesSection = () => {
   }, [refContainer])
 
   return (
-    <div id="services" className="flex flex-col wrapper">
+    <div className="wrapper flex flex-col" id="services">
       <SectionHeader
-        title="私たちの提供する価値"
-        subtitle="Services"
-        description="私たちは、快適で安心な暮らしを支える住宅設備の販売・施工を行っています。\n太陽光パネルや蓄電池、エコキュートなど、家庭の暮らしをより便利にするサービスを提供しています。"
         button={{
           href: '/services',
           text: '事業内容一覧をみる',
           className: 'hidden md:block',
         }}
+        description="私たちは、快適で安心な暮らしを支える住宅設備の販売・施工を行っています。\n太陽光パネルや蓄電池、エコキュートなど、家庭の暮らしをより便利にするサービスを提供しています。"
+        subtitle="Services"
+        title="私たちの提供する価値"
       />
       <div
         ref={refContainer}
-        className="grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 gap-2 md:gap-3 mt-9"
+        className="mt-9 grid grid-cols-1 gap-2 md:grid-cols-12 md:gap-3 lg:grid-cols-12"
       >
         <__Bento
-          href="/services/solar-panel"
-          title={'太陽光パネル'}
+          colSpan={'7'}
           description={
             ' 住宅向けに太陽光パネルの販売・設置・メンテナンスを行っています。\nお客様のライフスタイルや設備に合わせた最適なプランをご提案し、省エネと電気料金の削減をサポートします。'
           }
+          href="/services/solar-panel"
           image={'/images/solar-panel-construction.jpg'}
-          colSpan={'7'}
           mdSpan={'12'}
+          title={'太陽光パネル'}
         />
         <__Bento
-          href="/services/battery"
-          title={'蓄電池'}
+          colSpan={'5'}
           description={
             ' 昼間に発電した電気を貯めて夜間に活用することで、エネルギーの自給自足を実現し、停電時の安心も提供します。'
           }
+          href="/services/battery"
           image={'/images/battery.jpg'}
-          colSpan={'5'}
           mdSpan={'5'}
+          title={'蓄電池'}
         />
         <__Bento
-          href="/services/eco-cute"
-          title={'エコキュート'}
+          mdTrimAfterNewline
+          colSpan={'6'}
           description={
             '空気熱を活用することでガズを使用せずお湯が沸かせます。\n光熱費を抑え、環境負荷の軽減にも貢献します。設置から保守まで、きめ細やかなサポートを提供しています。'
           }
+          href="/services/eco-cute"
           image={'/images/bathroom.jpg'}
-          colSpan={'6'}
           mdSpan={'7'}
-          mdTrimAfterNewline
+          title={'エコキュート'}
         />
         <__Bento
-          href="/services/termite-control"
-          title={'シロアリ駆除'}
+          colSpan={'3'}
           description={
             '早期発見・早期対応でご自宅を守りましょう！まずはお気軽にご相談ください。'
           }
+          href="/services/termite-control"
           image={'/images/pest-control.jpg'}
-          colSpan={'3'}
           mdSpan={'7'}
+          title={'シロアリ駆除'}
         />
         <__Bento
-          href="/services/reform"
-          title={'リフォーム'}
+          colSpan={'3'}
           description={
             '様々なご要望に柔軟かつ丁寧にお応えし、ご自宅を理想の住まいへとリフォームいたします。'
           }
+          href="/services/reform"
           image={'/images/kitchen.jpg'}
-          colSpan={'3'}
           mdSpan={'5'}
+          title={'リフォーム'}
         />
       </div>
       <div
         ref={refButtonMb}
-        className="md:hidden flex justify-end w-full mt-4"
+        className="mt-4 flex w-full justify-end md:hidden"
         style={{ opacity: 0, transform: 'translateY(20px)' }}
       >
         <Link href="/services">
@@ -182,40 +183,36 @@ function __Bento({
       )}
       style={{ opacity: 0, transform: 'translateY(100px)' }}
     >
-      <Link href={href} className="absolute inset-0 z-20">
+      <Link className="absolute inset-0 z-20" href={href}>
         <span className="sr-only">{title}の詳細を見る</span>
       </Link>
-      <div className="absolute inset-0 bg-white/30 opacity-0 group-hover:opacity-80 transition-opacity duration-300 ease-out rounded-xl z-10 pointer-events-none" />
+      <div className="pointer-events-none absolute inset-0 z-10 rounded-xl bg-white/30 opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-80" />
       <img
-        src={image}
         alt=""
-        className="opacity-80 w-full h-full object-cover absolute inset-0 rounded-xl"
+        className="absolute inset-0 size-full rounded-xl object-cover opacity-80"
+        src={image}
       />
-      <div className="relative w-full h-full bg-cleam/80 p-2 md:p-3 md:backdrop-blur-3xl z-0">
-        <div className="flex flex-row md:flex-col gap-3 h-full">
-          <header className="shrink-0 w-[80px] md:w-full">
+      <div className="relative z-0 size-full bg-cleam/80 p-2 md:p-3 md:backdrop-blur-3xl">
+        <div className="flex h-full flex-row gap-3 md:flex-col">
+          <header className="w-[80px] shrink-0 md:w-full">
             <div
               className={cn(
                 'relative rounded-xl overflow-hidden border-[1px] border-gray-300',
                 'h-[80px] md:h-[220px] lg:h-[220px]',
               )}
             >
-              <img
-                src={image}
-                alt={title}
-                className="w-full h-full object-cover"
-              />
+              <img alt={title} className="size-full object-cover" src={image} />
             </div>
           </header>
-          <div className="text-container flex-1 flex flex-col justify-center md:pt-4 md:px-3">
+          <div className="text-container flex flex-1 flex-col justify-center md:px-3 md:pt-4">
             <h3 className="text-lg font-bold">{title}</h3>
             {!mdTrimAfterNewline && (
-              <p className="text-gray-600 mt-2 font-semibold leading-[1.82] break-words whitespace-pre-line text-sm hidden md:block">
+              <p className="mt-2 hidden whitespace-pre-line break-words text-sm font-semibold leading-[1.82] text-gray-600 md:block">
                 {description}
               </p>
             )}
             {mdTrimAfterNewline && (
-              <p className="text-gray-600 mt-2 font-semibold leading-[1.82] break-words text-sm hidden md:block">
+              <p className="mt-2 hidden break-words text-sm font-semibold leading-[1.82] text-gray-600 md:block">
                 {description.split('\n')[0]}
               </p>
             )}

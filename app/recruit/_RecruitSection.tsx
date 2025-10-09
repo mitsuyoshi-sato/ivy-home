@@ -1,8 +1,10 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { motion } from '../motion'
+
 import { SectionHeader } from '@/components/Section'
+
+import { motion } from '../motion'
 
 export const _RecruitSection = () => {
   const refInfo = useRef<HTMLDivElement>(null)
@@ -54,22 +56,22 @@ export const _RecruitSection = () => {
     <>
       <section className="wrapper">
         <SectionHeader
-          title="採用情報の詳細"
-          subtitle="Recuruit"
           description=""
+          subtitle="Recuruit"
+          title="採用情報の詳細"
         />
         <div
           ref={refInfo}
-          className="mt-12 flex flex-col w-full"
+          className="mt-12 flex w-full flex-col"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <article className="flex flex-col gap-6">
             <h3 className="text-xl font-semibold">営業担当</h3>
             <div className="flex w-full items-start border-b border-gray-200 pb-2 sm:mt-4">
-              <h4 className="text-sm sm:text-base w-1/4 text-gray-600 leading-relaxed">
+              <h4 className="w-1/4 text-sm leading-relaxed text-gray-600 sm:text-base">
                 業務内容
               </h4>
-              <ul className="text-sm sm:text-base text-dark6 font-semibold shrink-0 w-3/4 list-disc list-outside pl-5">
+              <ul className="w-3/4 shrink-0 list-outside list-disc pl-5 text-sm font-semibold text-dark6 sm:text-base">
                 <li>
                   お客様の住まいや暮らしに関するご要望を伺い、最適なプランをご提案します。
                 </li>
@@ -79,22 +81,22 @@ export const _RecruitSection = () => {
               </ul>
             </div>
             <div className="flex w-full items-start border-b border-gray-200 pb-2">
-              <h4 className="text-sm sm:text-base w-1/4 text-gray-600 leading-relaxed">
+              <h4 className="w-1/4 text-sm leading-relaxed text-gray-600 sm:text-base">
                 求める
                 <br className="sm:hidden" />
                 人物像
               </h4>
-              <ul className="text-sm sm:text-base text-dark6 font-semibold shrink-0 w-3/4 list-disc list-outside pl-5">
+              <ul className="w-3/4 shrink-0 list-outside list-disc pl-5 text-sm font-semibold text-dark6 sm:text-base">
                 <li>人と話すことが好きな方</li>
                 <li>報告・連絡・相談をしっかりできる方</li>
                 <li>新しいことに前向きに挑戦できる方</li>
               </ul>
             </div>
             <div className="flex w-full items-start border-b border-gray-200 pb-2">
-              <h4 className="text-sm sm:text-base w-1/4 text-gray-600 leading-relaxed">
+              <h4 className="w-1/4 text-sm leading-relaxed text-gray-600 sm:text-base">
                 応募条件
               </h4>
-              <ul className="text-sm sm:text-base text-dark6 font-semibold shrink-0 w-3/4 list-disc list-outside pl-5">
+              <ul className="w-3/4 shrink-0 list-outside list-disc pl-5 text-sm font-semibold text-dark6 sm:text-base">
                 <li>学歴不問、未経験歓迎</li>
                 <li>普通自動車免許があると望ましい</li>
               </ul>
@@ -103,23 +105,23 @@ export const _RecruitSection = () => {
         </div>
       </section>
       <section className="wrapper pt-0">
-        <SectionHeader title="応募方法" subtitle="Entry" description="" />
+        <SectionHeader description="" subtitle="Entry" title="応募方法" />
         <div className="mt-12 flex flex-col gap-6">
           <div
             ref={refTell}
-            style={{ opacity: 0, transform: 'translateY(100px)' }}
             className="flex flex-col gap-2"
+            style={{ opacity: 0, transform: 'translateY(100px)' }}
           >
             <h3 className="text-xl font-semibold">電話でのお問い合わせ</h3>
             <div className="">
               <p className="text-sm sm:text-base">
-                <span className="text-gray-600 w-[120px] inline-block">
+                <span className="inline-block w-[120px] text-gray-600">
                   TEL
                 </span>
                 <span className="font-semibold">090-7629-7452</span>
               </p>
               <p className="text-sm sm:text-base">
-                <span className="text-gray-600 w-[120px] inline-block">
+                <span className="inline-block w-[120px] text-gray-600">
                   受付時間
                 </span>
                 <span className="font-semibold">平日 10:00～18:00</span>
@@ -128,13 +130,13 @@ export const _RecruitSection = () => {
           </div>
           <div
             ref={refMail}
+            className="mt-6 flex flex-col gap-2"
             style={{ opacity: 0, transform: 'translateY(100px)' }}
-            className="flex flex-col gap-2 mt-6"
           >
             <h3 className="text-xl font-semibold">メールでのお問い合わせ</h3>
             <div className="text-sm sm:text-base">
               <p className="flex">
-                <span className="w-[120px] inline-block text-gray-600">
+                <span className="inline-block w-[120px] text-gray-600">
                   Email
                 </span>
                 <span className="font-semibold">

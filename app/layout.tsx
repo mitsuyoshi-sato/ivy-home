@@ -1,7 +1,8 @@
-import type { Metadata } from 'next'
 import './globals.css'
-import Link from 'next/link'
+
+import type { Metadata } from 'next'
 import { Inter, Noto_Sans_JP } from 'next/font/google'
+import Link from 'next/link'
 
 import _OpeningAnimation from './(layout)/_OpeningAnimation'
 import { AnimationProvider } from './(layout)/AnimationContext'
@@ -101,7 +102,7 @@ export default function RootLayout({
   )
 
   return (
-    <html lang="ja" className={`${inter.variable} ${notosansjp.variable}`}>
+    <html className={`${inter.variable} ${notosansjp.variable}`} lang="ja">
       <body className="antialiased">
         <AnimationProvider>
           <Header items={items} />
@@ -112,33 +113,33 @@ export default function RootLayout({
             <div className="bg-cleam py-10">
               <div className="wrapper flex flex-col items-start gap-6 md:flex-row md:gap-20 lg:gap-40 xl:w-full xl:justify-between">
                 <img
-                  src="/images/ivy-home.svg"
                   alt="アイビーホームのロゴ"
-                  className="w-24 md:w-[120px] md:-translate-y-[10px] shrink-0"
+                  className="w-24 shrink-0 md:w-[120px] md:-translate-y-[10px]"
+                  src="/images/ivy-home.svg"
                 />
-                <div className="grid w-full flex-1 grid-cols-2 xl:grid-cols-5 gap-x-10 gap-y-2 md:gap-y-8 lg:gap-x-14">
+                <div className="grid w-full flex-1 grid-cols-2 gap-x-10 gap-y-2 md:gap-y-8 lg:gap-x-14 xl:grid-cols-5">
                   {itemsWithoutSubs.map((item) => (
                     <__FooterSection
                       key={item.href}
-                      title={item.label}
                       href={item.href}
                       links={[]}
+                      title={item.label}
                     />
                   ))}
                   {itemWithSubs && (
                     <div className="col-span-2 xl:col-span-1">
                       <Link
+                        className="cursor-pointer text-xl font-bold text-ivy8 hover:opacity-70"
                         href={itemWithSubs.href}
-                        className="font-bold text-ivy8 text-xl hover:opacity-70 cursor-pointer"
                       >
                         {itemWithSubs.label}
                       </Link>
-                      <div className="mt-4 text-dark5 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-1 gap-4 font-medium">
+                      <div className="mt-4 grid grid-cols-2 gap-4 font-medium text-dark5 md:grid-cols-3 xl:grid-cols-1">
                         {itemWithSubs.subs!.map((link) => (
                           <Link
                             key={link.label}
-                            href={link.href}
                             className="hover:text-black"
+                            href={link.href}
                           >
                             {link.label}
                           </Link>
@@ -164,14 +165,14 @@ function __FooterSection(props: {
   return (
     <div className="flex flex-col gap-6">
       <Link
+        className="cursor-pointer text-xl font-bold text-ivy8 hover:opacity-70"
         href={props.href}
-        className="font-bold text-ivy8 text-xl hover:opacity-70 cursor-pointer"
       >
         {props.title}
       </Link>
-      <div className="text-dark5 flex flex-col gap-4 text-sm font-medium">
+      <div className="flex flex-col gap-4 text-sm font-medium text-dark5">
         {props.links.map((link) => (
-          <Link key={link.label} href={link.href} className="hover:text-black">
+          <Link key={link.label} className="hover:text-black" href={link.href}>
             {link.label}
           </Link>
         ))}

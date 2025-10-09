@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
-import { Hero } from '@/components/Hero'
-import { _Reform } from './_Reform'
+
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { FooterLinks } from '@/components/FooterLinks'
+import { Hero } from '@/components/Hero'
+
+import { _Reform } from './_Reform'
 
 export const metadata: Metadata = {
   title: 'リフォーム',
@@ -23,8 +25,6 @@ export default function ReformPage() {
   return (
     <>
       <Script
-        id="breadcrumb-services-reform"
-        type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
@@ -51,12 +51,14 @@ export default function ReformPage() {
             ],
           }),
         }}
+        id="breadcrumb-services-reform"
+        type="application/ld+json"
       />
       <Hero
         image={{ src: '/images/kitchen.jpg', alt: 'リフォーム' }}
+        overlayOpacity="40"
         subtitle="Reform"
         title="リフォーム"
-        overlayOpacity="40"
       />
       <Breadcrumb
         items={[

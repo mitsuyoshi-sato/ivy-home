@@ -1,10 +1,11 @@
 'use client'
 
-import { motion } from '../motion'
-import { useRef, useState, useEffect } from 'react'
-import { createPortal } from 'react-dom'
-import { usePathname } from 'next/navigation'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
+
+import { motion } from '../motion'
 
 export const Hamburger = (props: {
   items: {
@@ -78,7 +79,7 @@ export const Hamburger = (props: {
     <>
       <button
         ref={refHamburger}
-        className="relative z-[60] mr-3 h-5 w-5 md:hidden"
+        className="relative z-[60] mr-3 size-5 md:hidden"
         disabled={stateAnimating}
         onClick={async () => {
           if (stateAnimating) return
@@ -125,51 +126,51 @@ export const Hamburger = (props: {
         }}
       >
         <div
+          className="absolute inset-y-0 right-0 my-auto h-px w-full origin-center bg-black"
           style={{
             transform: 'translateY(-6px)',
           }}
-          className="absolute inset-y-0 right-0 my-auto h-[1px] origin-center bg-black w-full"
         />
-        <div className="absolute inset-y-0 right-0 my-auto h-[1px] w-full bg-black" />
+        <div className="absolute inset-y-0 right-0 my-auto h-px w-full bg-black" />
         <div
+          className="absolute inset-y-0 right-0 my-auto h-px w-full origin-center bg-black duration-300"
           style={{
             transform: 'translateY(6px)',
           }}
-          className="absolute inset-y-0 right-0 my-auto h-[1px] origin-center bg-black duration-300 w-full"
         />
       </button>
       {stateMounted &&
         createPortal(
           <div
             ref={refMenu}
+            className="fixed inset-x-0 bottom-0 z-40 flex w-full items-center gap-16 bg-white/70 backdrop-blur-md backdrop-saturate-150 md:hidden"
             style={{
               height: '0px',
               opacity: '0',
               pointerEvents: 'auto',
             }}
-            className="md:hidden fixed bottom-0 left-0 right-0 z-40 w-full bg-white/70 flex items-center gap-16 backdrop-blur-md backdrop-saturate-150"
           >
-            <div className="w-[150px] h-full">
+            <div className="h-full w-[150px]">
               <img
+                className="size-full object-cover"
                 src={`/images/hero-${pathname === '/' ? 'home' : pathname.split('/')[1]}.jpg`}
-                className="w-full h-full object-cover"
               />
             </div>
             <div
               ref={refTextContainer}
+              className="relative flex h-3/5 flex-1 flex-col gap-6"
               style={{
                 opacity: '0',
               }}
-              className="flex-1 relative h-[60%] flex flex-col gap-6"
             >
               {props.items.map((item) => (
                 <Link
                   key={item.href}
-                  href={item.href}
                   className="flex flex-col"
+                  href={item.href}
                   onClick={closeMenu}
                 >
-                  <div className="text-ivy5 text-xs">
+                  <div className="text-xs text-ivy5">
                     {item.href === '/' ? 'Home' : item.href.split('/')[1]}
                   </div>
                   <div className="text-lg font-semibold text-gray-800">

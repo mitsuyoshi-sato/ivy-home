@@ -1,9 +1,11 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { motion } from '../app/motion'
+
 import { cn } from '@/lib/utils'
+
 import { useAnimation } from '../app/(layout)/AnimationContext'
+import { motion } from '../app/motion'
 
 export const Hero = (props: {
   image?: { src: string; alt: string }
@@ -93,28 +95,28 @@ export const Hero = (props: {
     <header className="relative h-[70vh]">
       <div
         ref={refImage}
+        className="absolute inset-0 z-[-1]"
         style={{
           opacity: 0,
           transform: 'scale(1.05)',
           transformOrigin: 'center',
         }}
-        className="absolute inset-0 z-[-1]"
       >
         {props.image && (
           <img
-            src={props.image?.src}
             alt={props.image?.alt || ''}
-            className="object-cover w-full h-full"
+            className="size-full object-cover"
+            src={props.image?.src}
           />
         )}
         {props.video && (
           <>
             <video
               ref={refVideo}
-              className="w-full h-full object-cover"
-              muted
               loop
+              muted
               playsInline
+              className="size-full object-cover"
             >
               <source src={props.video.src} type="video/mp4" />
             </video>
@@ -128,9 +130,9 @@ export const Hero = (props: {
           />
         )}
       </div>
-      <div className="relative z-10 h-full wrapper">
-        <div className="mx-auto h-full flex items-center">
-          <div className="text-white space-y-4">
+      <div className="wrapper relative z-10 h-full">
+        <div className="mx-auto flex h-full items-center">
+          <div className="space-y-4 text-white">
             <p
               ref={refSubtitle}
               className={cn(
@@ -147,7 +149,7 @@ export const Hero = (props: {
 
             <h1
               ref={refText}
-              className="text-2xl md:text-5xl font-semibold leading-normal md:leading-[1.3]"
+              className="text-2xl font-semibold leading-normal md:text-5xl md:leading-[1.3]"
               style={{
                 opacity: 0,
                 transform: 'translateY(10px)',

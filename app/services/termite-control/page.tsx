@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
-import { Hero } from '@/components/Hero'
-import { _TermiteControl } from './_TermiteControl'
+
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { FooterLinks } from '@/components/FooterLinks'
+import { Hero } from '@/components/Hero'
+
+import { _TermiteControl } from './_TermiteControl'
 
 export const metadata: Metadata = {
   title: 'シロアリ駆除',
@@ -23,8 +25,6 @@ export default function TermiteControlPage() {
   return (
     <>
       <Script
-        id="breadcrumb-services-termiteControl"
-        type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
@@ -51,6 +51,8 @@ export default function TermiteControlPage() {
             ],
           }),
         }}
+        id="breadcrumb-services-termiteControl"
+        type="application/ld+json"
       />
       <Hero
         image={{ src: '/images/damaged-wood.jpg', alt: 'シロアリ駆除' }}

@@ -1,12 +1,14 @@
 'use client'
 
-import Link from 'next/link'
-import { useLayoutEffect, useMemo, useRef } from 'react'
-import { usePathname } from 'next/navigation'
-import { cn } from '@/lib/utils'
-import { motion } from '../motion'
 import { ChevronDown } from 'lucide-react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { useLayoutEffect, useMemo, useRef } from 'react'
+
 import { Icon } from '@/components/ui/Icon'
+import { cn } from '@/lib/utils'
+
+import { motion } from '../motion'
 
 export const Nav = (props: {
   items: {
@@ -50,21 +52,21 @@ export const Nav = (props: {
   return (
     <div
       ref={refContainer}
-      className="font-semibold text-sm md:flex hidden items-center relative rounded-full p-1"
+      className="relative hidden items-center rounded-full p-1 text-sm font-semibold md:flex"
     >
       {props.items.map((t, i) => (
         <Tab
           key={t.href}
-          href={t.href}
-          label={t.label}
           activeIndex={activeIndex}
+          href={t.href}
           i={i}
+          label={t.label}
           subs={t.subs}
         />
       ))}
       <div
-        className="absolute top-1 h-[calc(100%-8px)] rounded-full bg-ivy6 shadow-lg "
         ref={refIndicator}
+        className="absolute top-1 h-[calc(100%-8px)] rounded-full bg-ivy6 shadow-lg "
         style={{ width: '0px', left: '0px' }}
       />
     </div>
@@ -160,7 +162,6 @@ const Tab = (props: {
       }}
     >
       <Link
-        href={props.href}
         className={cn(
           'px-4 py-2 rounded-full z-10 cursor-pointer text-center text-dark4',
           props.activeIndex === props.i
@@ -168,18 +169,19 @@ const Tab = (props: {
             : 'text-dark5 cursor-pointer hover:text-dark8',
           props.subs && 'flex items-center gap-1 pr-2',
         )}
+        href={props.href}
       >
         {props.label}
         {props.subs && (
           <div ref={refChevron}>
-            <ChevronDown className="w-4 h-4" />
+            <ChevronDown className="size-4" />
           </div>
         )}
       </Link>
       {props.subs && (
         <div
           ref={refList}
-          className="absolute left-0 top-full w-[180px] bg-white rounded-lg flex flex-col p-1 whitespace-nowrap text-sm text-dark5 border border-gray-300 shadow-md z-50"
+          className="absolute left-0 top-full z-50 flex w-[180px] flex-col whitespace-nowrap rounded-lg border border-gray-300 bg-white p-1 text-sm text-dark5 shadow-md"
           style={{
             opacity: 0,
             transform: 'translateY(-10px)',
@@ -189,8 +191,8 @@ const Tab = (props: {
           {props.subs.map((sub) => (
             <Link
               key={sub.href}
+              className="flex shrink-0 items-center gap-2 rounded-md px-3 py-2 hover:cursor-pointer hover:bg-ivy2/30"
               href={sub.href}
-              className="shrink-0 py-2 px-3 rounded-md hover:bg-ivy2/30 hover:cursor-pointer flex items-center gap-2"
             >
               {sub.icon && (
                 <span className="shrink-0">

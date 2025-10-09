@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
-import { Hero } from '@/components/Hero'
-import { _SolarPanel } from './_SolarPanel'
+
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { FooterLinks } from '@/components/FooterLinks'
+import { Hero } from '@/components/Hero'
+
+import { _SolarPanel } from './_SolarPanel'
 
 export const metadata: Metadata = {
   title: '太陽光発電パネル',
@@ -23,8 +25,6 @@ export default function SolarPanelPage() {
   return (
     <>
       <Script
-        id="breadcrumb-services-solarPanel"
-        type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
@@ -51,15 +51,17 @@ export default function SolarPanelPage() {
             ],
           }),
         }}
+        id="breadcrumb-services-solarPanel"
+        type="application/ld+json"
       />
       <Hero
         image={{
           src: '/images/houses2.jpg',
           alt: '太陽光パネルの住宅が連なっている',
         }}
+        overlayOpacity="10"
         subtitle="Solar Panel"
         title="太陽光パネル"
-        overlayOpacity="10"
       />
       <Breadcrumb
         items={[
