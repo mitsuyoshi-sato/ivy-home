@@ -12,56 +12,51 @@ import { ArrowRightIcon } from 'lucide-react'
 export const _ServicesSection = () => {
   const refContainer = useRef<HTMLDivElement>(null)
   const refButtonMb = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
     const c = refContainer.current
-    if (!c) return
-    const items = Array.from(c.children) as HTMLElement[]
-    let completedCount = 0
-    const observer = new IntersectionObserver(
-      async (entries) => {
-        await Promise.all(
-          entries
-            .filter((e) => e.isIntersecting)
-            .map(async (entry) => {
-              const el = entry.target as HTMLElement
-              motion.to(el, 1.2, 'out', { opacity: 1, scale: 1 })
-              const textContainer = el.querySelector(
-                '.text-container',
-              ) as HTMLElement | null
-              if (!textContainer) return
+    if (c) {
+      const observer = new IntersectionObserver(
+        async ([entry]) => {
+          if (entry.isIntersecting) {
+            const card0 = c.children[0]
+            const card1 = c.children[1]
+            const card2 = c.children[2]
+            const card3 = c.children[3]
+            const card4 = c.children[4]
+
+            const isMobile = !window.matchMedia('(min-width: 768px)').matches
+
+            if (isMobile) {
+              const b = refButtonMb.current
+              motion.to(card0, 1.8, 'out', { opacity: 1, translateY: '0px' })
               await motion.delay(0.2)
-              const title = textContainer.querySelector(
-                'h3:first-child',
-              ) as HTMLElement | null
-              if (title)
-                motion.to(title, 1.0, 'out', { opacity: 1, translateY: '0px' })
-              await motion.delay(0.15)
-              const description = textContainer.querySelector(
-                'p:last-child',
-              ) as HTMLElement | null
-              if (description && description.offsetParent !== null)
-                await motion.to(description, 1.0, 'out', {
-                  opacity: 1,
-                  translateY: '0px',
-                })
-
-              completedCount++
-              if (completedCount === items.length && refButtonMb.current) {
-                motion.to(refButtonMb.current, 0.8, 'out', {
-                  opacity: 1,
-                  translateY: '0px',
-                })
-              }
-
-              observer.unobserve(el)
-            }),
-        )
-      },
-      { threshold: 0.3, rootMargin: '0px 0px -10% 0px' },
-    )
-    items.forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
-  }, [])
+              motion.to(card1, 1.8, 'out', { opacity: 1, translateY: '0px' })
+              await motion.delay(0.2)
+              motion.to(card2, 1.8, 'out', { opacity: 1, translateY: '0px' })
+              await motion.delay(0.2)
+              motion.to(card3, 1.8, 'out', { opacity: 1, translateY: '0px' })
+              await motion.delay(0.2)
+              motion.to(card4, 1.8, 'out', { opacity: 1, translateY: '0px' })
+              await motion.delay(0.2)
+              motion.to(b, 1.8, 'out', { opacity: 1, translateY: '0px' })
+            } else {
+              motion.to(card0, 1.8, 'out', { opacity: 1, translateY: '0px' })
+              motion.to(card1, 1.8, 'out', { opacity: 1, translateY: '0px' })
+              await motion.delay(0.8)
+              motion.to(card2, 1.8, 'out', { opacity: 1, translateY: '0px' })
+              motion.to(card3, 1.8, 'out', { opacity: 1, translateY: '0px' })
+              motion.to(card4, 1.8, 'out', { opacity: 1, translateY: '0px' })
+            }
+          }
+        },
+        {
+          threshold: 0.3,
+        },
+      )
+      observer.observe(c)
+    }
+  }, [refContainer])
 
   return (
     <div id="services" className="flex flex-col wrapper">
@@ -185,7 +180,7 @@ function __Bento({
         colSpan === '2' && 'lg:col-span-2',
         colSpan === '1' && 'lg:col-span-1',
       )}
-      style={{ opacity: 0, transform: 'scale(0.8)' }}
+      style={{ opacity: 0, transform: 'translateY(100px)' }}
     >
       <Link href={href} className="absolute inset-0 z-20">
         <span className="sr-only">{title}の詳細を見る</span>
