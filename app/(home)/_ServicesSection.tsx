@@ -216,12 +216,12 @@ function __Bento({
             <h3 className="text-lg font-bold">{title}</h3>
             {!mdTrimAfterNewline && (
               <p className="text-gray-600 mt-2 font-semibold leading-[1.82] break-words whitespace-pre-line text-sm hidden md:block">
-                {description.replace(/\\n/g, '\n')}
+                {description}
               </p>
             )}
             {mdTrimAfterNewline && (
               <p className="text-gray-600 mt-2 font-semibold leading-[1.82] break-words text-sm hidden md:block">
-                {description.split('\\n')[0]}
+                {description.split('\n')[0]}
               </p>
             )}
           </div>
