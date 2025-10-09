@@ -66,7 +66,7 @@ export const Nav = (props: {
       ))}
       <div
         ref={refIndicator}
-        className="absolute top-1 h-[calc(100%-8px)] rounded-full bg-ivy6 shadow-lg "
+        className="absolute top-1 h-[calc(100%-8px)] rounded-full bg-ivy6 shadow-lg"
         style={{ width: '0px', left: '0px' }}
       />
     </div>
@@ -163,10 +163,10 @@ const Tab = (props: {
     >
       <Link
         className={cn(
-          'px-4 py-2 rounded-full z-10 cursor-pointer text-center text-dark4',
+          'z-10 cursor-pointer rounded-full px-4 py-2 text-center text-dark4',
           props.activeIndex === props.i
             ? 'text-white'
-            : 'text-dark5 cursor-pointer hover:text-dark8',
+            : 'cursor-pointer text-dark5 hover:text-dark8',
           props.subs && 'flex items-center gap-1 pr-2',
         )}
         href={props.href}

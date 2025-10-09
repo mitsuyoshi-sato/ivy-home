@@ -136,7 +136,7 @@ export const Hero = (props: {
             <p
               ref={refSubtitle}
               className={cn(
-                'text-sm md:text-lg font-semibold text-white/80',
+                'text-sm font-semibold text-white/80 md:text-lg',
                 !props.subtitle && 'hidden',
               )}
               style={{
@@ -160,7 +160,7 @@ export const Hero = (props: {
             <p
               ref={refDescription}
               className={cn(
-                'text-sm md:text-lg font-bold text-white/80',
+                'text-sm font-bold text-white/80 md:text-lg',
                 !props.description && 'hidden',
               )}
               style={{

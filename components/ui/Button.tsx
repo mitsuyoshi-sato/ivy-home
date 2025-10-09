@@ -34,11 +34,11 @@ export const Button = forwardRef<
       ref={ref}
       className={cn(
         variant === 'primary' &&
-          'bg-ivy6 text-white border border-ivy7 hover:bg-ivy7',
+          'border border-ivy7 bg-ivy6 text-white hover:bg-ivy7',
         variant === 'secondary' &&
-          'bg-white text-ivy6 border border-ivy7 hover:bg-ivy6 hover:text-white',
+          'border border-ivy7 bg-white text-ivy6 hover:bg-ivy6 hover:text-white',
         variant === 'ghost' && 'bg-transparent text-gray-700 hover:bg-gray-100',
-        'group shadow-lg text-sm rounded-full px-5 py-3 font-bold inline-flex items-center justify-center transition-all duration-200 disabled:opacity-50 disabled:pointer-events-none',
+        'group inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-bold shadow-lg transition-all duration-200 disabled:pointer-events-none disabled:opacity-50',
         className,
       )}
       disabled={disabled}

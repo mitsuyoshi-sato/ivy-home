@@ -162,7 +162,7 @@ function __Bento({
   return (
     <article
       className={cn(
-        'group transition-all duration-300 ease-out hover:cursor-pointer hover:scale-[1.02] relative overflow-hidden border border-gray-300 flex items-center justify-center rounded-xl col-span-1',
+        'group relative col-span-1 flex items-center justify-center overflow-hidden rounded-xl border border-gray-300 transition-all duration-300 ease-out hover:scale-[1.02] hover:cursor-pointer',
         'md:h-auto',
         mdSpan === '12' && 'md:col-span-12',
         mdSpan === '8' && 'md:col-span-8',
@@ -197,7 +197,7 @@ function __Bento({
           <header className="w-[80px] shrink-0 md:w-full">
             <div
               className={cn(
-                'relative rounded-xl overflow-hidden border-[1px] border-gray-300',
+                'relative overflow-hidden rounded-xl border-[1px] border-gray-300',
                 'h-[80px] md:h-[220px] lg:h-[220px]',
               )}
             >
