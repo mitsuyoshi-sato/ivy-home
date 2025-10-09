@@ -85,10 +85,15 @@ export const SectionHeader = (props: {
       </h2>
       <p
         ref={refDescription}
-        className="leading-relaxed lg:text-lg text-sm text-gray-600 lg:mt-6 mt-4 whitespace-pre-line"
+        className="leading-relaxed lg:text-lg text-sm text-gray-600 lg:mt-6 mt-4"
         style={{ opacity: 0, transform: 'translateY(100px)' }}
       >
-        {props.description.replace(/\\n/g, '\n')}
+        {props.description.split('\\n').map((line, index, array) => (
+          <span key={index}>
+            {line}
+            {index < array.length - 1 && <br />}
+          </span>
+        ))}
       </p>
       <div
         style={{ opacity: 0, transform: 'translateY(100px)' }}
