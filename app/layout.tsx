@@ -110,13 +110,13 @@ export default function RootLayout({
           </main>
           <footer>
             <div className="bg-cleam py-10">
-              <div className="wrapper flex flex-col items-start gap-10 md:flex-row md:gap-20 lg:gap-40 xl:w-full xl:justify-between">
+              <div className="wrapper flex flex-col items-start gap-6 md:flex-row md:gap-20 lg:gap-40 xl:w-full xl:justify-between">
                 <img
                   src="/images/ivy-home.svg"
                   alt="アイビーホームのロゴ"
                   className="w-24 md:w-[120px] md:-translate-y-[10px] shrink-0"
                 />
-                <div className="grid w-full flex-1 grid-cols-2 xl:grid-cols-5 gap-x-10 gap-y-8 lg:gap-x-14">
+                <div className="grid w-full flex-1 grid-cols-2 xl:grid-cols-5 gap-x-10 gap-y-2 md:gap-y-8 lg:gap-x-14">
                   {itemsWithoutSubs.map((item) => (
                     <__FooterSection
                       key={item.href}
@@ -133,7 +133,7 @@ export default function RootLayout({
                       >
                         {itemWithSubs.label}
                       </Link>
-                      <div className="mt-6 text-dark5 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-1 gap-4 font-medium">
+                      <div className="mt-4 text-dark5 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-1 gap-4 font-medium">
                         {itemWithSubs.subs!.map((link) => (
                           <Link
                             key={link.label}
