@@ -34,7 +34,7 @@ export const Header = (props: {
               />
             </div>
             <Icon
-              className="absolute -left-[9.9px] -top-[12.4355px]"
+              className="absolute left-[-9.9px] top-[-12.4355px]"
               fill="#86EFAC"
               name="leaf"
               size={23.32}

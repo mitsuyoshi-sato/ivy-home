@@ -69,7 +69,7 @@ export const _PhilosophySection = () => {
             className="w-60 sm:w-[300px]"
             src="/images/ivy-home.svg"
           />
-          <h2 className="text-2xl font-bold leading-relaxed sm:text-4xl xl:mt-8">
+          <h2 className="text-2xl font-bold leading-relaxed sm:text-4xl">
             未来の暮らしを、つくる。
           </h2>
         </div>
@@ -106,7 +106,7 @@ export const _PhilosophySection = () => {
             className="mt-8"
             style={{ opacity: 0, transform: 'translateY(100px)' }}
           >
-            Ivy-Homeは <strong className="text-xl ">誠実</strong>{' '}
+            Ivy-Homeは <strong className="text-xl">誠実</strong>{' '}
             な姿勢でお客様一人ひとりに寄り添い、理想の暮らしを実現するパートナーであり続けます。
           </p>
         </div>

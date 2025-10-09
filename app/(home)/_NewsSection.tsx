@@ -60,15 +60,15 @@ export const _NewsSection = () => {
         />
       </div>
 
-      <div ref={scrollRef} className="mt-9  w-full" style={{ opacity: 0 }}>
-        <div className="animate-scroll flex w-fit gap-4">
+      <div ref={scrollRef} className="mt-9 w-full" style={{ opacity: 0 }}>
+        <div className="flex w-fit animate-scroll gap-4">
           {dataNews.map((data) => {
             const content = (
               <article
                 key={data.id}
                 className="flex cursor-pointer flex-col transition-all duration-300 hover:scale-105"
               >
-                <div className="h-[200px] w-[300px] shrink-0 rounded-lg  border border-gray-300">
+                <div className="h-[200px] w-[300px] shrink-0 rounded-lg border border-gray-300">
                   <div className="relative size-full overflow-hidden rounded-lg">
                     <Image
                       fill
@@ -103,7 +103,7 @@ export const _NewsSection = () => {
                 key={`duplicate-${data.id}`}
                 className="flex cursor-pointer flex-col transition-all duration-300 hover:scale-105"
               >
-                <div className="h-[200px] w-[300px] shrink-0 rounded-lg  border border-gray-300">
+                <div className="h-[200px] w-[300px] shrink-0 rounded-lg border border-gray-300">
                   <div className="relative size-full overflow-hidden rounded-lg">
                     <Image
                       fill

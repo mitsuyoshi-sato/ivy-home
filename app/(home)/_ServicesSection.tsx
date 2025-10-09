@@ -204,7 +204,7 @@ function __Bento({
               <img alt={title} className="size-full object-cover" src={image} />
             </div>
           </header>
-          <div className="text-container flex flex-1 flex-col justify-center md:px-3 md:pt-4">
+          <div className="flex flex-1 flex-col justify-center md:px-3 md:pt-4">
             <h3 className="text-lg font-bold">{title}</h3>
             {!mdTrimAfterNewline && (
               <p className="mt-2 hidden whitespace-pre-line break-words text-sm font-semibold leading-[1.82] text-gray-600 md:block">

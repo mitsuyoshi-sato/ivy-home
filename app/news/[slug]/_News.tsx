@@ -47,7 +47,7 @@ export const _News = (props: { data: News }) => {
       <header className="bg-cleam">
         <div className="wrapper">
           <div className="flex flex-col gap-12 md:flex-row md:items-center">
-            <div className="w-full md:w-[50%]">
+            <div className="w-full md:w-1/2">
               <SectionHeader
                 title={props.data.title}
                 subtitle={props.data.category}
@@ -75,7 +75,7 @@ export const _News = (props: { data: News }) => {
             </div>
             <figure
               ref={refImage}
-              className="h-[300px] w-full overflow-hidden rounded-lg md:w-[50%]"
+              className="h-[300px] w-full overflow-hidden rounded-lg md:w-1/2"
               style={{ opacity: 0, transform: 'translateY(100px)' }}
             >
               <img

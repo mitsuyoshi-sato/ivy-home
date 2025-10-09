@@ -62,7 +62,7 @@ export default function _OpeningAnimation({
           </div>
           <Icon
             ref={refLeaf}
-            className="absolute -left-[18px] -top-[21.61px]"
+            className="absolute left-[-18px] top-[-21.61px]"
             fill="#86EFAC"
             name="leaf"
             size={42.4}
@@ -72,7 +72,7 @@ export default function _OpeningAnimation({
 
           <Icon
             ref={refDrop}
-            className="absolute -left-[23px] top-[5px] h-[30px] w-[15px] rounded-full"
+            className="absolute left-[-23px] top-[5px] h-[30px] w-[15px] rounded-full"
             fill="skyblue"
             name="droplet"
             stroke="#0ea5e9"
