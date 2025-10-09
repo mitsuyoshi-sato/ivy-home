@@ -1,8 +1,8 @@
 'use client'
 
-import { SectionHeader } from '@/components/Section'
-import { ArrowRightIcon } from 'lucide-react'
 import { useEffect, useRef } from 'react'
+
+import { SectionHeader } from '@/components/Section'
 import { motion } from '../motion'
 
 export const _RecruitsSection = () => {
