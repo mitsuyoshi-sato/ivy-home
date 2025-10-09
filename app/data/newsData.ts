@@ -75,7 +75,7 @@ export const dataNews: News[] = [
     image: '/images/pest-control.jpg',
     publishedAt: '2025-10-07T00:00:00+09:00',
     category: 'シロアリ対策',
-    title: '家を守る！\nシロアリを見抜くためのチェックリスト',
+    title: '家を守る！シロアリを見抜くためのチェックリスト',
     subtitle:
       '家を守る！シロアリの初期症状とチェックリストを解説。小さな穴や木材の変色など、見逃しやすいサインに気づく方法も紹介します。',
     href: '/news/termite-checklist',
