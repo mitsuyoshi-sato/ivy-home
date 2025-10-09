@@ -38,40 +38,40 @@ const iconMap: Record<
     }
   >
 > = {
-  lightbulb: Lightbulb,
-  idea: Lightbulb,
+  arrowLeft: ArrowLeft,
+  bath: Bath,
+  battery: BatteryCharging,
+  bellRing: BellRing,
+  briefcase: Briefcase,
   building: Building2,
+  chartNoAxesCombined: ChartNoAxesCombined,
+  chevronDown: ChevronDown,
+  droplet: Droplet,
+  droplets: Droplets,
+  fileText: FileText,
+  footprints: Footprints,
+  handshake: Handshake,
+  home: Home,
+  idea: Lightbulb,
   info: Info,
   layers: Layers3,
+  leaf: Leaf,
+  lightbulb: Lightbulb,
+  newspaper: Newspaper,
+  paintbrush: Paintbrush,
+  plugZap: PlugZap,
+  sprayCan: SprayCan,
   star: Star,
   sun: Sun,
-  battery: BatteryCharging,
-  droplets: Droplets,
-  bath: Bath,
-  plugZap: PlugZap,
-  paintbrush: Paintbrush,
-  briefcase: Briefcase,
-  fileText: FileText,
-  chartNoAxesCombined: ChartNoAxesCombined,
-  handshake: Handshake,
-  bellRing: BellRing,
-  sprayCan: SprayCan,
-  home: Home,
-  chevronDown: ChevronDown,
-  leaf: Leaf,
-  droplet: Droplet,
-  footprints: Footprints,
-  newspaper: Newspaper,
-  arrowLeft: ArrowLeft,
 }
 
 export const Icon = forwardRef<
   SVGSVGElement,
   {
-    name: string
     className?: string
-    size?: number | string
     fill?: string
+    name: string
+    size?: number | string
     stroke?: string
     style?: React.CSSProperties
   }
@@ -79,12 +79,12 @@ export const Icon = forwardRef<
   const Comp = iconMap[props.name] ?? Circle
   return (
     <Comp
-      style={props.style}
       ref={ref}
       className={cn(props.className)}
-      size={props.size ?? '16'}
       fill={props.fill ?? 'none'}
+      size={props.size ?? '16'}
       stroke={props.stroke ?? 'currentColor'}
+      style={props.style}
     />
   )
 })
