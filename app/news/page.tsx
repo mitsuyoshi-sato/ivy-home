@@ -1,11 +1,13 @@
 import type { Metadata } from 'next'
+import { format } from 'date-fns'
 import Script from 'next/script'
 
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { Hero } from '@/components/Hero'
 import { SectionHeader } from '@/components/SectionHeader'
 
-import { _ArticlesClient } from './_ArticlesClient'
+import { dataNews } from '../data/newsData'
+import { _NewsClient } from './_NewsClient'
 
 export const metadata: Metadata = {
   title: 'ニュース一覧',
@@ -21,7 +23,12 @@ export const metadata: Metadata = {
   },
 }
 
-export default function Articles() {
+export default function NewsListPage() {
+  // RSCで日付をフォーマット（サーバー側で1回のみ実行）
+  const formattedNews = dataNews.map((news) => ({
+    ...news,
+    formattedDate: format(news.publishedAt, 'yyyy.MM.dd'),
+  }))
   return (
     <>
       <Script
@@ -71,10 +78,8 @@ export default function Articles() {
           subtitle="News"
           title="ニュース一覧"
         />
-        <_ArticlesClient />
+        <_NewsClient news={formattedNews} />
       </section>
     </>
   )
 }
-
-// クライアントに切り出し

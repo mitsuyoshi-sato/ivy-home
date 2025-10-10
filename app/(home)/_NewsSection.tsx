@@ -1,18 +1,19 @@
 'use client'
 
-import { format } from 'date-fns'
 import { ArrowRightIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 
+import { News } from '@/app/data/newsData'
 import { SectionHeader } from '@/components/SectionHeader'
 import { Button } from '@/components/ui/Button'
 
-import { dataNews } from '../data/newsData'
 import { motion } from '../motion'
 
-export const _NewsSection = () => {
+export const _NewsSection = (props: {
+  news: Array<News & { formattedDate: string }>
+}) => {
   const scrollRef = useRef<HTMLDivElement>(null)
   const refButtonMb = useRef<HTMLDivElement>(null)
 
@@ -62,7 +63,7 @@ export const _NewsSection = () => {
 
       <div ref={scrollRef} className="mt-9 w-full" style={{ opacity: 0 }}>
         <div className="flex w-fit animate-scroll gap-4">
-          {dataNews.map((data) => {
+          {props.news.map((data) => {
             const content = (
               <article
                 key={data.id}
@@ -81,7 +82,7 @@ export const _NewsSection = () => {
                 </div>
                 <div className="flex flex-col p-2">
                   <time className="text-sm text-gray-500">
-                    {format(data.publishedAt, 'yyyy.M.d')}
+                    {data.formattedDate}
                   </time>
                   <h3 className="whitespace-pre-line text-sm font-semibold text-dark7">
                     {data.title}
@@ -97,7 +98,7 @@ export const _NewsSection = () => {
               content
             )
           })}
-          {dataNews.map((data) => {
+          {props.news.map((data) => {
             const content = (
               <article
                 key={`duplicate-${data.id}`}
@@ -116,7 +117,7 @@ export const _NewsSection = () => {
                 </div>
                 <div className="flex flex-col p-2">
                   <time className="text-sm text-gray-500">
-                    {format(data.publishedAt, 'yyyy.M.d')}
+                    {data.formattedDate}
                   </time>
                   <h3 className="whitespace-pre-line text-sm font-semibold text-dark7">
                     {data.title}
@@ -153,7 +154,7 @@ export const _NewsSection = () => {
           }
           100% {
             transform: translateX(
-              calc(-300px * ${dataNews.length} - 16px * ${dataNews.length})
+              calc(-300px * ${props.news.length} - 16px * ${props.news.length})
             );
           }
         }

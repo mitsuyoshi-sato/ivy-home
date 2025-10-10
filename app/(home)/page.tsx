@@ -1,10 +1,19 @@
+import { format } from 'date-fns'
+
 import { Hero } from '../../components/Hero'
+import { dataNews } from '../data/newsData'
 import { _CampaignSection } from './_CampanySection'
 import { _NewsSection } from './_NewsSection'
 import { _RecruitsSection } from './_RecruitsSection'
 import { _ServicesSection } from './_ServicesSection'
 
 const Home = () => {
+  // RSCで日付をフォーマット（サーバー側で1回のみ実行）
+  const formattedNews = dataNews.map((news) => ({
+    ...news,
+    formattedDate: format(news.publishedAt, 'yyyy.M.d'),
+  }))
+
   return (
     <>
       <Hero
@@ -21,7 +30,7 @@ const Home = () => {
       </section>
       <_ServicesSection />
       <section className="w-full bg-cleam" id="news">
-        <_NewsSection />
+        <_NewsSection news={formattedNews} />
       </section>
       <_RecruitsSection />
     </>
