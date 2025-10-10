@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { format } from 'date-fns'
 import { notFound } from 'next/navigation'
 import Script from 'next/script'
 
@@ -29,10 +30,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function ArticlePage({ params }: Props) {
+export default async function NewsDetailPage({ params }: Props) {
   const { slug } = await params
   const data = dataNews.find((data) => data.href === `/news/${slug}`)
   if (!data) notFound()
+
+  // RSCで日付をフォーマット（サーバー側で1回のみ実行）
+  const formattedData = {
+    ...data,
+    formattedDate: format(data.publishedAt, 'yyyy.MM.dd'),
+  }
 
   return (
     <>
@@ -63,7 +70,7 @@ export default async function ArticlePage({ params }: Props) {
             ],
           }),
         }}
-        id={`breadcrumb-article-${slug}`}
+        id={`breadcrumb-news-${slug}`}
         type="application/ld+json"
       />
       <Script
@@ -94,7 +101,7 @@ export default async function ArticlePage({ params }: Props) {
             },
           }),
         }}
-        id={`article-${slug}`}
+        id={`news-${slug}`}
         type="application/ld+json"
       />
       <div className="bg-cleam pt-24">
@@ -111,7 +118,7 @@ export default async function ArticlePage({ params }: Props) {
           ]}
         />
       </div>
-      <_News data={data} />
+      <_News data={formattedData} />
       <FooterLinks
         items={[{ title: '記事一覧に戻る', href: '/news', icon: 'newspaper' }]}
       />

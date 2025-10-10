@@ -1,22 +1,23 @@
 'use client'
 
-import { format } from 'date-fns'
 import { ArrowRightIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 
+import { News } from '@/app/data/newsData'
 import { Button } from '@/components/ui/Button'
 
-import { dataNews } from '../data/newsData'
 import { motion } from '../motion'
 
-export const _ArticlesClient = () => {
+export const _NewsClient = (props: {
+  news: Array<News & { formattedDate: string }>
+}) => {
   return (
     <div className="grid grid-cols-1 gap-x-24 gap-y-12 md:grid-cols-2">
-      {[...dataNews].reverse().map((news, index) => (
-        <__ArticleCard
+      {[...props.news].reverse().map((news, index) => (
+        <__NewsCard
           key={index}
-          date={format(new Date(news.publishedAt), 'yyyy.MM.dd')}
+          date={news.formattedDate}
           description={news.subtitle}
           href={news.href}
           imageSrc={news.image}
@@ -27,7 +28,7 @@ export const _ArticlesClient = () => {
   )
 }
 
-const __ArticleCard = ({
+const __NewsCard = ({
   imageSrc,
   date,
   title,

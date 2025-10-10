@@ -1,5 +1,4 @@
 'use client'
-import { format } from 'date-fns'
 import { useEffect, useRef } from 'react'
 
 import { News } from '@/app/data/newsData'
@@ -20,7 +19,7 @@ const parseText = (text: string) => {
   })
 }
 
-export const _News = (props: { data: News }) => {
+export const _News = (props: { data: News & { formattedDate: string } }) => {
   const refCreatedBy = useRef<HTMLDivElement>(null)
   const refImage = useRef<HTMLDivElement>(null)
   useEffect(() => {
@@ -60,7 +59,7 @@ export const _News = (props: { data: News }) => {
                 style={{ opacity: 0, transform: 'translateY(100px)' }}
               >
                 <time className="text-sm" dateTime={props.data.publishedAt}>
-                  {format(props.data.publishedAt, 'yyyy.MM.dd')}
+                  {props.data.formattedDate}
                 </time>
                 <span className="text-sm text-gray-500">created by</span>
                 <div className="size-7 overflow-hidden rounded-full">
