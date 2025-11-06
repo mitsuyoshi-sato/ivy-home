@@ -34,13 +34,18 @@ const AcordionItem = (props: { question: string; answer: string }) => {
   const refAnswer = useRef<HTMLDivElement>(null)
   const refOpen = useRef(false)
   const refIcon = useRef<SVGSVGElement>(null)
+  const refAnimating = useRef(false)
+
   return (
     <article
       className="flex w-full flex-col border-b border-gray-300"
       onClick={async () => {
+        if (refAnimating.current) return
+
         const a = refAnswer.current
         const i = refIcon.current
         if (a && i && !refOpen.current) {
+          refAnimating.current = true
           motion.set(a, { display: 'flex' })
           await motion.delay(0)
           motion.to(a, 0.2, 'linear', {
@@ -53,7 +58,9 @@ const AcordionItem = (props: { question: string; answer: string }) => {
           // アニメーション閉じる際の、opacityのアニメーションを無効にする
           motion.set(a, { transition: 'none' })
           refOpen.current = true
+          refAnimating.current = false
         } else if (a && i && refOpen.current) {
+          refAnimating.current = true
           motion.set(a, { opacity: 0 })
           await motion.delay(0)
           // アニメーション戻す
@@ -63,6 +70,7 @@ const AcordionItem = (props: { question: string; answer: string }) => {
           await motion.delay(0)
           motion.set(a, { display: 'none' })
           refOpen.current = false
+          refAnimating.current = false
         }
       }}
     >
