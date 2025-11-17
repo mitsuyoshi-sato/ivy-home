@@ -115,7 +115,7 @@ export const _InfoSection = () => {
           <div className="flex w-full items-stretch border-b border-gray-200">
             <h3 className="w-1/4 py-2 leading-6 text-gray-600">資本金</h3>
             <p className="w-3/4 shrink-0 py-2 text-base font-semibold leading-6 text-dark6">
-              300万円
+              3,000,000円
             </p>
           </div>
           <div className="flex w-full items-stretch border-b border-gray-200">
