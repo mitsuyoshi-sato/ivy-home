@@ -10,11 +10,11 @@ import { _PhilosophySection } from './_PhilosophySection'
 export const metadata: Metadata = {
   title: '会社情報',
   description:
-    'お客様の明日の暮らしを支える株式会社アイビーホーム。企業理念や取り組みをわかりやすくご紹介します。',
+    'お客様の明日の暮らしを支える株式会社アイビーホーム(愛媛県)。企業理念や取り組みをわかりやすくご紹介します。',
   openGraph: {
-    title: '会社情報 / 株式会社アイビーホーム',
+    title: '会社情報 / 株式会社アイビーホーム | 愛媛県',
     description:
-      'お客様の明日の暮らしを支える株式会社アイビーホーム。企業理念や取り組みをわかりやすくご紹介します。',
+      'お客様の明日の暮らしを支える株式会社アイビーホーム(愛媛県)。企業理念や取り組みをわかりやすくご紹介します。',
     images: {
       url: '/images/ivy-home.svg',
     },
