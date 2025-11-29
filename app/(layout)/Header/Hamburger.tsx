@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 
-import { motion } from '../motion'
+import { motion } from '../../motion'
 
 export const Hamburger = (props: {
   items: {

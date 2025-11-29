@@ -6,7 +6,7 @@ import { Breadcrumb } from '@/components/Breadcrumb'
 import { Hero } from '@/components/Hero'
 import { SectionHeader } from '@/components/SectionHeader'
 
-import { dataNews } from '../data/newsData'
+import { dataNews } from '../../data/newsData'
 import { _NewsClient } from './_NewsClient'
 
 export const metadata: Metadata = {

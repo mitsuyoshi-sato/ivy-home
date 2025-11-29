@@ -4,10 +4,10 @@ import { useEffect, useRef } from 'react'
 
 import { Acordion } from '@/components/ui/Acordion'
 
-import { motion } from '../../motion'
+import { motion } from '../../../motion'
 import { _InfoCard } from '../_InfoCard'
 
-export const _EcoCute = () => {
+export const _Battery = () => {
   const refCards = useRef<HTMLDivElement>(null)
   const refSubtitle = useRef<HTMLParagraphElement>(null)
   const refTitle = useRef<HTMLHeadingElement>(null)
@@ -41,7 +41,7 @@ export const _EcoCute = () => {
             }
           })
         },
-        { threshold: 0.5 },
+        { threshold: 0.3 },
       )
       observer.observe(s)
       return () => observer.disconnect()
@@ -70,7 +70,7 @@ export const _EcoCute = () => {
             }
           })
         },
-        { threshold: 0.3 },
+        { threshold: 0.5 },
       )
       observer.observe(c)
       return () => observer.disconnect()
@@ -124,24 +124,24 @@ export const _EcoCute = () => {
           className="text-sm text-ivy5/80 lg:text-lg"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
-          EcoCute
+          Battery
         </p>
         <h2
           ref={refTitle}
           className="mt-6 text-2xl font-bold lg:text-4xl"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
-          エコキュート
+          蓄電池
         </h2>
         <p
           ref={refDescription}
           className="mt-4 text-sm text-gray-600 lg:mt-6 lg:text-lg"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
-          空気中の熱を取り込み、電気でわずかに加熱することでお湯を作るため、少ない電力で大量のお湯をためられます。
+          蓄電池は太陽光発電や深夜電力などで作った電気を蓄えて、必要な時に使える「電気の貯金」のような仕組みです。
           <br />
-          作ったお湯はタンクに貯められ、必要なときに家庭内で使用可能です。
-          環境にやさしく、経済的な給湯設備として多くのご家庭で選ばれています。
+          昼間に太陽光で発電した電力を夜や緊急時に使えるため、電気代の不安を軽減し、災害時にも安心です。
+          将来の電力不安に備える賢い選択肢として、多くのご家庭で選ばれています。
         </p>
       </div>
       <div ref={refCards} className="mt-12 flex flex-col gap-6 md:flex-row">
@@ -150,11 +150,10 @@ export const _EcoCute = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            alt="エコキュート"
-            description={`夜間の安い電力を利用して効率よくお湯を沸かすので、毎月の光熱費を大幅に抑えられます。
-              長期的には家計の負担軽減にもつながります。`}
-            image="/images/eco-cute.jpg"
-            title="長期的に大きなメリット"
+            alt="屋外に設置された蓄電池"
+            description="太陽光発電や深夜電力などで作った電気を蓄えて、必要なとき、緊急時に使用できます。電気を「賢くためて使う」ことで、経済的に生活をサポートします。"
+            image="/images/battery.jpg"
+            title="蓄電池の仕組み"
           />
         </article>
         <article
@@ -162,11 +161,11 @@ export const _EcoCute = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            alt="子供が手を洗っている様子"
-            description={`大量タンクにより、お風呂や洗面所、キッチンなど複数箇所で快適に給湯。
-              忙しい朝も家族全員がストレスなく使えます。`}
-            image="/images/hand-wash.jpg"
-            title="家族みんなが快適に使える"
+            alt="電気ケトル"
+            description={`電気代を削減するだけでなく、将来の電力価格変動にも備えられます。
+              賢いエネルギー管理を実現できます。`}
+            image="/images/kettle.jpg"
+            title="賢くエネルギーを節約"
           />
         </article>
         <article
@@ -174,10 +173,11 @@ export const _EcoCute = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            alt="シャワーヘッドから水が出ている様子"
-            description={`火を使わず安全にお湯を供給できる点や、環境負荷を抑えられる点もメリットとして考慮すると、経済性だけでなく暮らし全体の安心にもつながります。`}
-            image="/images/shower.jpg"
-            title="火を使わずにお湯を沸かす"
+            alt="室内照明"
+            description={`停電時でも冷蔵庫や照明、テレビなど必要な家電を数時間安心して使えます。
+              災害時も家族の生活を守るバックアップ電源です。`}
+            image="/images/room-light.jpg"
+            title="停電時に大活躍！"
           />
         </article>
       </div>
@@ -186,34 +186,35 @@ export const _EcoCute = () => {
         className="mt-40 text-center text-xl font-bold"
         style={{ opacity: 0, transform: 'translateY(100px)' }}
       >
-        エコキュートに関するよくある質問
+        蓄電池に関するよくある質問
       </h3>
       <Acordion
         ref={refAcordion}
         items={[
           {
-            question: '	家族4人だとお湯は足りますか？',
-            answer: `基本的には充分です。一般的な4人家族用のタンクで1日分の生活用水は十分に確保できます。    
-ただし、連続で長時間使用する場合や、家族が多い場合はタンク容量の大きいモデルを選ぶとより安心です`,
+            question: '蓄電池は太陽光パネルがないと使えないの？',
+            answer: `いいえ、蓄電池だけでも使えます。深夜の安い電力を蓄えて昼間に使うことで電気代を削減できます。
+もちろん！太陽光パネルと併用すればより効果的です。`,
           },
           {
-            question: '冬でもちゃんとお湯は出ますか？',
-            answer: `はい、問題ありません。エコキュートは空気の熱を利用してお湯を作りますが、寒冷地対応モデルであればマイナス25度の環境でも安定して稼働します。  
-さらに、タンクにお湯を貯めておく方式なので、寒い冬でも入浴や家事に必要なお湯がすぐに使えます。`,
+            question: '停電時にはどのくらい使えますか？',
+            answer: `蓄電池の容量によって異なりますが、一般的な家庭用蓄電池なら、冷蔵庫やテレビ、照明などを数時間～数日使うことが可能です。
+太陽光発電と併用すれば、晴れた日には充電も可能です。`,
           },
           {
-            question: ' エコキュートって電気代は本当に節約できますか？',
-            answer: ` はい。夜間の安い電力を使って効率的にお湯を沸かすため、毎月の光熱費を大幅に抑えられます。長期的には家計の負担軽減にもつながります。`,
+            question: '蓄電池の寿命はどのくらいですか？',
+            answer: `一般的に10～15年程度です。メーカーによっては10年保証が付いている製品もあります。
+定期的なメンテナンスで、より長く安心してお使いいただけます。`,
           },
           {
-            question: '家族が同時にお湯を使っても大丈夫ですか？',
-            answer: `お風呂・洗面所・キッチンなど複数箇所で同時に使用しても快適に給湯できます。
-            多人数で同時使用すると、わずかに温度や水圧が変わることがあります。`,
+            question: '本当に電気代が節約できますか？',
+            answer: `夜間電力や太陽光の余剰電力を効率的に蓄えることで、毎月の電気代を節約できます。
+            家庭の使用状況や蓄電容量によって差はありますが、無料でお見積もり可能です。`,
           },
           {
-            question: 'お手入れは大変ですか？',
-            answer: `タンクや給湯器の外装、フィルターなど日常のお手入れは簡単です。
-            内部の点検や故障対応は専門スタッフがサポートしますので、安心してご利用いただけます。`,
+            question: '設置スペースはどのくらい必要ですか？',
+            answer: `家庭用の蓄電池は比較的コンパクトで、屋外壁面や屋内の空きスペースに設置可能です。
+            設置場所の条件に合わせて最適なプランをご提案します。`,
           },
         ]}
         style={{ opacity: 0, transform: 'translateY(100px)' }}

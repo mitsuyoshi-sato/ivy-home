@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 
-import { motion } from '../motion'
+import { motion } from '../../motion'
 
 export const _PhilosophySection = () => {
   const refDescription1 = useRef<HTMLParagraphElement>(null)

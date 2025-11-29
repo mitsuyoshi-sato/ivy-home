@@ -4,10 +4,10 @@ import { useEffect, useRef } from 'react'
 
 import { Acordion } from '@/components/ui/Acordion'
 
-import { motion } from '../../motion'
+import { motion } from '../../../motion'
 import { _InfoCard } from '../_InfoCard'
 
-export const _Battery = () => {
+export const _Reform = () => {
   const refCards = useRef<HTMLDivElement>(null)
   const refSubtitle = useRef<HTMLParagraphElement>(null)
   const refTitle = useRef<HTMLHeadingElement>(null)
@@ -41,7 +41,7 @@ export const _Battery = () => {
             }
           })
         },
-        { threshold: 0.3 },
+        { threshold: 0.5 },
       )
       observer.observe(s)
       return () => observer.disconnect()
@@ -70,7 +70,7 @@ export const _Battery = () => {
             }
           })
         },
-        { threshold: 0.5 },
+        { threshold: 0.3 },
       )
       observer.observe(c)
       return () => observer.disconnect()
@@ -124,24 +124,23 @@ export const _Battery = () => {
           className="text-sm text-ivy5/80 lg:text-lg"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
-          Battery
+          Reform
         </p>
         <h2
           ref={refTitle}
           className="mt-6 text-2xl font-bold lg:text-4xl"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
-          蓄電池
+          リフォーム
         </h2>
         <p
           ref={refDescription}
           className="mt-4 text-sm text-gray-600 lg:mt-6 lg:text-lg"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
-          蓄電池は太陽光発電や深夜電力などで作った電気を蓄えて、必要な時に使える「電気の貯金」のような仕組みです。
+          リフォームは、住み慣れた家を快適で長持ちする住まいに生まれ変わらせる選択です。
           <br />
-          昼間に太陽光で発電した電力を夜や緊急時に使えるため、電気代の不安を軽減し、災害時にも安心です。
-          将来の電力不安に備える賢い選択肢として、多くのご家庭で選ばれています。
+          内装・水回り・外装など幅広く対応し、ライフスタイルや将来の安心まで考えたご提案をさせていただきます。
         </p>
       </div>
       <div ref={refCards} className="mt-12 flex flex-col gap-6 md:flex-row">
@@ -150,10 +149,10 @@ export const _Battery = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            alt="屋外に設置された蓄電池"
-            description="太陽光発電や深夜電力などで作った電気を蓄えて、必要なとき、緊急時に使用できます。電気を「賢くためて使う」ことで、経済的に生活をサポートします。"
-            image="/images/battery.jpg"
-            title="蓄電池の仕組み"
+            alt="シンク"
+            description="キッチン、浴室、トイレなどの水回りから、外壁塗装、屋根工事まで、住まいのあらゆるリフォームに対応します。"
+            image="/images/shink.jpg"
+            title="多様なリフォームに対応"
           />
         </article>
         <article
@@ -161,11 +160,10 @@ export const _Battery = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            alt="電気ケトル"
-            description={`電気代を削減するだけでなく、将来の電力価格変動にも備えられます。
-              賢いエネルギー管理を実現できます。`}
-            image="/images/kettle.jpg"
-            title="賢くエネルギーを節約"
+            alt="IHで料理をしている"
+            description={`建て替えより費用を抑えつつ、ライフスタイルに合わせた理想の住まいを実現します。無駄を減らしたプランで、予算も安心です。`}
+            image="/images/ih-cooking.jpg"
+            title="コストを抑えつつ理想の住まいを"
           />
         </article>
         <article
@@ -173,11 +171,10 @@ export const _Battery = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            alt="室内照明"
-            description={`停電時でも冷蔵庫や照明、テレビなど必要な家電を数時間安心して使えます。
-              災害時も家族の生活を守るバックアップ電源です。`}
-            image="/images/room-light.jpg"
-            title="停電時に大活躍！"
+            alt="家族団欒の様子"
+            description="断熱や設備改善で光熱費削減。長期的には省エネによるコスト削減と住まいの資産価値向上にもつながります。"
+            image="/images/family.jpg"
+            title="省エネ・快適な暮らしへ"
           />
         </article>
       </div>
@@ -186,35 +183,34 @@ export const _Battery = () => {
         className="mt-40 text-center text-xl font-bold"
         style={{ opacity: 0, transform: 'translateY(100px)' }}
       >
-        蓄電池に関するよくある質問
+        リフォームに関するよくある質問
       </h3>
       <Acordion
         ref={refAcordion}
         items={[
           {
-            question: '蓄電池は太陽光パネルがないと使えないの？',
-            answer: `いいえ、蓄電池だけでも使えます。深夜の安い電力を蓄えて昼間に使うことで電気代を削減できます。
-もちろん！太陽光パネルと併用すればより効果的です。`,
+            question: 'リフォームできる範囲は？',
+            answer: `キッチン・浴室・トイレなどの水回りはもちろん、外壁塗装や屋根補修まで幅広く対応可能です。
+            ライフスタイルに合わせた間取り変更もご相談ください。`,
           },
           {
-            question: '停電時にはどのくらい使えますか？',
-            answer: `蓄電池の容量によって異なりますが、一般的な家庭用蓄電池なら、冷蔵庫やテレビ、照明などを数時間～数日使うことが可能です。
-太陽光発電と併用すれば、晴れた日には充電も可能です。`,
+            question: 'リフォーム中も住みながら工事できますか？',
+            answer: `はい、可能です。工事内容や規模によりますが、多くの場合は住みながらのリフォームが可能です。
+生活への影響を最小限に抑えるよう、工程を調整いたします。`,
           },
           {
-            question: '蓄電池の寿命はどのくらいですか？',
-            answer: `一般的に10～15年程度です。メーカーによっては10年保証が付いている製品もあります。
-定期的なメンテナンスで、より長く安心してお使いいただけます。`,
+            question: 'どのくらいの予算が必要ですか？',
+            answer: `リフォーム内容によって大きく異なります。
+無料でお見積もりを作成いたしますので、まずはご希望の内容をお聞かせください。予算に合わせたプランもご提案いたします。`,
           },
           {
-            question: '本当に電気代が節約できますか？',
-            answer: `夜間電力や太陽光の余剰電力を効率的に蓄えることで、毎月の電気代を節約できます。
-            家庭の使用状況や蓄電容量によって差はありますが、無料でお見積もり可能です。`,
+            question: '工事期間はどのくらいかかりますか？',
+            answer: `工事内容によって異なりますが、水回り単体なら1週間程度、全面改修なら1～2ヶ月程度が目安です。
+事前に詳細なスケジュールをご説明いたします。`,
           },
           {
-            question: '設置スペースはどのくらい必要ですか？',
-            answer: `家庭用の蓄電池は比較的コンパクトで、屋外壁面や屋内の空きスペースに設置可能です。
-            設置場所の条件に合わせて最適なプランをご提案します。`,
+            question: '施工後のサポートはありますか？',
+            answer: `はい。トラブルや不明点には迅速に対応し、地域に根ざした会社ならではの安心のアフターフォローをご提供いたします。`,
           },
         ]}
         style={{ opacity: 0, transform: 'translateY(100px)' }}

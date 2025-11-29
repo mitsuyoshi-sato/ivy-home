@@ -8,7 +8,7 @@ import { SectionHeader } from '@/components/SectionHeader'
 import { Button } from '@/components/ui/Button'
 import { cn } from '@/lib/utils'
 
-import { motion } from '../motion'
+import { motion } from '../../motion'
 
 export const _ServicesSection = () => {
   const refContainer = useRef<HTMLDivElement>(null)

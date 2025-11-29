@@ -4,10 +4,10 @@ import { useEffect, useRef } from 'react'
 
 import { Acordion } from '@/components/ui/Acordion'
 
-import { motion } from '../../motion'
+import { motion } from '../../../motion'
 import { _InfoCard } from '../_InfoCard'
 
-export const _Reform = () => {
+export const _EcoCute = () => {
   const refCards = useRef<HTMLDivElement>(null)
   const refSubtitle = useRef<HTMLParagraphElement>(null)
   const refTitle = useRef<HTMLHeadingElement>(null)
@@ -124,23 +124,24 @@ export const _Reform = () => {
           className="text-sm text-ivy5/80 lg:text-lg"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
-          Reform
+          EcoCute
         </p>
         <h2
           ref={refTitle}
           className="mt-6 text-2xl font-bold lg:text-4xl"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
-          リフォーム
+          エコキュート
         </h2>
         <p
           ref={refDescription}
           className="mt-4 text-sm text-gray-600 lg:mt-6 lg:text-lg"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
-          リフォームは、住み慣れた家を快適で長持ちする住まいに生まれ変わらせる選択です。
+          空気中の熱を取り込み、電気でわずかに加熱することでお湯を作るため、少ない電力で大量のお湯をためられます。
           <br />
-          内装・水回り・外装など幅広く対応し、ライフスタイルや将来の安心まで考えたご提案をさせていただきます。
+          作ったお湯はタンクに貯められ、必要なときに家庭内で使用可能です。
+          環境にやさしく、経済的な給湯設備として多くのご家庭で選ばれています。
         </p>
       </div>
       <div ref={refCards} className="mt-12 flex flex-col gap-6 md:flex-row">
@@ -149,10 +150,11 @@ export const _Reform = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            alt="シンク"
-            description="キッチン、浴室、トイレなどの水回りから、外壁塗装、屋根工事まで、住まいのあらゆるリフォームに対応します。"
-            image="/images/shink.jpg"
-            title="多様なリフォームに対応"
+            alt="エコキュート"
+            description={`夜間の安い電力を利用して効率よくお湯を沸かすので、毎月の光熱費を大幅に抑えられます。
+              長期的には家計の負担軽減にもつながります。`}
+            image="/images/eco-cute.jpg"
+            title="長期的に大きなメリット"
           />
         </article>
         <article
@@ -160,10 +162,11 @@ export const _Reform = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            alt="IHで料理をしている"
-            description={`建て替えより費用を抑えつつ、ライフスタイルに合わせた理想の住まいを実現します。無駄を減らしたプランで、予算も安心です。`}
-            image="/images/ih-cooking.jpg"
-            title="コストを抑えつつ理想の住まいを"
+            alt="子供が手を洗っている様子"
+            description={`大量タンクにより、お風呂や洗面所、キッチンなど複数箇所で快適に給湯。
+              忙しい朝も家族全員がストレスなく使えます。`}
+            image="/images/hand-wash.jpg"
+            title="家族みんなが快適に使える"
           />
         </article>
         <article
@@ -171,10 +174,10 @@ export const _Reform = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            alt="家族団欒の様子"
-            description="断熱や設備改善で光熱費削減。長期的には省エネによるコスト削減と住まいの資産価値向上にもつながります。"
-            image="/images/family.jpg"
-            title="省エネ・快適な暮らしへ"
+            alt="シャワーヘッドから水が出ている様子"
+            description={`火を使わず安全にお湯を供給できる点や、環境負荷を抑えられる点もメリットとして考慮すると、経済性だけでなく暮らし全体の安心にもつながります。`}
+            image="/images/shower.jpg"
+            title="火を使わずにお湯を沸かす"
           />
         </article>
       </div>
@@ -183,34 +186,34 @@ export const _Reform = () => {
         className="mt-40 text-center text-xl font-bold"
         style={{ opacity: 0, transform: 'translateY(100px)' }}
       >
-        リフォームに関するよくある質問
+        エコキュートに関するよくある質問
       </h3>
       <Acordion
         ref={refAcordion}
         items={[
           {
-            question: 'リフォームできる範囲は？',
-            answer: `キッチン・浴室・トイレなどの水回りはもちろん、外壁塗装や屋根補修まで幅広く対応可能です。
-            ライフスタイルに合わせた間取り変更もご相談ください。`,
+            question: '	家族4人だとお湯は足りますか？',
+            answer: `基本的には充分です。一般的な4人家族用のタンクで1日分の生活用水は十分に確保できます。    
+ただし、連続で長時間使用する場合や、家族が多い場合はタンク容量の大きいモデルを選ぶとより安心です`,
           },
           {
-            question: 'リフォーム中も住みながら工事できますか？',
-            answer: `はい、可能です。工事内容や規模によりますが、多くの場合は住みながらのリフォームが可能です。
-生活への影響を最小限に抑えるよう、工程を調整いたします。`,
+            question: '冬でもちゃんとお湯は出ますか？',
+            answer: `はい、問題ありません。エコキュートは空気の熱を利用してお湯を作りますが、寒冷地対応モデルであればマイナス25度の環境でも安定して稼働します。  
+さらに、タンクにお湯を貯めておく方式なので、寒い冬でも入浴や家事に必要なお湯がすぐに使えます。`,
           },
           {
-            question: 'どのくらいの予算が必要ですか？',
-            answer: `リフォーム内容によって大きく異なります。
-無料でお見積もりを作成いたしますので、まずはご希望の内容をお聞かせください。予算に合わせたプランもご提案いたします。`,
+            question: ' エコキュートって電気代は本当に節約できますか？',
+            answer: ` はい。夜間の安い電力を使って効率的にお湯を沸かすため、毎月の光熱費を大幅に抑えられます。長期的には家計の負担軽減にもつながります。`,
           },
           {
-            question: '工事期間はどのくらいかかりますか？',
-            answer: `工事内容によって異なりますが、水回り単体なら1週間程度、全面改修なら1～2ヶ月程度が目安です。
-事前に詳細なスケジュールをご説明いたします。`,
+            question: '家族が同時にお湯を使っても大丈夫ですか？',
+            answer: `お風呂・洗面所・キッチンなど複数箇所で同時に使用しても快適に給湯できます。
+            多人数で同時使用すると、わずかに温度や水圧が変わることがあります。`,
           },
           {
-            question: '施工後のサポートはありますか？',
-            answer: `はい。トラブルや不明点には迅速に対応し、地域に根ざした会社ならではの安心のアフターフォローをご提供いたします。`,
+            question: 'お手入れは大変ですか？',
+            answer: `タンクや給湯器の外装、フィルターなど日常のお手入れは簡単です。
+            内部の点検や故障対応は専門スタッフがサポートしますので、安心してご利用いただけます。`,
           },
         ]}
         style={{ opacity: 0, transform: 'translateY(100px)' }}
