@@ -7,7 +7,7 @@ import { useEffect, useRef } from 'react'
 import { News } from '@/app/data/newsData'
 import { Button } from '@/components/ui/Button'
 
-import { motion } from '../motion'
+import { motion } from '../../motion'
 
 export const _NewsClient = (props: {
   news: Array<News & { formattedDate: string }>

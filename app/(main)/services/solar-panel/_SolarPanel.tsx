@@ -4,10 +4,10 @@ import { useEffect, useRef } from 'react'
 
 import { Acordion } from '@/components/ui/Acordion'
 
-import { motion } from '../../motion'
+import { motion } from '../../../motion'
 import { _InfoCard } from '../_InfoCard'
 
-export const _TermiteControl = () => {
+export const _SolarPanel = (props: { className?: string }) => {
   const refCards = useRef<HTMLDivElement>(null)
   const refSubtitle = useRef<HTMLParagraphElement>(null)
   const refTitle = useRef<HTMLHeadingElement>(null)
@@ -41,7 +41,7 @@ export const _TermiteControl = () => {
             }
           })
         },
-        { threshold: 0.5 },
+        { threshold: 0.3 },
       )
       observer.observe(s)
       return () => observer.disconnect()
@@ -70,7 +70,7 @@ export const _TermiteControl = () => {
             }
           })
         },
-        { threshold: 0.3 },
+        { threshold: 0.5 },
       )
       observer.observe(c)
       return () => observer.disconnect()
@@ -78,7 +78,7 @@ export const _TermiteControl = () => {
     const children = Array.from(c.children) as HTMLElement[]
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
+        entries.forEach(async (entry) => {
           if (entry.isIntersecting) {
             motion.to(entry.target as HTMLElement, 1.8, 'out', {
               opacity: 1,
@@ -117,31 +117,32 @@ export const _TermiteControl = () => {
   }, [])
 
   return (
-    <div>
+    <div className={props.className}>
       <div className="flex flex-col">
         <p
           ref={refSubtitle}
           className="text-sm text-ivy5/80 lg:text-lg"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
-          Termite Control
+          Solar Panel
         </p>
         <h2
           ref={refTitle}
           className="mt-6 text-2xl font-bold lg:text-4xl"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
-          シロアリ駆除
+          太陽光パネル
         </h2>
         <p
           ref={refDescription}
           className="mt-4 text-sm text-gray-600 lg:mt-6 lg:text-lg"
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
-          シロアリは家の土台や柱を食い荒らし、建物の耐震性を著しく低下させます。
+          電気代、最近どんどん上がってますよね…。
           <br />
-          早期発見・早期対処が、大切な住まいを守る鍵となります。
-          経験豊富な専門スタッフが、最新の駆除技術でお住まいを守ります。
+          そんな今だからこそ、太陽光パネルで将来の家計を守る賢い投資としておすすめです。
+          <br />
+          さらに、環境にもやさしく、安心できる暮らしを支える仕組みとして、多くのご家庭で選ばれています。
         </p>
       </div>
       <div ref={refCards} className="mt-12 flex flex-col gap-6 md:flex-row">
@@ -150,10 +151,10 @@ export const _TermiteControl = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            alt="傷んだ木材"
-            description="早期発見・早期対処が、大切な住まいを守ります。床下や木材に気になる変化や羽アリの発生があれば、迷わずご連絡ください。。"
-            image="/images/pest-control.jpg"
-            title="早期発見が重要！"
+            alt="ソーラーパネルの設置工事"
+            description="太陽の光を電気に変えるクリーンエネルギーシステムです。屋根や敷地に設置したパネルが太陽光を吸収し、家庭で使える電力を供給します。"
+            image="/images/solar-panel-construction.jpg"
+            title="太陽光パネルの仕組み"
           />
         </article>
         <article
@@ -161,10 +162,10 @@ export const _TermiteControl = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            alt="家にいる犬"
-            description="当社の使用するシロアリ薬剤は、人体やペットへの毒性が低いものが選択しています。"
-            image="/images/dog.jpg"
-            title="ペットや家族にも安心"
+            alt="ソーラーパネルが設置された住宅街"
+            description="光熱費を削減しながら、電力自給率を高めることができます。余った電力は蓄電池に保存したり、電力会社に売ることも可能です。"
+            image="/images/houses.jpg"
+            title="家計を助ける投資"
           />
         </article>
         <article
@@ -172,10 +173,11 @@ export const _TermiteControl = () => {
           style={{ opacity: 0, transform: 'translateY(100px)' }}
         >
           <_InfoCard
-            alt="綺麗な木材の床と足"
-            description={`床下の隅々までチェックし、シロアリの被害を防ぎます。木材の健康を守ることで、大切な家を長く維持できます。`}
-            image="/images/foot.jpg"
-            title="大切な家の資産を守りましょう"
+            alt="営業担当者が自宅でお客様の話を聞く様子"
+            description={`設置後も、トラブル時やご不明点に迅速に対応。
+地域に根ざした会社だからこそ、いつでも頼れる安心のサポートをご提供いたします。`}
+            image="/images/afterfollow.jpg"
+            title="安心のアフターフォロー"
           />
         </article>
       </div>
@@ -184,33 +186,35 @@ export const _TermiteControl = () => {
         className="mt-40 text-center text-xl font-bold"
         style={{ opacity: 0, transform: 'translateY(100px)' }}
       >
-        シロアリ駆除に関するよくある質問
+        太陽光パネルに関するよくある質問
       </h3>
       <Acordion
         ref={refAcordion}
         items={[
           {
-            question: 'シロアリがいるかどうか、どうやって分かるの？',
-            answer: `床がきしむ、柱を叩くと空洞音がする、羽アリを見かけた、などのサインがあります。
-無料点検も実施しておりますので、少しでも気になる場合はお気軽にご相談ください。`,
+            question: '太陽光パネル設置は本当にお得なの？',
+            answer: `太陽光は「自分で電気をつくる」仕組みなので、今後の電気代高騰への保険としてもお得といえると思います。
+実際にどのくらい削減できるかは、電気代の明細を見て具体的に試算いたします。`,
           },
           {
-            question: '施工中は家にいても大丈夫ですか？',
-            answer: `はい、問題ありません。使用する薬剤は人やペットに安全性の高いものを使用しています。
-施工時間は建物の大きさによりますが、通常は半日～1日程度です。`,
+            question: '雨の日は発電できますか？',
+            answer: `はい、発電します。ただし、晴天時に比べて発電量は少なくなります。
+天候に左右されるため、蓄電池を組み合わせることで効率的に電力を利用できます`,
           },
           {
-            question: '駆除後の保証はありますか？',
-            answer: `はい、施工後5年間の保証をお付けしています。
-保証期間中に万が一シロアリが再発した場合は、無償で再施工いたします。`,
+            question: '設置に向いている屋根はありますか？',
+            answer: `南向きで日当たりの良い屋根が最適です。
+            北向きや影が多い場合でも設置は可能ですが、南向きと比較すると発電効率はやや下がります。`,
           },
           {
-            question: '相談だけでも対応してもらえますか？',
-            answer: `はい。まずは現状の確認やアドバイスだけでも大丈夫です。強引な駆除勧誘は行いませんので、お気軽にお問い合わせください`,
+            question: '停電時にも電気が使えるのですか？',
+            answer: `停電時でも、蓄電池を併用することで電力を供給できます。
+特に災害時には非常用電源として活用可能です。`,
           },
           {
-            question: '駆除にかかる費用はどのくらいですか？',
-            answer: `家の規模や被害状況、選ぶ駆除方法によって異なります。まずは無料見積もり・相談をおすすめしています。`,
+            question: 'メンテナンスは必要ですか？',
+            answer: `日常的な掃除や簡単な確認だけで十分です。
+            内部の点検や故障対応は専門スタッフがサポートするため、手間はほとんどかかりません。`,
           },
         ]}
         style={{ opacity: 0, transform: 'translateY(100px)' }}

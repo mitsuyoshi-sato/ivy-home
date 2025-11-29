@@ -1,7 +1,7 @@
 import { format } from 'date-fns'
 
-import { Hero } from '../../components/Hero'
-import { dataNews } from '../data/newsData'
+import { Hero } from '../../../components/Hero'
+import { dataNews } from '../../data/newsData'
 import { _CampaignSection } from './_CampanySection'
 import { _NewsSection } from './_NewsSection'
 import { _RecruitsSection } from './_RecruitsSection'

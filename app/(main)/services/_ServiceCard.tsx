@@ -6,7 +6,7 @@ import { useEffect, useRef } from 'react'
 
 import { Button } from '@/components/ui/Button'
 
-import { motion } from '../motion'
+import { motion } from '../../motion'
 
 export const _ServiceCard = (props: {
   title: string

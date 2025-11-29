@@ -8,7 +8,7 @@ import { useLayoutEffect, useMemo, useRef } from 'react'
 import { Icon } from '@/components/ui/Icon'
 import { cn } from '@/lib/utils'
 
-import { motion } from '../motion'
+import { motion } from '../../motion'
 
 export const Nav = (props: {
   items: {

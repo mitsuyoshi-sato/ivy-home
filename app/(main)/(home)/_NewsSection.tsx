@@ -9,7 +9,7 @@ import { News } from '@/app/data/newsData'
 import { SectionHeader } from '@/components/SectionHeader'
 import { Button } from '@/components/ui/Button'
 
-import { motion } from '../motion'
+import { motion } from '../../motion'
 
 export const _NewsSection = (props: {
   news: Array<News & { formattedDate: string }>

@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react'
 
 import { SectionHeader } from '@/components/SectionHeader'
 
-import { motion } from '../motion'
+import { motion } from '../../motion'
 
 export const _RecruitSection = () => {
   const refInfo = useRef<HTMLDivElement>(null)
