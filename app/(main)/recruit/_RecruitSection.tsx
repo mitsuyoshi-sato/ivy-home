@@ -118,7 +118,7 @@ export const _RecruitSection = () => {
                 <span className="inline-block w-[120px] text-gray-600">
                   TEL
                 </span>
-                <span className="font-semibold">090-7629-7452</span>
+                <span className="font-semibold">089-907-6504</span>
               </p>
               <p className="text-sm sm:text-base">
                 <span className="inline-block w-[120px] text-gray-600">
