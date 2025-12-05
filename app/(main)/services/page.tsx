@@ -80,10 +80,10 @@ export default function ServicesPage() {
             href="/services/solar-panel"
             image={{
               src: '/images/houses.jpg',
-              alt: '太陽光発電パネルを設置した住宅',
+              alt: '太陽光パネルを設置した住宅',
             }}
             index={0}
-            title="太陽光発電パネル"
+            title="太陽光パネル"
           />
           <_ServiceCard
             description="電気をためて夜間や緊急時にも活用できます。"
