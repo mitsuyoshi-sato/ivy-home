@@ -54,6 +54,78 @@ export default function BatteryPage() {
         id="breadcrumb-services-battery"
         type="application/ld+json"
       />
+      <Script
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Service',
+            name: '蓄電池設置サービス',
+            description: '電気をためて夜間や緊急時にも活用できる蓄電池システム。停電時にも安心の電力を供給し、光熱費の削減にも貢献します。',
+            provider: {
+              '@type': 'LocalBusiness',
+              name: '株式会社アイビーホーム',
+              url: 'https://www.ivyho.me',
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: '朝生田町7丁目2-22大興ビル201',
+                addressLocality: '松山市',
+                addressRegion: '愛媛県',
+                addressCountry: 'JP',
+              },
+            },
+            areaServed: {
+              '@type': 'State',
+              name: '愛媛県',
+            },
+            serviceType: '家庭用蓄電池システム設置',
+            category: 'エネルギー・電力',
+            hasOfferCatalog: {
+              '@type': 'OfferCatalog',
+              name: '蓄電池サービス',
+              itemListElement: [
+                {
+                  '@type': 'Offer',
+                  itemOffered: {
+                    '@type': 'Product',
+                    name: '家庭用蓄電池システム',
+                    description: '高性能リチウムイオン蓄電池システム',
+                  },
+                },
+                {
+                  '@type': 'Offer',
+                  itemOffered: {
+                    '@type': 'Service',
+                    name: '蓄電池設置工事',
+                    description: '専門技術者による安全で確実な設置工事',
+                  },
+                },
+                {
+                  '@type': 'Offer',
+                  itemOffered: {
+                    '@type': 'Service',
+                    name: 'メンテナンスサービス',
+                    description: '定期点検と長期保証サービス',
+                  },
+                },
+              ],
+            },
+            additionalProperty: [
+              {
+                '@type': 'PropertyValue',
+                name: '停電対策',
+                value: '緊急時電力供給、災害対策',
+              },
+              {
+                '@type': 'PropertyValue',
+                name: '経済効果',
+                value: '電気代削減、ピークカット',
+              },
+            ],
+          }),
+        }}
+        id="service-battery"
+        type="application/ld+json"
+      />
       <Hero
         image={{ src: '/images/light.jpg', alt: '' }}
         overlayOpacity="40"

@@ -54,7 +54,8 @@ export default function Company() {
             '@context': 'https://schema.org',
             '@type': 'LocalBusiness',
             name: '株式会社アイビーホーム',
-            description: '愛媛県の太陽光パネル・蓄電池・エコキュート・シロアリ対策・リフォーム。「未来の暮らしを、つくる。」をテーマに、お客様の快適で安心な毎日を、エコで安全な住まいとともにサポートします。',
+            description:
+              '愛媛県の太陽光パネル・蓄電池・エコキュート・シロアリ対策・リフォーム。「未来の暮らしを、つくる。」をテーマに、お客様の快適で安心な毎日を、エコで安全な住まいとともにサポートします。',
             url: 'https://www.ivyho.me',
             logo: 'https://www.ivyho.me/images/ivy-home.svg',
             image: 'https://www.ivyho.me/images/ivy-home.png',
@@ -92,7 +93,8 @@ export default function Company() {
                   itemOffered: {
                     '@type': 'Service',
                     name: '太陽光パネル設置',
-                    description: '未来のエネルギーをつくるための安心の選択肢です。',
+                    description:
+                      '未来のエネルギーをつくるための安心の選択肢です。',
                   },
                 },
                 {
@@ -108,7 +110,8 @@ export default function Company() {
                   itemOffered: {
                     '@type': 'Service',
                     name: 'エコキュート設置',
-                    description: '空気の熱を利用して効率よくお湯をつくる給湯器です。',
+                    description:
+                      '空気の熱を利用して効率よくお湯をつくる給湯器です。',
                   },
                 },
                 {
@@ -116,7 +119,8 @@ export default function Company() {
                   itemOffered: {
                     '@type': 'Service',
                     name: 'シロアリ駆除',
-                    description: '住宅を食害から守る専門サービス。大切な家の資産価値を守ります。',
+                    description:
+                      '住宅を食害から守る専門サービス。大切な家の資産価値を守ります。',
                   },
                 },
                 {
@@ -124,7 +128,8 @@ export default function Company() {
                   itemOffered: {
                     '@type': 'Service',
                     name: 'リフォーム',
-                    description: 'マイホームをリフォームして、これからも長く住み続けられるように。',
+                    description:
+                      'マイホームをリフォームして、これからも長く住み続けられるように。',
                   },
                 },
               ],

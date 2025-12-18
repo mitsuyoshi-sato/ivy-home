@@ -54,6 +54,79 @@ export default function SolarPanelPage() {
         id="breadcrumb-services-solarPanel"
         type="application/ld+json"
       />
+      <Script
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Service',
+            name: '太陽光パネル設置サービス',
+            description:
+              '未来のエネルギーをつくるための安心の選択肢。太陽光発電システムで光熱費を削減し、環境にやさしい暮らしを実現します。',
+            provider: {
+              '@type': 'LocalBusiness',
+              name: '株式会社アイビーホーム',
+              url: 'https://www.ivyho.me',
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: '朝生田町7丁目2-22大興ビル201',
+                addressLocality: '松山市',
+                addressRegion: '愛媛県',
+                addressCountry: 'JP',
+              },
+            },
+            areaServed: {
+              '@type': 'State',
+              name: '愛媛県',
+            },
+            serviceType: '太陽光発電システム設置',
+            category: 'エネルギー・環境',
+            hasOfferCatalog: {
+              '@type': 'OfferCatalog',
+              name: '太陽光パネルサービス',
+              itemListElement: [
+                {
+                  '@type': 'Offer',
+                  itemOffered: {
+                    '@type': 'Product',
+                    name: '住宅用太陽光発電システム',
+                    description: '屋根に設置する太陽光パネルシステム',
+                  },
+                },
+                {
+                  '@type': 'Offer',
+                  itemOffered: {
+                    '@type': 'Service',
+                    name: '太陽光パネル設置工事',
+                    description: '専門技術者による安全で確実な設置工事',
+                  },
+                },
+                {
+                  '@type': 'Offer',
+                  itemOffered: {
+                    '@type': 'Service',
+                    name: 'アフターサポート',
+                    description: '設置後のメンテナンスとサポート',
+                  },
+                },
+              ],
+            },
+            additionalProperty: [
+              {
+                '@type': 'PropertyValue',
+                name: '環境効果',
+                value: 'CO2削減、環境保護',
+              },
+              {
+                '@type': 'PropertyValue',
+                name: '経済効果',
+                value: '光熱費削減、売電収入',
+              },
+            ],
+          }),
+        }}
+        id="service-solar-panel"
+        type="application/ld+json"
+      />
       <Hero
         image={{
           src: '/images/houses2.jpg',
