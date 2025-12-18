@@ -127,6 +127,58 @@ export default function EcoCutePage() {
         id="service-eco-cute"
         type="application/ld+json"
       />
+      <Script
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: '家族4人だとお湯は足りますか？',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: '基本的には充分です。一般的な4人家族用のタンクで1日分の生活用水は十分に確保できます。ただし、連続で長時間使用する場合や、家族が多い場合はタンク容量の大きいモデルを選ぶとより安心です。',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: '冬でもちゃんとお湯は出ますか？',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'はい、問題ありません。エコキュートは空気の熱を利用してお湯を作りますが、寒冷地対応モデルであればマイナス25度の環境でも安定して稼働します。さらに、タンクにお湯を貯めておく方式なので、寒い冬でも入浴や家事に必要なお湯がすぐに使えます。',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'エコキュートって電気代は本当に節約できますか？',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'はい。夜間の安い電力を使って効率的にお湯を沸かすため、毎月の光熱費を大幅に抑えられます。長期的には家計の負担軽減にもつながります。',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: '家族が同時にお湯を使っても大丈夫ですか？',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'お風呂・洗面所・キッチンなど複数箇所で同時に使用しても快適に給湯できます。多人数で同時使用すると、わずかに温度や水圧が変わることがあります。',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'お手入れは大変ですか？',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'タンクや給湯器の外装、フィルターなど日常のお手入れは簡単です。内部の点検や故障対応は専門スタッフがサポートしますので、安心してご利用いただけます。',
+                },
+              },
+            ],
+          }),
+        }}
+        id="faq-eco-cute"
+        type="application/ld+json"
+      />
       <Hero
         image={{ src: '/images/bathroom.jpg', alt: 'エコキュート' }}
         subtitle="EcoCute"

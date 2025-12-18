@@ -126,6 +126,58 @@ export default function TermiteControlPage() {
         id="service-termite-control"
         type="application/ld+json"
       />
+      <Script
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'シロアリがいるかどうか、どうやって分かるの？',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: '床がきしむ、柱を叩くと空洞音がする、羽アリを見かけた、などのサインがあります。無料点検も実施しておりますので、少しでも気になる場合はお気軽にご相談ください。',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: '施工中は家にいても大丈夫ですか？',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'はい、問題ありません。使用する薬剤は人やペットに安全性の高いものを使用しています。施工時間は建物の大きさによりますが、通常は半日～1日程度です。',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: '駆除後の保証はありますか？',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'はい、施工後5年間の保証をお付けしています。保証期間中に万が一シロアリが再発した場合は、無償で再施工いたします。',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: '相談だけでも対応してもらえますか？',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'はい。まずは現状の確認やアドバイスだけでも大丈夫です。強引な駆除勧誘は行いませんので、お気軽にお問い合わせください。',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: '駆除にかかる費用はどのくらいですか？',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: '家の規模や被害状況、選ぶ駆除方法によって異なります。まずは無料見積もり・相談をおすすめしています。',
+                },
+              },
+            ],
+          }),
+        }}
+        id="faq-termite-control"
+        type="application/ld+json"
+      />
       <Hero
         image={{ src: '/images/damaged-wood.jpg', alt: 'シロアリ駆除' }}
         subtitle="Termite Control"

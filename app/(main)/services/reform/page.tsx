@@ -134,6 +134,58 @@ export default function ReformPage() {
         id="service-reform"
         type="application/ld+json"
       />
+      <Script
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'リフォームできる範囲は？',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'キッチン・浴室・トイレなどの水回りはもちろん、外壁塗装や屋根補修まで幅広く対応可能です。ライフスタイルに合わせた間取り変更もご相談ください。',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'リフォーム中も住みながら工事できますか？',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'はい、可能です。工事内容や規模によりますが、多くの場合は住みながらのリフォームが可能です。生活への影響を最小限に抑えるよう、工程を調整いたします。',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'どのくらいの予算が必要ですか？',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'リフォーム内容によって大きく異なります。無料でお見積もりを作成いたしますので、まずはご希望の内容をお聞かせください。予算に合わせたプランもご提案いたします。',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: '工事期間はどのくらいかかりますか？',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: '工事内容によって異なりますが、水回り単体なら1週間程度、全面改修なら1～2ヶ月程度が目安です。事前に詳細なスケジュールをご説明いたします。',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: '施工後のサポートはありますか？',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'はい。トラブルや不明点には迅速に対応し、地域に根ざした会社ならではの安心のアフターフォローをご提供いたします。',
+                },
+              },
+            ],
+          }),
+        }}
+        id="faq-reform"
+        type="application/ld+json"
+      />
       <Hero
         image={{ src: '/images/kitchen.jpg', alt: 'リフォーム' }}
         overlayOpacity="40"

@@ -126,6 +126,58 @@ export default function BatteryPage() {
         id="service-battery"
         type="application/ld+json"
       />
+      <Script
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: '蓄電池は太陽光パネルがないと使えないの？',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'いいえ、蓄電池だけでも使えます。深夜の安い電力を蓄えて昼間に使うことで電気代を削減できます。もちろん！太陽光パネルと併用すればより効果的です。',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: '停電時にはどのくらい使えますか？',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: '蓄電池の容量によって異なりますが、一般的な家庭用蓄電池なら、冷蔵庫やテレビ、照明などを数時間～数日使うことが可能です。太陽光発電と併用すれば、晴れた日には充電も可能です。',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: '蓄電池の寿命はどのくらいですか？',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: '一般的に10～15年程度です。メーカーによっては10年保証が付いている製品もあります。定期的なメンテナンスで、より長く安心してお使いいただけます。',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: '本当に電気代が節約できますか？',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: '夜間電力や太陽光の余剰電力を効率的に蓄えることで、毎月の電気代を節約できます。家庭の使用状況や蓄電容量によって差はありますが、無料でお見積もり可能です。',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: '設置スペースはどのくらい必要ですか？',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: '家庭用の蓄電池は比較的コンパクトで、屋外壁面や屋内の空きスペースに設置可能です。設置場所の条件に合わせて最適なプランをご提案します。',
+                },
+              },
+            ],
+          }),
+        }}
+        id="faq-battery"
+        type="application/ld+json"
+      />
       <Hero
         image={{ src: '/images/light.jpg', alt: '' }}
         overlayOpacity="40"

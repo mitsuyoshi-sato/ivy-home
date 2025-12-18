@@ -127,6 +127,58 @@ export default function SolarPanelPage() {
         id="service-solar-panel"
         type="application/ld+json"
       />
+      <Script
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: '太陽光パネル設置は本当にお得なの？',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: '太陽光は「自分で電気をつくる」仕組みなので、今後の電気代高騰への保険としてもお得といえると思います。実際にどのくらい削減できるかは、電気代の明細を見て具体的に試算いたします。',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: '雨の日は発電できますか？',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'はい、発電します。ただし、晴天時に比べて発電量は少なくなります。天候に左右されるため、蓄電池を組み合わせることで効率的に電力を利用できます。',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: '設置に向いている屋根はありますか？',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: '南向きで日当たりの良い屋根が最適です。北向きや影が多い場合でも設置は可能ですが、南向きと比較すると発電効率はやや下がります。',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: '停電時にも電気が使えるのですか？',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: '停電時でも、蓄電池を併用することで電力を供給できます。特に災害時には非常用電源として活用可能です。',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'メンテナンスは必要ですか？',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: '日常的な掃除や簡単な確認だけで十分です。内部の点検や故障対応は専門スタッフがサポートするため、手間はほとんどかかりません。',
+                },
+              },
+            ],
+          }),
+        }}
+        id="faq-solar-panel"
+        type="application/ld+json"
+      />
       <Hero
         image={{
           src: '/images/houses2.jpg',
