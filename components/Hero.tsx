@@ -33,10 +33,6 @@ export const Hero = (props: {
   }, [props.video?.playbackRate])
 
   useEffect(() => {
-    console.log(stateVideoReady)
-  }, [stateVideoReady])
-
-  useEffect(() => {
     let observer: IntersectionObserver | null = null
     let stateUnmounted = false
 
