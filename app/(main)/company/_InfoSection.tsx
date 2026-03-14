@@ -95,9 +95,23 @@ export const _InfoSection = () => {
             </p>
           </div>
           <div className="flex w-full items-stretch border-b border-gray-200">
-            <h3 className="w-1/4 py-2 leading-6 text-gray-600">所在地</h3>
+            <h3 className="w-1/4 py-2 leading-6 text-gray-600">
+              本社（愛媛県）
+            </h3>
             <p className="w-3/4 shrink-0 py-2 text-base font-semibold leading-6 text-dark6">
-              愛媛県松山市朝生田町7丁目2-22大興ビル201
+              <span className="inline-block w-[110px] shrink-0">
+                〒791-0000
+              </span>
+              愛媛県松山市朝生田町7丁目2-22 大興ビル201
+            </p>
+          </div>
+          <div className="flex w-full items-stretch border-b border-gray-200">
+            <h3 className="w-1/4 py-2 leading-6 text-gray-600">高知支店</h3>
+            <p className="w-3/4 shrink-0 py-2 text-base font-semibold leading-6 text-dark6">
+              <span className="inline-block w-[110px] shrink-0">
+                〒781-0114
+              </span>
+              高知県高知市十津3丁目6-5 address401
             </p>
           </div>
           <div className="flex w-full items-stretch border-b border-gray-200">
