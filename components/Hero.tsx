@@ -1,6 +1,7 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffectAsync } from '@soichiro_nitta/motion'
+import { useEffect, useRef, useState } from 'react'
 
 import { cn } from '@/lib/utils'
 
@@ -22,6 +23,8 @@ export const Hero = (props: {
   const refDescription = useRef<HTMLParagraphElement>(null)
   const refSubtitle = useRef<HTMLParagraphElement>(null)
   const refVideo = useRef<HTMLVideoElement>(null)
+  const [stateVideoReady, setStateVideoReady] = useState(false)
+  const [stateIsAnimetionEnd, setIsAnimetionEnd] = useState(false)
 
   useEffect(() => {
     if (props.video?.playbackRate && refVideo.current) {
@@ -30,6 +33,13 @@ export const Hero = (props: {
   }, [props.video?.playbackRate])
 
   useEffect(() => {
+    console.log(stateVideoReady)
+  }, [stateVideoReady])
+
+  useEffect(() => {
+    let observer: IntersectionObserver | null = null
+    let stateUnmounted = false
+
     ;(async () => {
       const v = refVideo.current
 
@@ -38,24 +48,29 @@ export const Hero = (props: {
           await motion.delay(3.5)
         }
 
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                refVideo.current?.play()
-              } else {
-                refVideo.current?.pause()
-              }
-            })
-          },
-          { threshold: 0.2 },
-        )
-        observer.observe(v)
-
-        return () => observer?.disconnect()
+        if (!stateUnmounted) {
+          observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  void refVideo.current?.play()
+                } else {
+                  refVideo.current?.pause()
+                }
+              })
+            },
+            { threshold: 0.2 },
+          )
+          observer.observe(v)
+        }
       }
     })()
-  }, [])
+
+    return () => {
+      stateUnmounted = true
+      observer?.disconnect()
+    }
+  }, [refOpeningAnimation])
 
   useEffect(() => {
     ;(async () => {
@@ -67,8 +82,7 @@ export const Hero = (props: {
         if (!refOpeningAnimation.current) {
           await motion.delay(3.5)
         }
-
-        motion.to(i, 1.3, 'out', {
+        motion.to(i, 1.5, 'out', {
           opacity: 1,
           scale: 1,
         })
@@ -87,36 +101,51 @@ export const Hero = (props: {
           opacity: 1,
           translateY: '0px',
         })
+        setIsAnimetionEnd(true)
       }
     })()
-  }, [])
+  }, [refOpeningAnimation])
+
+  useEffectAsync(async () => {
+    const v = refVideo.current
+    const i = refImage.current
+    if (v && i && stateIsAnimetionEnd && stateVideoReady) {
+      void v.play()
+      await motion.to(v, 0.5, 'out', { opacity: 1 })
+      motion.set(i, { opacity: 0 })
+    }
+  }, [stateIsAnimetionEnd, stateVideoReady])
 
   return (
     <header className="relative h-[70vh]">
-      <div
-        ref={refImage}
-        className="absolute inset-0 z-[-1]"
-        style={{
-          opacity: 0,
-          transform: 'scale(1.05)',
-          transformOrigin: 'center',
-        }}
-      >
+      <>
         {props.image && (
-          <img
-            alt={props.image?.alt || ''}
-            className="size-full object-cover"
-            src={props.image?.src}
-          />
+          <div
+            ref={refImage}
+            style={{
+              opacity: 0,
+              transform: 'scale(1.2)',
+              transformOrigin: 'center',
+            }}
+            className="absolute inset-0 z-[-1]"
+          >
+            <img
+              alt={props.image?.alt || ''}
+              className="size-full object-cover"
+              src={props.image?.src}
+            />
+          </div>
         )}
         {props.video && (
           <>
             <video
+              style={{ opacity: 0 }}
               ref={refVideo}
               loop
               muted
               playsInline
-              className="size-full object-cover"
+              className="absolute inset-0 size-full object-cover"
+              onCanPlay={() => setStateVideoReady(true)}
             >
               <source src={props.video.src} type="video/mp4" />
             </video>
@@ -129,7 +158,7 @@ export const Hero = (props: {
             style={{ opacity: parseInt(props.overlayOpacity || '30') / 100 }}
           />
         )}
-      </div>
+      </>
       <div className="wrapper relative z-10 h-full">
         <div className="mx-auto flex h-full items-center">
           <div className="space-y-4 text-white">

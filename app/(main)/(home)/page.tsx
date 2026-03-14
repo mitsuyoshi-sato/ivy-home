@@ -19,6 +19,10 @@ const Home = () => {
       <Hero
         overlayHidden
         description="暮らしを支えるエネルギーづくりを、今から始めよう。"
+        image={{
+          src: '/home-poster.jpg',
+          alt: '屋根にソーラーパネルを設置している住宅',
+        }}
         title="未来の暮らしを、つくる。"
         video={{
           src: '/videos/home-hero.mp4',

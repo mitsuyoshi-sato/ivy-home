@@ -141,6 +141,10 @@ export default function Company() {
       />
       <Hero
         description=""
+        image={{
+          src: '/company-poster.jpg',
+          alt: '会社情報のメインビジュアル',
+        }}
         subtitle="Company"
         title="会社情報"
         video={{

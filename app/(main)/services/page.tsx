@@ -49,6 +49,10 @@ export default function ServicesPage() {
         type="application/ld+json"
       />
       <Hero
+        image={{
+          src: '/services-poster.jpg',
+          alt: '事業内容のメインビジュアル',
+        }}
         subtitle="Services"
         title="事業内容"
         video={{

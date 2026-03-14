@@ -56,6 +56,10 @@ export default function NewsListPage() {
         type="application/ld+json"
       />
       <Hero
+        image={{
+          src: '/news-poster.jpg',
+          alt: 'ニュースのメインビジュアル',
+        }}
         overlayOpacity="50"
         subtitle="News"
         title="ニュース"
