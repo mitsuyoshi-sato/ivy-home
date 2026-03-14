@@ -10,7 +10,7 @@
     "lint:fix": "next lint --fix"
   },
   "dependencies": {
-    "@soichiro_nitta/motion": "^4.1.11",
+    "@soichiro_nitta/motion": "^5.1.5",
     "date-fns": "^4.1.0",
     "lucide-react": "^0.544.0",
     "next": "15.3.8",

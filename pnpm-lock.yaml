@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@soichiro_nitta/motion':
-        specifier: ^4.1.11
-        version: 4.1.11
+        specifier: ^5.1.5
+        version: 5.1.5
       date-fns:
         specifier: ^4.1.0
         version: 4.1.0
@@ -535,8 +535,8 @@ packages:
   '@soichiro_nitta/eslint-config@1.3.15':
     resolution: {integrity: sha512-lSZghn5tyquIYlMcPbrHdxrTkRbKgXmEkuDJewmeuirpcCmqGH8DuikKM9u18Q3+ZDaIEMhX/YmYbKCACCkCQw==}
 
-  '@soichiro_nitta/motion@4.1.11':
-    resolution: {integrity: sha512-ATMfzMoalpRsA8qtym2YNk83qZHqufJNVmxNAyyD3MJ93mT843Wp/WilQU+X0Xc64CC1ODsbLX/2Nm3tt5E2MQ==}
+  '@soichiro_nitta/motion@5.1.5':
+    resolution: {integrity: sha512-PgcQIsN3/RHtftwLisi78BEh2qm1m/5wa2ogTcoZylFpWMIolwvBbX9HY6KVAvk6sKNyUMUrO2nYvnhEZfYTtg==}
 
   '@soichiro_nitta/prettier-config@0.0.9':
     resolution: {integrity: sha512-ycBM3Rbw15jim9cuORtGlt3yncM8dwZwjJgwqgQOqYmAV9oKh+eMbz0mX2LQyFYU8lxW7t8C/JVbzfc1HYMPJQ==}
@@ -4288,7 +4288,7 @@ snapshots:
       - ts-node
       - typescript
 
-  '@soichiro_nitta/motion@4.1.11': {}
+  '@soichiro_nitta/motion@5.1.5': {}
 
   '@soichiro_nitta/prettier-config@0.0.9': {}
 
