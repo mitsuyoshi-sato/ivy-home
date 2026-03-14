@@ -111,7 +111,7 @@ export const _InfoSection = () => {
               <span className="inline-block w-[110px] shrink-0">
                 〒781-0114
               </span>
-              高知県高知市十津3丁目6-5 address401
+              高知県高知市十津3丁目6-5-2 address401
             </p>
           </div>
           <div className="flex w-full items-stretch border-b border-gray-200">
