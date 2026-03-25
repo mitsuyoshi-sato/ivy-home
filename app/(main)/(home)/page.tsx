@@ -18,7 +18,7 @@ const Home = () => {
     <>
       <Hero
         overlayHidden
-        description="暮らしを支えるエネルギーづくりを、今から始めよう。"
+        description="株式会社アイビーホームは、暮らしを支えるエネルギーづくりをサポートします。"
         image={{
           src: '/home-poster.jpg',
           alt: '屋根にソーラーパネルを設置している住宅',

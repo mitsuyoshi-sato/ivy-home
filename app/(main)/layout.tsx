@@ -68,11 +68,16 @@ export default function MainLayout({
       <footer>
         <div className="bg-cleam py-10">
           <div className="wrapper flex flex-col items-start gap-6 md:flex-row md:gap-20 lg:gap-40 xl:w-full xl:justify-between">
-            <img
-              alt="アイビーホームのロゴ"
-              className="w-24 shrink-0 md:w-[120px] md:translate-y-[-10px]"
-              src="/images/ivy-home.svg"
-            />
+            <div className="flex flex-col md:translate-y-[-10px]">
+              <img
+                alt="株式会社アイビーホーム"
+                className="w-24 shrink-0 md:w-[120px]"
+                src="/images/ivy-home.svg"
+              />
+              <div className="-translate-y-2 text-xs font-medium text-gray-600">
+                株式会社アイビーホーム
+              </div>
+            </div>
             <div className="grid w-full flex-1 grid-cols-2 gap-x-10 gap-y-2 md:gap-y-8 lg:gap-x-14 xl:grid-cols-5">
               {itemsWithoutSubs.map((item) => (
                 <__FooterSection
