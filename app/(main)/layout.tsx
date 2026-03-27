@@ -1,7 +1,5 @@
 import '../globals.css'
 
-import type { Metadata } from 'next'
-import { Inter, Noto_Sans_JP } from 'next/font/google'
 import Link from 'next/link'
 
 import _OpeningAnimation from '../(layout)/_OpeningAnimation'

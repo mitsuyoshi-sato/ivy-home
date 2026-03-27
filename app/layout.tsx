@@ -21,6 +21,9 @@ const notosansjp = Noto_Sans_JP({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.ivyho.me'),
+  alternates: {
+    canonical: '/',
+  },
   title: {
     default:
       '株式会社アイビーホーム | 愛媛県の太陽光・蓄電池・エコキュート・シロアリ対策・リフォーム',
@@ -36,6 +39,8 @@ export const metadata: Metadata = {
       '株式会社アイビーホーム | 愛媛県の太陽光・蓄電池・エコキュート・シロアリ対策・リフォーム',
     description:
       '愛媛県の太陽光・蓄電池・エコキュート・シロアリ対策・リフォーム。「未来の暮らしを、つくる。」をテーマに、お客様の快適で安心な毎日を、エコで安全な住まいとともにサポートします。',
+    url: 'https://www.ivyho.me/',
+    siteName: '株式会社アイビーホーム',
     type: 'website',
     images: [
       {
