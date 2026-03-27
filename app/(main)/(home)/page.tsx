@@ -18,7 +18,7 @@ const Home = () => {
     <>
       <Hero
         overlayHidden
-        description="株式会社アイビーホームは、暮らしを支えるエネルギーづくりをサポートします。"
+        description="株式会社アイビーホームは、愛媛県松山市を拠点に、太陽光・蓄電池・リフォームを手がけています。"
         image={{
           src: '/home-poster.jpg',
           alt: '屋根にソーラーパネルを設置している住宅',
