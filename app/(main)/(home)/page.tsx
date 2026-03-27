@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { format } from 'date-fns'
 
 import { Hero } from '../../../components/Hero'
@@ -6,6 +7,12 @@ import { _CampaignSection } from './_CampanySection'
 import { _NewsSection } from './_NewsSection'
 import { _RecruitsSection } from './_RecruitsSection'
 import { _ServicesSection } from './_ServicesSection'
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: '/',
+  },
+}
 
 const Home = () => {
   // RSCで日付をフォーマット（サーバー側で1回のみ実行）
