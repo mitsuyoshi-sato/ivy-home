@@ -78,7 +78,7 @@ export const _PhilosophySection = () => {
             ref={refDescription1}
             style={{ opacity: 0, transform: 'translateY(100px)' }}
           >
-            社名 &quot;Ivy-Home&quot; には、植物のアイビーの花言葉である
+            社名 &quot;アイビーホーム&quot; には、植物のアイビーの花言葉である
             <br className="hidden sm:block" />
             <strong className="text-xl">誠実</strong> や{' '}
             <strong className="text-xl">絆</strong> といった意味を込めています。
@@ -106,7 +106,7 @@ export const _PhilosophySection = () => {
             className="mt-8"
             style={{ opacity: 0, transform: 'translateY(100px)' }}
           >
-            Ivy-Homeは <strong className="text-xl">誠実</strong>{' '}
+            株式会社アイビーホームは <strong className="text-xl">誠実</strong>{' '}
             な姿勢でお客様一人ひとりに寄り添い、理想の暮らしを実現するパートナーであり続けます。
           </p>
         </div>
