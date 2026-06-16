@@ -31,6 +31,9 @@ export const metadata: Metadata = {
   icons: {
     icon: '/images/favicon.png',
   },
+  other: {
+    'facebook-domain-verification': '7asc08j725wnczc3ibhszzugzeynr3',
+  },
   openGraph: {
     title:
       '株式会社アイビーホーム | 愛媛県の太陽光・蓄電池・エコキュート・シロアリ対策・リフォーム',
