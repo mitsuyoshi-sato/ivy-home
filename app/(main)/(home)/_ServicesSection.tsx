@@ -99,7 +99,7 @@ export const _ServicesSection = () => {
           mdTrimAfterNewline
           colSpan={'6'}
           description={
-            '空気熱を活用することでガズを使用せずお湯が沸かせます。\n光熱費を抑え、環境負荷の軽減にも貢献します。設置から保守まで、きめ細やかなサポートを提供しています。'
+            '空気熱を活用することでガスを使用せずお湯が沸かせます。\n光熱費を抑え、環境負荷の軽減にも貢献します。設置から保守まで、きめ細やかなサポートを提供しています。'
           }
           href="/services/eco-cute"
           image={'/images/bathroom.jpg'}
