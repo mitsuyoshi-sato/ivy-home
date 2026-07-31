@@ -109,7 +109,7 @@ export const _InfoSection = () => {
             <h3 className="w-1/4 py-2 leading-6 text-gray-600">高知支店</h3>
             <p className="w-3/4 shrink-0 py-2 text-base font-semibold leading-6 text-dark6">
               <span className="inline-block w-[110px] shrink-0">
-                〒781-0114
+                〒780-0928
               </span>
               高知県高知市越前町2丁目6-21奥田ビルⅡ2階
             </p>
