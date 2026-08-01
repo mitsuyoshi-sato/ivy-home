@@ -100,7 +100,7 @@ export const _InfoSection = () => {
             </h3>
             <p className="w-3/4 shrink-0 py-2 text-base font-semibold leading-6 text-dark6">
               <span className="inline-block w-[110px] shrink-0">
-                〒791-0000
+                〒790-0952
               </span>
               愛媛県松山市朝生田町7丁目2-22 大興ビル201
             </p>
