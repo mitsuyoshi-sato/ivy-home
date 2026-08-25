@@ -18,55 +18,40 @@ export const SectionHeader = (props: {
 }) => {
   const refContainer = useRef<HTMLDivElement>(null)
   const refSubtitle = useRef<HTMLParagraphElement>(null)
-  const refTitle = useRef<HTMLHeadingElement>(null)
-  const refDescription = useRef<HTMLParagraphElement>(null)
   const refButton = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    ;(async () => {
-      const container = refContainer.current
-      const s = refSubtitle.current
-      const h = refTitle.current
-      const d = refDescription.current
-      const b = refButton.current
+    const c = refContainer.current
+    const s = refSubtitle.current
+    const b = refButton.current
+    let observer: IntersectionObserver | undefined
 
-      if (container && s && h && d && b) {
-        const observer = new IntersectionObserver(
-          async (entries) => {
-            const entry = entries[0]
-            if (entry.isIntersecting) {
-              motion.to(s, 1.8, 'out', {
-                opacity: 1,
-                translateY: '0px',
-              })
-              motion.to(h, 1.8, 'out', {
-                opacity: 1,
-                translateY: '0px',
-              })
+    if (c && s && b) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0]
+          if (entry.isIntersecting) {
+            motion.to(s, 1, 'out', {
+              opacity: 1,
+              translateY: '0px',
+            })
+            motion.to(b, 1, 'out', {
+              opacity: 1,
+              translateY: '0px',
+            })
+          }
+        },
+        { threshold: 0.8 },
+      )
 
-              // 説明のアニメーション
-              await motion.delay(0.3)
-              motion.to(d, 1.8, 'out', {
-                opacity: 1,
-                translateY: '0px',
-              })
+      observer.observe(c)
+    }
 
-              // ボタンのアニメーション
-              await motion.delay(0.3)
-              motion.to(b, 1.8, 'out', {
-                opacity: 1,
-                translateY: '0px',
-              })
-            }
-          },
-          { threshold: 0.5 },
-        )
-
-        observer.observe(container)
-
-        return () => observer.disconnect()
+    return () => {
+      if (observer) {
+        observer.disconnect()
       }
-    })()
+    }
   }, [])
 
   return (
@@ -74,22 +59,14 @@ export const SectionHeader = (props: {
       <p
         ref={refSubtitle}
         className="text-sm text-ivy5/80 lg:text-lg"
-        style={{ opacity: 0, transform: 'translateY(100px)' }}
+        style={{ opacity: 0, transform: 'translateY(150px)' }}
       >
         {props.subtitle}
       </p>
-      <h2
-        ref={refTitle}
-        className="mt-4 whitespace-pre-line text-2xl font-bold lg:mt-6 lg:text-4xl"
-        style={{ opacity: 0, transform: 'translateY(100px)' }}
-      >
+      <h2 className="mt-4 whitespace-pre-line text-2xl font-bold lg:mt-6 lg:text-4xl">
         {props.title}
       </h2>
-      <p
-        ref={refDescription}
-        className="mt-4 text-sm leading-relaxed text-gray-600 lg:mt-6 lg:text-lg"
-        style={{ opacity: 0, transform: 'translateY(100px)' }}
-      >
+      <p className="mt-4 text-sm leading-relaxed text-gray-600 lg:mt-6 lg:text-lg">
         {props.description.split('\\n').map((line, index, array) => (
           <span key={index}>
             {line}
@@ -100,7 +77,7 @@ export const SectionHeader = (props: {
       <div
         ref={refButton}
         className={props.button?.className}
-        style={{ opacity: 0, transform: 'translateY(100px)' }}
+        style={{ opacity: 0, transform: 'translateY(150px)' }}
       >
         <Link hidden={!props.button} href={props.button?.href || ''}>
           <Button
