@@ -13,7 +13,6 @@ import { Breadcrumb } from '@/components/Breadcrumb'
 import { FooterLinks } from '@/components/FooterLinks'
 
 import { _ContentArticle } from './_ContentArticle'
-import { _ContentTabs } from './_ContentTabs'
 
 export type ContentPageProps = {
   params: Promise<{ slug: string }>
@@ -143,9 +142,6 @@ export const ContentDetail = async (props: {
             },
           ]}
         />
-        <div className="mt-8 pb-8">
-          <_ContentTabs />
-        </div>
       </div>
       <_ContentArticle
         data={{

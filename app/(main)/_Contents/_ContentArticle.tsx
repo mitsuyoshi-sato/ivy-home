@@ -1,16 +1,26 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import {
+  type RefObject,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react'
 
 import type { Content } from '@/app/data/contentData'
 import { motion } from '@/app/motion'
 import { SectionHeader } from '@/components/SectionHeader'
+import { cn } from '@/lib/utils'
+
+type ContentSection = Content['sections'][number]
 
 export const _ContentArticle = (props: {
   data: Content & { formattedDate: string }
 }) => {
   const refCreatedBy = useRef<HTMLDivElement>(null)
   const refImage = useRef<HTMLDivElement>(null)
+  const refSectionMap = useRef<Record<string, HTMLElement | null>>({})
 
   useEffect(() => {
     ;(async () => {
@@ -32,53 +42,59 @@ export const _ContentArticle = (props: {
   }, [])
 
   return (
-    <article>
-      <header className="bg-cleam">
-        <div className="wrapper">
-          <div className="flex flex-col gap-12 md:flex-row md:items-center">
-            <div className="w-full md:w-1/2">
-              <SectionHeader
-                description=""
-                subtitle={props.data.category}
-                title={props.data.title}
-              />
-              <div
-                ref={refCreatedBy}
-                className="mt-4 flex items-center gap-2 lg:justify-end"
-                style={{ opacity: 0, transform: 'translateY(100px)' }}
-              >
-                <time className="text-sm" dateTime={props.data.publishedAt}>
-                  {props.data.formattedDate}
-                </time>
-                <span className="text-sm text-gray-500">created by</span>
-                <div className="size-7 overflow-hidden rounded-full">
-                  <img
-                    alt={props.data.createdByJp}
-                    className="size-full object-cover"
-                    src={props.data.createdByImage}
-                  />
-                </div>
-                <p className="text-sm font-bold">{props.data.createdByJp}</p>
-              </div>
-            </div>
-            <figure
-              ref={refImage}
-              className="h-[300px] w-full overflow-hidden rounded-lg md:w-1/2"
-              style={{ opacity: 0, transform: 'translateY(100px)' }}
-            >
+    <article className="isolate">
+      <div className="wrapper grid items-start gap-x-16 py-0 lg:grid-cols-[minmax(0,1fr)_340px]">
+        <div
+          aria-hidden="true"
+          className="relative -z-10 hidden self-stretch before:absolute before:inset-y-0 before:left-1/2 before:w-screen before:-translate-x-1/2 before:bg-cleam lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:block"
+        />
+        <header className="relative py-16 before:absolute before:inset-y-0 before:left-1/2 before:-z-10 before:w-screen before:-translate-x-1/2 before:bg-cleam lg:col-start-1 lg:row-start-1 lg:py-24 lg:before:hidden">
+          <SectionHeader
+            description=""
+            subtitle={props.data.category}
+            title={props.data.title}
+          />
+          <div
+            ref={refCreatedBy}
+            className="mt-4 flex items-center gap-2 lg:justify-end"
+            style={{ opacity: 0, transform: 'translateY(100px)' }}
+          >
+            <time className="text-sm" dateTime={props.data.publishedAt}>
+              {props.data.formattedDate}
+            </time>
+            <span className="text-sm text-gray-500">created by</span>
+            <div className="size-7 overflow-hidden rounded-full">
               <img
-                alt={props.data.title}
+                alt={props.data.createdByJp}
                 className="size-full object-cover"
-                src={props.data.image}
+                src={props.data.createdByImage}
               />
-            </figure>
+            </div>
+            <p className="text-sm font-bold">{props.data.createdByJp}</p>
           </div>
-        </div>
-      </header>
-      <div className="wrapper pt-0">
-        <div className="mt-12 space-y-24">
+          <figure
+            ref={refImage}
+            className="mt-10 aspect-video w-full overflow-hidden rounded-lg"
+            style={{ opacity: 0, transform: 'translateY(100px)' }}
+          >
+            <img
+              alt={props.data.title}
+              className="size-full object-cover"
+              src={props.data.image}
+            />
+          </figure>
+        </header>
+        <__Index refSectionMap={refSectionMap} sections={props.data.sections} />
+        <div className="space-y-24 py-20 lg:col-start-1 lg:row-start-2 lg:py-24">
           {props.data.sections.map((s, i) => (
-            <__SectionItem key={i} section={s} />
+            <__SectionItem
+              id={__getSectionId(i)}
+              key={__getSectionId(i)}
+              onSectionRef={(e) => {
+                refSectionMap.current[__getSectionId(i)] = e
+              }}
+              section={s}
+            />
           ))}
         </div>
       </div>
@@ -86,7 +102,136 @@ export const _ContentArticle = (props: {
   )
 }
 
-const __SectionItem = (props: { section: Content['sections'][0] }) => {
+const __Index = (props: {
+  sections: ContentSection[]
+  refSectionMap: RefObject<Record<string, HTMLElement | null>>
+}) => {
+  const [stateActive, setActive] = useState(__getSectionId(0))
+  const refBar = useRef<HTMLDivElement>(null)
+  const refIdIntersectMap = useRef<Record<string, true>>({})
+  const refItemMap = useRef<Record<string, HTMLAnchorElement | null>>({})
+  const refIsFirst = useRef(true)
+
+  useLayoutEffect(() => {
+    const listSection = props.sections
+      .map((_, i) => props.refSectionMap.current[__getSectionId(i)])
+      .filter((e): e is HTMLElement => Boolean(e))
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            refIdIntersectMap.current[e.target.id] = true
+          } else {
+            delete refIdIntersectMap.current[e.target.id]
+          }
+        })
+
+        const h = listSection
+          .filter((e) => refIdIntersectMap.current[e.id])
+          .sort(
+            (a, b) =>
+              a.getBoundingClientRect().top - b.getBoundingClientRect().top,
+          )[0]
+
+        if (h) {
+          setActive((p) => (p === h.id ? p : h.id))
+        }
+      },
+      { rootMargin: '-96px 0px -30% 0px', threshold: 0 },
+    )
+
+    listSection.forEach((e) => observer.observe(e))
+
+    return () => {
+      observer.disconnect()
+      refIdIntersectMap.current = {}
+    }
+  }, [props.refSectionMap, props.sections])
+
+  useLayoutEffect(() => {
+    const b = refBar.current
+    const i = refItemMap.current[stateActive]
+
+    if (b && i) {
+      const style = {
+        height: `${i.offsetHeight}px`,
+        translateY: `${i.offsetTop}px`,
+      }
+
+      if (refIsFirst.current) {
+        motion.set(b, style)
+        refIsFirst.current = false
+      } else {
+        motion.to(b, 0.28, 'out', style)
+      }
+    }
+  }, [stateActive])
+
+  return (
+    <aside
+      aria-label="記事の目次"
+      className="my-10 h-fit rounded-2xl border border-gray-300 bg-white/80 p-5 shadow-lg backdrop-blur-md lg:sticky lg:top-24 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:my-24"
+    >
+      <p className="font-bold">目次</p>
+      <div className="relative mt-4">
+        <div className="absolute inset-y-0 left-2 w-[2px] bg-gray-200" />
+        <div
+          ref={refBar}
+          className="absolute left-2 top-0 w-[2px] bg-ivy5 shadow-[0_0_10px_rgba(37,183,121,0.45)]"
+          style={{ height: '0px' }}
+        />
+        <ol className="flex flex-col gap-2 pl-6">
+          {props.sections.map((s, i) => (
+            <li key={__getSectionId(i)}>
+              <a
+                aria-current={
+                  stateActive === __getSectionId(i) ? 'location' : undefined
+                }
+                className={cn(
+                  'block rounded-md px-2 py-1.5 text-sm leading-relaxed transition-colors',
+                  stateActive === __getSectionId(i) &&
+                    'font-bold text-gray-950',
+                  stateActive !== __getSectionId(i) &&
+                    'text-gray-500 hover:text-gray-950',
+                )}
+                href={`#${__getSectionId(i)}`}
+                onClick={(e) => {
+                  const id = __getSectionId(i)
+                  const s = props.refSectionMap.current[id]
+
+                  if (s) {
+                    e.preventDefault()
+                    window.history.replaceState(null, '', `#${id}`)
+                    s.scrollIntoView({
+                      behavior: window.matchMedia(
+                        '(prefers-reduced-motion: reduce)',
+                      ).matches
+                        ? 'auto'
+                        : 'smooth',
+                      block: 'start',
+                    })
+                    setActive(id)
+                  }
+                }}
+                ref={(e) => {
+                  refItemMap.current[__getSectionId(i)] = e
+                }}
+              >
+                {s.title}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </aside>
+  )
+}
+
+const __SectionItem = (props: {
+  id: string
+  onSectionRef: (e: HTMLElement | null) => void
+  section: ContentSection
+}) => {
   const refContainer = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -119,8 +264,12 @@ const __SectionItem = (props: { section: Content['sections'][0] }) => {
 
   return (
     <section
-      ref={refContainer}
-      className="translate-y-8 transition-all duration-700 ease-out"
+      id={props.id}
+      ref={(e) => {
+        refContainer.current = e
+        props.onSectionRef(e)
+      }}
+      className="translate-y-8 scroll-mt-24 transition-all duration-700 ease-out"
     >
       <h2
         className="mb-4 text-2xl font-bold"
@@ -147,3 +296,5 @@ const __parseText = (text: string) =>
       {(!p.startsWith('**') || !p.endsWith('**')) && p}
     </span>
   ))
+
+const __getSectionId = (i: number) => `content-section-${i + 1}`
