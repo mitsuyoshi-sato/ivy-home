@@ -16,48 +16,81 @@ export const _ServicesSection = () => {
 
   useEffect(() => {
     const c = refContainer.current
+    const b = refButtonMb.current
+    const observers: IntersectionObserver[] = []
+
     if (c) {
-      const observer = new IntersectionObserver(
-        async ([entry]) => {
-          if (entry.isIntersecting) {
-            const card0 = c.children[0]
-            const card1 = c.children[1]
-            const card2 = c.children[2]
-            const card3 = c.children[3]
-            const card4 = c.children[4]
+      const cards = Array.from(c.children)
 
-            const isMobile = !window.matchMedia('(min-width: 768px)').matches
-
-            if (isMobile) {
-              const b = refButtonMb.current
-              motion.to(card0, 1.8, 'out', { opacity: 1, translateY: '0px' })
-              await motion.delay(0.2)
-              motion.to(card1, 1.8, 'out', { opacity: 1, translateY: '0px' })
-              await motion.delay(0.2)
-              motion.to(card2, 1.8, 'out', { opacity: 1, translateY: '0px' })
-              await motion.delay(0.2)
-              motion.to(card3, 1.8, 'out', { opacity: 1, translateY: '0px' })
-              await motion.delay(0.2)
-              motion.to(card4, 1.8, 'out', { opacity: 1, translateY: '0px' })
-              await motion.delay(0.2)
-              motion.to(b, 1.8, 'out', { opacity: 1, translateY: '0px' })
-            } else {
-              motion.to(card0, 1.8, 'out', { opacity: 1, translateY: '0px' })
-              motion.to(card1, 1.8, 'out', { opacity: 1, translateY: '0px' })
-              await motion.delay(0.8)
-              motion.to(card2, 1.8, 'out', { opacity: 1, translateY: '0px' })
-              motion.to(card3, 1.8, 'out', { opacity: 1, translateY: '0px' })
-              motion.to(card4, 1.8, 'out', { opacity: 1, translateY: '0px' })
-            }
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        cards.forEach((e) => {
+          motion.set(e, { opacity: 1, scale: '1' })
+          if (e instanceof HTMLElement) {
+            e.style.removeProperty('transform')
           }
-        },
-        {
-          threshold: 0.3,
-        },
-      )
-      observer.observe(c)
+        })
+        if (b) {
+          motion.set(b, { opacity: 1, translateY: '0px' })
+        }
+      } else if (window.matchMedia('(min-width: 768px)').matches) {
+        const observer = new IntersectionObserver(
+          async ([entry]) => {
+            if (entry.isIntersecting) {
+              observer.unobserve(c)
+              __showBento(cards[0])
+              await motion.delay(0.16)
+              __showBento(cards[3])
+              await motion.delay(0.08)
+              __showBento(cards[1])
+              await motion.delay(0.2)
+              __showBento(cards[4])
+              await motion.delay(0.1)
+              __showBento(cards[2])
+            }
+          },
+          { threshold: 0.5 },
+        )
+
+        observer.observe(c)
+        observers.push(observer)
+      } else {
+        cards.forEach((e) => {
+          const observer = new IntersectionObserver(
+            ([entry]) => {
+              if (entry.isIntersecting) {
+                observer.unobserve(e)
+                __showBento(e)
+              }
+            },
+            { threshold: 0.15 },
+          )
+
+          observer.observe(e)
+          observers.push(observer)
+        })
+
+        if (b) {
+          const observer = new IntersectionObserver(
+            ([entry]) => {
+              if (entry.isIntersecting) {
+                observer.unobserve(b)
+                motion.to(b, 0.8, 'out', {
+                  opacity: 1,
+                  translateY: '0px',
+                })
+              }
+            },
+            { threshold: 0.15 },
+          )
+
+          observer.observe(b)
+          observers.push(observer)
+        }
+      }
     }
-  }, [refContainer])
+
+    return () => observers.forEach((o) => o.disconnect())
+  }, [])
 
   return (
     <div className="wrapper flex flex-col" id="services">
@@ -162,7 +195,7 @@ function __Bento({
   return (
     <article
       className={cn(
-        'group relative col-span-1 flex items-center justify-center overflow-hidden rounded-xl border border-gray-300 transition-all duration-300 ease-out hover:scale-[1.02] hover:cursor-pointer',
+        'group relative col-span-1 flex items-center justify-center overflow-hidden rounded-xl border border-gray-300 hover:cursor-pointer',
         'md:h-auto',
         mdSpan === '12' && 'md:col-span-12',
         mdSpan === '8' && 'md:col-span-8',
@@ -181,7 +214,7 @@ function __Bento({
         colSpan === '2' && 'lg:col-span-2',
         colSpan === '1' && 'lg:col-span-1',
       )}
-      style={{ opacity: 0, transform: 'translateY(100px)' }}
+      style={{ opacity: 0, transform: 'scale(0.96)' }}
     >
       <Link className="absolute inset-0 z-20" href={href}>
         <span className="sr-only">{title}の詳細を見る</span>
@@ -221,4 +254,12 @@ function __Bento({
       </div>
     </article>
   )
+}
+
+const __showBento = (e: Element) => {
+  motion.to(e, 1, 'out', { opacity: 1, scale: '1' }).then(() => {
+    if (e instanceof HTMLElement) {
+      e.style.removeProperty('transform')
+    }
+  })
 }
