@@ -2,15 +2,13 @@ import '../globals.css'
 
 import Link from 'next/link'
 
+import { cn } from '@/lib/utils'
+
 import _OpeningAnimation from '../(layout)/_OpeningAnimation'
 import { AnimationProvider } from '../(layout)/AnimationContext'
 import { Header } from '../(layout)/Header'
 
-export default function MainLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+const MainLayout = (props: { children: React.ReactNode }) => {
   const items = [
     {
       href: '/',
@@ -42,7 +40,13 @@ export default function MainLayout({
     },
     {
       href: '/news',
-      label: 'ニュース',
+      label: 'コンテンツ',
+      matches: ['/columns', '/works'],
+      subs: [
+        { href: '/news', label: 'ニュース', icon: 'newspaper' },
+        { href: '/columns', label: 'コラム', icon: 'lightbulb' },
+        { href: '/works', label: '施工事例', icon: 'briefcase' },
+      ],
     },
     {
       href: '/recruit',
@@ -50,18 +54,11 @@ export default function MainLayout({
     },
   ]
 
-  const itemWithSubs = items.find(
-    (i) => Array.isArray(i.subs) && i.subs.length > 0,
-  )
-  const itemsWithoutSubs = items.filter(
-    (i) => !Array.isArray(i.subs) || i.subs.length === 0,
-  )
-
   return (
     <AnimationProvider>
       <Header items={items} />
       <main>
-        <_OpeningAnimation>{children}</_OpeningAnimation>
+        <_OpeningAnimation>{props.children}</_OpeningAnimation>
       </main>
       <footer>
         <div className="bg-cleam py-10">
@@ -77,35 +74,35 @@ export default function MainLayout({
               </div>
             </div>
             <div className="grid w-full flex-1 grid-cols-2 gap-x-10 gap-y-2 md:gap-y-8 lg:gap-x-14 xl:grid-cols-5">
-              {itemsWithoutSubs.map((item) => (
-                <__FooterSection
+              {items.map((item) => (
+                <div
                   key={item.href}
-                  href={item.href}
-                  links={[]}
-                  title={item.label}
-                />
-              ))}
-              {itemWithSubs && (
-                <div className="col-span-2 xl:col-span-1">
+                  className={cn(
+                    'flex flex-col gap-6',
+                    item.subs && 'col-span-2 xl:col-span-1',
+                  )}
+                >
                   <Link
                     className="cursor-pointer text-xl font-bold text-ivy8 hover:opacity-70"
-                    href={itemWithSubs.href}
+                    href={item.href}
                   >
-                    {itemWithSubs.label}
+                    {item.label}
                   </Link>
-                  <div className="mt-4 grid grid-cols-2 gap-4 font-medium text-dark5 md:grid-cols-3 xl:grid-cols-1">
-                    {itemWithSubs.subs!.map((link) => (
-                      <Link
-                        key={link.label}
-                        className="hover:text-black"
-                        href={link.href}
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                  </div>
+                  {item.subs && (
+                    <div className="grid grid-cols-2 gap-4 font-medium text-dark5 md:grid-cols-3 xl:grid-cols-1">
+                      {item.subs.map((link) => (
+                        <Link
+                          key={link.label}
+                          className="hover:text-black"
+                          href={link.href}
+                        >
+                          {link.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
                 </div>
-              )}
+              ))}
             </div>
           </div>
         </div>
@@ -114,26 +111,4 @@ export default function MainLayout({
   )
 }
 
-function __FooterSection(props: {
-  title: string
-  href: string
-  links: { href: string; label: string; icon?: string }[]
-}) {
-  return (
-    <div className="flex flex-col gap-6">
-      <Link
-        className="cursor-pointer text-xl font-bold text-ivy8 hover:opacity-70"
-        href={props.href}
-      >
-        {props.title}
-      </Link>
-      <div className="flex flex-col gap-4 text-sm font-medium text-dark5">
-        {props.links.map((link) => (
-          <Link key={link.label} className="hover:text-black" href={link.href}>
-            {link.label}
-          </Link>
-        ))}
-      </div>
-    </div>
-  )
-}
+export default MainLayout

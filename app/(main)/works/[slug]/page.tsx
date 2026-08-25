@@ -6,12 +6,12 @@ import {
 } from '../../_Contents/ContentDetail'
 
 export const generateMetadata = (props: ContentPageProps) =>
-  getContentMetadata('news', props.params)
+  getContentMetadata('work', props.params)
 
-export const generateStaticParams = () => getContentStaticParams('news')
+export const generateStaticParams = () => getContentStaticParams('work')
 
 const Page = (props: ContentPageProps) => (
-  <ContentDetail kind="news" params={props.params} />
+  <ContentDetail kind="work" params={props.params} />
 )
 
 export default Page

@@ -1,27 +1,17 @@
 'use client'
+
 import { useEffect, useRef } from 'react'
 
-import { News } from '@/app/data/newsData'
+import type { Content } from '@/app/data/contentData'
 import { motion } from '@/app/motion'
 import { SectionHeader } from '@/components/SectionHeader'
 
-const parseText = (text: string) => {
-  const parts = text.split(/(\*\*.*?\*\*)/g)
-  return parts.map((part, i) => {
-    if (part.startsWith('**') && part.endsWith('**')) {
-      return (
-        <strong key={i} className="font-bold text-black">
-          {part.slice(2, -2)}
-        </strong>
-      )
-    }
-    return part
-  })
-}
-
-export const _News = (props: { data: News & { formattedDate: string } }) => {
+export const _ContentArticle = (props: {
+  data: Content & { formattedDate: string }
+}) => {
   const refCreatedBy = useRef<HTMLDivElement>(null)
   const refImage = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
     ;(async () => {
       const cb = refCreatedBy.current
@@ -48,10 +38,9 @@ export const _News = (props: { data: News & { formattedDate: string } }) => {
           <div className="flex flex-col gap-12 md:flex-row md:items-center">
             <div className="w-full md:w-1/2">
               <SectionHeader
-                title={props.data.title}
-                subtitle={props.data.category}
-                // description={props.data.subtitle}
                 description=""
+                subtitle={props.data.category}
+                title={props.data.title}
               />
               <div
                 ref={refCreatedBy}
@@ -88,8 +77,8 @@ export const _News = (props: { data: News & { formattedDate: string } }) => {
       </header>
       <div className="wrapper pt-0">
         <div className="mt-12 space-y-24">
-          {props.data.sections.map((section, index) => (
-            <_SectionItem key={index} section={section} />
+          {props.data.sections.map((s, i) => (
+            <__SectionItem key={i} section={s} />
           ))}
         </div>
       </div>
@@ -97,7 +86,7 @@ export const _News = (props: { data: News & { formattedDate: string } }) => {
   )
 }
 
-const _SectionItem = (props: { section: News['sections'][0] }) => {
+const __SectionItem = (props: { section: Content['sections'][0] }) => {
   const refContainer = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -105,26 +94,26 @@ const _SectionItem = (props: { section: News['sections'][0] }) => {
     if (c) {
       const observer = new IntersectionObserver(
         (entries) => {
-          entries.forEach(async (entry) => {
-            if (entry.isIntersecting) {
-              const h3 = c.children[0]
-              const p = c.children[1]
-              motion.to(h3, 1.3, 'out', { opacity: 1, translateY: '0px' })
+          entries.forEach(async (e) => {
+            if (e.isIntersecting) {
+              motion.to(c.children[0], 1.3, 'out', {
+                opacity: 1,
+                translateY: '0px',
+              })
               await motion.delay(0.3)
-              motion.to(p, 1.3, 'out', { opacity: 1, translateY: '0px' })
+              motion.to(c.children[1], 1.3, 'out', {
+                opacity: 1,
+                translateY: '0px',
+              })
             }
           })
         },
-        {
-          threshold: 0.5,
-        },
+        { threshold: 0.5 },
       )
 
       observer.observe(c)
 
-      return () => {
-        observer.disconnect()
-      }
+      return () => observer.disconnect()
     }
   }, [])
 
@@ -143,8 +132,18 @@ const _SectionItem = (props: { section: News['sections'][0] }) => {
         className="whitespace-pre-line leading-loose text-gray-800"
         style={{ opacity: 0, transform: 'translateY(100px)' }}
       >
-        {parseText(props.section.description)}
+        {__parseText(props.section.description)}
       </p>
     </section>
   )
 }
+
+const __parseText = (text: string) =>
+  text.split(/(\*\*.*?\*\*)/g).map((p, i) => (
+    <span key={i}>
+      {p.startsWith('**') && p.endsWith('**') && (
+        <strong className="font-bold text-black">{p.slice(2, -2)}</strong>
+      )}
+      {(!p.startsWith('**') || !p.endsWith('**')) && p}
+    </span>
+  ))

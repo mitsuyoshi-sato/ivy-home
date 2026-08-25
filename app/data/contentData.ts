@@ -1,11 +1,13 @@
-export type News = {
+export type ContentKind = 'news' | 'column' | 'work'
+
+export type Content = {
   id: number
+  kind: ContentKind
   slug: string
   image: string
   publishedAt: string
   title: string
   subtitle: string
-  href: string
   category: string
   createdByJp: string
   createdByEn: string
@@ -16,20 +18,25 @@ export type News = {
   }[]
 }
 
-export const dataNews: News[] = [
+export type ContentSummary = Pick<
+  Content,
+  'id' | 'image' | 'kind' | 'publishedAt' | 'slug' | 'subtitle' | 'title'
+> & { formattedDate: string }
+
+export const dataContents: Content[] = [
   {
     id: 1,
+    kind: 'news',
     slug: 'ivy-home-establishment',
     image: '/images/unity.jpg',
     publishedAt: '2025-10-07T00:00:00+09:00',
     title: '株式会社アイビーホーム設立',
     subtitle:
       'お客様の未来の暮らしをつくる株式会社アイビーホーム。太陽光発電や住宅リフォームで安心と快適を提供します。',
-    href: '/news/ivy-home-establishment',
     category: '事務連絡',
     createdByJp: '小西 裕也',
     createdByEn: 'Yuya Konishi',
-    createdByImage: '/images/yuya-konishi.jpg',
+    createdByImage: '/images/yuya-konishi.JPG',
     sections: [
       {
         title: '設立のご報告',
@@ -45,17 +52,17 @@ export const dataNews: News[] = [
   },
   {
     id: 2,
+    kind: 'column',
     slug: 'solar-battery-combination',
     image: '/images/news-battery.jpg',
     publishedAt: '2025-10-07T00:00:00+09:00',
     title: '太陽光と蓄電池の組み合わせで家の電力活用効率アップ！',
     subtitle:
       '太陽光発電で作った電気を蓄電池に貯め、昼は自家消費、夜や停電時にも安心して使える家庭向けの新しいエネルギーライフをご提案します。',
-    href: '/news/monthly-bill',
     category: '蓄電池・太陽光パネル',
     createdByJp: '小西 裕也',
     createdByEn: 'Yuya Konishi',
-    createdByImage: '/images/yuya-konishi.jpg',
+    createdByImage: '/images/yuya-konishi.JPG',
     sections: [
       {
         title: '太陽光パネルで作って、蓄電池で貯める！',
@@ -71,6 +78,7 @@ export const dataNews: News[] = [
   },
   {
     id: 3,
+    kind: 'column',
     slug: 'termite-checklist',
     image: '/images/pest-control.jpg',
     publishedAt: '2025-10-07T00:00:00+09:00',
@@ -78,10 +86,9 @@ export const dataNews: News[] = [
     title: '家を守る！シロアリを見抜くためのチェックリスト',
     subtitle:
       '家を守る！シロアリの初期症状とチェックリストを解説。小さな穴や木材の変色など、見逃しやすいサインに気づく方法も紹介します。',
-    href: '/news/termite-checklist',
     createdByJp: '小西 裕也',
     createdByEn: 'Yuya Konishi',
-    createdByImage: '/images/yuya-konishi.jpg',
+    createdByImage: '/images/yuya-konishi.JPG',
     sections: [
       {
         title: '小さなサインを見逃さない 〜シロアリ被害の初期症状〜',
@@ -97,17 +104,17 @@ export const dataNews: News[] = [
   },
   {
     id: 4,
+    kind: 'column',
     slug: 'electricity-price-rise-2025',
     image: '/images/solar-panel-construction.jpg',
     publishedAt: '2025-11-06T00:00:00+09:00',
     title: '電気代値上げの今こそ、太陽光と蓄電池で「電気を自給する家」へ',
     subtitle:
       '電気料金が全国的に値上がりする中、太陽光発電と蓄電池の導入が注目を集めています。家庭で電気を「つくって・ためて・使う」時代が到来しています。',
-    href: '/news/electricity-price-rise-2025',
     category: '太陽光・蓄電池',
     createdByJp: '小西 裕也',
     createdByEn: 'Yuya Konishi',
-    createdByImage: '/images/yuya-konishi.jpg',
+    createdByImage: '/images/yuya-konishi.JPG',
     sections: [
       {
         title: '全国で続く電気料金の値上げ',
@@ -127,3 +134,49 @@ export const dataNews: News[] = [
     ],
   },
 ]
+
+export const configContent = {
+  news: {
+    description:
+      '株式会社アイビーホームからの会社情報、新サービス、イベントなどの最新ニュースをご案内します。',
+    icon: 'bellRing',
+    label: 'ニュース',
+    path: '/news',
+    schemaType: 'NewsArticle',
+    subtitle: 'News',
+  },
+  column: {
+    description:
+      '太陽光発電・蓄電池・リフォームなど、住まいと暮らしに役立つ情報を専門家の視点でお届けします。',
+    icon: 'lightbulb',
+    label: 'コラム',
+    path: '/columns',
+    schemaType: 'BlogPosting',
+    subtitle: 'Columns',
+  },
+  work: {
+    description:
+      '株式会社アイビーホームが手がけた太陽光発電・蓄電池・リフォームなどの施工事例をご紹介します。',
+    icon: 'briefcase',
+    label: '施工事例',
+    path: '/works',
+    schemaType: 'Article',
+    subtitle: 'Works',
+  },
+} as const satisfies Record<
+  ContentKind,
+  {
+    description: string
+    icon: string
+    label: string
+    path: `/${string}`
+    schemaType: 'Article' | 'BlogPosting' | 'NewsArticle'
+    subtitle: string
+  }
+>
+
+export const getContents = (kind: ContentKind) =>
+  dataContents.filter((c) => c.kind === kind)
+
+export const getContentHref = (content: Pick<Content, 'kind' | 'slug'>) =>
+  `${configContent[content.kind].path}/${content.slug}`

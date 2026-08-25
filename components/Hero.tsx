@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffectAsync } from '@soichiro_nitta/motion'
+import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 
 import { cn } from '@/lib/utils'
@@ -17,7 +18,12 @@ export const Hero = (props: {
   overlayOpacity?: string
   video?: { src: string; alt: string; playbackRate?: number }
 }) => {
-  const { refOpeningAnimation } = useAnimation()
+  const { refOpeningAnimation, refSkipHeroAnimation } = useAnimation()
+  const pathname = usePathname()
+  const refSkipHeroAnimationOnMount = useRef(
+    refSkipHeroAnimation.current === pathname,
+  )
+  const skipHeroAnimation = refSkipHeroAnimationOnMount.current
   const refImage = useRef<HTMLDivElement>(null)
   const refText = useRef<HTMLHeadingElement>(null)
   const refDescription = useRef<HTMLParagraphElement>(null)
@@ -75,42 +81,52 @@ export const Hero = (props: {
       const d = refDescription.current
       const s = refSubtitle.current
       if (i && t && d && s) {
-        if (!refOpeningAnimation.current) {
-          await motion.delay(3.5)
+        if (skipHeroAnimation) {
+          refSkipHeroAnimation.current = null
+          setIsAnimetionEnd(true)
+        } else {
+          if (!refOpeningAnimation.current) {
+            await motion.delay(3.5)
+          }
+          motion.to(i, 1.5, 'out', {
+            opacity: 1,
+            scale: 1,
+          })
+          await motion.delay(0.2)
+          motion.to(t, 2, 'out', {
+            opacity: 1,
+            translateY: '0px',
+          })
+          await motion.delay(0.5)
+          motion.to(s, 2, 'out', {
+            opacity: 1,
+            translateY: '0px',
+          })
+          await motion.delay(0.5)
+          motion.to(d, 2, 'out', {
+            opacity: 1,
+            translateY: '0px',
+          })
+          setIsAnimetionEnd(true)
         }
-        motion.to(i, 1.5, 'out', {
-          opacity: 1,
-          scale: 1,
-        })
-        await motion.delay(0.2)
-        motion.to(t, 2, 'out', {
-          opacity: 1,
-          translateY: '0px',
-        })
-        await motion.delay(0.5)
-        motion.to(s, 2, 'out', {
-          opacity: 1,
-          translateY: '0px',
-        })
-        await motion.delay(0.5)
-        motion.to(d, 2, 'out', {
-          opacity: 1,
-          translateY: '0px',
-        })
-        setIsAnimetionEnd(true)
       }
     })()
-  }, [refOpeningAnimation])
+  }, [refOpeningAnimation, refSkipHeroAnimation, skipHeroAnimation])
 
   useEffectAsync(async () => {
     const v = refVideo.current
     const i = refImage.current
     if (v && i && stateIsAnimetionEnd && stateVideoReady) {
       void v.play()
-      await motion.to(v, 0.5, 'out', { opacity: 1 })
-      motion.set(i, { opacity: 0 })
+      if (skipHeroAnimation) {
+        motion.set(v, { opacity: 1 })
+        motion.set(i, { opacity: 0 })
+      } else {
+        await motion.to(v, 0.5, 'out', { opacity: 1 })
+        motion.set(i, { opacity: 0 })
+      }
     }
-  }, [stateIsAnimetionEnd, stateVideoReady])
+  }, [skipHeroAnimation, stateIsAnimetionEnd, stateVideoReady])
 
   return (
     <header className="relative h-[70vh]">
@@ -119,8 +135,8 @@ export const Hero = (props: {
           <div
             ref={refImage}
             style={{
-              opacity: 0,
-              transform: 'scale(1.2)',
+              opacity: skipHeroAnimation ? 1 : 0,
+              transform: skipHeroAnimation ? 'scale(1)' : 'scale(1.2)',
               transformOrigin: 'center',
             }}
             className="absolute inset-0 z-[-1]"
@@ -165,8 +181,10 @@ export const Hero = (props: {
                 !props.subtitle && 'hidden',
               )}
               style={{
-                opacity: 0,
-                transform: 'translateY(10px)',
+                opacity: skipHeroAnimation ? 1 : 0,
+                transform: skipHeroAnimation
+                  ? 'translateY(0px)'
+                  : 'translateY(10px)',
               }}
             >
               {props.subtitle}
@@ -176,8 +194,10 @@ export const Hero = (props: {
               ref={refText}
               className="text-2xl font-semibold leading-normal md:text-5xl md:leading-[1.3]"
               style={{
-                opacity: 0,
-                transform: 'translateY(10px)',
+                opacity: skipHeroAnimation ? 1 : 0,
+                transform: skipHeroAnimation
+                  ? 'translateY(0px)'
+                  : 'translateY(10px)',
               }}
             >
               {props.title}
@@ -189,8 +209,10 @@ export const Hero = (props: {
                 !props.description && 'hidden',
               )}
               style={{
-                opacity: 0,
-                transform: 'translateY(10px)',
+                opacity: skipHeroAnimation ? 1 : 0,
+                transform: skipHeroAnimation
+                  ? 'translateY(0px)'
+                  : 'translateY(10px)',
               }}
             >
               {props.description}

@@ -1,19 +1,17 @@
 'use client'
 
 import { ArrowRightIcon } from 'lucide-react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 
-import { News } from '@/app/data/newsData'
+import type { ContentSummary } from '@/app/data/contentData'
+import { getContentHref } from '@/app/data/contentData'
 import { SectionHeader } from '@/components/SectionHeader'
 import { Button } from '@/components/ui/Button'
 
 import { motion } from '../../motion'
 
-export const _NewsSection = (props: {
-  news: Array<News & { formattedDate: string }>
-}) => {
+export const _ContentsSection = (props: { contents: ContentSummary[] }) => {
   const scrollRef = useRef<HTMLDivElement>(null)
   const refButtonMb = useRef<HTMLDivElement>(null)
 
@@ -52,18 +50,18 @@ export const _NewsSection = (props: {
         <SectionHeader
           button={{
             href: '/news',
-            text: 'ニュースをみる',
+            text: 'コンテンツをみる',
             className: 'hidden md:block',
           }}
-          description="実際にご利用いただいたお客様から寄せられた感想や体験談をご紹介します。\n私たちのサービスが、日々の暮らしやお仕事にどのように役立っているのか、リアルな声を通してぜひご覧ください。"
-          subtitle="News"
-          title="ニュース"
+          description="会社からのニュース、住まいと暮らしに役立つコラム、実際の施工事例をご紹介します。"
+          subtitle="Contents"
+          title="ニュース・コラム・施工事例"
         />
       </div>
 
       <div ref={scrollRef} className="mt-9 w-full" style={{ opacity: 0 }}>
         <div className="flex w-fit animate-scroll gap-4">
-          {props.news.map((data) => {
+          {props.contents.map((data) => {
             const content = (
               <article
                 key={data.id}
@@ -71,17 +69,18 @@ export const _NewsSection = (props: {
               >
                 <div className="h-[200px] w-[300px] shrink-0 rounded-lg border border-gray-300">
                   <div className="relative size-full overflow-hidden rounded-lg">
-                    <Image
-                      fill
+                    <img
                       alt={data.title}
-                      className="object-cover"
-                      sizes="300px"
+                      className="size-full object-cover"
                       src={data.image}
                     />
                   </div>
                 </div>
                 <div className="flex flex-col p-2">
-                  <time className="text-sm text-gray-500">
+                  <time
+                    className="text-sm text-gray-500"
+                    dateTime={data.publishedAt}
+                  >
                     {data.formattedDate}
                   </time>
                   <h3 className="whitespace-pre-line text-sm font-semibold text-dark7">
@@ -90,15 +89,13 @@ export const _NewsSection = (props: {
                 </div>
               </article>
             )
-            return data.href ? (
-              <Link key={data.id} href={data.href}>
+            return (
+              <Link key={data.id} href={getContentHref(data)}>
                 {content}
               </Link>
-            ) : (
-              content
             )
           })}
-          {props.news.map((data) => {
+          {props.contents.map((data) => {
             const content = (
               <article
                 key={`duplicate-${data.id}`}
@@ -106,17 +103,18 @@ export const _NewsSection = (props: {
               >
                 <div className="h-[200px] w-[300px] shrink-0 rounded-lg border border-gray-300">
                   <div className="relative size-full overflow-hidden rounded-lg">
-                    <Image
-                      fill
+                    <img
                       alt={data.title}
-                      className="object-cover"
-                      sizes="300px"
+                      className="size-full object-cover"
                       src={data.image}
                     />
                   </div>
                 </div>
                 <div className="flex flex-col p-2">
-                  <time className="text-sm text-gray-500">
+                  <time
+                    className="text-sm text-gray-500"
+                    dateTime={data.publishedAt}
+                  >
                     {data.formattedDate}
                   </time>
                   <h3 className="whitespace-pre-line text-sm font-semibold text-dark7">
@@ -125,12 +123,10 @@ export const _NewsSection = (props: {
                 </div>
               </article>
             )
-            return data.href ? (
-              <Link key={`duplicate-${data.id}`} href={data.href}>
+            return (
+              <Link key={`duplicate-${data.id}`} href={getContentHref(data)}>
                 {content}
               </Link>
-            ) : (
-              content
             )
           })}
         </div>
@@ -141,7 +137,7 @@ export const _NewsSection = (props: {
         >
           <Link href="/news">
             <Button icon={ArrowRightIcon} iconPosition="right">
-              ニュース一覧をみる
+              コンテンツをみる
             </Button>
           </Link>
         </div>
@@ -154,7 +150,10 @@ export const _NewsSection = (props: {
           }
           100% {
             transform: translateX(
-              calc(-300px * ${props.news.length} - 16px * ${props.news.length})
+              calc(
+                -300px * ${props.contents.length} - 16px *
+                  ${props.contents.length}
+              )
             );
           }
         }

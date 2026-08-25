@@ -14,6 +14,7 @@ export const Nav = (props: {
   items: {
     href: string
     label: string
+    matches?: string[]
     subs?: { href: string; label: string; icon?: string }[]
   }[]
 }) => {
@@ -24,10 +25,14 @@ export const Nav = (props: {
   const activeIndex = useMemo(() => {
     if (pathname === '/') return 0
     const i = props.items
-      .map((t, idx) => ({ idx, href: t.href || '' }))
-      .sort((a, b) => b.href.length - a.href.length)
-      .find(({ href }) =>
-        href === '/' ? pathname === '/' : pathname?.startsWith(href),
+      .map((t, idx) => ({
+        idx,
+        paths: [t.href, ...(t.matches ?? [])],
+      }))
+      .find((t) =>
+        t.paths.some((p) =>
+          p === '/' ? pathname === '/' : pathname?.startsWith(p),
+        ),
       )?.idx
     return i ?? 0
   }, [pathname, props.items])
@@ -61,6 +66,7 @@ export const Nav = (props: {
           href={t.href}
           i={i}
           label={t.label}
+          pathname={pathname}
           subs={t.subs}
         />
       ))}
@@ -78,6 +84,7 @@ const Tab = (props: {
   label: string
   activeIndex: number
   i: number
+  pathname: string
   subs?: { href: string; label: string; icon?: string }[]
 }) => {
   const refList = useRef<HTMLDivElement>(null)
@@ -191,7 +198,14 @@ const Tab = (props: {
           {props.subs.map((sub) => (
             <Link
               key={sub.href}
-              className="flex shrink-0 items-center gap-2 rounded-md px-3 py-2 hover:cursor-pointer hover:bg-ivy2/30"
+              aria-current={
+                props.pathname.startsWith(sub.href) ? 'page' : undefined
+              }
+              className={cn(
+                'flex shrink-0 items-center gap-2 rounded-md px-3 py-2 hover:cursor-pointer hover:bg-ivy2/30',
+                props.pathname.startsWith(sub.href) &&
+                  'bg-ivy2/50 font-bold text-ivy8',
+              )}
               href={sub.href}
             >
               {sub.icon && (
