@@ -1,7 +1,7 @@
 export type ContentKind = 'news' | 'column' | 'work'
 
 export type Content = {
-  id: number
+  id: string
   kind: ContentKind
   slug: string
   image: string
@@ -25,7 +25,7 @@ export type ContentSummary = Pick<
 
 export const dataContents: Content[] = [
   {
-    id: 1,
+    id: '1',
     kind: 'news',
     slug: 'ivy-home-establishment',
     image: '/images/unity.jpg',
@@ -51,7 +51,7 @@ export const dataContents: Content[] = [
     ],
   },
   {
-    id: 2,
+    id: '2',
     kind: 'column',
     slug: 'solar-battery-combination',
     image: '/images/news-battery.jpg',
@@ -77,7 +77,7 @@ export const dataContents: Content[] = [
     ],
   },
   {
-    id: 3,
+    id: '3',
     kind: 'column',
     slug: 'termite-checklist',
     image: '/images/pest-control.jpg',
@@ -103,7 +103,7 @@ export const dataContents: Content[] = [
     ],
   },
   {
-    id: 4,
+    id: '4',
     kind: 'column',
     slug: 'electricity-price-rise-2025',
     image: '/images/solar-panel-construction.jpg',

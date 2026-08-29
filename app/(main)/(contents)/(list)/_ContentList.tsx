@@ -17,7 +17,7 @@ export const _ContentList = (props: {
     <>
       {props.contents.length > 0 && (
         <div className="grid grid-cols-1 gap-x-24 gap-y-12 md:grid-cols-2">
-          {[...props.contents].reverse().map((c) => (
+          {props.contents.map((c) => (
             <__ContentCard key={c.id} content={c} />
           ))}
         </div>
@@ -75,9 +75,11 @@ const __ContentCard = (props: { content: ContentSummary }) => {
           {props.content.formattedDate}
         </time>
         <h2 className="mt-1 text-lg font-bold">{props.content.title}</h2>
-        <p className="mt-1 line-clamp-3 text-sm text-gray-500">
-          {props.content.subtitle}
-        </p>
+        {props.content.subtitle && (
+          <p className="mt-1 line-clamp-3 text-sm text-gray-500">
+            {props.content.subtitle}
+          </p>
+        )}
       </div>
       <div className="mt-4 flex w-full justify-end">
         <Link
