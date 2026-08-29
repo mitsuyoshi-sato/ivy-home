@@ -24,13 +24,13 @@ const Page = async () => {
   return (
     <section className="wrapper flex flex-col gap-20">
       <SectionHeader
-        description={configContent[data.kind].description}
-        subtitle={configContent[data.kind].subtitle}
-        title={configContent[data.kind].label}
+        description="太陽光発電・蓄電池・リフォームなど、住まいと暮らしに役立つ情報を専門家の視点でお届けします。"
+        subtitle="Columns"
+        title="お役立ち情報"
       />
       <_ContentList
-        contents={data.contents}
-        emptyMessage={`${configContent[data.kind].label}は現在準備中です。公開までしばらくお待ちください。`}
+        contents={data}
+        emptyMessage={`${configContent.column.label}は現在準備中です。公開までしばらくお待ちください。`}
       />
     </section>
   )

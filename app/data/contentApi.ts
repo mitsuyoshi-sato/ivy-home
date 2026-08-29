@@ -9,23 +9,22 @@ import { clientMicrocms } from '@/lib/microcms'
 import type { ContentKind, ContentSummary } from './contentData'
 
 export const getContentSummaries = cache(
-  async (
-    kind: ContentKind,
-  ): Promise<{ contents: ContentSummary[]; kind: ContentKind }> => ({
-    contents: (
+  async (kind: ContentKind): Promise<ContentSummary[]> =>
+    (
       await clientMicrocms.getAllContents<{
         eyecatch?: MicroCMSImage
+        subtitle?: string
         title: string
       }>({
         customRequestInit: {
           next: {
-            revalidate: 3600,
-            tags: [`contents-${kind}`],
+            revalidate: 86400,
+            tags: ['contents', `contents-${kind}`],
           },
         },
         endpoint: 'contents',
         queries: {
-          fields: ['id', 'publishedAt', 'title', 'eyecatch'],
+          fields: ['id', 'publishedAt', 'title', 'subtitle', 'eyecatch'],
           filters: `category[contains]${__categoryByKind[kind]}`,
           orders: '-publishedAt',
         },
@@ -37,11 +36,9 @@ export const getContentSummaries = cache(
       kind,
       publishedAt: c.publishedAt ?? c.createdAt,
       slug: c.id,
-      subtitle: '',
+      subtitle: c.subtitle ?? '',
       title: c.title,
     })),
-    kind,
-  }),
 )
 
 const __categoryByKind = {
