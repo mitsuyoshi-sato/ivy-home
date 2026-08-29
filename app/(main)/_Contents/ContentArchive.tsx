@@ -65,7 +65,7 @@ export const ContentArchive = (props: { kind: ContentKind }) => {
         <SectionHeader
           description={configContent[props.kind].description}
           subtitle={configContent[props.kind].subtitle}
-          title={`${configContent[props.kind].label}一覧`}
+          title={configContent[props.kind].label}
         />
         <_ContentList
           contents={getContents(props.kind).map((c) => ({

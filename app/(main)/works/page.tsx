@@ -10,13 +10,13 @@ export const metadata: Metadata = {
   openGraph: {
     description: configContent.work.description,
     images: [{ url: '/images/ivy-home.png' }],
-    title: '施工事例一覧 / 株式会社アイビーホーム',
+    title: '施工事例 / 株式会社アイビーホーム',
     url: configContent.work.path,
   },
   ...(getContents('work').length === 0 && {
     robots: { follow: true, index: false },
   }),
-  title: '施工事例一覧',
+  title: '施工事例',
 }
 
 const Page = () => <ContentArchive kind="work" />

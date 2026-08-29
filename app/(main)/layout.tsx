@@ -44,7 +44,7 @@ const MainLayout = (props: { children: React.ReactNode }) => {
       matches: ['/columns', '/works'],
       subs: [
         { href: '/news', label: 'ニュース', icon: 'newspaper' },
-        { href: '/columns', label: 'コラム', icon: 'lightbulb' },
+        { href: '/columns', label: 'お役立ち情報', icon: 'lightbulb' },
         { href: '/works', label: '施工事例', icon: 'briefcase' },
       ],
     },

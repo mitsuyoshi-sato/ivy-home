@@ -149,10 +149,10 @@ export const configContent = {
     description:
       '太陽光発電・蓄電池・リフォームなど、住まいと暮らしに役立つ情報を専門家の視点でお届けします。',
     icon: 'lightbulb',
-    label: 'コラム',
+    label: 'お役立ち情報',
     path: '/columns',
     schemaType: 'BlogPosting',
-    subtitle: 'Columns',
+    subtitle: 'Useful Information',
   },
   work: {
     description:

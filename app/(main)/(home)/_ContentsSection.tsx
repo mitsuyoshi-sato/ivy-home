@@ -53,9 +53,9 @@ export const _ContentsSection = (props: { contents: ContentSummary[] }) => {
             text: 'コンテンツをみる',
             className: 'hidden md:block',
           }}
-          description="会社からのニュース、住まいと暮らしに役立つコラム、実際の施工事例をご紹介します。"
+          description="会社からのニュース、住まいと暮らしのお役立ち情報、実際の施工事例をご紹介します。"
           subtitle="Contents"
-          title="ニュース・コラム・施工事例"
+          title="ニュース・お役立ち情報・施工事例"
         />
       </div>
 

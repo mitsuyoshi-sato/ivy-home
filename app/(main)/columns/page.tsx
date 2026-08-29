@@ -10,10 +10,10 @@ export const metadata: Metadata = {
   openGraph: {
     description: configContent.column.description,
     images: [{ url: '/images/ivy-home.png' }],
-    title: 'コラム一覧 / 株式会社アイビーホーム',
+    title: 'お役立ち情報 / 株式会社アイビーホーム',
     url: configContent.column.path,
   },
-  title: 'コラム一覧',
+  title: 'お役立ち情報',
 }
 
 const Page = () => <ContentArchive kind="column" />
