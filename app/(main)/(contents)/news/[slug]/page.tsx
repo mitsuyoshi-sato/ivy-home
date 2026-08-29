@@ -1,9 +1,9 @@
-import type { ContentPageProps } from '../../_Contents/ContentDetail'
+import type { ContentPageProps } from '../../ContentDetail'
 import {
   ContentDetail,
   getContentMetadata,
   getContentStaticParams,
-} from '../../_Contents/ContentDetail'
+} from '../../ContentDetail'
 
 export const generateMetadata = (props: ContentPageProps) =>
   getContentMetadata('news', props.params)

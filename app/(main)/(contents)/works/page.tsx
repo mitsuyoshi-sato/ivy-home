@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 
 import { configContent, getContents } from '@/app/data/contentData'
 
-import { ContentArchive } from '../_Contents/ContentArchive'
+import { ContentArchive } from '../ContentArchive'
 
 export const metadata: Metadata = {
   alternates: { canonical: configContent.work.path },
