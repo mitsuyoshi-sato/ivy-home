@@ -127,6 +127,7 @@ export const ContentDetail = async (props: {
       />
       <div className="bg-cleam pt-24">
         <Breadcrumb
+          className="lg:!px-6"
           items={[
             { title: 'ホーム', href: '/', icon: 'home' },
             {

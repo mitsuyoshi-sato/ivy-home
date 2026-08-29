@@ -11,6 +11,7 @@ import {
 import type { Content } from '@/app/data/contentData'
 import { motion } from '@/app/motion'
 import { SectionHeader } from '@/components/SectionHeader'
+import { Icon } from '@/components/ui/Icon'
 import { cn } from '@/lib/utils'
 
 type ContentSection = Content['sections'][number]
@@ -43,7 +44,7 @@ export const _ContentArticle = (props: {
 
   return (
     <article className="isolate">
-      <div className="wrapper grid items-start gap-x-16 py-0 lg:grid-cols-[minmax(0,1fr)_340px]">
+      <div className="wrapper grid items-start gap-x-16 py-0 lg:grid-cols-[minmax(0,1fr)_388px] lg:px-6">
         <div
           aria-hidden="true"
           className="relative -z-10 hidden self-stretch before:absolute before:inset-y-0 before:left-1/2 before:w-screen before:-translate-x-1/2 before:bg-cleam lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:block"
@@ -177,7 +178,7 @@ const __Index = (props: {
         <div className="absolute inset-y-0 left-2 w-[2px] bg-gray-200" />
         <div
           ref={refBar}
-          className="absolute left-2 top-0 w-[2px] bg-ivy5 shadow-[0_0_10px_rgba(37,183,121,0.45)]"
+          className="absolute left-2 top-0 w-[2px] bg-ivy5 shadow-[0_0_14px_2px_rgba(37,183,121,0.6)]"
           style={{ height: '0px' }}
         />
         <ol className="flex flex-col gap-2 pl-6">
@@ -188,9 +189,8 @@ const __Index = (props: {
                   stateActive === __getSectionId(i) ? 'location' : undefined
                 }
                 className={cn(
-                  'block rounded-md px-2 py-1.5 text-sm leading-relaxed transition-colors',
-                  stateActive === __getSectionId(i) &&
-                    'font-bold text-gray-950',
+                  'flex items-start gap-2 rounded-md px-2 py-1.5 text-sm leading-relaxed transition-colors',
+                  stateActive === __getSectionId(i) && 'font-bold text-ivy6',
                   stateActive !== __getSectionId(i) &&
                     'text-gray-500 hover:text-gray-950',
                 )}
@@ -217,6 +217,11 @@ const __Index = (props: {
                   refItemMap.current[__getSectionId(i)] = e
                 }}
               >
+                <Icon
+                  className="mt-0.5 shrink-0"
+                  name={__indexIconNames[i % __indexIconNames.length]}
+                  size={16}
+                />
                 {s.title}
               </a>
             </li>
@@ -298,3 +303,11 @@ const __parseText = (text: string) =>
   ))
 
 const __getSectionId = (i: number) => `content-section-${i + 1}`
+
+const __indexIconNames = [
+  'sprout',
+  'housePlug',
+  'sun',
+  'bookOpenText',
+  'lightbulb',
+] as const
