@@ -32,6 +32,7 @@ export const _ContentList = (props: {
 }
 
 const __ContentCard = (props: { content: ContentSummary }) => {
+  const hrefContent = getContentHref(props.content)
   const refCard = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -60,13 +61,18 @@ const __ContentCard = (props: { content: ContentSummary }) => {
       className="flex flex-col"
       style={{ opacity: 0, transform: 'translateY(100px)' }}
     >
-      <figure className="h-[250px] w-full overflow-hidden rounded-lg border border-gray-200">
-        <img
-          alt={props.content.title}
-          className="size-full object-cover"
-          src={props.content.image}
-        />
-      </figure>
+      <Link
+        className="block rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ivy6"
+        href={hrefContent}
+      >
+        <figure className="h-[250px] w-full overflow-hidden rounded-lg border border-gray-200">
+          <img
+            alt={props.content.title}
+            className="size-full object-cover"
+            src={props.content.image}
+          />
+        </figure>
+      </Link>
       <div className="flex flex-col">
         <time
           className="mt-2 text-sm text-gray-500"
@@ -74,7 +80,14 @@ const __ContentCard = (props: { content: ContentSummary }) => {
         >
           {props.content.formattedDate}
         </time>
-        <h2 className="mt-1 text-lg font-bold">{props.content.title}</h2>
+        <h2 className="mt-1 text-lg font-bold">
+          <Link
+            className="rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ivy6"
+            href={hrefContent}
+          >
+            {props.content.title}
+          </Link>
+        </h2>
         {props.content.subtitle && (
           <p className="mt-1 line-clamp-3 text-sm text-gray-500">
             {props.content.subtitle}
@@ -84,7 +97,7 @@ const __ContentCard = (props: { content: ContentSummary }) => {
       <div className="mt-4 flex w-full justify-end">
         <Link
           aria-label={`${props.content.title}の詳細を見る`}
-          href={getContentHref(props.content)}
+          href={hrefContent}
         >
           <Button
             icon={ArrowRightIcon}
