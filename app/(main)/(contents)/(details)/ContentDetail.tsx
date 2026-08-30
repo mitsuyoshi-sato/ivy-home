@@ -1,14 +1,9 @@
 import { format } from 'date-fns'
 import type { Metadata } from 'next'
-import { notFound } from 'next/navigation'
 import Script from 'next/script'
 
-import type { ContentKind } from '@/app/data/contentData'
-import {
-  configContent,
-  getContentHref,
-  getContents,
-} from '@/app/data/contentData'
+import type { ContentDetailData } from '@/app/data/contentData'
+import { configContent, getContentHref } from '@/app/data/contentData'
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { FooterLinks } from '@/components/FooterLinks'
 
@@ -18,12 +13,9 @@ export type ContentPageProps = {
   params: Promise<{ slug: string }>
 }
 
-export const getContentMetadata = async (
-  kind: ContentKind,
-  params: ContentPageProps['params'],
-): Promise<Metadata> => {
-  const { slug } = await params
-  const data = getContents(kind).find((c) => c.slug === slug)
+export const getContentMetadata = (
+  data: ContentDetailData | null,
+): Metadata => {
   let metadata: Metadata = {
     title: '記事が見つかりません',
     description: '指定された記事は見つかりませんでした。',
@@ -47,25 +39,12 @@ export const getContentMetadata = async (
   return metadata
 }
 
-export const getContentStaticParams = (kind: ContentKind) =>
-  getContents(kind).map((c) => ({ slug: c.slug }))
-
-export const ContentDetail = async (props: {
-  kind: ContentKind
-  params: ContentPageProps['params']
-}) => {
-  const { slug } = await props.params
-  const data = getContents(props.kind).find((c) => c.slug === slug)
-
-  if (!data) {
-    notFound()
-  }
-
+export const ContentDetail = (props: { data: ContentDetailData }) => {
   return (
     <>
       <Script
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: __serializeJsonLd({
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
@@ -78,39 +57,38 @@ export const ContentDetail = async (props: {
               {
                 '@type': 'ListItem',
                 position: 2,
-                name: configContent[props.kind].label,
-                item: `https://www.ivyho.me${configContent[props.kind].path}`,
+                name: configContent[props.data.kind].label,
+                item: `https://www.ivyho.me${configContent[props.data.kind].path}`,
               },
               {
                 '@type': 'ListItem',
                 position: 3,
-                name: data.title,
-                item: `https://www.ivyho.me${getContentHref(data)}`,
+                name: props.data.title,
+                item: `https://www.ivyho.me${getContentHref(props.data)}`,
               },
             ],
           }),
         }}
-        id={`breadcrumb-${props.kind}-${slug}`}
+        id={`breadcrumb-${props.data.kind}-${props.data.slug}`}
         type="application/ld+json"
       />
       <Script
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: __serializeJsonLd({
             '@context': 'https://schema.org',
-            '@type': configContent[props.kind].schemaType,
+            '@type': configContent[props.data.kind].schemaType,
             author: {
               '@type': 'Person',
-              image: `https://www.ivyho.me${data.createdByImage}`,
-              name: data.createdByJp,
+              name: props.data.author,
             },
-            dateModified: data.publishedAt,
-            datePublished: data.publishedAt,
-            description: data.subtitle,
-            headline: data.title,
-            image: `https://www.ivyho.me${data.image}`,
+            dateModified: props.data.revisedAt,
+            datePublished: props.data.publishedAt,
+            description: props.data.subtitle,
+            headline: props.data.title,
+            image: __getAbsoluteUrl(props.data.image),
             mainEntityOfPage: {
               '@type': 'WebPage',
-              '@id': `https://www.ivyho.me${getContentHref(data)}`,
+              '@id': `https://www.ivyho.me${getContentHref(props.data)}`,
             },
             publisher: {
               '@type': 'Organization',
@@ -122,7 +100,7 @@ export const ContentDetail = async (props: {
             },
           }),
         }}
-        id={`${props.kind}-${slug}`}
+        id={`${props.data.kind}-${props.data.slug}`}
         type="application/ld+json"
       />
       <div className="bg-cleam pt-24">
@@ -131,13 +109,13 @@ export const ContentDetail = async (props: {
           items={[
             { title: 'ホーム', href: '/', icon: 'home' },
             {
-              title: `${configContent[props.kind].label}一覧`,
-              href: configContent[props.kind].path,
-              icon: configContent[props.kind].icon,
+              title: `${configContent[props.data.kind].label}一覧`,
+              href: configContent[props.data.kind].path,
+              icon: configContent[props.data.kind].icon,
             },
             {
-              title: data.title,
-              href: getContentHref(data),
+              title: props.data.title,
+              href: getContentHref(props.data),
               icon: 'newspaper',
               current: true,
             },
@@ -146,19 +124,25 @@ export const ContentDetail = async (props: {
       </div>
       <_ContentArticle
         data={{
-          ...data,
-          formattedDate: format(data.publishedAt, 'yyyy.MM.dd'),
+          ...props.data,
+          formattedDate: format(props.data.publishedAt, 'yyyy.MM.dd'),
         }}
       />
       <FooterLinks
         items={[
           {
-            title: `${configContent[props.kind].label}一覧に戻る`,
-            href: configContent[props.kind].path,
-            icon: configContent[props.kind].icon,
+            title: `${configContent[props.data.kind].label}一覧に戻る`,
+            href: configContent[props.data.kind].path,
+            icon: configContent[props.data.kind].icon,
           },
         ]}
       />
     </>
   )
 }
+
+const __getAbsoluteUrl = (path: string) =>
+  path.startsWith('http') ? path : `https://www.ivyho.me${path}`
+
+const __serializeJsonLd = (data: object) =>
+  JSON.stringify(data).replace(/</g, '\\u003c')

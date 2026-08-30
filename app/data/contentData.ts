@@ -23,6 +23,23 @@ export type ContentSummary = Pick<
   'id' | 'image' | 'kind' | 'publishedAt' | 'slug' | 'subtitle' | 'title'
 > & { formattedDate: string }
 
+export type ContentDetailData = Pick<
+  Content,
+  | 'category'
+  | 'id'
+  | 'image'
+  | 'kind'
+  | 'publishedAt'
+  | 'sections'
+  | 'slug'
+  | 'subtitle'
+  | 'title'
+> & {
+  author: string
+  authorImage: string
+  revisedAt: string
+}
+
 export const dataContents: Content[] = [
   {
     id: '1',

@@ -8,16 +8,16 @@ import {
   useState,
 } from 'react'
 
-import type { Content } from '@/app/data/contentData'
+import type { ContentDetailData } from '@/app/data/contentData'
 import { motion } from '@/app/motion'
 import { SectionHeader } from '@/components/SectionHeader'
 import { Icon } from '@/components/ui/Icon'
 import { cn } from '@/lib/utils'
 
-type ContentSection = Content['sections'][number]
+type ContentSection = ContentDetailData['sections'][number]
 
 export const _ContentArticle = (props: {
-  data: Content & { formattedDate: string }
+  data: ContentDetailData & { formattedDate: string }
 }) => {
   const refCreatedBy = useRef<HTMLDivElement>(null)
   const refImage = useRef<HTMLDivElement>(null)
@@ -51,7 +51,7 @@ export const _ContentArticle = (props: {
         />
         <header className="relative py-16 before:absolute before:inset-y-0 before:left-1/2 before:-z-10 before:w-screen before:-translate-x-1/2 before:bg-cleam lg:col-start-1 lg:row-start-1 lg:py-24 lg:before:hidden">
           <SectionHeader
-            description=""
+            description={props.data.subtitle}
             subtitle={props.data.category}
             title={props.data.title}
           />
@@ -66,12 +66,12 @@ export const _ContentArticle = (props: {
             <span className="text-sm text-gray-500">created by</span>
             <div className="size-7 overflow-hidden rounded-full">
               <img
-                alt={props.data.createdByJp}
+                alt={props.data.author}
                 className="size-full object-cover"
-                src={props.data.createdByImage}
+                src={props.data.authorImage}
               />
             </div>
-            <p className="text-sm font-bold">{props.data.createdByJp}</p>
+            <p className="text-sm font-bold">{props.data.author}</p>
           </div>
           <figure
             ref={refImage}
@@ -85,7 +85,12 @@ export const _ContentArticle = (props: {
             />
           </figure>
         </header>
-        <__Index refSectionMap={refSectionMap} sections={props.data.sections} />
+        {props.data.sections.length > 0 && (
+          <__Index
+            refSectionMap={refSectionMap}
+            sections={props.data.sections}
+          />
+        )}
         <div className="space-y-24 py-20 lg:col-start-1 lg:row-start-2 lg:py-24">
           {props.data.sections.map((s, i) => (
             <__SectionItem
@@ -109,43 +114,35 @@ const __Index = (props: {
 }) => {
   const [stateActive, setActive] = useState(__getSectionId(0))
   const refBar = useRef<HTMLDivElement>(null)
-  const refIdIntersectMap = useRef<Record<string, true>>({})
   const refItemMap = useRef<Record<string, HTMLAnchorElement | null>>({})
   const refIsFirst = useRef(true)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const listSection = props.sections
       .map((_, i) => props.refSectionMap.current[__getSectionId(i)])
       .filter((e): e is HTMLElement => Boolean(e))
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            refIdIntersectMap.current[e.target.id] = true
-          } else {
-            delete refIdIntersectMap.current[e.target.id]
-          }
-        })
 
-        const h = listSection
-          .filter((e) => refIdIntersectMap.current[e.id])
-          .sort(
-            (a, b) =>
-              a.getBoundingClientRect().top - b.getBoundingClientRect().top,
-          )[0]
+    const onScroll = () => {
+      const h = listSection.reduce(
+        (active, e) => (e.getBoundingClientRect().top <= 160 ? e : active),
+        listSection[0],
+      )
 
-        if (h) {
-          setActive((p) => (p === h.id ? p : h.id))
-        }
-      },
-      { rootMargin: '-96px 0px -30% 0px', threshold: 0 },
-    )
+      if (h) {
+        setActive((p) => (p === h.id ? p : h.id))
+      }
+    }
 
-    listSection.forEach((e) => observer.observe(e))
+    onScroll()
+    document.addEventListener('scroll', onScroll, {
+      capture: true,
+      passive: true,
+    })
+    window.addEventListener('resize', onScroll, { passive: true })
 
     return () => {
-      observer.disconnect()
-      refIdIntersectMap.current = {}
+      document.removeEventListener('scroll', onScroll, true)
+      window.removeEventListener('resize', onScroll)
     }
   }, [props.refSectionMap, props.sections])
 
@@ -282,25 +279,14 @@ const __SectionItem = (props: {
       >
         {props.section.title}
       </h2>
-      <p
-        className="whitespace-pre-line leading-loose text-gray-800"
+      <div
+        className="space-y-6 leading-loose text-gray-800 [&_a]:text-ivy6 [&_a]:underline [&_figure]:space-y-2 [&_img]:h-auto [&_img]:w-full [&_img]:rounded-lg [&_li]:ml-6 [&_ol]:list-decimal [&_p]:whitespace-pre-line [&_ul]:list-disc"
+        dangerouslySetInnerHTML={{ __html: props.section.description }}
         style={{ opacity: 0, transform: 'translateY(100px)' }}
-      >
-        {__parseText(props.section.description)}
-      </p>
+      />
     </section>
   )
 }
-
-const __parseText = (text: string) =>
-  text.split(/(\*\*.*?\*\*)/g).map((p, i) => (
-    <span key={i}>
-      {p.startsWith('**') && p.endsWith('**') && (
-        <strong className="font-bold text-black">{p.slice(2, -2)}</strong>
-      )}
-      {(!p.startsWith('**') || !p.endsWith('**')) && p}
-    </span>
-  ))
 
 const __getSectionId = (i: number) => `content-section-${i + 1}`
 

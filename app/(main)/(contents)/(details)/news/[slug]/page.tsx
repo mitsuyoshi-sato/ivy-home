@@ -1,17 +1,32 @@
+import { notFound } from 'next/navigation'
+
+import { getContentDetail, getContentSummaries } from '@/app/data/contentApi'
+
 import type { ContentPageProps } from '../../ContentDetail'
-import {
-  ContentDetail,
-  getContentMetadata,
-  getContentStaticParams,
-} from '../../ContentDetail'
+import { ContentDetail, getContentMetadata } from '../../ContentDetail'
 
-export const generateMetadata = (props: ContentPageProps) =>
-  getContentMetadata('news', props.params)
+export const generateMetadata = async (props: ContentPageProps) => {
+  const { slug } = await props.params
+  const data = await getContentDetail('news', slug)
 
-export const generateStaticParams = () => getContentStaticParams('news')
+  return getContentMetadata(data)
+}
 
-const Page = (props: ContentPageProps) => (
-  <ContentDetail kind="news" params={props.params} />
-)
+export const generateStaticParams = async () => {
+  const data = await getContentSummaries('news')
+
+  return data.map((c) => ({ slug: c.slug }))
+}
+
+const Page = async (props: ContentPageProps) => {
+  const { slug } = await props.params
+  const data = await getContentDetail('news', slug)
+
+  if (!data) {
+    notFound()
+  }
+
+  return <ContentDetail data={data} />
+}
 
 export default Page
