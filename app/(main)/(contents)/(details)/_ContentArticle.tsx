@@ -19,6 +19,7 @@ type ContentSection = ContentDetailData['sections'][number]
 export const _ContentArticle = (props: {
   data: ContentDetailData & { formattedDate: string }
 }) => {
+  const isFallbackAuthorImage = props.data.authorImage === '/images/favicon.png'
   const refCreatedBy = useRef<HTMLDivElement>(null)
   const refImage = useRef<HTMLDivElement>(null)
   const refSectionMap = useRef<Record<string, HTMLElement | null>>({})
@@ -64,10 +65,19 @@ export const _ContentArticle = (props: {
               {props.data.formattedDate}
             </time>
             <span className="text-sm text-gray-500">created by</span>
-            <div className="size-7 overflow-hidden rounded-full">
+            <div
+              className={cn(
+                'flex size-7 items-center justify-center overflow-hidden rounded-full',
+                isFallbackAuthorImage && 'border border-green-700/30 bg-white',
+              )}
+            >
               <img
                 alt={props.data.author}
-                className="size-full object-cover"
+                className={cn(
+                  'object-cover',
+                  isFallbackAuthorImage && 'size-4',
+                  !isFallbackAuthorImage && 'size-full',
+                )}
                 src={props.data.authorImage}
               />
             </div>

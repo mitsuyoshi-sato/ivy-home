@@ -16,6 +16,7 @@ export const getContentSummaries = cache(
   async (kind: ContentKind): Promise<ContentSummary[]> =>
     (
       await clientMicrocms.getAllContents<{
+        date?: string | null
         eyecatch?: MicroCMSImage
         subtitle?: string
         title: string
@@ -28,21 +29,32 @@ export const getContentSummaries = cache(
         },
         endpoint: 'contents',
         queries: {
-          fields: ['id', 'publishedAt', 'title', 'subtitle', 'eyecatch'],
+          fields: [
+            'id',
+            'publishedAt',
+            'date',
+            'title',
+            'subtitle',
+            'eyecatch',
+          ],
           filters: `category[contains]${__categoryByKind[kind]}`,
-          orders: '-publishedAt',
         },
       })
-    ).map((c) => ({
-      formattedDate: format(c.publishedAt ?? c.createdAt, 'yyyy.MM.dd'),
-      id: c.id,
-      image: c.eyecatch?.url ?? '/images/ivy-home.png',
-      kind,
-      publishedAt: c.publishedAt ?? c.createdAt,
-      slug: c.id,
-      subtitle: c.subtitle ?? '',
-      title: c.title,
-    })),
+    )
+      .map((c) => ({
+        formattedDate: format(
+          __getPublishedAt(c.date, c.publishedAt ?? c.createdAt),
+          'yyyy.MM.dd',
+        ),
+        id: c.id,
+        image: c.eyecatch?.url ?? '/images/ivy-home.png',
+        kind,
+        publishedAt: __getPublishedAt(c.date, c.publishedAt ?? c.createdAt),
+        slug: c.id,
+        subtitle: c.subtitle ?? '',
+        title: c.title,
+      }))
+      .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt)),
 )
 
 export const getContentDetail = cache(
@@ -53,6 +65,7 @@ export const getContentDetail = cache(
       const content = await clientMicrocms.getListDetail<{
         author?: string[]
         category?: string[]
+        date?: string | null
         eyecatch?: MicroCMSImage
         sections?: {
           content?: string
@@ -75,6 +88,7 @@ export const getContentDetail = cache(
             'id',
             'publishedAt',
             'revisedAt',
+            'date',
             'category',
             'title',
             'subtitle',
@@ -96,7 +110,10 @@ export const getContentDetail = cache(
           id: content.id,
           image: content.eyecatch?.url ?? '/images/ivy-home.png',
           kind,
-          publishedAt: content.publishedAt ?? content.createdAt,
+          publishedAt: __getPublishedAt(
+            content.date,
+            content.publishedAt ?? content.createdAt,
+          ),
           revisedAt: content.revisedAt ?? content.updatedAt,
           sections:
             content.sections?.map((s) => ({
@@ -125,9 +142,14 @@ const __categoryByKind = {
 } as const satisfies Record<ContentKind, string>
 
 const __imageByAuthor: Record<string, string> = {
-  '佐藤 充能': '/images/yuya-konishi.JPG',
+  '佐藤 充能': '/images/favicon.png',
   '小西 裕也': '/images/yuya-konishi.JPG',
 }
+
+const __getPublishedAt = (
+  date: string | null | undefined,
+  publishedAt: string,
+) => date?.slice(0, 10) ?? publishedAt
 
 const __isNotFoundError = (error: unknown) =>
   error instanceof Error && error.message.includes('status: 404')
