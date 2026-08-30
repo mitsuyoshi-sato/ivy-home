@@ -11,6 +11,7 @@ export const Hamburger = (props: {
   items: {
     href: string
     label: string
+    matches?: string[]
     subs?: { href: string; label: string; icon?: string }[]
   }[]
   refBackground: React.RefObject<HTMLDivElement | null>
@@ -152,8 +153,18 @@ export const Hamburger = (props: {
           >
             <div className="h-full w-[150px]">
               <img
+                alt="メニューの背景"
                 className="size-full object-cover"
-                src={`/images/hero-${pathname === '/' ? 'home' : pathname.split('/')[1]}.jpg`}
+                src={`/images/hero-${
+                  pathname === '/'
+                    ? 'home'
+                    : (
+                        { columns: 'news', works: 'news' } as Record<
+                          string,
+                          string
+                        >
+                      )[pathname.split('/')[1]] || pathname.split('/')[1]
+                }.jpg`}
               />
             </div>
             <div

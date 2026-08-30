@@ -10,6 +10,7 @@ export const Header = (props: {
   items: {
     href: string
     label: string
+    matches?: string[]
     subs?: { href: string; label: string; icon?: string }[]
   }[]
 }) => {

@@ -1,6 +1,10 @@
 import type { MetadataRoute } from 'next'
 
-import { dataNews } from '@/app/data/newsData'
+import {
+  dataContents,
+  getContentHref,
+  getContents,
+} from '@/app/data/contentData'
 
 const baseUrl = 'https://www.ivyho.me'
 
@@ -15,6 +19,10 @@ const sitemap = (): MetadataRoute.Sitemap => [
     { path: '/services/termite-control', priority: 0.8 },
     { path: '/services/eco-cute', priority: 0.8 },
     { path: '/news', priority: 0.6 },
+    { path: '/columns', priority: 0.7 },
+    ...(getContents('work').length > 0
+      ? [{ path: '/works', priority: 0.8 }]
+      : []),
     { path: '/recruit', priority: 0.7 },
   ].map(({ path, priority }) => ({
     url: `${baseUrl}${path}`,
@@ -22,9 +30,9 @@ const sitemap = (): MetadataRoute.Sitemap => [
     changeFrequency: 'monthly' as const,
     priority,
   })),
-  ...dataNews.map((item) => ({
-    url: `${baseUrl}${item.href}`,
-    lastModified: new Date(item.publishedAt),
+  ...dataContents.map((c) => ({
+    url: `${baseUrl}${getContentHref(c)}`,
+    lastModified: new Date(c.publishedAt),
     changeFrequency: 'monthly' as const,
     priority: 0.6,
   })),

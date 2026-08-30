@@ -1,10 +1,10 @@
-import type { Metadata } from 'next'
 import { format } from 'date-fns'
+import type { Metadata } from 'next'
 
 import { Hero } from '../../../components/Hero'
-import { dataNews } from '../../data/newsData'
+import { dataContents } from '../../data/contentData'
 import { _CampaignSection } from './_CampanySection'
-import { _NewsSection } from './_NewsSection'
+import { _ContentsSection } from './_ContentsSection'
 import { _RecruitsSection } from './_RecruitsSection'
 import { _ServicesSection } from './_ServicesSection'
 
@@ -16,9 +16,15 @@ export const metadata: Metadata = {
 
 const Home = () => {
   // RSCで日付をフォーマット（サーバー側で1回のみ実行）
-  const formattedNews = dataNews.map((news) => ({
-    ...news,
-    formattedDate: format(news.publishedAt, 'yyyy.M.d'),
+  const formattedContents = dataContents.map((c) => ({
+    formattedDate: format(c.publishedAt, 'yyyy.M.d'),
+    id: c.id,
+    image: c.image,
+    kind: c.kind,
+    publishedAt: c.publishedAt,
+    slug: c.slug,
+    subtitle: c.subtitle,
+    title: c.title,
   }))
 
   return (
@@ -41,7 +47,7 @@ const Home = () => {
       </section>
       <_ServicesSection />
       <section className="w-full bg-cleam" id="news">
-        <_NewsSection news={formattedNews} />
+        <_ContentsSection contents={formattedContents} />
       </section>
       <_RecruitsSection />
     </>

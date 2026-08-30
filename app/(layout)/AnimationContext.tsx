@@ -1,6 +1,7 @@
 'use client'
 
-import { createContext, ReactNode, useContext, useRef } from 'react'
+import type { ReactNode } from 'react'
+import { createContext, useContext, useRef } from 'react'
 
 type AnimationContextType = {
   refOpeningAnimation: React.RefObject<boolean>
@@ -10,12 +11,16 @@ const AnimationContext = createContext<AnimationContextType | undefined>(
   undefined,
 )
 
-export const AnimationProvider = ({ children }: { children: ReactNode }) => {
+export const AnimationProvider = (props: { children: ReactNode }) => {
   const refOpeningAnimation = useRef(false)
 
   return (
-    <AnimationContext.Provider value={{ refOpeningAnimation }}>
-      {children}
+    <AnimationContext.Provider
+      value={{
+        refOpeningAnimation,
+      }}
+    >
+      {props.children}
     </AnimationContext.Provider>
   )
 }
