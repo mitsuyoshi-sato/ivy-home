@@ -207,7 +207,6 @@ const __Index = (props: {
                         : 'smooth',
                       block: 'start',
                     })
-                    setActive(id)
                   }
                 }}
                 ref={(e) => {
@@ -255,7 +254,7 @@ const __SectionItem = (props: {
             }
           })
         },
-        { threshold: 0.5 },
+        { threshold: 0.3 },
       )
 
       observer.observe(c)
