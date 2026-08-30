@@ -105,7 +105,7 @@ export const getContentDetail = cache(
         data = {
           author: nameAuthor,
           authorImage:
-            __imageByAuthor[nameAuthor] ?? '/images/yuya-konishi.JPG',
+            __imageByAuthor[nameAuthor] ?? '/images/yuya-konishi.jpg',
           category: content.category[0] ?? __categoryByKind[kind],
           id: content.id,
           image: content.eyecatch?.url ?? '/images/ivy-home.png',
@@ -143,7 +143,7 @@ const __categoryByKind = {
 
 const __imageByAuthor: Record<string, string> = {
   '佐藤 充能': '/images/favicon.png',
-  '小西 裕也': '/images/yuya-konishi.JPG',
+  '小西 裕也': '/images/yuya-konishi.jpg',
 }
 
 const __getPublishedAt = (
