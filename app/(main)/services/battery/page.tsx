@@ -60,7 +60,8 @@ export default function BatteryPage() {
             '@context': 'https://schema.org',
             '@type': 'Service',
             name: '蓄電池設置サービス',
-            description: '電気をためて夜間や緊急時にも活用できる蓄電池システム。停電時にも安心の電力を供給し、光熱費の削減にも貢献します。',
+            description:
+              '電気をためて夜間や緊急時にも活用できる蓄電池システム。停電時にも安心の電力を供給し、光熱費の削減にも貢献します。',
             provider: {
               '@type': 'LocalBusiness',
               name: '株式会社アイビーホーム',
@@ -179,7 +180,7 @@ export default function BatteryPage() {
         type="application/ld+json"
       />
       <Hero
-        image={{ src: '/images/light.jpg', alt: '' }}
+        image={{ src: '/images/light.webp', alt: '' }}
         overlayOpacity="40"
         subtitle="Battery"
         title="蓄電池"
