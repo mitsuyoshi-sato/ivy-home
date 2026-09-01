@@ -1,8 +1,8 @@
-import { format } from 'date-fns'
 import type { Metadata } from 'next'
 
+import { getContentSummaries } from '@/app/data/contentApi'
+
 import { Hero } from '../../../components/Hero'
-import { dataContents } from '../../data/contentData'
 import { _CampaignSection } from './_CampanySection'
 import { _ContentsSection } from './_ContentsSection'
 import { _RecruitsSection } from './_RecruitsSection'
@@ -14,18 +14,16 @@ export const metadata: Metadata = {
   },
 }
 
-const Home = () => {
-  // RSCで日付をフォーマット（サーバー側で1回のみ実行）
-  const formattedContents = dataContents.map((c) => ({
-    formattedDate: format(c.publishedAt, 'yyyy.M.d'),
-    id: c.id,
-    image: c.image,
-    kind: c.kind,
-    publishedAt: c.publishedAt,
-    slug: c.slug,
-    subtitle: c.subtitle,
-    title: c.title,
-  }))
+const Page = async () => {
+  const data = (
+    await Promise.all([
+      getContentSummaries('news'),
+      getContentSummaries('column'),
+      getContentSummaries('work'),
+    ])
+  )
+    .flat()
+    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
 
   return (
     <>
@@ -47,11 +45,11 @@ const Home = () => {
       </section>
       <_ServicesSection />
       <section className="w-full bg-cleam" id="news">
-        <_ContentsSection contents={formattedContents} />
+        <_ContentsSection contents={data} />
       </section>
       <_RecruitsSection />
     </>
   )
 }
 
-export default Home
+export default Page

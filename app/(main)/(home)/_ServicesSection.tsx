@@ -114,7 +114,7 @@ export const _ServicesSection = () => {
             ' 住宅向けに太陽光パネルの販売・設置・メンテナンスを行っています。\nお客様のライフスタイルや設備に合わせた最適なプランをご提案し、省エネと電気料金の削減をサポートします。'
           }
           href="/services/solar-panel"
-          image={'/images/solar-panel-construction.jpg'}
+          image={'/images/solar-panel-construction.webp'}
           mdSpan={'12'}
           title={'太陽光パネル'}
         />
@@ -124,7 +124,7 @@ export const _ServicesSection = () => {
             ' 昼間に発電した電気を貯めて夜間に活用することで、エネルギーの自給自足を実現し、停電時の安心も提供します。'
           }
           href="/services/battery"
-          image={'/images/battery.jpg'}
+          image={'/images/battery.webp'}
           mdSpan={'5'}
           title={'蓄電池'}
         />
@@ -145,7 +145,7 @@ export const _ServicesSection = () => {
             '早期発見・早期対応でご自宅を守りましょう！まずはお気軽にご相談ください。'
           }
           href="/services/termite-control"
-          image={'/images/pest-control.jpg'}
+          image={'/images/pest-control.webp'}
           mdSpan={'7'}
           title={'シロアリ駆除'}
         />

@@ -83,7 +83,7 @@ export default function ServicesPage() {
             description="未来のエネルギーをつくるための安心の選択肢です。"
             href="/services/solar-panel"
             image={{
-              src: '/images/houses.jpg',
+              src: '/images/houses.webp',
               alt: '太陽光パネルを設置した住宅',
             }}
             index={0}
@@ -92,7 +92,7 @@ export default function ServicesPage() {
           <_ServiceCard
             description="電気をためて夜間や緊急時にも活用できます。"
             href="/services/battery"
-            image={{ src: '/images/battery.jpg', alt: '蓄電池の画像' }}
+            image={{ src: '/images/battery.webp', alt: '蓄電池の画像' }}
             index={1}
             title="蓄電池"
           />
@@ -107,7 +107,7 @@ export default function ServicesPage() {
             description="住宅を食害から守る専門サービス。大切な家の資産価値を守ります。"
             href="/services/termite-control"
             image={{
-              src: '/images/pest-control.jpg',
+              src: '/images/pest-control.webp',
               alt: 'シロアリを虫眼鏡で発見しているイメージ',
             }}
             index={3}

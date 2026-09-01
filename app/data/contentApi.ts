@@ -47,7 +47,14 @@ export const getContentSummaries = cache(
           'yyyy.MM.dd',
         ),
         id: c.id,
-        image: c.eyecatch?.url ?? '/images/ivy-home.png',
+        image:
+          (c.eyecatch &&
+            __getMicrocmsImageUrl(c.eyecatch.url, {
+              fm: 'webp',
+              q: 80,
+              w: 800,
+            })) ||
+          '/images/ivy-home.png',
         kind,
         publishedAt: __getPublishedAt(c.date, c.publishedAt ?? c.createdAt),
         slug: c.id,
@@ -108,7 +115,24 @@ export const getContentDetail = cache(
             __imageByAuthor[nameAuthor] ?? '/images/yuya-konishi.jpg',
           category: content.category[0] ?? __categoryByKind[kind],
           id: content.id,
-          image: content.eyecatch?.url ?? '/images/ivy-home.png',
+          image:
+            (content.eyecatch &&
+              __getMicrocmsImageUrl(content.eyecatch.url, {
+                fm: 'webp',
+                q: 80,
+                w: 1600,
+              })) ||
+            '/images/ivy-home.png',
+          imageOpenGraph:
+            (content.eyecatch &&
+              __getMicrocmsImageUrl(content.eyecatch.url, {
+                fit: 'crop',
+                fm: 'jpg',
+                h: 630,
+                q: 80,
+                w: 1200,
+              })) ||
+            '/images/ivy-home.png',
           kind,
           publishedAt: __getPublishedAt(
             content.date,
@@ -153,3 +177,24 @@ const __getPublishedAt = (
 
 const __isNotFoundError = (error: unknown) =>
   error instanceof Error && error.message.includes('status: 404')
+
+const __getMicrocmsImageUrl = (
+  url: string,
+  parameters: {
+    fit?: 'crop'
+    fm: 'jpg' | 'webp'
+    h?: number
+    q: number
+    w: number
+  },
+) => {
+  const urlImage = new URL(url)
+
+  Object.entries(parameters).forEach(([k, v]) => {
+    if (v !== undefined) {
+      urlImage.searchParams.set(k, String(v))
+    }
+  })
+
+  return urlImage.toString()
+}

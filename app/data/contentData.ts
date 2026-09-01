@@ -37,6 +37,7 @@ export type ContentDetailData = Pick<
 > & {
   author: string
   authorImage: string
+  imageOpenGraph: string
   revisedAt: string
 }
 
@@ -45,7 +46,7 @@ export const dataContents: Content[] = [
     id: '1',
     kind: 'news',
     slug: 'ivy-home-establishment',
-    image: '/images/unity.jpg',
+    image: '/images/unity.webp',
     publishedAt: '2025-10-07T00:00:00+09:00',
     title: '株式会社アイビーホーム設立',
     subtitle:
@@ -71,7 +72,7 @@ export const dataContents: Content[] = [
     id: '2',
     kind: 'column',
     slug: 'solar-battery-combination',
-    image: '/images/news-battery.jpg',
+    image: '/images/battery.webp',
     publishedAt: '2025-10-07T00:00:00+09:00',
     title: '太陽光と蓄電池の組み合わせで家の電力活用効率アップ！',
     subtitle:
@@ -97,7 +98,7 @@ export const dataContents: Content[] = [
     id: '3',
     kind: 'column',
     slug: 'termite-checklist',
-    image: '/images/pest-control.jpg',
+    image: '/images/pest-control.webp',
     publishedAt: '2025-10-07T00:00:00+09:00',
     category: 'シロアリ対策',
     title: '家を守る！シロアリを見抜くためのチェックリスト',
@@ -123,7 +124,7 @@ export const dataContents: Content[] = [
     id: '4',
     kind: 'column',
     slug: 'electricity-price-rise-2025',
-    image: '/images/solar-panel-construction.jpg',
+    image: '/images/solar-panel-construction.webp',
     publishedAt: '2025-11-06T00:00:00+09:00',
     title: '電気代値上げの今こそ、太陽光と蓄電池で「電気を自給する家」へ',
     subtitle:
