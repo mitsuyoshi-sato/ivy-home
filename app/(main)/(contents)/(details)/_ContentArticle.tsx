@@ -8,7 +8,7 @@ import {
   useState,
 } from 'react'
 
-import type { ContentDetailData } from '@/app/data/contentData'
+import type { ContentDetailData } from '@/app/data/content'
 import { motion } from '@/app/motion'
 import { SectionHeader } from '@/components/SectionHeader'
 import { Icon } from '@/components/ui/Icon'

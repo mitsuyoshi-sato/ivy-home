@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useLayoutEffect, useRef } from 'react'
 
-import { configContent } from '@/app/data/contentData'
+import { configContent, kindsContent } from '@/app/data/content'
 import { motion } from '@/app/motion'
 import { cn } from '@/lib/utils'
 
@@ -17,7 +17,7 @@ export const _ContentTabs = () => {
   useLayoutEffect(() => {
     const c = refContainer.current
     const i = refIndicator.current
-    const indexCurrent = __kinds.findIndex((k) =>
+    const indexCurrent = kindsContent.findIndex((k) =>
       pathname.startsWith(configContent[k].path),
     )
 
@@ -42,7 +42,7 @@ export const _ContentTabs = () => {
         ref={refContainer}
         className="relative grid grid-cols-3 rounded-full border border-gray-100 bg-gray-100 p-1 shadow-sm"
       >
-        {__kinds.map((k) => (
+        {kindsContent.map((k) => (
           <Link
             key={k}
             aria-current={
@@ -72,5 +72,3 @@ export const _ContentTabs = () => {
     </nav>
   )
 }
-
-const __kinds = ['news', 'column', 'work'] as const

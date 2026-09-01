@@ -1,4 +1,4 @@
-import { revalidateTag } from 'next/cache'
+import { revalidatePath, revalidateTag } from 'next/cache'
 
 export const POST = async (request: Request) => {
   const secretWebhook = process.env.MICROCMS_WEBHOOK_SECRET
@@ -8,6 +8,7 @@ export const POST = async (request: Request) => {
 
   if (secretWebhook && secretRequest === secretWebhook) {
     revalidateTag('contents')
+    revalidatePath('/sitemap.xml')
     revalidated = true
     status = 200
   }

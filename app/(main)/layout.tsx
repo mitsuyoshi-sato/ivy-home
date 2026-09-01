@@ -2,6 +2,7 @@ import '../globals.css'
 
 import Link from 'next/link'
 
+import { configContent } from '@/app/data/content'
 import { cn } from '@/lib/utils'
 
 import _OpeningAnimation from '../(layout)/_OpeningAnimation'
@@ -39,13 +40,25 @@ const MainLayout = (props: { children: React.ReactNode }) => {
       ],
     },
     {
-      href: '/news',
+      href: configContent.news.path,
       label: 'コンテンツ',
-      matches: ['/columns', '/works'],
+      matches: [configContent.column.path, configContent.work.path],
       subs: [
-        { href: '/news', label: 'ニュース', icon: 'newspaper' },
-        { href: '/columns', label: 'お役立ち情報', icon: 'lightbulb' },
-        { href: '/works', label: '施工事例', icon: 'briefcase' },
+        {
+          href: configContent.news.path,
+          label: configContent.news.label,
+          icon: 'newspaper',
+        },
+        {
+          href: configContent.column.path,
+          label: configContent.column.label,
+          icon: 'lightbulb',
+        },
+        {
+          href: configContent.work.path,
+          label: configContent.work.label,
+          icon: 'briefcase',
+        },
       ],
     },
     {

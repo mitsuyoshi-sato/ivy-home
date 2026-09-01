@@ -9,8 +9,10 @@ import { clientMicrocms } from '@/lib/microcms'
 import type {
   ContentDetailData,
   ContentKind,
+  ContentSitemapEntry,
   ContentSummary,
-} from './contentData'
+} from './content'
+import { configContent, kindsContent } from './content'
 
 export const getContentSummaries = cache(
   async (kind: ContentKind): Promise<ContentSummary[]> =>
@@ -37,7 +39,7 @@ export const getContentSummaries = cache(
             'subtitle',
             'eyecatch',
           ],
-          filters: `category[contains]${__categoryByKind[kind]}`,
+          filters: `category[contains]${configContent[kind].label}`,
         },
       })
     )
@@ -106,14 +108,14 @@ export const getContentDetail = cache(
         },
       })
 
-      if (content.category?.includes(__categoryByKind[kind])) {
+      if (content.category?.includes(configContent[kind].label)) {
         const nameAuthor = content.author?.[0] ?? '株式会社アイビーホーム'
 
         data = {
           author: nameAuthor,
           authorImage:
             __imageByAuthor[nameAuthor] ?? '/images/yuya-konishi.jpg',
-          category: content.category[0] ?? __categoryByKind[kind],
+          category: content.category[0] ?? configContent[kind].label,
           id: content.id,
           image:
             (content.eyecatch &&
@@ -159,11 +161,39 @@ export const getContentDetail = cache(
   },
 )
 
-const __categoryByKind = {
-  column: 'お役立ち情報',
-  news: 'ニュース',
-  work: '施工事例',
-} as const satisfies Record<ContentKind, string>
+export const getContentSitemapEntries = cache(
+  async (): Promise<ContentSitemapEntry[]> =>
+    (
+      await clientMicrocms.getAllContents<{
+        category?: string[]
+        eyecatch?: MicroCMSImage
+      }>({
+        customRequestInit: {
+          next: {
+            revalidate: 86400,
+            tags: ['contents'],
+          },
+        },
+        endpoint: 'contents',
+        queries: {
+          fields: ['id', 'revisedAt', 'category', 'eyecatch'],
+        },
+      })
+    ).reduce<ContentSitemapEntry[]>((a, c) => {
+      const kind = __getContentKind(c.category)
+
+      if (kind) {
+        a.push({
+          image: c.eyecatch?.url,
+          kind,
+          revisedAt: c.revisedAt,
+          slug: c.id,
+        })
+      }
+
+      return a
+    }, []),
+)
 
 const __imageByAuthor: Record<string, string> = {
   '佐藤 充能': '/images/favicon.png',
@@ -177,6 +207,9 @@ const __getPublishedAt = (
 
 const __isNotFoundError = (error: unknown) =>
   error instanceof Error && error.message.includes('status: 404')
+
+const __getContentKind = (categories: string[] | undefined) =>
+  kindsContent.find((k) => categories?.includes(configContent[k].label))
 
 const __getMicrocmsImageUrl = (
   url: string,

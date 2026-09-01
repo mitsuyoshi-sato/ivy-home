@@ -4,8 +4,8 @@ import { ArrowRightIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 
-import type { ContentSummary } from '@/app/data/contentData'
-import { getContentHref } from '@/app/data/contentData'
+import type { ContentSummary } from '@/app/data/content'
+import { getContentHref } from '@/app/data/content'
 import { motion } from '@/app/motion'
 import { Button } from '@/components/ui/Button'
 

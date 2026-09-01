@@ -4,8 +4,8 @@ import { ArrowRightIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 
-import type { ContentSummary } from '@/app/data/contentData'
-import { getContentHref } from '@/app/data/contentData'
+import type { ContentSummary } from '@/app/data/content'
+import { configContent, getContentHref } from '@/app/data/content'
 import { SectionHeader } from '@/components/SectionHeader'
 import { Button } from '@/components/ui/Button'
 
@@ -49,7 +49,7 @@ export const _ContentsSection = (props: { contents: ContentSummary[] }) => {
       <div className="wrapper pb-0">
         <SectionHeader
           button={{
-            href: '/news',
+            href: configContent.news.path,
             text: 'コンテンツをみる',
             className: 'hidden md:block',
           }}

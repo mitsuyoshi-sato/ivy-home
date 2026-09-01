@@ -2,12 +2,14 @@
 
 import { usePathname } from 'next/navigation'
 
-import { configContent } from '@/app/data/contentData'
+import { configContent, kindsContent } from '@/app/data/content'
 import { Breadcrumb } from '@/components/Breadcrumb'
 
 export const _ContentBreadcrumb = () => {
   const pathname = usePathname()
-  const kind = __kinds.find((k) => pathname.startsWith(configContent[k].path))
+  const kind = kindsContent.find((k) =>
+    pathname.startsWith(configContent[k].path),
+  )
   const config = configContent[kind ?? 'news']
 
   return (
@@ -50,5 +52,3 @@ export const _ContentBreadcrumb = () => {
     </>
   )
 }
-
-const __kinds = ['news', 'column', 'work'] as const

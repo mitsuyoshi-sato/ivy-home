@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 import { getContentSummaries } from '@/app/data/contentApi'
-import { configContent } from '@/app/data/contentData'
+import { configContent } from '@/app/data/content'
 import { SectionHeader } from '@/components/SectionHeader'
 
 import { _ContentList } from '../_ContentList'
@@ -12,10 +12,10 @@ export const metadata: Metadata = {
   openGraph: {
     description: configContent.news.description,
     images: [{ url: '/images/ivy-home.png' }],
-    title: 'ニュース / 株式会社アイビーホーム',
+    title: `${configContent.news.label} / 株式会社アイビーホーム`,
     url: configContent.news.path,
   },
-  title: 'ニュース',
+  title: configContent.news.label,
 }
 
 const Page = async () => {
@@ -24,9 +24,9 @@ const Page = async () => {
   return (
     <section className="wrapper flex flex-col gap-20">
       <SectionHeader
-        description="株式会社アイビーホームからの会社情報、新サービス、イベントなどの最新ニュースをご案内します。"
-        subtitle="News"
-        title="ニュース"
+        description={configContent.news.description}
+        subtitle={configContent.news.subtitle}
+        title={configContent.news.label}
       />
       <_ContentList
         contents={data}

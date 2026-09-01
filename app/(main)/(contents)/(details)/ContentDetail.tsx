@@ -2,8 +2,8 @@ import { format } from 'date-fns'
 import type { Metadata } from 'next'
 import Script from 'next/script'
 
-import type { ContentDetailData } from '@/app/data/contentData'
-import { configContent, getContentHref } from '@/app/data/contentData'
+import type { ContentDetailData } from '@/app/data/content'
+import { configContent, getContentHref } from '@/app/data/content'
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { FooterLinks } from '@/components/FooterLinks'
 
