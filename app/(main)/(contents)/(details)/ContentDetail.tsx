@@ -27,7 +27,7 @@ export const getContentMetadata = (
       description: data.subtitle,
       openGraph: {
         description: data.subtitle,
-        images: [{ url: data.image }],
+        images: [{ url: data.imageOpenGraph }],
         title: data.title,
         type: 'article',
         url: getContentHref(data),
@@ -85,7 +85,7 @@ export const ContentDetail = (props: { data: ContentDetailData }) => {
             datePublished: props.data.publishedAt,
             description: props.data.subtitle,
             headline: props.data.title,
-            image: __getAbsoluteUrl(props.data.image),
+            image: __getAbsoluteUrl(props.data.imageOpenGraph),
             mainEntityOfPage: {
               '@type': 'WebPage',
               '@id': `https://www.ivyho.me${getContentHref(props.data)}`,

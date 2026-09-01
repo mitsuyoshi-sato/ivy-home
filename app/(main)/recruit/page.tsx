@@ -48,7 +48,7 @@ export default function Recruit() {
         type="application/ld+json"
       />
       <Hero
-        image={{ src: '/images/walk.jpg', alt: '' }}
+        image={{ src: '/images/walk.webp', alt: '' }}
         subtitle="Recuruit"
         title="採用情報"
       />
