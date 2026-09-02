@@ -239,7 +239,15 @@ const __getContentDetailData = (
 const __getPublishedAt = (
   date: string | null | undefined,
   publishedAt: string,
-) => date?.slice(0, 10) ?? publishedAt
+) => {
+  let value = publishedAt
+
+  if (date && !Number.isNaN(Date.parse(date))) {
+    value = date.slice(0, 10)
+  }
+
+  return value
+}
 
 const __isNotFoundError = (error: unknown) =>
   error instanceof Error && error.message.includes('status: 404')
