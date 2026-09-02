@@ -66,13 +66,8 @@ export const SectionHeader = (props: {
       <h2 className="mt-4 whitespace-pre-line text-2xl font-bold lg:mt-6 lg:text-4xl">
         {props.title}
       </h2>
-      <p className="mt-4 text-sm leading-relaxed text-gray-600 lg:mt-6 lg:text-lg">
-        {props.description.split('\\n').map((line, index, array) => (
-          <span key={index}>
-            {line}
-            {index < array.length - 1 && <br />}
-          </span>
-        ))}
+      <p className="mt-4 whitespace-pre-line text-sm leading-relaxed text-gray-600 lg:mt-6 lg:text-lg">
+        {props.description}
       </p>
       <div
         ref={refButton}
