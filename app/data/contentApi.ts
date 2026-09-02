@@ -162,6 +162,8 @@ const __imageByAuthor: Record<string, string> = {
 
 const __fieldsContentDetail = [
   'id',
+  'createdAt',
+  'updatedAt',
   'publishedAt',
   'revisedAt',
   'date',
@@ -238,9 +240,13 @@ const __getContentDetailData = (
 
 const __getPublishedAt = (
   date: string | null | undefined,
-  publishedAt: string,
+  publishedAt: string | undefined,
 ) => {
-  let value = publishedAt
+  let value = new Date().toISOString()
+
+  if (publishedAt && !Number.isNaN(Date.parse(publishedAt))) {
+    value = publishedAt
+  }
 
   if (date && !Number.isNaN(Date.parse(date))) {
     value = date.slice(0, 10)
