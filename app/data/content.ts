@@ -1,5 +1,7 @@
 export const kindsContent = ['news', 'column', 'work'] as const
 
+export const nameCookieContentPreview = 'microcms-draft-key'
+
 export type ContentKind = (typeof kindsContent)[number]
 
 export type Content = {
