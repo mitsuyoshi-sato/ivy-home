@@ -14,6 +14,20 @@ import type {
 } from './content'
 import { configContent, kindsContent } from './content'
 
+type ContentDetailResponse = {
+  author?: string[]
+  category?: string[]
+  date?: string | null
+  eyecatch?: MicroCMSImage
+  sections?: {
+    content?: string
+    fieldId: string
+    heading?: string
+  }[]
+  subtitle?: string
+  title: string
+}
+
 export const getContentSummaries = cache(
   async (kind: ContentKind): Promise<ContentSummary[]> =>
     (
@@ -71,85 +85,31 @@ export const getContentDetail = cache(
     let data: ContentDetailData | null = null
 
     try {
-      const content = await clientMicrocms.getListDetail<{
-        author?: string[]
-        category?: string[]
-        date?: string | null
-        eyecatch?: MicroCMSImage
-        sections?: {
-          content?: string
-          fieldId: string
-          heading?: string
-        }[]
-        subtitle?: string
-        title: string
-      }>({
-        contentId: id,
-        customRequestInit: {
-          next: {
-            revalidate: 86400,
-            tags: ['contents', `content-${id}`],
-          },
-        },
-        endpoint: 'contents',
-        queries: {
-          fields: [
-            'id',
-            'publishedAt',
-            'revisedAt',
-            'date',
-            'category',
-            'title',
-            'subtitle',
-            'author',
-            'eyecatch',
-            'sections',
-          ],
-        },
-      })
+      const content = await __getContentDetailResponse(id)
 
       if (content.category?.includes(configContent[kind].label)) {
-        const nameAuthor = content.author?.[0] ?? '株式会社アイビーホーム'
+        data = __getContentDetailData(content, kind)
+      }
+    } catch (error) {
+      if (!__isNotFoundError(error)) {
+        throw error
+      }
+    }
 
-        data = {
-          author: nameAuthor,
-          authorImage:
-            __imageByAuthor[nameAuthor] ?? '/images/yuya-konishi.jpg',
-          category: content.category[0] ?? configContent[kind].label,
-          id: content.id,
-          image:
-            (content.eyecatch &&
-              __getMicrocmsImageUrl(content.eyecatch.url, {
-                fm: 'webp',
-                q: 80,
-                w: 1600,
-              })) ||
-            '/images/ivy-home.png',
-          imageOpenGraph:
-            (content.eyecatch &&
-              __getMicrocmsImageUrl(content.eyecatch.url, {
-                fit: 'crop',
-                fm: 'jpg',
-                h: 630,
-                q: 80,
-                w: 1200,
-              })) ||
-            '/images/ivy-home.png',
-          kind,
-          publishedAt: __getPublishedAt(
-            content.date,
-            content.publishedAt ?? content.createdAt,
-          ),
-          revisedAt: content.revisedAt ?? content.updatedAt,
-          sections:
-            content.sections?.map((s) => ({
-              description: s.content ?? '',
-              title: s.heading ?? '',
-            })) ?? [],
-          slug: content.id,
-          subtitle: content.subtitle ?? '',
-          title: content.title,
-        }
+    return data
+  },
+)
+
+export const getContentPreview = cache(
+  async (id: string, draftKey: string): Promise<ContentDetailData | null> => {
+    let data: ContentDetailData | null = null
+
+    try {
+      const content = await __getContentDetailResponse(id, draftKey)
+      const kind = __getContentKind(content.category)
+
+      if (kind) {
+        data = __getContentDetailData(content, kind)
       }
     } catch (error) {
       if (!__isNotFoundError(error)) {
@@ -198,6 +158,82 @@ export const getContentSitemapEntries = cache(
 const __imageByAuthor: Record<string, string> = {
   '佐藤 充能': '/images/favicon.png',
   '小西 裕也': '/images/yuya-konishi.jpg',
+}
+
+const __fieldsContentDetail = [
+  'id',
+  'publishedAt',
+  'revisedAt',
+  'date',
+  'category',
+  'title',
+  'subtitle',
+  'author',
+  'eyecatch',
+  'sections',
+]
+
+const __getContentDetailResponse = (id: string, draftKey?: string) =>
+  clientMicrocms.getListDetail<ContentDetailResponse>({
+    contentId: id,
+    customRequestInit:
+      (draftKey && { cache: 'no-store' }) ||
+      ({
+        next: {
+          revalidate: 86400,
+          tags: ['contents', `content-${id}`],
+        },
+      } as const),
+    endpoint: 'contents',
+    queries: (draftKey && { draftKey, fields: __fieldsContentDetail }) || {
+      fields: __fieldsContentDetail,
+    },
+  })
+
+const __getContentDetailData = (
+  content: Awaited<ReturnType<typeof __getContentDetailResponse>>,
+  kind: ContentKind,
+): ContentDetailData => {
+  const nameAuthor = content.author?.[0] ?? '株式会社アイビーホーム'
+
+  return {
+    author: nameAuthor,
+    authorImage: __imageByAuthor[nameAuthor] ?? '/images/yuya-konishi.jpg',
+    category: content.category?.[0] ?? configContent[kind].label,
+    id: content.id,
+    image:
+      (content.eyecatch &&
+        __getMicrocmsImageUrl(content.eyecatch.url, {
+          fm: 'webp',
+          q: 80,
+          w: 1600,
+        })) ||
+      '/images/ivy-home.png',
+    imageOpenGraph:
+      (content.eyecatch &&
+        __getMicrocmsImageUrl(content.eyecatch.url, {
+          fit: 'crop',
+          fm: 'jpg',
+          h: 630,
+          q: 80,
+          w: 1200,
+        })) ||
+      '/images/ivy-home.png',
+    kind,
+    publishedAt: __getPublishedAt(
+      content.date,
+      content.publishedAt ?? content.createdAt,
+    ),
+    revisedAt: content.revisedAt ?? content.updatedAt,
+    sections:
+      content.sections?.map((s) => ({
+        description: s.content ?? '',
+        title: s.heading ?? '',
+      })) ?? [],
+    slug: content.id,
+    subtitle: content.subtitle ?? '',
+    title: content.title,
+  }
 }
 
 const __getPublishedAt = (
