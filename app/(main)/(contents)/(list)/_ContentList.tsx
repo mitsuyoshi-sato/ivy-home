@@ -7,7 +7,6 @@ import { useEffect, useRef } from 'react'
 import type { ContentSummary } from '@/app/data/content'
 import { getContentHref } from '@/app/data/content'
 import { motion } from '@/app/motion'
-import { Button } from '@/components/ui/Button'
 
 export const _ContentList = (props: {
   contents: ContentSummary[]
@@ -58,11 +57,11 @@ const __ContentCard = (props: { content: ContentSummary }) => {
   return (
     <article
       ref={refCard}
-      className="flex flex-col"
+      className="group/card flex flex-col"
       style={{ opacity: 0, transform: 'translateY(100px)' }}
     >
       <Link
-        className="block rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ivy6"
+        className="relative isolate block overflow-hidden rounded-lg after:pointer-events-none after:absolute after:inset-0 after:z-10 after:bg-white/30 after:opacity-0 after:transition-opacity after:duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ivy6 group-has-[a:hover]/card:after:opacity-100"
         href={hrefContent}
       >
         <figure className="h-[250px] w-full overflow-hidden rounded-lg border border-gray-200">
@@ -72,40 +71,32 @@ const __ContentCard = (props: { content: ContentSummary }) => {
             src={props.content.image}
           />
         </figure>
-      </Link>
-      <div className="flex flex-col">
-        <time
-          className="mt-2 text-sm text-gray-500"
-          dateTime={props.content.publishedAt}
-        >
-          {props.content.formattedDate}
-        </time>
-        <h2 className="mt-1 text-lg font-bold">
-          <Link
-            className="rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ivy6"
-            href={hrefContent}
+        <div className="flex flex-col">
+          <time
+            className="mt-2 text-sm text-gray-500"
+            dateTime={props.content.publishedAt}
           >
-            {props.content.title}
-          </Link>
-        </h2>
-        {props.content.subtitle && (
-          <p className="mt-1 line-clamp-3 text-sm text-gray-500">
-            {props.content.subtitle}
-          </p>
-        )}
-      </div>
+            {props.content.formattedDate}
+          </time>
+          <h2 className="mt-1 text-lg font-bold">{props.content.title}</h2>
+          {props.content.subtitle && (
+            <p className="mt-1 line-clamp-3 text-sm text-gray-500">
+              {props.content.subtitle}
+            </p>
+          )}
+        </div>
+      </Link>
       <div className="mt-4 flex w-full justify-end">
         <Link
           aria-label={`${props.content.title}の詳細を見る`}
+          className="group/button inline-flex items-center justify-center rounded-full border border-ivy7 bg-white px-5 py-3 text-sm font-bold text-ivy6 shadow-lg transition-all duration-200 hover:bg-ivy6 hover:text-white group-has-[a:hover]/card:bg-ivy6 group-has-[a:hover]/card:text-white"
           href={hrefContent}
         >
-          <Button
-            icon={ArrowRightIcon}
-            iconPosition="right"
-            variant="secondary"
-          >
-            詳しく見る
-          </Button>
+          詳しく見る
+          <ArrowRightIcon
+            aria-hidden="true"
+            className="ml-2 size-4 transition-all duration-200 group-hover/button:translate-x-1 group-has-[a:hover]/card:translate-x-1"
+          />
         </Link>
       </div>
     </article>
