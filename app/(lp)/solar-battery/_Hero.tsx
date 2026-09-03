@@ -17,7 +17,7 @@ export const _Hero = () => {
           }
         </p>
 
-        <div className="mt-8 grid max-w-md grid-cols-2 gap-6 sm:gap-10">
+        <div className="mt-8 grid max-w-xl grid-cols-3 gap-3 sm:gap-6">
           {__itemsFeature.map((f) => (
             <div
               key={f.title}
@@ -31,7 +31,7 @@ export const _Hero = () => {
                 src={f.icon}
                 width="64"
               />
-              <p className="mt-3 whitespace-pre-line text-sm font-bold leading-relaxed text-dark8">
+              <p className="mt-3 whitespace-pre-line text-xs font-bold leading-relaxed text-dark8 sm:text-sm">
                 {f.title}
               </p>
               <p className="mt-1 whitespace-pre-line text-[10px] leading-4 text-dark5 sm:text-xs sm:leading-5">
@@ -95,5 +95,10 @@ const __itemsFeature = [
     description: '余った電気をためて\n夜間や停電時に活用',
     icon: '/images/lp/solar-battery/battery-storage.svg',
     title: '電気をためる\n蓄電池',
+  },
+  {
+    description: '昼間につくった電気を\n夜間や停電時に活用',
+    icon: '/images/lp/solar-battery/light-bulb.svg',
+    title: '電気を使う\n自家消費',
   },
 ] as const
