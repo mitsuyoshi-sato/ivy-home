@@ -280,16 +280,16 @@ const __SectionItem = (props: {
         refContainer.current = e
         props.onSectionRef(e)
       }}
-      className="translate-y-8 scroll-mt-24 transition-all duration-700 ease-out"
+      className="translate-y-8 scroll-mt-24 border-t border-gray-200 pt-16 transition-all duration-700 ease-out first:border-t-0 first:pt-0"
     >
       <h2
-        className="mb-4 text-2xl font-bold"
+        className="mb-4 border-l-4 border-ivy5 pl-4 text-2xl font-bold"
         style={{ opacity: 0, transform: 'translateY(100px)' }}
       >
         {props.section.title}
       </h2>
       <div
-        className="space-y-6 leading-loose text-gray-800 [&_a]:text-ivy6 [&_a]:underline [&_figure]:space-y-2 [&_h3]:text-xl [&_h3]:font-bold [&_h3]:leading-relaxed [&_img]:h-auto [&_img]:w-full [&_img]:rounded-lg [&_li]:ml-6 [&_ol]:list-decimal [&_p]:whitespace-pre-line [&_ul]:list-disc"
+        className="space-y-6 leading-loose text-gray-800 [&_a]:text-ivy6 [&_a]:underline [&_figure]:space-y-2 [&_h3]:text-xl [&_h3]:font-bold [&_h3]:leading-relaxed [&_h3]:text-gray-900 [&_img]:h-auto [&_img]:w-full [&_img]:rounded-lg [&_li]:ml-6 [&_ol]:list-decimal [&_p]:whitespace-pre-line [&_strong]:font-bold [&_strong]:text-gray-950 [&_ul]:list-disc"
         dangerouslySetInnerHTML={{ __html: props.section.description }}
         style={{ opacity: 0, transform: 'translateY(100px)' }}
       />
