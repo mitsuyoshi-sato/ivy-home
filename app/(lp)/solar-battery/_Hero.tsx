@@ -73,7 +73,16 @@ export const _Hero = () => {
           decoding="async"
           fetchPriority="high"
           height="1086"
-          src="/images/lp/solar-battery/hero.webp"
+          src="/images/lp/solar-battery/house-dark.webp"
+          width="1448"
+        />
+        <img
+          alt="太陽光パネルと蓄電池を備えた住宅"
+          className="absolute inset-0 size-full object-cover object-center"
+          decoding="async"
+          fetchPriority="high"
+          height="1086"
+          src="/images/lp/solar-battery/house-light.webp"
           width="1448"
         />
         <div
