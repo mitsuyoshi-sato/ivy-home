@@ -289,7 +289,7 @@ const __SectionItem = (props: {
         {props.section.title}
       </h2>
       <div
-        className="space-y-6 leading-loose text-gray-800 [&_a]:text-ivy6 [&_a]:underline [&_figure]:space-y-2 [&_h3]:text-xl [&_h3]:font-bold [&_h3]:leading-relaxed [&_h3]:text-gray-900 [&_img]:h-auto [&_img]:w-full [&_img]:rounded-lg [&_li]:ml-6 [&_ol]:list-decimal [&_p]:whitespace-pre-line [&_p_strong]:text-ivy6 [&_strong]:font-bold [&_ul]:list-disc"
+        className="space-y-6 leading-loose text-gray-800 [&_a]:text-ivy5 [&_a]:underline [&_figure]:space-y-2 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:leading-relaxed [&_h3]:text-gray-700 [&_img]:h-auto [&_img]:w-full [&_img]:rounded-lg [&_li]:ml-6 [&_ol]:list-decimal [&_p]:whitespace-pre-line [&_p_strong]:text-ivy5 [&_strong]:font-bold [&_ul]:list-disc"
         dangerouslySetInnerHTML={{ __html: props.section.description }}
         style={{ opacity: 0, transform: 'translateY(100px)' }}
       />
