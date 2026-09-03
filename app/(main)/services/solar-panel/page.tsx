@@ -181,7 +181,7 @@ export default function SolarPanelPage() {
       />
       <Hero
         image={{
-          src: '/images/houses2.jpg',
+          src: '/images/website/houses2.jpg',
           alt: '太陽光パネルの住宅が連なっている',
         }}
         overlayOpacity="10"

@@ -14,7 +14,7 @@ export const _Logo = (props: { inverted?: boolean; onClick?: () => void }) => {
           alt="IVY HOME"
           className={`h-auto w-full ${props.inverted ? 'brightness-0 invert' : ''}`}
           height="21"
-          src="/images/logo-text.svg"
+          src="/images/website/logo-text.svg"
           width="107"
         />
         <Leaf

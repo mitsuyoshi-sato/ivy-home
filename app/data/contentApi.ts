@@ -70,7 +70,7 @@ export const getContentSummaries = cache(
               q: 80,
               w: 800,
             })) ||
-          '/images/ivy-home.png',
+          '/images/website/ivy-home.png',
         kind,
         publishedAt: __getPublishedAt(c.date, c.publishedAt ?? c.createdAt),
         slug: c.id,
@@ -156,8 +156,8 @@ export const getContentSitemapEntries = cache(
 )
 
 const __imageByAuthor: Record<string, string> = {
-  '佐藤 充能': '/images/favicon.png',
-  '小西 裕也': '/images/yuya-konishi.jpg',
+  '佐藤 充能': '/images/website/favicon.png',
+  '小西 裕也': '/images/website/yuya-konishi.jpg',
 }
 
 const __fieldsContentDetail = [
@@ -200,7 +200,8 @@ const __getContentDetailData = (
 
   return {
     author: nameAuthor,
-    authorImage: __imageByAuthor[nameAuthor] ?? '/images/yuya-konishi.jpg',
+    authorImage:
+      __imageByAuthor[nameAuthor] ?? '/images/website/yuya-konishi.jpg',
     category: content.category?.[0] ?? configContent[kind].label,
     id: content.id,
     image:
@@ -210,7 +211,7 @@ const __getContentDetailData = (
           q: 80,
           w: 1600,
         })) ||
-      '/images/ivy-home.png',
+      '/images/website/ivy-home.png',
     imageOpenGraph:
       (content.eyecatch &&
         __getMicrocmsImageUrl(content.eyecatch.url, {
@@ -220,7 +221,7 @@ const __getContentDetailData = (
           q: 80,
           w: 1200,
         })) ||
-      '/images/ivy-home.png',
+      '/images/website/ivy-home.png',
     kind,
     publishedAt: __getPublishedAt(
       content.date,

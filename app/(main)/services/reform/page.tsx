@@ -60,7 +60,8 @@ export default function ReformPage() {
             '@context': 'https://schema.org',
             '@type': 'Service',
             name: 'リフォームサービス',
-            description: 'マイホームをリフォームして、これからも長く住み続けられるように。キッチン、バスルーム、内装リフォームなど、お客様のご要望にお応えします。',
+            description:
+              'マイホームをリフォームして、これからも長く住み続けられるように。キッチン、バスルーム、内装リフォームなど、お客様のご要望にお応えします。',
             provider: {
               '@type': 'LocalBusiness',
               name: '株式会社アイビーホーム',
@@ -187,7 +188,7 @@ export default function ReformPage() {
         type="application/ld+json"
       />
       <Hero
-        image={{ src: '/images/kitchen.jpg', alt: 'リフォーム' }}
+        image={{ src: '/images/website/kitchen.jpg', alt: 'リフォーム' }}
         overlayOpacity="40"
         subtitle="Reform"
         title="リフォーム"

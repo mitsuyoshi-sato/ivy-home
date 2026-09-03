@@ -94,7 +94,7 @@ export const ContentDetail = (props: { data: ContentDetailData }) => {
               '@type': 'Organization',
               logo: {
                 '@type': 'ImageObject',
-                url: 'https://www.ivyho.me/images/ivy-home.svg',
+                url: 'https://www.ivyho.me/images/website/ivy-home.svg',
               },
               name: '株式会社アイビーホーム',
             },

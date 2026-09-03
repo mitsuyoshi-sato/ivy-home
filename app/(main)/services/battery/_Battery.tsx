@@ -152,7 +152,7 @@ export const _Battery = () => {
           <_InfoCard
             alt="屋外に設置された蓄電池"
             description="太陽光発電や深夜電力などで作った電気を蓄えて、必要なとき、緊急時に使用できます。電気を「賢くためて使う」ことで、経済的に生活をサポートします。"
-            image="/images/battery.webp"
+            image="/images/website/battery.webp"
             title="蓄電池の仕組み"
           />
         </article>
@@ -164,7 +164,7 @@ export const _Battery = () => {
             alt="電気ケトル"
             description={`電気代を削減するだけでなく、将来の電力価格変動にも備えられます。
               賢いエネルギー管理を実現できます。`}
-            image="/images/kettle.webp"
+            image="/images/website/kettle.webp"
             title="賢くエネルギーを節約"
           />
         </article>
@@ -176,7 +176,7 @@ export const _Battery = () => {
             alt="室内照明"
             description={`停電時でも冷蔵庫や照明、テレビなど必要な家電を数時間安心して使えます。
               災害時も家族の生活を守るバックアップ電源です。`}
-            image="/images/room-light.webp"
+            image="/images/website/room-light.webp"
             title="停電時に大活躍！"
           />
         </article>

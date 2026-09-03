@@ -57,7 +57,7 @@ export default function _OpeningAnimation({
             <img
               alt="アイビーホームのロゴ"
               className="w-full"
-              src="/images/logo-text.svg"
+              src="/images/website/logo-text.svg"
             />
           </div>
           <Icon

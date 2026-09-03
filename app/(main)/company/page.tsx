@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     description:
       'お客様の明日の暮らしを支える株式会社アイビーホーム(愛媛県)。企業理念や取り組みをわかりやすくご紹介します。',
     images: {
-      url: '/images/ivy-home.svg',
+      url: '/images/website/ivy-home.svg',
     },
   },
 }
@@ -57,8 +57,8 @@ export default function Company() {
             description:
               '愛媛県の太陽光パネル・蓄電池・エコキュート・シロアリ対策・リフォーム。「未来の暮らしを、つくる。」をテーマに、お客様の快適で安心な毎日を、エコで安全な住まいとともにサポートします。',
             url: 'https://www.ivyho.me',
-            logo: 'https://www.ivyho.me/images/ivy-home.svg',
-            image: 'https://www.ivyho.me/images/ivy-home.png',
+            logo: 'https://www.ivyho.me/images/website/ivy-home.svg',
+            image: 'https://www.ivyho.me/images/website/ivy-home.png',
             foundingDate: '2025-10',
             founder: {
               '@type': 'Person',
