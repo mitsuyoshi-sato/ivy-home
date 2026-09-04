@@ -20,6 +20,8 @@ export const _Header = () => {
   const [stateMenu, setMenu] = useState(false)
   const refHeader = useRef<HTMLElement>(null)
   const refHeaderContent = useRef<HTMLDivElement>(null)
+  const refMenu = useRef<HTMLElement>(null)
+  const refMenuButton = useRef<HTMLButtonElement>(null)
   const refMenuOpen = useRef(false)
 
   useEffect(() => {
@@ -121,6 +123,32 @@ export const _Header = () => {
     }
   }, [])
 
+  useEffect(() => {
+    const onOutsidePointerDown = (event: PointerEvent) => {
+      const b = refMenuButton.current
+      const m = refMenu.current
+
+      if (
+        event.target instanceof Node &&
+        b &&
+        m &&
+        !b.contains(event.target) &&
+        !m.contains(event.target)
+      ) {
+        refMenuOpen.current = false
+        setMenu(false)
+      }
+    }
+
+    if (stateMenu) {
+      document.addEventListener('pointerdown', onOutsidePointerDown)
+    }
+
+    return () => {
+      document.removeEventListener('pointerdown', onOutsidePointerDown)
+    }
+  }, [stateMenu])
+
   const onMenuClose = () => {
     refMenuOpen.current = false
     setMenu(false)
@@ -156,6 +184,7 @@ export const _Header = () => {
           </nav>
 
           <button
+            ref={refMenuButton}
             aria-controls="lp-mobile-navigation"
             aria-expanded={stateMenu}
             aria-label="メニューを切り替える"
@@ -175,6 +204,7 @@ export const _Header = () => {
 
         {stateMenu && (
           <nav
+            ref={refMenu}
             aria-label="モバイル用LP内ナビゲーション"
             className="mx-4 rounded-2xl border border-ivy8/10 bg-white/95 p-5 shadow-xl backdrop-blur-lg sm:mx-8 xl:hidden"
             id="lp-mobile-navigation"
