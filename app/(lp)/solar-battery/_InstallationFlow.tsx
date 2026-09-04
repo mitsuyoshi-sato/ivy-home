@@ -8,6 +8,9 @@ import {
   SearchCheck,
 } from 'lucide-react'
 
+import { _FlowLineAnimation } from './_Client/_FlowLineAnimation'
+import { _RevealItems } from './_Client/_RevealItems'
+
 export const _InstallationFlow = () => {
   return (
     <section
@@ -22,43 +25,52 @@ export const _InstallationFlow = () => {
           ご相談から設置までの流れ
         </h2>
 
-        <ol className="relative mt-12 grid gap-12 before:absolute before:left-[10%] before:right-[10%] before:top-10 before:hidden before:h-px before:bg-[#e0e4dc] md:grid-cols-5 md:gap-5 md:before:block">
-          {__itemsFlow.map((i, n) => (
-            <li key={i.number} className="relative text-center">
-              <div className="relative z-10 mx-auto flex size-20 items-center justify-center rounded-full border border-[#dfe3dc] bg-white text-[#657546] shadow-[0_8px_24px_rgba(21,50,35,0.06)]">
-                <i.icon
-                  aria-hidden="true"
-                  className="size-8"
-                  strokeWidth={1.5}
-                />
-                <span className="absolute -bottom-2 left-1/2 flex size-6 -translate-x-1/2 items-center justify-center rounded-full bg-ivy7 text-[10px] font-semibold text-white">
-                  {i.number}
-                </span>
-              </div>
-              <h3 className="mt-6 text-sm font-semibold text-dark8 sm:text-base">
-                {i.title}
-              </h3>
-              <p className="mx-auto mt-3 max-w-52 text-xs leading-6 text-dark5">
-                {i.description}
-              </p>
+        <_FlowLineAnimation>
+          <_RevealItems
+            className="grid gap-12 lg:grid-cols-5 lg:gap-5"
+            role="list"
+          >
+            {__itemsFlow.map((i, n) => (
+              <article
+                key={i.number}
+                className="relative text-center"
+                role="listitem"
+              >
+                <div className="relative z-10 mx-auto flex size-20 items-center justify-center rounded-full border border-[#dfe3dc] bg-white text-[#657546] shadow-[0_8px_24px_rgba(21,50,35,0.06)]">
+                  <i.icon
+                    aria-hidden="true"
+                    className="size-8"
+                    strokeWidth={1.5}
+                  />
+                  <span className="absolute -bottom-2 left-1/2 flex size-6 -translate-x-1/2 items-center justify-center rounded-full bg-ivy7 text-[10px] font-semibold text-white">
+                    {i.number}
+                  </span>
+                </div>
+                <h3 className="mt-6 text-sm font-semibold text-dark8 sm:text-base">
+                  {i.title}
+                </h3>
+                <p className="mx-auto mt-3 max-w-52 text-xs leading-6 text-dark5">
+                  {i.description}
+                </p>
 
-              {n < __itemsFlow.length - 1 && (
-                <>
-                  <ChevronRight
-                    aria-hidden="true"
-                    className="absolute -right-4 top-7 hidden size-6 bg-[#fcfcfa] text-[#8fa06b] md:block"
-                    strokeWidth={2}
-                  />
-                  <ChevronDown
-                    aria-hidden="true"
-                    className="absolute -bottom-9 left-1/2 size-6 -translate-x-1/2 text-[#8fa06b] md:hidden"
-                    strokeWidth={2}
-                  />
-                </>
-              )}
-            </li>
-          ))}
-        </ol>
+                {n < __itemsFlow.length - 1 && (
+                  <>
+                    <ChevronRight
+                      aria-hidden="true"
+                      className="absolute -right-4 top-7 hidden size-6 bg-[#fcfcfa] text-[#8fa06b] lg:block"
+                      strokeWidth={2}
+                    />
+                    <ChevronDown
+                      aria-hidden="true"
+                      className="absolute -bottom-9 left-1/2 size-6 -translate-x-1/2 text-[#8fa06b] lg:hidden"
+                      strokeWidth={2}
+                    />
+                  </>
+                )}
+              </article>
+            ))}
+          </_RevealItems>
+        </_FlowLineAnimation>
       </div>
     </section>
   )
