@@ -49,7 +49,7 @@ export const _Works = () => {
                     {i.customer}
                   </p>
                 </div>
-                <div className="mt-6 flex flex-col gap-3">
+                <div className="mt-4 flex flex-col gap-2 md:mt-6 md:gap-3">
                   <div className="font-semibold tracking-[0.08em]">
                     {i.title}
                   </div>
@@ -71,7 +71,7 @@ export const _Works = () => {
                     </div>
                     <p className="text-xs font-semibold tracking-[0.12em] text-gray-800">
                       約
-                      <span className="mx-0.5 text-2xl text-ivy8">
+                      <span className="mx-0.5 text-xl text-ivy8 md:text-2xl">
                         {i.saving}
                       </span>
                       円
@@ -83,7 +83,9 @@ export const _Works = () => {
                     </div>
                     <p className="text-xs font-semibold tracking-[0.12em] text-gray-800">
                       約
-                      <span className="mx-0.5 text-2xl text-ivy8">{i.co2}</span>
+                      <span className="mx-0.5 text-xl text-ivy8 md:text-2xl">
+                        {i.co2}
+                      </span>
                       kg-CO2
                     </p>
                   </div>
