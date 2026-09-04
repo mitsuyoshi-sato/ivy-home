@@ -6,12 +6,16 @@ import { useEffect, useRef } from 'react'
 import { motion } from '@/app/motion'
 import { cn } from '@/lib/utils'
 
+type RevealOrder = 'center-out' | 'forward'
+
 export const _RevealItems = (props: {
   children: ReactNode
   className: string
+  order?: RevealOrder
   role?: 'list'
 }) => {
   const refItems = useRef<HTMLDivElement>(null)
+  const order = props.order ?? 'forward'
 
   useEffect(() => {
     const c = refItems.current
@@ -30,12 +34,28 @@ export const _RevealItems = (props: {
           async ([entry]) => {
             if (entry.isIntersecting) {
               observer.unobserve(c)
-              for (const [i, e] of items.entries()) {
-                if (i > 0) {
-                  await motion.delay(0.12)
+              if (order === 'center-out') {
+                const indexCenter = Math.floor((items.length - 1) / 2)
+                const countOffset = Math.max(
+                  indexCenter,
+                  items.length - 1 - indexCenter,
+                )
+                __showItem(items[indexCenter], __config[order].duration)
+                for (let i = 1; i <= countOffset; i += 1) {
+                  await motion.delay(__config[order].delay)
+                  if (isMounted) {
+                    __showItem(items[indexCenter - i], __config[order].duration)
+                    __showItem(items[indexCenter + i], __config[order].duration)
+                  }
                 }
-                if (isMounted) {
-                  __showItem(e)
+              } else {
+                for (const [i, e] of items.entries()) {
+                  if (i > 0) {
+                    await motion.delay(__config[order].delay)
+                  }
+                  if (isMounted) {
+                    __showItem(e, __config[order].duration)
+                  }
                 }
               }
             }
@@ -50,7 +70,7 @@ export const _RevealItems = (props: {
             ([entry]) => {
               if (entry.isIntersecting) {
                 observer.unobserve(e)
-                __showItem(e)
+                __showItem(e, __config[order].duration)
               }
             },
             { threshold: 0.2 },
@@ -65,7 +85,7 @@ export const _RevealItems = (props: {
       isMounted = false
       observers.forEach((o) => o.disconnect())
     }
-  }, [])
+  }, [order])
 
   return (
     <div
@@ -73,7 +93,8 @@ export const _RevealItems = (props: {
       role={props.role}
       className={cn(
         props.className,
-        '[&>*]:translate-y-6 [&>*]:opacity-0 motion-reduce:[&>*]:translate-y-0 motion-reduce:[&>*]:opacity-100',
+        __config[order].classInitial,
+        '[&>*]:opacity-0 motion-reduce:[&>*]:translate-y-0 motion-reduce:[&>*]:opacity-100',
       )}
     >
       {props.children}
@@ -81,9 +102,27 @@ export const _RevealItems = (props: {
   )
 }
 
-const __showItem = (e: Element) => {
-  motion.to(e, 1.3, 'out', {
-    opacity: 1,
-    translateY: '0px',
-  })
+const __showItem = (e: Element | undefined, duration: number) => {
+  if (e) {
+    motion.to(e, duration, 'out', {
+      opacity: 1,
+      translateY: '0px',
+    })
+  }
 }
+
+const __config = {
+  'center-out': {
+    classInitial: '[&>*]:translate-y-4',
+    delay: 0.15,
+    duration: 1,
+  },
+  forward: {
+    classInitial: '[&>*]:translate-y-6',
+    delay: 0.12,
+    duration: 1.3,
+  },
+} as const satisfies Record<
+  RevealOrder,
+  { classInitial: string; delay: number; duration: number }
+>

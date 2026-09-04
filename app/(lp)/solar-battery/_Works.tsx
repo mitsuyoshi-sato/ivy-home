@@ -1,6 +1,8 @@
 import { ArrowRight, Image as ImageIcon } from 'lucide-react'
 import Link from 'next/link'
 
+import { _RevealItems } from './_Client/_RevealItems'
+
 export const _Works = () => {
   return (
     <section
@@ -29,11 +31,12 @@ export const _Works = () => {
           </Link>
         </div>
 
-        <div className="mt-8 grid gap-5 lg:grid-cols-3">
+        <_RevealItems className="mt-8 grid gap-5 lg:grid-cols-3" role="list">
           {__itemsWork.map((i) => (
             <article
               key={i.customer}
               className="overflow-hidden rounded-xl border border-white/10 bg-white text-dark8 shadow-[0_16px_36px_rgba(0,0,0,0.18)]"
+              role="listitem"
             >
               <div className="flex h-32 items-center justify-center overflow-hidden bg-[linear-gradient(135deg,#e7ebe7_0%,#f6f7f4_100%)] text-dark4">
                 <div className="text-center">
@@ -93,7 +96,7 @@ export const _Works = () => {
               </div>
             </article>
           ))}
-        </div>
+        </_RevealItems>
       </div>
     </section>
   )

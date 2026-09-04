@@ -6,6 +6,8 @@ import {
   Wrench,
 } from 'lucide-react'
 
+import { _RevealItems } from './_Client/_RevealItems'
+
 export const _Reasons = () => {
   return (
     <section
@@ -20,11 +22,16 @@ export const _Reasons = () => {
           アイビーホームが選ばれる理由
         </h2>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        <_RevealItems
+          className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5"
+          order="center-out"
+          role="list"
+        >
           {__itemsReason.map((i) => (
             <article
               key={i.title}
               className="rounded-xl border border-[#ecebe5] bg-white px-5 py-7 text-center shadow-[0_12px_32px_rgba(21,50,35,0.05)]"
+              role="listitem"
             >
               <i.icon
                 aria-hidden="true"
@@ -39,7 +46,7 @@ export const _Reasons = () => {
               </p>
             </article>
           ))}
-        </div>
+        </_RevealItems>
       </div>
     </section>
   )
