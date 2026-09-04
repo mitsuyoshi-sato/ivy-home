@@ -42,7 +42,6 @@ html {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  overflow-y: auto;
   font-size: 100%;
 }
 html::-webkit-scrollbar {
@@ -51,11 +50,9 @@ html::-webkit-scrollbar {
 body {
   position: relative !important;
   width: 100% !important;
-  height: 100% !important;
+  min-height: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
   line-height: 1;
   letter-spacing: 0;
   /* --size: 5px; */
@@ -75,25 +72,6 @@ body::-webkit-scrollbar {
 }
 ::selection {
   @apply bg-light/20;
-}
-#MAIN {
-  position: relative;
-  /* display: grid;
-  grid-template-rows: 1fr auto;
-  grid-template-columns: 100%; */
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-  will-change: transform, scroll-position;
-}
-#MAIN::-webkit-scrollbar {
-  display: none; /* WebKit */
-}
-#SCROLLBAR {
-  will-change: transform, scroll-position;
 }
 /* for firefox */
 /* @-moz-document url-prefix() {
