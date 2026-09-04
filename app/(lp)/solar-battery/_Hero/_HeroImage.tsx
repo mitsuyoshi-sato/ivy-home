@@ -5,15 +5,17 @@ import { useEffect, useRef } from 'react'
 import { motion } from '@/app/motion'
 
 export const _HeroImage = () => {
+  const refArea = useRef<HTMLDivElement>(null)
   const refImgLight = useRef<HTMLImageElement>(null)
 
   useEffect(() => {
+    const a = refArea.current
     const i = refImgLight.current
     let frameId: number | null = null
 
-    if (i) {
+    if (a && i) {
       const updateOpacity = () => {
-        const rect = i.getBoundingClientRect()
+        const rect = a.getBoundingClientRect()
         const visibleHeight = Math.max(
           0,
           Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0),
@@ -21,9 +23,12 @@ export const _HeroImage = () => {
 
         const ratio = visibleHeight / rect.height
 
-        const progress = Math.min(Math.max((ratio - 0.1) / 0.8, 0), 1)
+        const isMobile = window.innerWidth < 768
+        const start = isMobile ? 0.85 : 0.9
+        const end = isMobile ? 0.55 : 0.1
+        const progress = Math.min(1, Math.max(0, (ratio - end) / (start - end)))
         motion.set(i, {
-          opacity: progress ** 2,
+          opacity: isMobile ? progress : progress ** 2,
         })
 
         frameId = null
@@ -39,9 +44,11 @@ export const _HeroImage = () => {
       window.addEventListener('scroll', handleScroll, {
         passive: true,
       })
+      window.addEventListener('resize', handleScroll)
 
       return () => {
         window.removeEventListener('scroll', handleScroll)
+        window.removeEventListener('resize', handleScroll)
 
         if (frameId !== null) {
           cancelAnimationFrame(frameId)
@@ -51,32 +58,39 @@ export const _HeroImage = () => {
   }, [])
 
   return (
-    <figure className="relative min-h-[330px] overflow-hidden xl:min-h-[720px]">
-      <img
-        alt="太陽光パネルと蓄電池を備えた住宅"
-        className="absolute inset-0 size-full object-cover object-center"
-        decoding="async"
-        fetchPriority="high"
-        height="1086"
-        src="/images/lp/solar-battery/house-dark.webp"
-        width="1448"
-      />
-      <img
-        ref={refImgLight}
-        style={{ opacity: 0 }}
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 size-full object-cover object-center"
-        decoding="async"
-        fetchPriority="high"
-        height="1086"
-        src="/images/lp/solar-battery/house-light.webp"
-        width="1448"
-      />
+    <div className="relative min-h-[330px] xl:min-h-[720px]">
       <div
+        ref={refArea}
         aria-hidden="true"
-        className="absolute inset-y-0 left-0 hidden w-1/3 bg-gradient-to-r from-[#f8f9f5] to-transparent xl:block"
+        className="pointer-events-none absolute inset-x-0 -bottom-56 -top-48 z-20 md:inset-0"
       />
-    </figure>
+      <figure className="absolute inset-0 overflow-hidden">
+        <img
+          alt="太陽光パネルと蓄電池を備えた住宅"
+          className="absolute inset-0 size-full object-cover object-center"
+          decoding="async"
+          fetchPriority="high"
+          height="1086"
+          src="/images/lp/solar-battery/house-dark.webp"
+          width="1448"
+        />
+        <img
+          ref={refImgLight}
+          style={{ opacity: 0 }}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 size-full object-cover object-center"
+          decoding="async"
+          fetchPriority="high"
+          height="1086"
+          src="/images/lp/solar-battery/house-light.webp"
+          width="1448"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-y-0 left-0 hidden w-1/3 bg-gradient-to-r from-[#f8f9f5] to-transparent xl:block"
+        />
+      </figure>
+    </div>
   )
 }

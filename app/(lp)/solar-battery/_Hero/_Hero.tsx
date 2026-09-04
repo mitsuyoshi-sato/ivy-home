@@ -4,7 +4,7 @@ import { _HeroImage } from './_HeroImage'
 
 export const _Hero = () => {
   return (
-    <section className="mx-auto grid min-h-[720px] w-full max-w-[1600px] overflow-hidden bg-[#f8f9f5] xl:grid-cols-[44%_56%]">
+    <section className="mx-auto grid min-h-[720px] w-full max-w-[1600px] bg-[#f8f9f5] xl:grid-cols-[44%_56%]">
       <div className="relative z-10 flex flex-col justify-center px-5 pb-12 pt-28 sm:px-8 lg:px-10 lg:pb-16 lg:pt-32 xl:pl-[max(40px,calc((100vw-1440px)/2+40px))]">
         <h1 className="font-serif text-[32px] font-medium leading-[1.45] tracking-[0.06em] text-dark8 sm:text-5xl xl:text-[48px]">
           <span className="block">電気を、</span>
