@@ -1,5 +1,7 @@
 import { ChevronDown, ChevronRight } from 'lucide-react'
 
+import { _RevealItems } from './_Client/_RevealItems'
+
 export const _EnergySteps = () => {
   return (
     <section
@@ -14,11 +16,15 @@ export const _EnergySteps = () => {
           エネルギーを、スマートにつなぐ3つのステップ
         </h2>
 
-        <ol className="mt-10 grid gap-12 lg:grid-cols-3 lg:gap-7">
+        <_RevealItems
+          className="mt-10 grid gap-12 lg:grid-cols-3 lg:gap-7"
+          role="list"
+        >
           {__itemsStep.map((i, n) => (
-            <li
+            <article
               key={i.number}
-              className="relative rounded-xl border border-[#ecebe5] bg-white p-5 shadow-[0_12px_34px_rgba(21,50,35,0.06)] sm:p-6"
+              className="relative rounded-xl border border-[#ecebe5] bg-white p-5 shadow-[0_16px_40px_rgba(21,50,35,0.1)] sm:p-6"
+              role="listitem"
             >
               <div className="flex min-h-28 items-start gap-4">
                 <span
@@ -54,7 +60,7 @@ export const _EnergySteps = () => {
                 <>
                   <ChevronRight
                     aria-hidden="true"
-                    className="absolute -right-[34px] top-1/2 hidden size-10 -translate-y-1/2 text-gray-600 lg:block"
+                    className="absolute right-[-34px] top-1/2 hidden size-10 -translate-y-1/2 text-gray-600 lg:block"
                     strokeWidth={2}
                   />
                   <ChevronDown
@@ -64,9 +70,9 @@ export const _EnergySteps = () => {
                   />
                 </>
               )}
-            </li>
+            </article>
           ))}
-        </ol>
+        </_RevealItems>
       </div>
     </section>
   )

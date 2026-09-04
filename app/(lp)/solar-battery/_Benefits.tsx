@@ -6,6 +6,8 @@ import {
   TrendingDown,
 } from 'lucide-react'
 
+import { _RevealItems } from './_Client/_RevealItems'
+
 export const _Benefits = () => {
   return (
     <>
@@ -56,8 +58,8 @@ export const _Benefits = () => {
             </h2>
           </div>
 
-          <div className="mt-10 grid gap-5 lg:grid-cols-[0.9fr_1.1fr] lg:gap-7">
-            <div className="rounded-xl border border-[#ecebe5] bg-white px-6 py-8 text-center shadow-[0_14px_40px_rgba(21,50,35,0.06)] sm:px-10">
+          <_RevealItems className="mt-10 grid gap-5 lg:grid-cols-[0.9fr_1.1fr] lg:gap-7">
+            <div className="rounded-xl border border-[#ecebe5] bg-white px-6 py-8 text-center shadow-[0_18px_48px_rgba(21,50,35,0.12)] sm:px-10">
               <p className="text-sm font-semibold text-dark7">
                 年間の電気代削減シミュレーション（例）
               </p>
@@ -99,7 +101,7 @@ export const _Benefits = () => {
               </p>
             </div>
 
-            <ul className="overflow-hidden rounded-xl border border-[#ecebe5] bg-white shadow-[0_14px_40px_rgba(21,50,35,0.06)]">
+            <ul className="overflow-hidden rounded-xl border border-[#ecebe5] bg-white shadow-[0_18px_48px_rgba(21,50,35,0.12)]">
               {__itemsBenefit.map((i) => (
                 <li
                   key={i}
@@ -116,7 +118,7 @@ export const _Benefits = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </_RevealItems>
         </div>
       </section>
     </>
