@@ -35,64 +35,59 @@ export const _Works = () => {
           {__itemsWork.map((i) => (
             <article
               key={i.customer}
-              className="overflow-hidden rounded-xl border border-white/10 bg-white text-dark8 shadow-[0_16px_36px_rgba(0,0,0,0.18)]"
+              className="relative aspect-[4/3] overflow-hidden rounded-xl border border-white/10 bg-white text-dark8 shadow-[0_16px_36px_rgba(0,0,0,0.18)]"
               role="listitem"
             >
-              <div className="flex h-32 items-center justify-center overflow-hidden bg-[linear-gradient(135deg,#e7ebe7_0%,#f6f7f4_100%)] text-dark4">
-                <div className="text-center">
-                  <ImageIcon
-                    aria-hidden="true"
-                    className="mx-auto size-7 opacity-60"
-                    strokeWidth={1.5}
-                  />
-                  <p className="mt-2 text-[10px] tracking-[0.12em]">
-                    施工写真を準備中
+              <img
+                src={i.image}
+                alt={i.title}
+                className="h-full w-full object-cover object-top"
+              />
+              <div className="backdrop-blur-xs absolute inset-x-0 bottom-0 flex min-h-[60%] flex-col justify-between bg-white/85 px-6 py-4">
+                <div className="absolute left-6 top-0 -translate-y-1/2 rounded-md bg-ivy8 px-4 py-1.5">
+                  <p className="text-xs font-semibold tracking-[0.12em] text-[#9aa76a]">
+                    {i.customer}
                   </p>
                 </div>
-              </div>
-              <div className="p-5 pt-0 sm:p-6 sm:pt-0">
-                <p className="bg-ivy9 relative -mt-5 inline-flex rounded-sm px-3 py-2 text-[10px] font-semibold text-white shadow-md">
-                  {i.customer}
-                </p>
-                <h3 className="mt-4 text-base font-semibold leading-relaxed sm:text-lg">
-                  {i.title}
-                </h3>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {i.tags.map((t) => (
-                    <span
-                      key={t}
-                      className="rounded-sm bg-[#eef1ec] px-2.5 py-1 text-[10px] font-medium text-dark6"
-                    >
-                      {t}
-                    </span>
-                  ))}
+                <div className="mt-6 flex flex-col gap-3">
+                  <div className="font-semibold tracking-[0.08em]">
+                    {i.title}
+                  </div>
+                  <div className="flex gap-2">
+                    {i.tags.map((tag) => (
+                      <div
+                        key={tag}
+                        className="rounded-md bg-[#e5f0e8] px-2 py-1 text-xs font-semibold text-ivy8"
+                      >
+                        {tag}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <dl className="mt-6 grid grid-cols-2 gap-5 border-t border-gray-100 pt-5">
-                  <div>
-                    <dt className="text-[10px] font-medium text-dark4">
-                      年間削減額
-                    </dt>
-                    <dd className="mt-1 whitespace-nowrap text-sm font-medium text-dark8">
+                <div className="flex justify-between">
+                  <div className="flex flex-col">
+                    <div className="text-xs font-semibold tracking-[0.12em] text-gray-500">
+                      年間削減費用
+                    </div>
+                    <p className="text-xs font-semibold tracking-[0.12em] text-gray-800">
                       約
-                      <strong className="mx-1 text-xl font-semibold">
+                      <span className="mx-0.5 text-2xl text-ivy8">
                         {i.saving}
-                      </strong>
+                      </span>
                       円
-                    </dd>
+                    </p>
                   </div>
-                  <div>
-                    <dt className="text-[10px] font-medium text-dark4">
-                      CO₂削減量（年間）
-                    </dt>
-                    <dd className="mt-1 whitespace-nowrap text-sm font-medium text-dark8">
+                  <div className="flex flex-col">
+                    <div className="text-xs font-semibold tracking-[0.12em] text-gray-500">
+                      CO2削減量
+                    </div>
+                    <p className="text-xs font-semibold tracking-[0.12em] text-gray-800">
                       約
-                      <strong className="mx-1 text-xl font-semibold">
-                        {i.co2}
-                      </strong>
-                      <span className="text-[10px]">kg-CO₂</span>
-                    </dd>
+                      <span className="mx-0.5 text-2xl text-ivy8">{i.co2}</span>
+                      kg-CO2
+                    </p>
                   </div>
-                </dl>
+                </div>
               </div>
             </article>
           ))}
@@ -109,6 +104,7 @@ const __itemsWork = [
     saving: '182,000',
     tags: ['太陽光 6.0kW', '蓄電池 9.6kWh'],
     title: '電気代が月々約12,000円削減！',
+    image: '/images/lp/solar-battery/house-light.webp',
   },
   {
     co2: '1,680',
@@ -116,6 +112,7 @@ const __itemsWork = [
     saving: '154,000',
     tags: ['太陽光 5.2kW', '蓄電池 7.4kWh'],
     title: 'FIT終了後の不安を解消！',
+    image: '/images/lp/solar-battery/house-dark.webp',
   },
   {
     co2: '1,420',
@@ -123,5 +120,6 @@ const __itemsWork = [
     saving: '131,000',
     tags: ['太陽光 6.4kW', '蓄電池 9.8kWh'],
     title: '太陽光と蓄電池でさらに快適！',
+    image: '/images/lp/solar-battery/house-light.webp',
   },
 ] as const
