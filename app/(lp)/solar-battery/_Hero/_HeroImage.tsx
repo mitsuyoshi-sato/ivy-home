@@ -21,7 +21,7 @@ export const _HeroImage = () => {
 
         const ratio = visibleHeight / rect.height
 
-        const progress = Math.min(Math.max((ratio - 0.1) / 0.7, 0), 1)
+        const progress = Math.min(Math.max((ratio - 0.1) / 0.8, 0), 1)
         motion.set(i, {
           opacity: progress ** 2,
         })
