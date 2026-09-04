@@ -1,4 +1,6 @@
-import { ArrowRight, Plus } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
+
+import { _FaqList } from './_Client/_FaqList'
 
 export const _Faq = () => {
   return (
@@ -28,33 +30,7 @@ export const _Faq = () => {
           </a>
         </div>
 
-        <div className="mt-9 grid items-start gap-3 md:grid-cols-2">
-          {__itemsFaq.map((i) => (
-            <details
-              key={i.question}
-              className="group overflow-hidden rounded-lg border border-[#ebece8] bg-[#f7f8f5] open:bg-white"
-            >
-              <summary className="focus-visible:outline-inset flex min-h-16 cursor-pointer list-none items-center gap-4 px-5 py-4 text-sm font-semibold text-dark8 transition-colors hover:text-ivy7 focus-visible:outline focus-visible:outline-2 focus-visible:outline-ivy6 sm:px-6 sm:text-base [&::-webkit-details-marker]:hidden">
-                <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-ivy8 text-xs font-semibold text-white">
-                  Q
-                </span>
-                <span className="flex-1">{i.question}</span>
-                <Plus
-                  aria-hidden="true"
-                  className="size-5 shrink-0 text-dark5 transition-transform duration-200 group-open:rotate-45"
-                />
-              </summary>
-              <div className="flex gap-4 border-t border-[#ebece8] bg-white px-5 py-5 sm:px-6">
-                <span className="flex size-7 shrink-0 items-center justify-center rounded-full border border-ivy7 text-xs font-semibold text-ivy7">
-                  A
-                </span>
-                <p className="pt-0.5 text-sm leading-7 text-dark6">
-                  {i.answer}
-                </p>
-              </div>
-            </details>
-          ))}
-        </div>
+        <_FaqList items={__itemsFaq} />
 
         <a
           className="group mt-6 inline-flex min-h-12 w-full items-center justify-center rounded-full border border-dark8/20 px-6 py-3 text-sm font-semibold text-dark8 transition-colors hover:border-ivy7 hover:text-ivy7 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ivy6 sm:hidden"
