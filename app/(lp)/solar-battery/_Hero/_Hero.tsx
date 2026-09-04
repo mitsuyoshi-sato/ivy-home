@@ -1,19 +1,8 @@
-'use client'
-
-import { motion } from '@/app/motion'
 import { ArrowRight, Calculator } from 'lucide-react'
-import { useEffect, useRef } from 'react'
+
+import { _HeroImage } from './_HeroImage'
 
 export const _Hero = () => {
-  const refImgLight = useRef<HTMLImageElement>(null)
-
-  useEffect(() => {
-    const il = refImgLight.current
-    if (il) {
-      motion.to(il, 2, 'out', { opacity: 1 })
-    }
-  }, [])
-
   return (
     <section className="mx-auto grid min-h-[720px] w-full max-w-[1600px] overflow-hidden bg-[#f8f9f5] xl:grid-cols-[44%_56%]">
       <div className="relative z-10 flex flex-col justify-center px-5 pb-12 pt-28 sm:px-8 lg:px-10 lg:pb-16 lg:pt-32 xl:pl-[max(40px,calc((100vw-1440px)/2+40px))]">
@@ -78,34 +67,7 @@ export const _Hero = () => {
           </a>
         </div>
       </div>
-
-      <figure className="relative min-h-[330px] overflow-hidden xl:min-h-[720px]">
-        <img
-          alt="太陽光パネルと蓄電池を備えた住宅"
-          className="absolute inset-0 size-full object-cover object-center"
-          decoding="async"
-          fetchPriority="high"
-          height="1086"
-          src="/images/lp/solar-battery/house-dark.webp"
-          width="1448"
-        />
-        <img
-          ref={refImgLight}
-          style={{ opacity: 0 }}
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 size-full object-cover object-center"
-          decoding="async"
-          fetchPriority="high"
-          height="1086"
-          src="/images/lp/solar-battery/house-light.webp"
-          width="1448"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-y-0 left-0 hidden w-1/3 bg-gradient-to-r from-[#f8f9f5] to-transparent xl:block"
-        />
-      </figure>
+      <_HeroImage />
     </section>
   )
 }
