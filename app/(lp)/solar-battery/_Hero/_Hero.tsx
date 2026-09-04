@@ -13,11 +13,6 @@ export const _Hero = () => {
         <p className="mt-5 text-sm font-bold leading-relaxed text-ivy7 sm:text-base">
           太陽光・蓄電池で、これからの電気代をもっと自由に。
         </p>
-        <p className="mt-5 whitespace-pre-line text-xs leading-6 text-dark6 sm:text-sm sm:leading-7">
-          {
-            '電気をつくり、ためて、上手に使う。\nIvy Homeは、ご家庭に最適なエネルギーのカタチをご提案します。'
-          }
-        </p>
 
         <div className="mt-8 grid max-w-xl grid-cols-3 gap-3 sm:gap-6">
           {__itemsFeature.map((f) => (
