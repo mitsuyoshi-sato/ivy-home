@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { _Logo } from './_Logo'
+import { _Logo } from './components/_Logo'
 
 export const _Footer = () => {
   return (

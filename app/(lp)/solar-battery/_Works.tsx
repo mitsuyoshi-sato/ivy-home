@@ -1,7 +1,7 @@
 import { ArrowRight, Image as ImageIcon } from 'lucide-react'
 import Link from 'next/link'
 
-import { _RevealItems } from './_Client/_RevealItems'
+import { _RevealItems } from './components/_RevealItems'
 
 export const _Works = () => {
   return (

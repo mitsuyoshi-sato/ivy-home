@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 
 import { motion } from '@/app/motion'
 
-import { _Logo } from './_Logo'
+import { _Logo } from './components/_Logo'
 
 const itemsNavigation = [
   { href: '#strengths', label: '私たちの強み' },

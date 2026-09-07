@@ -6,7 +6,7 @@ import {
   Wrench,
 } from 'lucide-react'
 
-import { _RevealItems } from './_Client/_RevealItems'
+import { _RevealItems } from './components/_RevealItems'
 
 export const _Reasons = () => {
   return (

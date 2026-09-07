@@ -1,6 +1,6 @@
 import { ArrowRight } from 'lucide-react'
 
-import { _FaqList } from './_Client/_FaqList'
+import { _FaqList } from './_FaqList'
 
 export const _Faq = () => {
   return (

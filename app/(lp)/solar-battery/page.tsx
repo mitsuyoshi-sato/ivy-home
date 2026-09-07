@@ -1,9 +1,9 @@
 import { _Benefits } from './_Benefits'
-import { _Cta } from './_Cta'
+import { _Cta } from './_Cta/_Cta'
 import { _EnergySteps } from './_EnergySteps'
-import { _Faq } from './_Faq'
+import { _Faq } from './_Faq/_Faq'
 import { _Hero } from './_Hero/_Hero'
-import { _InstallationFlow } from './_InstallationFlow'
+import { _InstallationFlow } from './_InstallationFlow/_InstallationFlow'
 import { _Reasons } from './_Reasons'
 import { _Works } from './_Works'
 

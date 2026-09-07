@@ -1,7 +1,8 @@
 import { Phone } from 'lucide-react'
 
-import { _ContactForm } from './_Client/_ContactForm'
-import { _RevealItems } from './_Client/_RevealItems'
+import { _RevealItems } from '../components/_RevealItems'
+
+import { _ContactForm } from './_ContactForm'
 
 export const _Cta = () => {
   return (

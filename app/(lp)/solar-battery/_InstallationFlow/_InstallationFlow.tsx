@@ -8,8 +8,9 @@ import {
   SearchCheck,
 } from 'lucide-react'
 
-import { _FlowLineAnimation } from './_Client/_FlowLineAnimation'
-import { _RevealItems } from './_Client/_RevealItems'
+import { _RevealItems } from '../components/_RevealItems'
+
+import { _FlowLineAnimation } from './_FlowLineAnimation'
 
 export const _InstallationFlow = () => {
   return (
