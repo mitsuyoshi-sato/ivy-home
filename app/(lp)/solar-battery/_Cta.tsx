@@ -13,16 +13,23 @@ export const _Cta = () => {
       }}
     >
       <div className="mx-auto w-full max-w-[1240px] px-5 py-10 sm:px-8 sm:py-12 lg:px-10 lg:py-16">
-        <div className="max-w-3xl">
-          <h2 className="text-xl font-semibold leading-relaxed text-dark8 sm:text-2xl">
-            ご相談・お見積もりは無料です。
-            <br />
-            お気軽にお問い合わせください。
-          </h2>
-        </div>
-
-        <_RevealItems className="mt-8 w-full">
+        <_RevealItems className="w-full">
           <div className="rounded-2xl border border-white/80 bg-white/95 px-5 py-7 shadow-[0_22px_64px_rgba(21,50,35,0.2)] backdrop-blur-sm sm:px-8 sm:py-9 lg:px-10">
+            <div className="mb-8 flex flex-wrap items-baseline gap-x-4 gap-y-2">
+              <h2 className="text-xl font-semibold leading-relaxed text-ivy7 sm:text-2xl">
+                ご相談・お見積もりは無料です。お気軽にお問い合わせください。
+              </h2>
+              <p className="text-xs leading-relaxed text-dark4">
+                <span className="sr-only">アスタリスク</span>
+                <span
+                  aria-hidden="true"
+                  className="mr-1 font-semibold text-red-600"
+                >
+                  *
+                </span>
+                は必須項目です
+              </p>
+            </div>
             <_ContactForm />
             <div className="mt-8 border-t border-[#e5e7e1] pt-7">
               <p className="mb-4 text-xs font-semibold tracking-[0.08em] text-dark4">
