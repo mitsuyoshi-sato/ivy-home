@@ -2,19 +2,40 @@
 
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
-import { useState } from 'react'
+import type { UseFormRegisterReturn } from 'react-hook-form'
 
 import { cn } from '@/lib/utils'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { schema, Schema } from './schema'
 
 export const _ContactForm = () => {
-  const [stateContact, setContact] = useState<'email' | 'phone'>('phone')
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch,
+  } = useForm<Schema>({
+    resolver: zodResolver(schema),
+    defaultValues: {
+      name: '',
+      contactMethod: 'phone',
+      phone: '',
+      email: '',
+      area: 'ehime',
+      city: '',
+      consultationType: 'solar',
+      message: '',
+    },
+  })
+  const contactMethod = watch('contactMethod')
 
   return (
     <form
       noValidate
-      onSubmit={(e) => {
-        e.preventDefault()
-      }}
+      onSubmit={handleSubmit((data) => {
+        console.log(data)
+      })}
     >
       <div className="grid gap-8 lg:grid-cols-2 lg:gap-x-7">
         <div className="flex h-full flex-col gap-8 lg:contents">
@@ -33,9 +54,9 @@ export const _ContactForm = () => {
               aria-required="true"
               autoComplete="name"
               className={__style.input}
-              name="name"
               placeholder="山田　太郎"
               type="text"
+              {...register('name')}
             />
           </div>
 
@@ -48,26 +69,25 @@ export const _ContactForm = () => {
               {__optionsContactMethod.map((o) => (
                 <__RadioOption
                   key={o.value}
-                  checked={stateContact === o.value}
                   id={`contact-method-${o.value}`}
                   label={o.label}
-                  name="contactMethod"
                   value={o.value}
-                  onChange={() => {
-                    setContact(o.value)
-                  }}
+                  {...register('contactMethod')}
                 />
               ))}
             </div>
 
             <div aria-live="polite" className="mt-4">
-              {stateContact === 'phone' && (
+              {contactMethod === 'phone' && (
                 <div>
                   <div className="flex flex-wrap items-center gap-2">
                     <label className={__style.subLabel} htmlFor="contact-phone">
                       電話番号
                     </label>
                     <__RequiredMark />
+                    <span className="ml-1 text-xs font-normal leading-none text-dark4">
+                      ハイフンなしで入力してください
+                    </span>
                   </div>
                   <input
                     id="contact-phone"
@@ -75,13 +95,13 @@ export const _ContactForm = () => {
                     autoComplete="tel"
                     className={__style.input}
                     inputMode="tel"
-                    name="phone"
-                    placeholder="090-1234-5678"
+                    placeholder="09012345678"
                     type="tel"
+                    {...register('phone')}
                   />
                 </div>
               )}
-              {stateContact === 'email' && (
+              {contactMethod === 'email' && (
                 <div>
                   <div className="flex flex-wrap items-center gap-2">
                     <label className={__style.subLabel} htmlFor="contact-email">
@@ -95,9 +115,9 @@ export const _ContactForm = () => {
                     autoComplete="email"
                     className={__style.input}
                     inputMode="email"
-                    name="email"
                     placeholder="example@example.com"
                     type="email"
+                    {...register('email')}
                   />
                 </div>
               )}
@@ -117,8 +137,8 @@ export const _ContactForm = () => {
                   key={o.value}
                   id={`contact-area-${o.value}`}
                   label={o.label}
-                  name="area"
                   value={o.value}
+                  {...register('area')}
                 />
               ))}
             </div>
@@ -133,9 +153,9 @@ export const _ContactForm = () => {
                 id="contact-city"
                 autoComplete="address-level2"
                 className={__style.input}
-                name="city"
                 placeholder="松山市"
                 type="text"
+                {...register('city')}
               />
             </div>
           </fieldset>
@@ -151,8 +171,8 @@ export const _ContactForm = () => {
                   key={o.value}
                   id={`contact-consultation-${o.value}`}
                   label={o.label}
-                  name="consultation"
                   value={o.value}
+                  {...register('consultationType')}
                 />
               ))}
             </div>
@@ -169,8 +189,8 @@ export const _ContactForm = () => {
           <textarea
             id="contact-message"
             className={cn(__style.input, 'min-h-36 py-4 leading-7')}
-            name="message"
             placeholder="電気代が高く、蓄電池を検討しています"
+            {...register('message')}
           />
         </div>
       </div>
@@ -222,30 +242,28 @@ const __OptionalMark = () => {
   )
 }
 
-const __RadioOption = (props: {
-  checked?: boolean
-  id: string
-  label: string
-  name: string
-  value: string
-  onChange?: () => void
-}) => {
+const __RadioOption = (
+  props: {
+    id: string
+    label: string
+    value: string
+  } & UseFormRegisterReturn,
+) => {
+  const { id, label, ...inputProps } = props
+
   return (
     <label
       className="inline-flex min-h-11 cursor-pointer items-center gap-2 whitespace-nowrap py-2 text-sm font-semibold text-dark7 transition-colors focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-ivy6 hover:text-ivy7"
-      htmlFor={props.id}
+      htmlFor={id}
     >
       <input
-        id={props.id}
-        checked={props.checked}
+        id={id}
         className="size-5 shrink-0 accent-ivy7"
-        name={props.name}
         style={{ appearance: 'auto' }}
         type="radio"
-        value={props.value}
-        onChange={props.onChange}
+        {...inputProps}
       />
-      <span>{props.label}</span>
+      <span>{label}</span>
     </label>
   )
 }
@@ -272,6 +290,6 @@ const __optionsArea = [
 const __optionsConsultation = [
   { label: '太陽光', value: 'solar' },
   { label: '蓄電池', value: 'battery' },
-  { label: '太陽光・蓄電池の両方', value: 'solar-battery' },
+  { label: '太陽光・蓄電池の両方', value: 'both' },
   { label: 'その他', value: 'other' },
 ] as const
