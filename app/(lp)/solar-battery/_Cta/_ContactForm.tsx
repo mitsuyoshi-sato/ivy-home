@@ -16,6 +16,7 @@ export const _ContactForm = () => {
     formState: { errors },
     watch,
   } = useForm<Schema>({
+    mode: 'onBlur',
     resolver: zodResolver(schema),
     defaultValues: {
       name: '',
@@ -38,7 +39,7 @@ export const _ContactForm = () => {
       })}
     >
       <div className="grid gap-8 lg:grid-cols-2 lg:gap-x-7">
-        <div className="flex h-full flex-col gap-8 lg:contents">
+        <div className="flex h-full flex-col gap-5 lg:contents">
           <div className="lg:col-start-1 lg:row-start-1">
             <div className="flex flex-wrap items-center gap-2">
               <label className={__style.label} htmlFor="contact-name">
@@ -51,12 +52,18 @@ export const _ContactForm = () => {
             </div>
             <input
               id="contact-name"
+              aria-describedby={errors.name ? 'contact-name-error' : undefined}
+              aria-invalid={!!errors.name}
               aria-required="true"
               autoComplete="name"
-              className={__style.input}
+              className={cn(__style.input, errors.name && __style.inputError)}
               placeholder="山田　太郎"
               type="text"
               {...register('name')}
+            />
+            <__ErrorMessage
+              id="contact-name-error"
+              message={errors.name?.message}
             />
           </div>
 
@@ -76,6 +83,10 @@ export const _ContactForm = () => {
                 />
               ))}
             </div>
+            <__ErrorMessage
+              id="contact-method-error"
+              message={errors.contactMethod?.message}
+            />
 
             <div aria-live="polite" className="mt-4">
               {contactMethod === 'phone' && (
@@ -91,13 +102,24 @@ export const _ContactForm = () => {
                   </div>
                   <input
                     id="contact-phone"
+                    aria-describedby={
+                      errors.phone ? 'contact-phone-error' : undefined
+                    }
+                    aria-invalid={!!errors.phone}
                     aria-required="true"
                     autoComplete="tel"
-                    className={__style.input}
+                    className={cn(
+                      __style.input,
+                      errors.phone && __style.inputError,
+                    )}
                     inputMode="tel"
                     placeholder="09012345678"
                     type="tel"
                     {...register('phone')}
+                  />
+                  <__ErrorMessage
+                    id="contact-phone-error"
+                    message={errors.phone?.message}
                   />
                 </div>
               )}
@@ -111,13 +133,24 @@ export const _ContactForm = () => {
                   </div>
                   <input
                     id="contact-email"
+                    aria-describedby={
+                      errors.email ? 'contact-email-error' : undefined
+                    }
+                    aria-invalid={!!errors.email}
                     aria-required="true"
                     autoComplete="email"
-                    className={__style.input}
+                    className={cn(
+                      __style.input,
+                      errors.email && __style.inputError,
+                    )}
                     inputMode="email"
                     placeholder="example@example.com"
                     type="email"
                     {...register('email')}
+                  />
+                  <__ErrorMessage
+                    id="contact-email-error"
+                    message={errors.email?.message}
                   />
                 </div>
               )}
@@ -142,6 +175,10 @@ export const _ContactForm = () => {
                 />
               ))}
             </div>
+            <__ErrorMessage
+              id="contact-area-error"
+              message={errors.area?.message}
+            />
             <div className="mt-4">
               <div className="flex flex-wrap items-center gap-2">
                 <label className={__style.subLabel} htmlFor="contact-city">
@@ -151,11 +188,19 @@ export const _ContactForm = () => {
               </div>
               <input
                 id="contact-city"
+                aria-describedby={
+                  errors.city ? 'contact-city-error' : undefined
+                }
+                aria-invalid={!!errors.city}
                 autoComplete="address-level2"
-                className={__style.input}
+                className={cn(__style.input, errors.city && __style.inputError)}
                 placeholder="松山市"
                 type="text"
                 {...register('city')}
+              />
+              <__ErrorMessage
+                id="contact-city-error"
+                message={errors.city?.message}
               />
             </div>
           </fieldset>
@@ -176,6 +221,10 @@ export const _ContactForm = () => {
                 />
               ))}
             </div>
+            <__ErrorMessage
+              id="contact-consultation-error"
+              message={errors.consultationType?.message}
+            />
           </fieldset>
         </div>
 
@@ -188,9 +237,21 @@ export const _ContactForm = () => {
           </div>
           <textarea
             id="contact-message"
-            className={cn(__style.input, 'min-h-36 py-4 leading-7')}
+            aria-describedby={
+              errors.message ? 'contact-message-error' : undefined
+            }
+            aria-invalid={!!errors.message}
+            className={cn(
+              __style.input,
+              'min-h-36 py-4 leading-7',
+              errors.message && __style.inputError,
+            )}
             placeholder="電気代が高く、蓄電池を検討しています"
             {...register('message')}
+          />
+          <__ErrorMessage
+            id="contact-message-error"
+            message={errors.message?.message}
           />
         </div>
       </div>
@@ -208,7 +269,7 @@ export const _ContactForm = () => {
 
       <button
         className="group mt-5 inline-flex min-h-16 w-full items-center justify-center rounded-md border border-ivy8 bg-ivy8 px-5 py-4 text-sm font-semibold text-white shadow-lg transition-colors hover:bg-ivy7 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ivy6 sm:text-base"
-        type="button"
+        type="submit"
       >
         無料で相談する
         <ArrowRight
@@ -242,6 +303,19 @@ const __OptionalMark = () => {
   )
 }
 
+const __ErrorMessage = (props: { id: string; message?: string }) => {
+  return (
+    <p
+      id={props.id}
+      aria-live="polite"
+      className="mt-0.5 min-h-[1lh] text-xs leading-relaxed text-red-600"
+      role={props.message ? 'alert' : undefined}
+    >
+      {props.message}
+    </p>
+  )
+}
+
 const __RadioOption = (
   props: {
     id: string
@@ -271,6 +345,8 @@ const __RadioOption = (
 const __style = {
   input:
     'mt-3 min-h-14 w-full rounded-lg !border !border-solid !border-ivy6/50 bg-white px-4 py-3 text-base text-dark8 shadow-[0_4px_14px_rgba(21,50,35,0.04)] transition-[border-color,box-shadow] placeholder:text-dark2 focus:!border-ivy6 focus:shadow-[0_0_0_3px_rgba(26,101,62,0.1)] focus-visible:outline-none',
+  inputError:
+    '!border-red-600 focus:!border-red-600 focus:shadow-[0_0_0_3px_rgba(220,38,38,0.12)]',
   label: 'text-sm font-semibold text-dark8 sm:text-base',
   note: 'mt-2 text-xs leading-relaxed text-dark4',
   subLabel: 'text-xs font-semibold text-dark6 sm:text-sm',
