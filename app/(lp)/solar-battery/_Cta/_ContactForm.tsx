@@ -12,10 +12,12 @@ import { cn } from '@/lib/utils'
 
 import { action } from './action'
 import { type Schema, schema } from './schema'
+import Turnstile from 'react-turnstile'
 
 export const _ContactForm = () => {
   const refSuccess = useRef<HTMLParagraphElement | null>(null)
   const [stateSuccess, setSuccess] = useState(false)
+  const [stateTurnstileToken, setTurnstileToken] = useState(null)
 
   useEffect(() => {
     const el = refSuccess.current
@@ -62,7 +64,7 @@ export const _ContactForm = () => {
         clearErrors('root')
 
         try {
-          const result = await action(data)
+          const result = await action(data, stateTurnstileToken)
 
           if (result.success) {
             reset()
@@ -298,17 +300,25 @@ export const _ContactForm = () => {
         </div>
       </div>
 
-      <p className="mt-8 text-xs leading-6 text-dark5 sm:text-sm">
-        送信することで、
-        <Link
-          className="font-semibold text-ivy7 underline decoration-ivy7/40 underline-offset-4 transition-colors hover:text-ivy6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ivy6"
-          href="/privacy"
-        >
-          プライバシーポリシー
-        </Link>
-        に同意したものとします。
-      </p>
-
+      <div className="flex w-full flex-col items-center justify-center">
+        <Turnstile
+          sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+          onVerify={(token) => {
+            setTurnstileToken(token)
+          }}
+          appearance="interaction-only"
+        />
+        <p className="mt-8 text-xs leading-6 text-dark5 sm:text-sm">
+          送信することで、
+          <Link
+            className="font-semibold text-ivy7 underline decoration-ivy7/40 underline-offset-4 transition-colors hover:text-ivy6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ivy6"
+            href="/privacy"
+          >
+            プライバシーポリシー
+          </Link>
+          に同意したものとします。
+        </p>
+      </div>
       <button
         aria-busy={isSubmitting}
         className="group mt-5 inline-flex min-h-16 w-full items-center justify-center rounded-md border border-ivy8 bg-ivy8 px-5 py-4 text-sm font-semibold text-white shadow-lg transition-colors hover:bg-ivy7 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ivy6 sm:text-base"

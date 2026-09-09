@@ -5,7 +5,7 @@ import { z } from 'zod'
 
 import { type Schema, schema } from './schema'
 
-export const action = async (data: Schema) => {
+export const action = async (data: Schema, turnstileToken: string) => {
   const result = schema.safeParse(data)
 
   if (!result.success) {
@@ -17,6 +17,35 @@ export const action = async (data: Schema) => {
   }
 
   try {
+    const responseTurnstile = await fetch(
+      'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          secret: process.env.TURNSTILE_SECRET_KEY,
+          response: turnstileToken,
+        }),
+      },
+    )
+
+    const dataTurnstile = (await responseTurnstile.json()) as {
+      success: boolean
+      'error-codes'?: string[]
+    }
+
+    console.log({ dataTurnstile })
+
+    if (!dataTurnstile.success) {
+      return {
+        errors: {},
+        message: '認証に失敗しました。もう一度お試しください。',
+        success: false,
+      }
+    }
+
     const keyResend = process.env.RESEND_API_KEY
     const emailFrom = process.env.CONTACT_FROM_EMAIL
     const emailsTo = (process.env.CONTACT_TO_EMAIL ?? '')
