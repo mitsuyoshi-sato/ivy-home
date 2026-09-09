@@ -3,15 +3,33 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { ArrowRight, LoaderCircle } from 'lucide-react'
 import Link from 'next/link'
+import { useEffect, useRef, useState } from 'react'
 import type { UseFormRegisterReturn } from 'react-hook-form'
 import { useForm } from 'react-hook-form'
 
+import { motion } from '@/app/motion'
 import { cn } from '@/lib/utils'
 
 import { action } from './action'
 import { type Schema, schema } from './schema'
 
 export const _ContactForm = () => {
+  const refSuccess = useRef<HTMLParagraphElement | null>(null)
+  const [stateSuccess, setSuccess] = useState(false)
+
+  useEffect(() => {
+    const el = refSuccess.current
+
+    if (el && stateSuccess) {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        motion.set(el, { opacity: 1, translateY: '0px' })
+      } else {
+        motion.set(el, { opacity: 0, translateY: '6px' })
+        motion.to(el, 0.8, 'out', { opacity: 1, translateY: '0px' })
+      }
+    }
+  }, [stateSuccess])
+
   const {
     register,
     handleSubmit,
@@ -48,6 +66,7 @@ export const _ContactForm = () => {
 
           if (result.success) {
             reset()
+            setSuccess(true)
           }
 
           if (!result.success) {
@@ -313,15 +332,26 @@ export const _ContactForm = () => {
         )}
       </button>
 
-      {errors.root?.message && (
-        <p
-          aria-live="assertive"
-          className="mt-3 text-sm font-medium leading-relaxed text-red-600"
-          role="alert"
-        >
-          {errors.root.message}
-        </p>
-      )}
+      <div className="mt-3 min-h-6 text-center">
+        {stateSuccess && (
+          <p
+            ref={refSuccess}
+            aria-live="polite"
+            className="text-sm font-medium leading-relaxed text-green-700"
+          >
+            送信が完了しました。1~3営業日以内に担当者からご連絡いたします。
+          </p>
+        )}
+        {errors.root?.message && (
+          <p
+            aria-live="assertive"
+            className="text-sm font-medium leading-relaxed text-red-600"
+            role="alert"
+          >
+            {errors.root.message}
+          </p>
+        )}
+      </div>
     </form>
   )
 }
