@@ -1,9 +1,8 @@
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, LoaderCircle } from 'lucide-react'
 import Link from 'next/link'
-import { useActionState } from 'react'
 import type { UseFormRegisterReturn } from 'react-hook-form'
 import { useForm } from 'react-hook-form'
 
@@ -13,19 +12,18 @@ import { action } from './action'
 import { type Schema, schema } from './schema'
 
 export const _ContactForm = () => {
-  const [stateAction, formAction, isPending] = useActionState(action, {
-    errors: {},
-    message: '',
-    success: false,
-  })
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    clearErrors,
+    formState: { errors, isSubmitting },
+    reset,
+    setError,
     watch,
   } = useForm<Schema>({
     mode: 'onBlur',
     resolver: zodResolver(schema),
+    shouldUnregister: true,
     defaultValues: {
       name: '',
       contactMethod: 'phone',
@@ -42,9 +40,24 @@ export const _ContactForm = () => {
   return (
     <form
       noValidate
-      onSubmit={handleSubmit((_data, event) => {
-        if (event) {
-          formAction(new FormData(event.currentTarget))
+      onSubmit={handleSubmit(async (data) => {
+        clearErrors('root')
+
+        try {
+          const result = await action(data)
+
+          if (result.success) {
+            reset()
+          }
+
+          if (!result.success) {
+            setError('root', { message: result.message })
+          }
+        } catch {
+          setError('root', {
+            message:
+              '送信処理中に問題が発生しました。時間をおいて、もう一度お試しください。',
+          })
         }
       })}
     >
@@ -278,24 +291,35 @@ export const _ContactForm = () => {
       </p>
 
       <button
+        aria-busy={isSubmitting}
         className="group mt-5 inline-flex min-h-16 w-full items-center justify-center rounded-md border border-ivy8 bg-ivy8 px-5 py-4 text-sm font-semibold text-white shadow-lg transition-colors hover:bg-ivy7 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ivy6 sm:text-base"
-        disabled={isPending}
+        disabled={isSubmitting}
         type="submit"
       >
-        無料で相談する
-        <ArrowRight
-          aria-hidden="true"
-          className="ml-4 size-5 transition-transform group-hover:translate-x-1"
-        />
+        {isSubmitting && (
+          <>
+            <LoaderCircle aria-hidden="true" className="size-5 animate-spin" />
+            <span className="sr-only">送信中</span>
+          </>
+        )}
+        {!isSubmitting && (
+          <>
+            無料で相談する
+            <ArrowRight
+              aria-hidden="true"
+              className="ml-4 size-5 transition-transform group-hover:translate-x-1"
+            />
+          </>
+        )}
       </button>
 
-      {stateAction.message && (
+      {errors.root?.message && (
         <p
           aria-live="assertive"
           className="mt-3 text-sm font-medium leading-relaxed text-red-600"
           role="alert"
         >
-          {stateAction.message}
+          {errors.root.message}
         </p>
       )}
     </form>

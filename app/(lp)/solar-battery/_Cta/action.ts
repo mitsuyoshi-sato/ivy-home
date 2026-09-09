@@ -4,22 +4,13 @@ import { z } from 'zod'
 
 import { type Schema, schema } from './schema'
 
-export type ActionState = {
-  errors: Partial<Record<keyof Schema, string[] | undefined>>
-  message: string
-  success: boolean
-}
-
-export const action = async (
-  _previousState: ActionState,
-  formData: FormData,
-): Promise<ActionState> => {
-  const result = schema.safeParse(Object.fromEntries(formData))
+export const action = async (data: Schema) => {
+  const result = schema.safeParse(data)
 
   if (!result.success) {
     return {
       errors: z.flattenError(result.error).fieldErrors,
-      message: '',
+      message: '入力内容を確認してください。',
       success: false,
     }
   }
