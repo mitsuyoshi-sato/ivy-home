@@ -1,13 +1,14 @@
 'use client'
 
+import { zodResolver } from '@hookform/resolvers/zod'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import type { UseFormRegisterReturn } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 
 import { cn } from '@/lib/utils'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { schema, Schema } from './schema'
+
+import { Schema, schema } from './schema'
 
 export const _ContactForm = () => {
   const {
@@ -39,7 +40,7 @@ export const _ContactForm = () => {
       })}
     >
       <div className="grid gap-4 lg:grid-cols-2 lg:gap-x-7">
-        <div className="flex h-full flex-col gap-5 lg:contents">
+        <div className="contents">
           <div className="lg:col-start-1 lg:row-start-1">
             <div className="flex flex-wrap items-center gap-2">
               <label className={__style.label} htmlFor="contact-name">
@@ -158,7 +159,29 @@ export const _ContactForm = () => {
           </fieldset>
         </div>
 
-        <div className="flex h-full flex-col gap-8 lg:contents">
+        <div className="contents">
+          <fieldset className="lg:col-start-2 lg:row-start-1">
+            <legend className="flex flex-wrap items-center gap-2">
+              <span className={__style.label}>ご相談内容</span>
+              <__RequiredMark />
+            </legend>
+            <div className="mt-3 flex flex-wrap items-center gap-x-8 gap-y-2">
+              {__optionsConsultation.map((o) => (
+                <__RadioOption
+                  key={o.value}
+                  id={`contact-consultation-${o.value}`}
+                  label={o.label}
+                  value={o.value}
+                  {...register('consultationType')}
+                />
+              ))}
+            </div>
+            <__ErrorMessage
+              id="contact-consultation-error"
+              message={errors.consultationType?.message}
+            />
+          </fieldset>
+
           <fieldset className="lg:col-start-2 lg:row-start-2">
             <legend className="flex flex-wrap items-center gap-2">
               <span className={__style.label}>お住まいの地域</span>
@@ -203,28 +226,6 @@ export const _ContactForm = () => {
                 message={errors.city?.message}
               />
             </div>
-          </fieldset>
-
-          <fieldset className="lg:col-start-2 lg:row-start-1">
-            <legend className="flex flex-wrap items-center gap-2">
-              <span className={__style.label}>ご相談内容</span>
-              <__RequiredMark />
-            </legend>
-            <div className="mt-3 flex flex-wrap items-center gap-x-8 gap-y-2">
-              {__optionsConsultation.map((o) => (
-                <__RadioOption
-                  key={o.value}
-                  id={`contact-consultation-${o.value}`}
-                  label={o.label}
-                  value={o.value}
-                  {...register('consultationType')}
-                />
-              ))}
-            </div>
-            <__ErrorMessage
-              id="contact-consultation-error"
-              message={errors.consultationType?.message}
-            />
           </fieldset>
         </div>
 
