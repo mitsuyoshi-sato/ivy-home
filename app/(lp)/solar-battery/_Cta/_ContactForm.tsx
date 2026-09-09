@@ -38,7 +38,7 @@ export const _ContactForm = () => {
         console.log(data)
       })}
     >
-      <div className="grid gap-8 lg:grid-cols-2 lg:gap-x-7">
+      <div className="grid gap-4 lg:grid-cols-2 lg:gap-x-7">
         <div className="flex h-full flex-col gap-5 lg:contents">
           <div className="lg:col-start-1 lg:row-start-1">
             <div className="flex flex-wrap items-center gap-2">
