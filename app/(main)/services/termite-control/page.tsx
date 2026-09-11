@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
-import Script from 'next/script'
 
+import { serializeJsonLd } from '@/app/data/jsonLd'
+import { idOrganization } from '@/app/data/organization'
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { FooterLinks } from '@/components/FooterLinks'
 import { Hero } from '@/components/Hero'
@@ -24,9 +25,9 @@ export const metadata: Metadata = {
 export default function TermiteControlPage() {
   return (
     <>
-      <Script
+      <script
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: serializeJsonLd({
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
@@ -54,25 +55,16 @@ export default function TermiteControlPage() {
         id="breadcrumb-services-termiteControl"
         type="application/ld+json"
       />
-      <Script
+      <script
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: serializeJsonLd({
             '@context': 'https://schema.org',
             '@type': 'Service',
             name: 'シロアリ駆除サービス',
             description:
               '住宅を食害から守る専門サービス。大切な家の資産価値を守るため、プロの技術でシロアリを徹底駆除します。',
             provider: {
-              '@type': 'LocalBusiness',
-              name: '株式会社アイビーホーム',
-              url: 'https://www.ivyho.me',
-              address: {
-                '@type': 'PostalAddress',
-                streetAddress: '朝生田町7丁目2-22大興ビル201',
-                addressLocality: '松山市',
-                addressRegion: '愛媛県',
-                addressCountry: 'JP',
-              },
+              '@id': idOrganization,
             },
             areaServed: {
               '@type': 'State',
@@ -127,9 +119,9 @@ export default function TermiteControlPage() {
         id="service-termite-control"
         type="application/ld+json"
       />
-      <Script
+      <script
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: serializeJsonLd({
             '@context': 'https://schema.org',
             '@type': 'FAQPage',
             mainEntity: [

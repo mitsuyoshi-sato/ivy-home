@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
-import Script from 'next/script'
 
+import { serializeJsonLd } from '@/app/data/jsonLd'
+import { idOrganization } from '@/app/data/organization'
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { FooterLinks } from '@/components/FooterLinks'
 import { Hero } from '@/components/Hero'
@@ -24,9 +25,9 @@ export const metadata: Metadata = {
 export default function EcoCutePage() {
   return (
     <>
-      <Script
+      <script
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: serializeJsonLd({
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
@@ -54,25 +55,16 @@ export default function EcoCutePage() {
         id="breadcrumb-services-ecoCute"
         type="application/ld+json"
       />
-      <Script
+      <script
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: serializeJsonLd({
             '@context': 'https://schema.org',
             '@type': 'Service',
             name: 'エコキュート設置サービス',
             description:
               '空気の熱を利用して効率よくお湯をつくるエコキュート。電気代を大幅に削減し、環境にやさしい給湯システムです。',
             provider: {
-              '@type': 'LocalBusiness',
-              name: '株式会社アイビーホーム',
-              url: 'https://www.ivyho.me',
-              address: {
-                '@type': 'PostalAddress',
-                streetAddress: '朝生田町7丁目2-22大興ビル201',
-                addressLocality: '松山市',
-                addressRegion: '愛媛県',
-                addressCountry: 'JP',
-              },
+              '@id': idOrganization,
             },
             areaServed: {
               '@type': 'State',
@@ -127,9 +119,9 @@ export default function EcoCutePage() {
         id="service-eco-cute"
         type="application/ld+json"
       />
-      <Script
+      <script
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: serializeJsonLd({
             '@context': 'https://schema.org',
             '@type': 'FAQPage',
             mainEntity: [

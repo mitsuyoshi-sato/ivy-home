@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
-import Script from 'next/script'
 
+import { serializeJsonLd } from '@/app/data/jsonLd'
+import { dataOrganization } from '@/app/data/organization'
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { Hero } from '@/components/Hero'
 
@@ -24,9 +25,9 @@ export const metadata: Metadata = {
 export default function Company() {
   return (
     <>
-      <Script
+      <script
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: serializeJsonLd({
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
@@ -48,28 +49,17 @@ export default function Company() {
         id="breadcrumb-company"
         type="application/ld+json"
       />
-      <Script
+      <script
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'LocalBusiness',
-            name: '株式会社アイビーホーム',
+          __html: serializeJsonLd({
+            ...dataOrganization,
             description:
               '愛媛県の太陽光パネル・蓄電池・エコキュート・シロアリ対策・リフォーム。「未来の暮らしを、つくる。」をテーマに、お客様の快適で安心な毎日を、エコで安全な住まいとともにサポートします。',
-            url: 'https://www.ivyho.me',
-            logo: 'https://www.ivyho.me/images/ivy-home.svg',
             image: 'https://www.ivyho.me/images/ivy-home.png',
             foundingDate: '2025-10',
             founder: {
               '@type': 'Person',
               name: '小西 裕也',
-            },
-            address: {
-              '@type': 'PostalAddress',
-              streetAddress: '朝生田町7丁目2-22大興ビル201',
-              addressLocality: '松山市',
-              addressRegion: '愛媛県',
-              addressCountry: 'JP',
             },
             areaServed: {
               '@type': 'State',

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
-import Script from 'next/script'
 
+import { serializeJsonLd } from '@/app/data/jsonLd'
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { Hero } from '@/components/Hero'
 
@@ -23,9 +23,9 @@ export const metadata: Metadata = {
 export default function Recruit() {
   return (
     <>
-      <Script
+      <script
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: serializeJsonLd({
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [

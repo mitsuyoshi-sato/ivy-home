@@ -2,6 +2,10 @@
 
 import { useEffect, useRef } from 'react'
 
+import {
+  telephoneDisplayOrganization,
+  telephoneHrefOrganization,
+} from '@/app/data/organization'
 import { motion } from '@/app/motion'
 
 export const _InfoSection = () => {
@@ -112,6 +116,17 @@ export const _InfoSection = () => {
                 〒780-0928
               </span>
               高知県高知市越前町2丁目6-21奥田ビルⅡ2階
+            </p>
+          </div>
+          <div className="flex w-full items-stretch border-b border-gray-200">
+            <h3 className="w-1/4 py-2 leading-6 text-gray-600">代表電話</h3>
+            <p className="w-3/4 shrink-0 py-2 text-base font-semibold leading-6 text-dark6">
+              <a
+                className="text-ivy7 underline underline-offset-4 hover:opacity-70"
+                href={telephoneHrefOrganization}
+              >
+                {telephoneDisplayOrganization}
+              </a>
             </p>
           </div>
           <div className="flex w-full items-stretch border-b border-gray-200">

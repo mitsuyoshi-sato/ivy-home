@@ -1,9 +1,10 @@
 import { format } from 'date-fns'
 import type { Metadata } from 'next'
-import Script from 'next/script'
 
 import type { ContentDetailData } from '@/app/data/content'
 import { configContent, getContentHref } from '@/app/data/content'
+import { serializeJsonLd } from '@/app/data/jsonLd'
+import { idOrganization, nameOrganization } from '@/app/data/organization'
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { FooterLinks } from '@/components/FooterLinks'
 
@@ -42,9 +43,9 @@ export const getContentMetadata = (
 export const ContentDetail = (props: { data: ContentDetailData }) => {
   return (
     <>
-      <Script
+      <script
         dangerouslySetInnerHTML={{
-          __html: __serializeJsonLd({
+          __html: serializeJsonLd({
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
@@ -72,15 +73,21 @@ export const ContentDetail = (props: { data: ContentDetailData }) => {
         id={`breadcrumb-${props.data.kind}-${props.data.slug}`}
         type="application/ld+json"
       />
-      <Script
+      <script
         dangerouslySetInnerHTML={{
-          __html: __serializeJsonLd({
+          __html: serializeJsonLd({
             '@context': 'https://schema.org',
             '@type': configContent[props.data.kind].schemaType,
-            author: {
-              '@type': 'Person',
-              name: props.data.author,
-            },
+            author:
+              props.data.author === nameOrganization
+                ? {
+                    '@id': idOrganization,
+                    '@type': 'Organization',
+                  }
+                : {
+                    '@type': 'Person',
+                    name: props.data.author,
+                  },
             dateModified: props.data.revisedAt,
             datePublished: props.data.publishedAt,
             description: props.data.subtitle,
@@ -91,12 +98,7 @@ export const ContentDetail = (props: { data: ContentDetailData }) => {
               '@id': `https://www.ivyho.me${getContentHref(props.data)}`,
             },
             publisher: {
-              '@type': 'Organization',
-              logo: {
-                '@type': 'ImageObject',
-                url: 'https://www.ivyho.me/images/ivy-home.svg',
-              },
-              name: '株式会社アイビーホーム',
+              '@id': idOrganization,
             },
           }),
         }}
@@ -143,6 +145,3 @@ export const ContentDetail = (props: { data: ContentDetailData }) => {
 
 const __getAbsoluteUrl = (path: string) =>
   path.startsWith('http') ? path : `https://www.ivyho.me${path}`
-
-const __serializeJsonLd = (data: object) =>
-  JSON.stringify(data).replace(/</g, '\\u003c')

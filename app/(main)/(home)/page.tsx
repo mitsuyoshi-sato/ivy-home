@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 
 import { getContentSummaries } from '@/app/data/contentApi'
+import { serializeJsonLd } from '@/app/data/jsonLd'
+import { dataOrganization } from '@/app/data/organization'
 
 import { Hero } from '../../../components/Hero'
 import { _CampaignSection } from './_CampanySection'
@@ -27,6 +29,13 @@ const Page = async () => {
 
   return (
     <>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: serializeJsonLd(dataOrganization),
+        }}
+        id="local-business-home"
+        type="application/ld+json"
+      />
       <Hero
         overlayHidden
         description="株式会社アイビーホームは、愛媛県松山市を拠点に、太陽光・蓄電池・リフォームを手がけています。"

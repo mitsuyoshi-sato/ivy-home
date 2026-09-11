@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
-import Script from 'next/script'
 
+import { serializeJsonLd } from '@/app/data/jsonLd'
+import { idOrganization } from '@/app/data/organization'
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { FooterLinks } from '@/components/FooterLinks'
 import { Hero } from '@/components/Hero'
@@ -24,9 +25,9 @@ export const metadata: Metadata = {
 export default function ReformPage() {
   return (
     <>
-      <Script
+      <script
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: serializeJsonLd({
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
@@ -54,24 +55,16 @@ export default function ReformPage() {
         id="breadcrumb-services-reform"
         type="application/ld+json"
       />
-      <Script
+      <script
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: serializeJsonLd({
             '@context': 'https://schema.org',
             '@type': 'Service',
             name: 'リフォームサービス',
-            description: 'マイホームをリフォームして、これからも長く住み続けられるように。キッチン、バスルーム、内装リフォームなど、お客様のご要望にお応えします。',
+            description:
+              'マイホームをリフォームして、これからも長く住み続けられるように。キッチン、バスルーム、内装リフォームなど、お客様のご要望にお応えします。',
             provider: {
-              '@type': 'LocalBusiness',
-              name: '株式会社アイビーホーム',
-              url: 'https://www.ivyho.me',
-              address: {
-                '@type': 'PostalAddress',
-                streetAddress: '朝生田町7丁目2-22大興ビル201',
-                addressLocality: '松山市',
-                addressRegion: '愛媛県',
-                addressCountry: 'JP',
-              },
+              '@id': idOrganization,
             },
             areaServed: {
               '@type': 'State',
@@ -134,9 +127,9 @@ export default function ReformPage() {
         id="service-reform"
         type="application/ld+json"
       />
-      <Script
+      <script
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: serializeJsonLd({
             '@context': 'https://schema.org',
             '@type': 'FAQPage',
             mainEntity: [
