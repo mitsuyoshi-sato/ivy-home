@@ -1,15 +1,11 @@
-interface IvyHomeLogoProps {
-  className?: string
-}
-
-export const IvyHomeLogo = ({ className = "h-10 w-auto" }: IvyHomeLogoProps) => (
+export const IvyHomeLogo = (props: { className?: string }) => (
   <svg
     width="107"
     height="41"
     viewBox="0 0 107 41"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    className={className}
+    className={props.className ?? 'h-10 w-auto'}
   >
     <mask
       id="path-1-outside-1_793_156"
