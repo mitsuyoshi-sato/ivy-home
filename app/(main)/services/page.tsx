@@ -92,7 +92,10 @@ export default function ServicesPage() {
           <_ServiceCard
             description="電気をためて夜間や緊急時にも活用できます。"
             href="/services/battery"
-            image={{ src: '/images/battery.webp', alt: '蓄電池の画像' }}
+            image={{
+              src: '/images/battery-optimized.webp',
+              alt: '蓄電池の画像',
+            }}
             index={1}
             title="蓄電池"
           />
