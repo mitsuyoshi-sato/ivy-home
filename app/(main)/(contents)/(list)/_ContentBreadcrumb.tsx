@@ -3,6 +3,7 @@
 import { usePathname } from 'next/navigation'
 
 import { configContent, kindsContent } from '@/app/data/content'
+import { serializeJsonLd } from '@/app/data/jsonLd'
 import { Breadcrumb } from '@/components/Breadcrumb'
 
 export const _ContentBreadcrumb = () => {
@@ -16,7 +17,7 @@ export const _ContentBreadcrumb = () => {
     <>
       <script
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: serializeJsonLd({
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
@@ -33,7 +34,7 @@ export const _ContentBreadcrumb = () => {
                 item: `https://www.ivyho.me${config.path}`,
               },
             ],
-          }).replace(/</g, '\\u003c'),
+          }),
         }}
         id={`breadcrumb-${kind ?? 'news'}`}
         type="application/ld+json"

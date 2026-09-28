@@ -13,6 +13,7 @@ import type {
   ContentSummary,
 } from './content'
 import { configContent, kindsContent } from './content'
+import { nameOrganization } from './organization'
 
 type ContentDetailResponse = {
   author?: string[]
@@ -196,7 +197,7 @@ const __getContentDetailData = (
   content: Awaited<ReturnType<typeof __getContentDetailResponse>>,
   kind: ContentKind,
 ): ContentDetailData => {
-  const nameAuthor = content.author?.[0] ?? '株式会社アイビーホーム'
+  const nameAuthor = content.author?.[0] ?? nameOrganization
 
   return {
     author: nameAuthor,

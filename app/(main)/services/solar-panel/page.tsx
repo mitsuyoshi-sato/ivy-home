@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
-import Script from 'next/script'
 
+import { serializeJsonLd } from '@/app/data/jsonLd'
+import { idOrganization } from '@/app/data/organization'
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { FooterLinks } from '@/components/FooterLinks'
 import { Hero } from '@/components/Hero'
@@ -24,9 +25,9 @@ export const metadata: Metadata = {
 export default function SolarPanelPage() {
   return (
     <>
-      <Script
+      <script
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: serializeJsonLd({
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
@@ -54,25 +55,16 @@ export default function SolarPanelPage() {
         id="breadcrumb-services-solarPanel"
         type="application/ld+json"
       />
-      <Script
+      <script
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: serializeJsonLd({
             '@context': 'https://schema.org',
             '@type': 'Service',
             name: '太陽光パネル設置サービス',
             description:
               '未来のエネルギーをつくるための安心の選択肢。太陽光発電システムで光熱費を削減し、環境にやさしい暮らしを実現します。',
             provider: {
-              '@type': 'LocalBusiness',
-              name: '株式会社アイビーホーム',
-              url: 'https://www.ivyho.me',
-              address: {
-                '@type': 'PostalAddress',
-                streetAddress: '朝生田町7丁目2-22大興ビル201',
-                addressLocality: '松山市',
-                addressRegion: '愛媛県',
-                addressCountry: 'JP',
-              },
+              '@id': idOrganization,
             },
             areaServed: {
               '@type': 'State',
@@ -127,9 +119,9 @@ export default function SolarPanelPage() {
         id="service-solar-panel"
         type="application/ld+json"
       />
-      <Script
+      <script
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: serializeJsonLd({
             '@context': 'https://schema.org',
             '@type': 'FAQPage',
             mainEntity: [

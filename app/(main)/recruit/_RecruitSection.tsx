@@ -2,6 +2,10 @@
 
 import { useEffect, useRef } from 'react'
 
+import {
+  telephoneDisplayOrganization,
+  telephoneHrefOrganization,
+} from '@/app/data/organization'
 import { SectionHeader } from '@/components/SectionHeader'
 
 import { motion } from '../../motion'
@@ -118,7 +122,12 @@ export const _RecruitSection = () => {
                 <span className="inline-block w-[120px] text-gray-600">
                   TEL
                 </span>
-                <span className="font-semibold">089-907-6504</span>
+                <a
+                  className="font-semibold text-ivy7 underline underline-offset-4 hover:opacity-70"
+                  href={telephoneHrefOrganization}
+                >
+                  {telephoneDisplayOrganization}
+                </a>
               </p>
               <p className="text-sm sm:text-base">
                 <span className="inline-block w-[120px] text-gray-600">
@@ -139,9 +148,12 @@ export const _RecruitSection = () => {
                 <span className="inline-block w-[120px] text-gray-600">
                   Email
                 </span>
-                <span className="font-semibold">
+                <a
+                  className="font-semibold text-ivy7 underline underline-offset-4 hover:opacity-70"
+                  href="mailto:ivyhome.corp2025@outlook.jp"
+                >
                   ivyhome.corp2025@outlook.jp
-                </span>
+                </a>
               </p>
             </div>
           </div>

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
-import Script from 'next/script'
 
+import { serializeJsonLd } from '@/app/data/jsonLd'
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { Hero } from '@/components/Hero'
 import { SectionHeader } from '@/components/SectionHeader'
@@ -24,9 +24,9 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <>
-      <Script
+      <script
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: serializeJsonLd({
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
@@ -73,7 +73,8 @@ export default function ServicesPage() {
       />
       <section className="wrapper">
         <SectionHeader
-          description="私たちは、暮らしをより快適で安心にするさまざまなサービスを提供しています。\n日常のささいな不安や課題に目を向け、家庭や暮らしの安全を守るとともに、将来に向けた備えや安心のある生活を支える取り組みを行っています。"
+          description={`私たちは、暮らしをより快適で安心にするさまざまなサービスを提供しています。
+日常のささいな不安や課題に目を向け、家庭や暮らしの安全を守るとともに、将来に向けた備えや安心のある生活を支える取り組みを行っています。`}
           subtitle="Services"
           title="事業内容一覧"
         />
@@ -92,7 +93,10 @@ export default function ServicesPage() {
           <_ServiceCard
             description="電気をためて夜間や緊急時にも活用できます。"
             href="/services/battery"
-            image={{ src: '/images/website/battery.webp', alt: '蓄電池の画像' }}
+            image={{
+              src: '/images/website/battery-optimized.webp',
+              alt: '蓄電池の画像',
+            }}
             index={1}
             title="蓄電池"
           />

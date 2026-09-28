@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
-import Script from 'next/script'
 
+import { serializeJsonLd } from '@/app/data/jsonLd'
+import { idOrganization } from '@/app/data/organization'
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { FooterLinks } from '@/components/FooterLinks'
 import { Hero } from '@/components/Hero'
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
     description:
       '電気をためて夜間や緊急時にも活用できる蓄電池システム。停電時にも安心の電力を供給し、光熱費の削減にも貢献します。',
     images: {
-      url: '/images/website/battery-og.jpg',
+      url: '/images/website/battery-optimized.webp',
     },
   },
 }
@@ -24,9 +25,9 @@ export const metadata: Metadata = {
 export default function BatteryPage() {
   return (
     <>
-      <Script
+      <script
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: serializeJsonLd({
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
@@ -54,25 +55,16 @@ export default function BatteryPage() {
         id="breadcrumb-services-battery"
         type="application/ld+json"
       />
-      <Script
+      <script
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: serializeJsonLd({
             '@context': 'https://schema.org',
             '@type': 'Service',
             name: '蓄電池設置サービス',
             description:
               '電気をためて夜間や緊急時にも活用できる蓄電池システム。停電時にも安心の電力を供給し、光熱費の削減にも貢献します。',
             provider: {
-              '@type': 'LocalBusiness',
-              name: '株式会社アイビーホーム',
-              url: 'https://www.ivyho.me',
-              address: {
-                '@type': 'PostalAddress',
-                streetAddress: '朝生田町7丁目2-22大興ビル201',
-                addressLocality: '松山市',
-                addressRegion: '愛媛県',
-                addressCountry: 'JP',
-              },
+              '@id': idOrganization,
             },
             areaServed: {
               '@type': 'State',
@@ -127,9 +119,9 @@ export default function BatteryPage() {
         id="service-battery"
         type="application/ld+json"
       />
-      <Script
+      <script
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: serializeJsonLd({
             '@context': 'https://schema.org',
             '@type': 'FAQPage',
             mainEntity: [
@@ -154,7 +146,7 @@ export default function BatteryPage() {
                 name: '蓄電池の寿命はどのくらいですか？',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: '一般的に10～15年程度です。メーカーによっては10年保証が付いている製品もあります。定期的なメンテナンスで、より長く安心してお使いいただけます。',
+                  text: '近年の蓄電池は長寿命化が進んでおり、製品によっては30年前後の使用が期待できます。また、10年保証が付いている製品もあり、長く安心してお使いいただけます。',
                 },
               },
               {
@@ -180,7 +172,7 @@ export default function BatteryPage() {
         type="application/ld+json"
       />
       <Hero
-        image={{ src: '/images/website/light.webp', alt: '' }}
+        image={{ src: '/images/website/battery-hero.webp', alt: '' }}
         overlayOpacity="40"
         subtitle="Battery"
         title="蓄電池"

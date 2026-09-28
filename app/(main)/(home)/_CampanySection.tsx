@@ -42,7 +42,9 @@ export const _CampaignSection = () => {
       <SectionHeader
         button={{ href: '/company', text: '会社情報をみる' }}
         className="lg:w-full xl:w-[380px] xl:shrink-0"
-        description="私たちが大切にしているのは、誠実にお客様と向き合うこと。\n快適な暮らしから生まれる 笑顔や思い出 が、私たちの原点です。"
+        description={
+          '私たちが大切にしているのは、誠実にお客様と向き合うこと。\n快適な暮らしから生まれる 笑顔や思い出 が、私たちの原点です。'
+        }
         subtitle="Campany"
         title="アイビーホームの強み"
       />
