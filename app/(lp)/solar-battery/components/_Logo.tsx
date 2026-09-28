@@ -4,9 +4,9 @@ import Link from 'next/link'
 export const _Logo = (props: { inverted?: boolean; onClick?: () => void }) => {
   return (
     <Link
-      aria-label="太陽光・蓄電池LPトップへ"
+      aria-label="アイビーホームのトップページへ"
       className="relative z-20 shrink-0 rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ivy6"
-      href="/solar-battery"
+      href="/"
       onClick={props.onClick}
     >
       <span className="relative block w-[118px] sm:w-[132px]">
