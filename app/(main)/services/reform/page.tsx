@@ -180,7 +180,7 @@ export default function ReformPage() {
         type="application/ld+json"
       />
       <Hero
-        image={{ src: '/images/kitchen.jpg', alt: 'リフォーム' }}
+        image={{ src: '/images/website/kitchen.jpg', alt: 'リフォーム' }}
         overlayOpacity="40"
         subtitle="Reform"
         title="リフォーム"

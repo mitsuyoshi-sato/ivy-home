@@ -18,7 +18,7 @@ export const dataOrganization = {
     postalCode: '790-0952',
     streetAddress: '朝生田町7丁目2-22 大興ビル201',
   },
-  logo: 'https://www.ivyho.me/images/ivy-home.svg',
+  logo: 'https://www.ivyho.me/images/website/ivy-home.svg',
   name: nameOrganization,
   telephone: '+81-89-907-6504',
   url: 'https://www.ivyho.me',

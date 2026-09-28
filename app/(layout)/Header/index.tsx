@@ -31,7 +31,7 @@ export const Header = (props: {
               <img
                 alt="株式会社アイビーホーム"
                 className="w-full"
-                src="/images/logo-text.svg"
+                src="/images/website/logo-text.svg"
               />
             </div>
             <Icon

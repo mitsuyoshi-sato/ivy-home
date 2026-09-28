@@ -151,7 +151,7 @@ export const _Reform = () => {
           <_InfoCard
             alt="シンク"
             description="キッチン、浴室、トイレなどの水回りから、外壁塗装、屋根工事まで、住まいのあらゆるリフォームに対応します。"
-            image="/images/shink.jpg"
+            image="/images/website/shink.jpg"
             title="多様なリフォームに対応"
           />
         </article>
@@ -162,7 +162,7 @@ export const _Reform = () => {
           <_InfoCard
             alt="IHで料理をしている"
             description={`建て替えより費用を抑えつつ、ライフスタイルに合わせた理想の住まいを実現します。無駄を減らしたプランで、予算も安心です。`}
-            image="/images/ih-cooking.jpg"
+            image="/images/website/ih-cooking.jpg"
             title="コストを抑えつつ理想の住まいを"
           />
         </article>
@@ -173,7 +173,7 @@ export const _Reform = () => {
           <_InfoCard
             alt="家族団欒の様子"
             description="断熱や設備改善で光熱費削減。長期的には省エネによるコスト削減と住まいの資産価値向上にもつながります。"
-            image="/images/family.jpg"
+            image="/images/website/family.jpg"
             title="省エネ・快適な暮らしへ"
           />
         </article>

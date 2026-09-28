@@ -153,7 +153,7 @@ export const _SolarPanel = (props: { className?: string }) => {
           <_InfoCard
             alt="ソーラーパネルの設置工事"
             description="太陽の光を電気に変えるクリーンエネルギーシステムです。屋根や敷地に設置したパネルが太陽光を吸収し、家庭で使える電力を供給します。"
-            image="/images/solar-panel-construction.webp"
+            image="/images/website/solar-panel-construction.webp"
             title="太陽光パネルの仕組み"
           />
         </article>
@@ -164,7 +164,7 @@ export const _SolarPanel = (props: { className?: string }) => {
           <_InfoCard
             alt="ソーラーパネルが設置された住宅街"
             description="光熱費を削減しながら、電力自給率を高めることができます。余った電力は蓄電池に保存したり、電力会社に売ることも可能です。"
-            image="/images/houses.webp"
+            image="/images/website/houses.webp"
             title="家計を助ける投資"
           />
         </article>
@@ -176,7 +176,7 @@ export const _SolarPanel = (props: { className?: string }) => {
             alt="営業担当者が自宅でお客様の話を聞く様子"
             description={`設置後も、トラブル時やご不明点に迅速に対応。
 地域に根ざした会社だからこそ、いつでも頼れる安心のサポートをご提供いたします。`}
-            image="/images/afterfollow.jpg"
+            image="/images/website/afterfollow.jpg"
             title="安心のアフターフォロー"
           />
         </article>

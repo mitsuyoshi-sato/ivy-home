@@ -80,7 +80,7 @@ const MainLayout = (props: { children: React.ReactNode }) => {
               <img
                 alt="株式会社アイビーホーム"
                 className="w-24 shrink-0 md:w-[120px]"
-                src="/images/ivy-home.svg"
+                src="/images/website/ivy-home.svg"
               />
               <div className="-translate-y-2 text-xs font-medium text-gray-600">
                 株式会社アイビーホーム

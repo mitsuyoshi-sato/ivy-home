@@ -50,7 +50,7 @@ export const _ContentsSection = (props: { contents: ContentSummary[] }) => {
         <SectionHeader
           button={{
             href: configContent.news.path,
-            text: 'コンテンツをみる',
+            text: 'コンテンツ一覧をみる',
             className: 'hidden md:block',
           }}
           description="会社からのニュース、住まいと暮らしのお役立ち情報、実際の施工事例をご紹介します。"
@@ -137,7 +137,7 @@ export const _ContentsSection = (props: { contents: ContentSummary[] }) => {
         >
           <Link href="/news">
             <Button icon={ArrowRightIcon} iconPosition="right">
-              コンテンツをみる
+              コンテンツ一覧をみる
             </Button>
           </Link>
         </div>

@@ -9,6 +9,7 @@ import { Breadcrumb } from '@/components/Breadcrumb'
 import { FooterLinks } from '@/components/FooterLinks'
 
 import { _ContentArticle } from './_ContentArticle'
+import { _ContentCta } from './_ContentCta'
 
 export type ContentPageProps = {
   params: Promise<{ slug: string }>
@@ -130,6 +131,7 @@ export const ContentDetail = (props: { data: ContentDetailData }) => {
           formattedDate: format(props.data.publishedAt, 'yyyy.MM.dd'),
         }}
       />
+      <_ContentCta />
       <FooterLinks
         items={[
           {

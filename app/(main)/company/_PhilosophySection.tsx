@@ -67,7 +67,7 @@ export const _PhilosophySection = () => {
           <img
             alt="アイビーホームのロゴ"
             className="w-60 sm:w-[300px]"
-            src="/images/ivy-home.svg"
+            src="/images/website/ivy-home.svg"
           />
           <h2 className="text-2xl font-bold leading-relaxed sm:text-4xl">
             未来の暮らしを、つくる。

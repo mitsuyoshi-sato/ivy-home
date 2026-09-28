@@ -56,7 +56,7 @@ export const _CampaignSection = () => {
         <img
           alt="手を重ねて団結する様子"
           className="size-full object-cover"
-          src="/images/unity.webp"
+          src="/images/website/unity.webp"
         />
       </div>
     </div>

@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   description:
     '愛媛県の太陽光パネル・蓄電池・エコキュート・シロアリ対策・リフォーム。「未来の暮らしを、つくる。」をテーマに、お客様の快適で安心な毎日を、エコで安全な住まいとともにサポートします。',
   icons: {
-    icon: '/images/favicon.png',
+    icon: '/images/website/favicon.png',
   },
   other: {
     'facebook-domain-verification': '7asc08j725wnczc3ibhszzugzeynr3',
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/images/ivy-home.png',
+        url: '/images/website/ivy-home.png',
         width: 1200,
         height: 630,
         alt: '株式会社アイビーホーム',

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description: configContent.work.description,
   openGraph: {
     description: configContent.work.description,
-    images: [{ url: '/images/ivy-home.png' }],
+    images: [{ url: '/images/website/ivy-home.png' }],
     title: `${configContent.work.label} / 株式会社アイビーホーム`,
     url: configContent.work.path,
   },

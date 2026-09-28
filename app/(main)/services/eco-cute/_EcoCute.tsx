@@ -153,7 +153,7 @@ export const _EcoCute = () => {
             alt="エコキュート"
             description={`夜間の安い電力を利用して効率よくお湯を沸かすので、毎月の光熱費を大幅に抑えられます。
               長期的には家計の負担軽減にもつながります。`}
-            image="/images/eco-cute.jpg"
+            image="/images/website/eco-cute.jpg"
             title="長期的に大きなメリット"
           />
         </article>
@@ -165,7 +165,7 @@ export const _EcoCute = () => {
             alt="子供が手を洗っている様子"
             description={`大量タンクにより、お風呂や洗面所、キッチンなど複数箇所で快適に給湯。
               忙しい朝も家族全員がストレスなく使えます。`}
-            image="/images/hand-wash.jpg"
+            image="/images/website/hand-wash.jpg"
             title="家族みんなが快適に使える"
           />
         </article>
@@ -176,7 +176,7 @@ export const _EcoCute = () => {
           <_InfoCard
             alt="シャワーヘッドから水が出ている様子"
             description={`火を使わず安全にお湯を供給できる点や、環境負荷を抑えられる点もメリットとして考慮すると、経済性だけでなく暮らし全体の安心にもつながります。`}
-            image="/images/shower.jpg"
+            image="/images/website/shower.jpg"
             title="火を使わずにお湯を沸かす"
           />
         </article>

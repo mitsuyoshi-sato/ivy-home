@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     description:
       '愛媛県にお住まいの方へ、太陽光パネル、蓄電池、エコキュート、リフォームなど、暮らしの安全と安心を守る取り組みをご紹介します。',
     images: {
-      url: '/images/ivy-home.svg',
+      url: '/images/website/ivy-home.svg',
     },
   },
 }
@@ -84,7 +84,7 @@ export default function ServicesPage() {
             description="未来のエネルギーをつくるための安心の選択肢です。"
             href="/services/solar-panel"
             image={{
-              src: '/images/houses.webp',
+              src: '/images/website/houses.webp',
               alt: '太陽光パネルを設置した住宅',
             }}
             index={0}
@@ -94,7 +94,7 @@ export default function ServicesPage() {
             description="電気をためて夜間や緊急時にも活用できます。"
             href="/services/battery"
             image={{
-              src: '/images/battery-optimized.webp',
+              src: '/images/website/battery-optimized.webp',
               alt: '蓄電池の画像',
             }}
             index={1}
@@ -103,7 +103,10 @@ export default function ServicesPage() {
           <_ServiceCard
             description="空気の熱を利用して効率よくお湯をつくる給湯器です。"
             href="/services/eco-cute"
-            image={{ src: '/images/bathroom.jpg', alt: 'お湯の溜まったお風呂' }}
+            image={{
+              src: '/images/website/bathroom.jpg',
+              alt: 'お湯の溜まったお風呂',
+            }}
             index={2}
             title="エコキュート"
           />
@@ -111,7 +114,7 @@ export default function ServicesPage() {
             description="住宅を食害から守る専門サービス。大切な家の資産価値を守ります。"
             href="/services/termite-control"
             image={{
-              src: '/images/pest-control.webp',
+              src: '/images/website/pest-control.webp',
               alt: 'シロアリを虫眼鏡で発見しているイメージ',
             }}
             index={3}
@@ -121,7 +124,7 @@ export default function ServicesPage() {
             description="マイホームをリフォームして、これからも長く住み続けられるように。"
             href="/services/reform"
             image={{
-              src: '/images/kitchen.jpg',
+              src: '/images/website/kitchen.jpg',
               alt: 'リフォームされたキッチン',
             }}
             index={4}

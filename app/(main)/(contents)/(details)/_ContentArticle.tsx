@@ -19,7 +19,8 @@ type ContentSection = ContentDetailData['sections'][number]
 export const _ContentArticle = (props: {
   data: ContentDetailData & { formattedDate: string }
 }) => {
-  const isFallbackAuthorImage = props.data.authorImage === '/images/favicon.png'
+  const isFallbackAuthorImage =
+    props.data.authorImage === '/images/website/favicon.png'
   const refCreatedBy = useRef<HTMLDivElement>(null)
   const refImage = useRef<HTMLDivElement>(null)
   const refSectionMap = useRef<Record<string, HTMLElement | null>>({})

@@ -155,7 +155,7 @@ export const Hamburger = (props: {
               <img
                 alt="メニューの背景"
                 className="size-full object-cover"
-                src={`/images/hero-${
+                src={`/images/website/hero-${
                   pathname === '/'
                     ? 'home'
                     : (
