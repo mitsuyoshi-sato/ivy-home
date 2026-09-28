@@ -171,7 +171,43 @@ export const _ServicesSection = () => {
           </Button>
         </Link>
       </div>
+      <__SolarBatteryCta />
     </div>
+  )
+}
+
+const __SolarBatteryCta = () => {
+  return (
+    <article className="relative mt-4 min-h-[280px] overflow-hidden rounded-xl border border-ivy5/30 shadow-sm md:mt-6 md:min-h-[320px]">
+      <Link
+        className="group/button peer/button absolute bottom-10 left-6 z-20 inline-flex min-h-12 items-center justify-center rounded-full border border-ivy7 bg-ivy6 px-5 py-3 text-sm font-bold text-white shadow-lg transition-all duration-200 hover:bg-ivy7 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ivy6 sm:left-10 md:left-14"
+        href="/solar-battery"
+      >
+        太陽光・蓄電池について詳しく見る
+        <ArrowRightIcon
+          aria-hidden="true"
+          className="ml-2 size-4 transition-transform duration-200 group-hover/button:translate-x-1"
+        />
+      </Link>
+      <img
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 size-full object-cover object-right transition-transform duration-700 peer-hover/button:scale-105 peer-focus-visible/button:scale-[1.02]"
+        src="/images/website/cta-optimized.webp"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-white via-white to-white/70 md:via-white/80 md:to-transparent" />
+      <div className="relative flex min-h-[280px] max-w-2xl flex-col justify-center px-6 pb-28 pt-10 sm:px-10 md:min-h-[320px] md:px-14">
+        <p className="text-sm font-semibold tracking-wider text-ivy7">
+          Solar & Battery
+        </p>
+        <h3 className="mt-3 text-2xl font-bold leading-relaxed text-dark8 md:text-3xl">
+          太陽光・蓄電池をご検討中の方へ
+        </h3>
+        <p className="mt-3 max-w-xl text-sm font-semibold leading-7 text-dark5 md:text-base">
+          電気代やご家庭の状況に合わせて、最適な設備をご提案します。
+        </p>
+      </div>
+    </article>
   )
 }
 
