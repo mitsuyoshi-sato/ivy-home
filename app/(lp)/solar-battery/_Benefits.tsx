@@ -130,10 +130,10 @@ const __itemsTrust = [
     icon: HandCoins,
     classValue: 'text-[34px] leading-none sm:text-[38px]',
     label: '施工実績',
-    note: '※2024年9月時点',
+    note: '※2026年8月時点',
     prefix: '',
     suffix: '件以上',
-    value: '1,200',
+    value: '250',
   },
   {
     icon: MapPin,
