@@ -97,7 +97,7 @@ const __itemsFlow = [
     title: 'ご契約',
   },
   {
-    description: '経験豊富なスタッフが、安全かつ丁寧に施工・設置します。',
+    description: '内容に応じた施工体制で、安全に配慮しながら設置を進めます。',
     icon: HardHat,
     number: '04',
     title: '施工・設置',
