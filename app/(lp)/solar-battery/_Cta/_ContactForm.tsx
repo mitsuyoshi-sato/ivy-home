@@ -6,18 +6,20 @@ import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import type { UseFormRegisterReturn } from 'react-hook-form'
 import { useForm } from 'react-hook-form'
+import Turnstile, { type BoundTurnstileObject } from 'react-turnstile'
 
 import { motion } from '@/app/motion'
 import { cn } from '@/lib/utils'
 
 import { action } from './action'
 import { type Schema, schema } from './schema'
-import Turnstile from 'react-turnstile'
+import { actionTurnstile } from './turnstile'
 
 export const _ContactForm = () => {
   const refSuccess = useRef<HTMLParagraphElement | null>(null)
+  const refTurnstile = useRef<BoundTurnstileObject | null>(null)
   const [stateSuccess, setSuccess] = useState(false)
-  const [stateTurnstileToken, setTurnstileToken] = useState(null)
+  const [stateTurnstileToken, setTurnstileToken] = useState<string | null>(null)
 
   useEffect(() => {
     const el = refSuccess.current
@@ -56,28 +58,46 @@ export const _ContactForm = () => {
     },
   })
   const contactMethod = watch('contactMethod')
+  const keyTurnstile = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY
 
   return (
     <form
       noValidate
       onSubmit={handleSubmit(async (data) => {
         clearErrors('root')
+        setSuccess(false)
 
-        try {
-          const result = await action(data, stateTurnstileToken)
+        if (stateTurnstileToken) {
+          try {
+            const result = await action(data, stateTurnstileToken)
 
-          if (result.success) {
-            reset()
-            setSuccess(true)
+            if (result.success) {
+              reset()
+              setSuccess(true)
+            }
+
+            if (!result.success) {
+              setError('root', { message: result.message })
+            }
+          } catch {
+            setError('root', {
+              message:
+                '送信処理中に問題が発生しました。時間をおいて、もう一度お試しください。',
+            })
+          } finally {
+            setTurnstileToken(null)
+
+            const t = refTurnstile.current
+            if (t) {
+              t.reset()
+            }
           }
+        }
 
-          if (!result.success) {
-            setError('root', { message: result.message })
-          }
-        } catch {
+        if (!stateTurnstileToken) {
           setError('root', {
             message:
-              '送信処理中に問題が発生しました。時間をおいて、もう一度お試しください。',
+              'セキュリティ確認が完了していません。少し待ってから再度お試しください。',
           })
         }
       })}
@@ -301,13 +321,31 @@ export const _ContactForm = () => {
       </div>
 
       <div className="flex w-full flex-col items-center justify-center">
-        <Turnstile
-          sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
-          onVerify={(token) => {
-            setTurnstileToken(token)
-          }}
-          appearance="interaction-only"
-        />
+        {keyTurnstile && (
+          <Turnstile
+            action={actionTurnstile}
+            sitekey={keyTurnstile}
+            onError={() => {
+              setTurnstileToken(null)
+            }}
+            onExpire={() => {
+              setTurnstileToken(null)
+            }}
+            onTimeout={() => {
+              setTurnstileToken(null)
+            }}
+            onVerify={(token, controllerTurnstile) => {
+              refTurnstile.current = controllerTurnstile
+              setTurnstileToken(token)
+            }}
+            appearance="interaction-only"
+          />
+        )}
+        {!keyTurnstile && (
+          <p className="text-sm font-semibold text-red-700" role="alert">
+            現在フォームを利用できません。時間をおいて再度お試しください。
+          </p>
+        )}
         <p className="mt-8 text-xs leading-6 text-dark5 sm:text-sm">
           送信することで、
           <Link
@@ -322,7 +360,7 @@ export const _ContactForm = () => {
       <button
         aria-busy={isSubmitting}
         className="group mt-5 inline-flex min-h-16 w-full items-center justify-center rounded-md border border-ivy8 bg-ivy8 px-5 py-4 text-sm font-semibold text-white shadow-lg transition-colors hover:bg-ivy7 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ivy6 sm:text-base"
-        disabled={isSubmitting}
+        disabled={isSubmitting || !keyTurnstile}
         type="submit"
       >
         {isSubmitting && (

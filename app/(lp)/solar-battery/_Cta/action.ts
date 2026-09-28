@@ -4,14 +4,38 @@ import { Resend } from 'resend'
 import { z } from 'zod'
 
 import { type Schema, schema } from './schema'
+import { actionTurnstile } from './turnstile'
 
-export const action = async (data: Schema, turnstileToken: string) => {
+export const action = async (data: Schema, turnstileToken: string | null) => {
   const result = schema.safeParse(data)
 
   if (!result.success) {
     return {
       errors: z.flattenError(result.error).fieldErrors,
       message: '入力内容を確認してください。',
+      success: false,
+    }
+  }
+
+  if (!turnstileToken || turnstileToken.length > 2048) {
+    return {
+      errors: {},
+      message: '認証に失敗しました。もう一度お試しください。',
+      success: false,
+    }
+  }
+
+  const secretTurnstile = process.env.TURNSTILE_SECRET_KEY
+  const hostnamesTurnstile = (process.env.TURNSTILE_ALLOWED_HOSTNAMES ?? '')
+    .split(',')
+    .map((h) => h.trim().toLowerCase())
+    .filter((h) => h.length > 0)
+
+  if (!secretTurnstile || hostnamesTurnstile.length === 0) {
+    return {
+      errors: {},
+      message:
+        '送信処理中に問題が発生しました。時間をおいて、もう一度お試しください。',
       success: false,
     }
   }
@@ -25,20 +49,30 @@ export const action = async (data: Schema, turnstileToken: string) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          secret: process.env.TURNSTILE_SECRET_KEY,
+          secret: secretTurnstile,
           response: turnstileToken,
         }),
+        signal: AbortSignal.timeout(10000),
       },
     )
 
-    const dataTurnstile = (await responseTurnstile.json()) as {
-      success: boolean
-      'error-codes'?: string[]
+    if (!responseTurnstile.ok) {
+      throw new Error('Turnstileの検証リクエストに失敗しました')
     }
 
-    console.log({ dataTurnstile })
+    const dataTurnstile = (await responseTurnstile.json()) as {
+      'error-codes'?: string[]
+      action?: string
+      hostname?: string
+      success: boolean
+    }
 
-    if (!dataTurnstile.success) {
+    if (
+      !dataTurnstile.success ||
+      dataTurnstile.action !== actionTurnstile ||
+      !dataTurnstile.hostname ||
+      !hostnamesTurnstile.includes(dataTurnstile.hostname.toLowerCase())
+    ) {
       return {
         errors: {},
         message: '認証に失敗しました。もう一度お試しください。',
