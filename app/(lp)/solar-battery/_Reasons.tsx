@@ -1,9 +1,9 @@
 import {
   Headset,
+  MapPin,
   PiggyBank,
   ShieldCheck,
   ShieldUser,
-  Wrench,
 } from 'lucide-react'
 
 import { _RevealItems } from './components/_RevealItems'
@@ -65,9 +65,10 @@ const __itemsReason = [
     title: '補助金申請サポート',
   },
   {
-    description: '経験豊富な自社スタッフが、責任をもって丁寧に施工します。',
-    icon: Wrench,
-    title: '自社施工の安心品質',
+    description:
+      '愛媛・高知を中心に、地域に根ざした身近な窓口としてご相談に対応します。',
+    icon: MapPin,
+    title: '地域に根ざした対応',
   },
   {
     description: '設置後も点検やトラブル対応など、末永くサポートします。',
