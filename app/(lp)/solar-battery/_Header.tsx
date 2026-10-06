@@ -9,8 +9,8 @@ import { _Logo } from './components/_Logo'
 
 const itemsNavigation = [
   { href: '#strengths', label: '私たちの強み' },
-  { href: '#solar-benefits', label: '太陽光のメリット' },
-  { href: '#battery-benefits', label: '蓄電池のメリット' },
+  // { href: '#solar-benefits', label: '太陽光のメリット' },
+  // { href: '#battery-benefits', label: '蓄電池のメリット' },
   { href: '#works', label: '施工事例' },
   { href: '#flow', label: '導入の流れ' },
   { href: '#faq', label: 'よくあるご質問' },
