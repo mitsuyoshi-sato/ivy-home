@@ -194,7 +194,7 @@ const __SolarBatteryCta = () => {
       <img
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 size-full object-cover object-right transition-transform duration-700 peer-hover/button:scale-105 peer-focus-visible/button:scale-[1.02]"
+        className="absolute inset-0 size-full object-cover object-right transition-transform duration-500 peer-hover/button:scale-[1.02] peer-focus-visible/button:scale-[1.02]"
         src="/images/website/cta-optimized.webp"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-white via-white to-white/70 md:via-white/80 md:to-transparent" />
