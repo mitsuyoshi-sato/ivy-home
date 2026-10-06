@@ -113,7 +113,7 @@ export const Hero = (props: {
   }, [stateIsAnimetionEnd, stateVideoReady])
 
   return (
-    <header className="relative h-[70vh]">
+    <header className="relative h-[70vh] overflow-hidden">
       <>
         {props.image && (
           <div
