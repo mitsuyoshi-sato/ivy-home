@@ -45,7 +45,7 @@ export const _ContentsSection = (props: { contents: ContentSummary[] }) => {
   }, [])
 
   return (
-    <section className="flex flex-col pb-[112px]">
+    <section className="flex flex-col overflow-x-clip pb-[112px]">
       <div className="wrapper pb-0">
         <SectionHeader
           button={{
