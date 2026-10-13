@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 
-import { getContentSitemapEntries } from '@/app/data/contentApi'
 import { getContentHref } from '@/app/data/content'
+import { getContentSitemapEntries } from '@/app/data/contentApi'
 
 const urlBase = 'https://www.ivyho.me'
 
@@ -13,6 +13,7 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
       { path: '/', priority: 1 },
       { path: '/company', priority: 0.6 },
       { path: '/services', priority: 0.8 },
+      { path: '/solar-battery', priority: 1 },
       { path: '/services/reform', priority: 0.8 },
       { path: '/services/battery', priority: 0.8 },
       { path: '/services/solar-panel', priority: 0.8 },
