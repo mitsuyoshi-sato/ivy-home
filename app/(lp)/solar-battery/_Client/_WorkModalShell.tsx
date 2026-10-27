@@ -1,6 +1,7 @@
 'use client'
 
-import { ArrowLeft, X } from 'lucide-react'
+import { ArrowLeft, ArrowRight, X } from 'lucide-react'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import type { ReactNode } from 'react'
 import { useEffect, useRef, useState } from 'react'
@@ -13,7 +14,11 @@ import {
   DrawerTitle,
 } from '@/components/ui/drawer'
 
-export const _WorkModalShell = (props: { children: ReactNode }) => {
+export const _WorkModalShell = (props: {
+  children: ReactNode
+  itemNext: { slug: string; title: string } | null
+  itemPrevious: { slug: string; title: string } | null
+}) => {
   const router = useRouter()
   const refDialog = useRef<HTMLDialogElement>(null)
   const refPanel = useRef<HTMLDivElement>(null)
@@ -33,13 +38,11 @@ export const _WorkModalShell = (props: { children: ReactNode }) => {
   useEffect(() => {
     const d = refDialog.current
     const p = refPanel.current
-    const overflow = document.body.style.overflow
 
     if (stateMobile === false && d && p) {
       if (!d.open) {
         d.showModal()
       }
-      document.body.style.overflow = 'hidden'
 
       if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         motion.set(p, { opacity: '0', translateY: '16px', scale: '0.98' })
@@ -53,13 +56,33 @@ export const _WorkModalShell = (props: { children: ReactNode }) => {
 
     return () => {
       if (stateMobile === false) {
-        document.body.style.overflow = overflow
         if (d?.open) {
           d.close()
         }
       }
     }
   }, [stateMobile])
+
+  useEffect(() => {
+    const overflowBody = document.body.style.overflow
+    const overscrollBody = document.body.style.overscrollBehavior
+    const overflowRoot = document.documentElement.style.overflow
+    const overscrollRoot = document.documentElement.style.overscrollBehavior
+
+    if (stateMobile === false || (stateMobile === true && stateDrawerOpen)) {
+      document.body.style.overflow = 'hidden'
+      document.body.style.overscrollBehavior = 'none'
+      document.documentElement.style.overflow = 'hidden'
+      document.documentElement.style.overscrollBehavior = 'none'
+    }
+
+    return () => {
+      document.body.style.overflow = overflowBody
+      document.body.style.overscrollBehavior = overscrollBody
+      document.documentElement.style.overflow = overflowRoot
+      document.documentElement.style.overscrollBehavior = overscrollRoot
+    }
+  }, [stateDrawerOpen, stateMobile])
 
   return (
     <>
@@ -80,7 +103,11 @@ export const _WorkModalShell = (props: { children: ReactNode }) => {
               施工事例の内容を表示しています
             </DrawerDescription>
             <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
-              <__Content onClose={() => router.back()}>
+              <__Content
+                itemNext={props.itemNext}
+                itemPrevious={props.itemPrevious}
+                onClose={() => router.back()}
+              >
                 {props.children}
               </__Content>
             </div>
@@ -104,9 +131,13 @@ export const _WorkModalShell = (props: { children: ReactNode }) => {
         >
           <div
             ref={refPanel}
-            className="max-h-[calc(100dvh-40px)] overflow-y-auto rounded-2xl bg-[#f8f9f5] shadow-[0_24px_80px_rgba(0,0,0,0.28)]"
+            className="max-h-[calc(100dvh-40px)] overflow-y-auto overscroll-contain rounded-2xl bg-[#f8f9f5] shadow-[0_24px_80px_rgba(0,0,0,0.28)]"
           >
-            <__Content onClose={() => router.back()}>
+            <__Content
+              itemNext={props.itemNext}
+              itemPrevious={props.itemPrevious}
+              onClose={() => router.back()}
+            >
               {props.children}
             </__Content>
           </div>
@@ -116,30 +147,74 @@ export const _WorkModalShell = (props: { children: ReactNode }) => {
   )
 }
 
-const __Content = (props: { children: ReactNode; onClose: () => void }) => (
-  <>
-    <div className="sticky top-0 z-10 flex justify-end border-b border-[#e4e9df] bg-white/95 px-5 py-3 backdrop-blur-sm sm:px-8">
+const __Content = (props: {
+  children: ReactNode
+  itemNext: { slug: string; title: string } | null
+  itemPrevious: { slug: string; title: string } | null
+  onClose: () => void
+}) => (
+  <div className="relative">
+    <div className="sticky top-4 z-10 ml-auto mr-4 h-0 w-11 sm:top-6 sm:mr-6">
       <button
         autoFocus
         aria-label="施工事例の詳細を閉じる"
-        className="inline-flex min-h-11 items-center gap-2 rounded-full px-3 text-xs font-semibold text-ivy8 transition-colors hover:bg-[#eef2ea] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ivy8"
+        className="flex size-11 items-center justify-center rounded-full border border-ivy8/15 bg-white/30 text-ivy8 shadow-sm backdrop-blur-sm transition-colors hover:bg-white/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ivy8"
         onClick={props.onClose}
         type="button"
       >
-        閉じる
-        <X aria-hidden="true" className="size-4" />
+        <X aria-hidden="true" className="size-5" />
       </button>
     </div>
     {props.children}
     <div className="border-t border-[#e4e9df] bg-white px-5 py-6 sm:px-10">
-      <button
-        className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-ivy8 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ivy8"
-        onClick={props.onClose}
-        type="button"
-      >
-        <ArrowLeft aria-hidden="true" className="size-4" />
-        施工事例一覧に戻る
-      </button>
+      {(props.itemPrevious || props.itemNext) && (
+        <div className="grid gap-4 sm:grid-cols-2 sm:gap-8">
+          {props.itemPrevious && (
+            <Link
+              aria-label={`前の施工事例：${props.itemPrevious.title}`}
+              className="group inline-flex min-h-11 max-w-sm items-center gap-3 text-ivy8 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ivy8"
+              href={`/solar-battery/works/${props.itemPrevious.slug}`}
+              replace
+              scroll={false}
+            >
+              <ArrowLeft
+                aria-hidden="true"
+                className="size-5 shrink-0 transition-transform group-hover:-translate-x-1"
+              />
+              <span>
+                <span className="block text-[10px] font-semibold tracking-[0.16em] text-ivy7">
+                  PREV WORKS
+                </span>
+                <span className="mt-1 block text-sm font-semibold leading-6 underline-offset-4 group-hover:underline">
+                  {props.itemPrevious.title}
+                </span>
+              </span>
+            </Link>
+          )}
+          {props.itemNext && (
+            <Link
+              aria-label={`次の施工事例：${props.itemNext.title}`}
+              className="group ml-auto inline-flex min-h-11 max-w-sm items-center gap-3 text-right text-ivy8 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ivy8 sm:col-start-2"
+              href={`/solar-battery/works/${props.itemNext.slug}`}
+              replace
+              scroll={false}
+            >
+              <span>
+                <span className="block text-[10px] font-semibold tracking-[0.16em] text-ivy7">
+                  NEXT WORKS
+                </span>
+                <span className="mt-1 block text-sm font-semibold leading-6 underline-offset-4 group-hover:underline">
+                  {props.itemNext.title}
+                </span>
+              </span>
+              <ArrowRight
+                aria-hidden="true"
+                className="size-5 shrink-0 transition-transform group-hover:translate-x-1"
+              />
+            </Link>
+          )}
+        </div>
+      )}
     </div>
-  </>
+  </div>
 )

@@ -1,4 +1,11 @@
-import { ArrowUpRight, House, Image as ImageIcon, Sun } from 'lucide-react'
+import {
+  ArrowRight,
+  House,
+  Image as ImageIcon,
+  MapPin,
+  Sun,
+  UsersRound,
+} from 'lucide-react'
 import Link from 'next/link'
 
 import type { Work } from './works'
@@ -18,54 +25,103 @@ export const _WorkDetail = (props: { item: Work; heading: 'h1' | 'h2' }) => {
         <Heading className="mt-5 font-serif text-2xl font-medium leading-normal tracking-wider sm:text-4xl">
           {props.item.title}
         </Heading>
-        <p className="mt-4 max-w-2xl text-sm leading-7 text-dark6 sm:text-base sm:leading-8">
-          {props.item.description}
-        </p>
       </header>
 
       <div className="px-5 py-7 sm:p-10">
-        <div className="relative flex aspect-[16/10] max-h-[440px] min-h-48 items-center justify-center overflow-hidden rounded-xl bg-[linear-gradient(135deg,#e3ebe1_0%,#f2f4ed_58%,#dce7dd_100%)] text-ivy7">
-          <div
-            aria-hidden="true"
-            className="absolute -right-10 -top-10 size-48 rounded-full border border-white/70 sm:size-64"
-          />
-          <div
-            aria-hidden="true"
-            className="absolute -bottom-20 -left-12 size-64 rounded-full border border-white/60 sm:size-80"
-          />
-          <div className="relative flex flex-col items-center text-center">
-            <div className="flex items-end gap-2 text-ivy7/60">
-              <Sun
-                aria-hidden="true"
-                className="mb-4 size-9"
-                strokeWidth={1.2}
+        <div className="grid gap-5 md:grid-cols-[minmax(0,3fr)_minmax(240px,2fr)]">
+          {props.item.image && (
+            <figure className="m-0 min-h-56 overflow-hidden rounded-xl">
+              <img
+                alt={props.item.image.alt}
+                className="size-full object-cover"
+                src={props.item.image.src}
               />
-              <House
+            </figure>
+          )}
+          {!props.item.image && (
+            <div className="relative flex aspect-[4/3] min-h-56 items-center justify-center overflow-hidden rounded-xl bg-[linear-gradient(135deg,#e3ebe1_0%,#f2f4ed_58%,#dce7dd_100%)] text-ivy7">
+              <div
                 aria-hidden="true"
-                className="size-16 sm:size-20"
-                strokeWidth={1.1}
+                className="absolute -right-10 -top-10 size-48 rounded-full border border-white/70 sm:size-64"
               />
+              <div
+                aria-hidden="true"
+                className="absolute -bottom-20 -left-12 size-64 rounded-full border border-white/60 sm:size-80"
+              />
+              <div className="relative flex flex-col items-center text-center">
+                <div className="flex items-end gap-2 text-ivy7/60">
+                  <Sun
+                    aria-hidden="true"
+                    className="mb-4 size-9"
+                    strokeWidth={1.2}
+                  />
+                  <House
+                    aria-hidden="true"
+                    className="size-16 sm:size-20"
+                    strokeWidth={1.1}
+                  />
+                </div>
+                <p className="mt-5 text-xs font-semibold tracking-[0.16em]">
+                  施工写真を準備中
+                </p>
+              </div>
+              <span className="absolute bottom-4 right-5 flex items-center gap-2 text-[10px] font-semibold tracking-[0.18em] text-ivy7/60">
+                <ImageIcon aria-hidden="true" className="size-3.5" />
+                PHOTO COMING SOON
+              </span>
             </div>
-            <p className="mt-5 text-xs font-semibold tracking-[0.16em]">
-              施工写真を準備中
+          )}
+
+          <aside className="self-start md:pt-1">
+            <p className="text-xs font-bold tracking-[0.2em] text-ivy7">
+              CUSTOMER PROFILE
             </p>
-          </div>
-          <span className="absolute bottom-4 right-5 flex items-center gap-2 text-[10px] font-semibold tracking-[0.18em] text-ivy7/60">
-            <ImageIcon aria-hidden="true" className="size-3.5" />
-            PHOTO COMING SOON
-          </span>
+            <div className="mt-4 flex items-center gap-3 rounded-full bg-[linear-gradient(90deg,#edf1e7_0%,#f4f5ef_100%)] px-4 py-3 text-sm font-semibold text-dark8 sm:text-base">
+              <UsersRound
+                aria-hidden="true"
+                className="size-6 shrink-0 text-ivy7"
+                strokeWidth={1.8}
+              />
+              <span>
+                {props.item.overview.age}・{props.item.overview.family}
+              </span>
+            </div>
+            <div className="mt-3 flex items-center gap-3 rounded-full bg-[linear-gradient(90deg,#edf1e7_0%,#f4f5ef_100%)] px-4 py-3 text-sm font-semibold leading-6 text-dark7 sm:text-base">
+              <MapPin
+                aria-hidden="true"
+                className="size-6 shrink-0 text-ivy7"
+                strokeWidth={1.8}
+              />
+              <span>{props.item.overview.area}</span>
+            </div>
+
+            {(props.item.overview.solar || props.item.overview.battery) && (
+              <>
+                <div className="my-6 h-px bg-[#cfd8ca]" />
+
+                <p className="text-xs font-bold tracking-[0.2em] text-ivy7">
+                  INSTALLATION
+                </p>
+                <div className="mt-4 space-y-3">
+                  {props.item.overview.solar && (
+                    <div className="flex items-center gap-3 rounded-full bg-[linear-gradient(90deg,#edf1e7_0%,#f4f5ef_100%)] px-4 py-3 text-sm font-semibold leading-6 text-dark8 sm:text-base">
+                      <__SolarIcon strokeWidth={4} />
+                      <span>{props.item.overview.solar}</span>
+                    </div>
+                  )}
+                  {props.item.overview.battery && (
+                    <div className="flex items-center gap-3 rounded-full bg-[linear-gradient(90deg,#edf1e7_0%,#f4f5ef_100%)] px-4 py-3 text-sm font-semibold leading-6 text-dark8 sm:text-base">
+                      <__BatteryIcon strokeWidth={4} />
+                      <span>{props.item.overview.battery}</span>
+                    </div>
+                  )}
+                </div>
+              </>
+            )}
+          </aside>
         </div>
 
-        <div className="mt-8 flex flex-wrap gap-2 border-b border-[#dce4d8] pb-8 text-xs font-medium text-ivy7 sm:mt-10">
-          <span className="rounded-full border border-[#c9d4c3] bg-white px-4 py-2">
-            施工エリア：掲載準備中
-          </span>
-          <span className="rounded-full border border-[#c9d4c3] bg-white px-4 py-2">
-            導入設備：掲載準備中
-          </span>
-        </div>
-
-        <div className="mt-10 space-y-9 sm:mt-12 sm:space-y-11">
+        <div className="mt-10 space-y-9 border-t border-[#dce4d8] pt-10 sm:mt-12 sm:space-y-11 sm:pt-12">
           {[
             {
               number: '01',
@@ -115,14 +171,53 @@ export const _WorkDetail = (props: { item: Work; heading: 'h1' | 'h2' }) => {
             </p>
           </div>
           <Link
-            className="mt-6 inline-flex min-h-12 shrink-0 items-center justify-center rounded-full bg-white px-5 py-3 text-xs font-semibold text-ivy8 transition-colors hover:bg-[#e8eee2] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:mt-0"
+            className="group mt-6 inline-flex min-h-12 shrink-0 items-center justify-center rounded-md border border-white/20 bg-white px-6 py-3 text-xs font-semibold text-ivy8 shadow-sm transition-colors hover:bg-[#e8eee2] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:mt-0"
             href="/solar-battery#simulation"
           >
             無料シミュレーションへ
-            <ArrowUpRight aria-hidden="true" className="ml-2 size-4" />
+            <ArrowRight
+              aria-hidden="true"
+              className="ml-3 size-4 transition-transform group-hover:translate-x-1"
+            />
           </Link>
         </aside>
       </div>
     </article>
   )
 }
+
+const __SolarIcon = (props: { strokeWidth: number }) => (
+  <svg
+    aria-hidden="true"
+    className="size-7 shrink-0 text-ivy7"
+    fill="none"
+    stroke="currentColor"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth={props.strokeWidth}
+    viewBox="0 0 64 64"
+  >
+    <circle cx="32" cy="14" r="7" />
+    <path d="M32 2v4M32 22v4M20 14h4M40 14h4M23.5 5.5l2.8 2.8M37.7 19.7l2.8 2.8M40.5 5.5l-2.8 2.8M26.3 19.7l-2.8 2.8" />
+    <path d="M16 31h32l6 18H10l6-18Z" />
+    <path d="M21 31l-3 18M32 31v18M43 31l3 18M13 40h38" />
+    <path d="M28 49v7M36 49v7M24 56h16" />
+  </svg>
+)
+
+const __BatteryIcon = (props: { strokeWidth: number }) => (
+  <svg
+    aria-hidden="true"
+    className="size-7 shrink-0 text-ivy7"
+    fill="none"
+    stroke="currentColor"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth={props.strokeWidth}
+    viewBox="0 0 64 64"
+  >
+    <path d="M25 10V7h14v3" />
+    <rect height="44" rx="4" width="28" x="18" y="10" />
+    <path d="M35 20 26 35h7l-3 10 10-16h-7l2-9Z" />
+  </svg>
+)

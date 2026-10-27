@@ -24,40 +24,67 @@ export const _Works = () => {
           {data.map((w) => (
             <article
               key={w.slug}
-              className="overflow-hidden rounded-xl border border-white/10 bg-white text-dark8 shadow-[0_16px_36px_rgba(0,0,0,0.18)]"
+              className="flex h-full flex-col overflow-hidden rounded-xl border border-white/10 bg-white text-dark8 shadow-[0_16px_36px_rgba(0,0,0,0.18)]"
               role="listitem"
             >
-              <div className="flex h-32 items-center justify-center overflow-hidden bg-[linear-gradient(135deg,#e7ebe7_0%,#f6f7f4_100%)] text-dark4">
-                <div className="text-center">
-                  <ImageIcon
-                    aria-hidden="true"
-                    className="mx-auto size-7 opacity-60"
-                    strokeWidth={1.5}
+              <div className="flex h-40 items-center justify-center overflow-hidden bg-[linear-gradient(135deg,#e7ebe7_0%,#f6f7f4_100%)] text-dark4">
+                {w.image && (
+                  <img
+                    alt={w.image.alt}
+                    className="size-full object-cover"
+                    loading="lazy"
+                    src={w.image.src}
                   />
-                  <p className="mt-2 text-[10px] tracking-[0.12em]">
-                    施工写真を準備中
-                  </p>
-                </div>
+                )}
+                {!w.image && (
+                  <div className="text-center">
+                    <ImageIcon
+                      aria-hidden="true"
+                      className="mx-auto size-7 opacity-60"
+                      strokeWidth={1.5}
+                    />
+                    <p className="mt-2 text-[10px] tracking-[0.12em]">
+                      施工写真を準備中
+                    </p>
+                  </div>
+                )}
               </div>
-              <div className="p-5 sm:p-6">
-                <h3 className="text-base font-semibold leading-relaxed sm:text-lg">
+              <div className="flex flex-1 flex-col p-5 sm:p-6">
+                <p className="text-xs font-semibold tracking-[0.08em] text-ivy7">
+                  {w.overview.customer && <>{w.overview.customer}・</>}
+                  {w.overview.area}
+                </p>
+                <h3 className="mt-2 text-base font-semibold leading-relaxed sm:text-lg">
                   {w.title}
                 </h3>
-                <p className="mt-3 text-sm leading-6 text-dark6">
-                  {w.description}
-                </p>
-                <Link
-                  aria-label={`${w.title}の詳細を見る`}
-                  className="group mt-6 inline-flex min-h-11 items-center justify-center rounded-full border border-ivy8 px-5 py-2 text-xs font-semibold text-ivy8 transition-colors hover:bg-ivy8 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ivy8 sm:px-7 sm:text-sm"
-                  href={`/solar-battery/works/${w.slug}`}
-                  scroll={false}
-                >
-                  詳細を見る
-                  <ArrowRight
-                    aria-hidden="true"
-                    className="ml-3 size-4 transition-transform group-hover:translate-x-1"
-                  />
-                </Link>
+                {(w.overview.solar || w.overview.battery) && (
+                  <div className="mt-3 flex flex-wrap gap-1.5">
+                    {w.overview.solar && (
+                      <span className="rounded-full border border-ivy7/50 bg-[#edf1e7] px-3 py-1 text-xs font-semibold text-ivy7">
+                        太陽光パネル
+                      </span>
+                    )}
+                    {w.overview.battery && (
+                      <span className="rounded-full border border-ivy7/50 bg-[#edf1e7] px-3 py-1 text-xs font-semibold text-ivy7">
+                        蓄電池
+                      </span>
+                    )}
+                  </div>
+                )}
+                <div className="mt-4 flex justify-end">
+                  <Link
+                    aria-label={`${w.title}の詳細を見る`}
+                    className="group inline-flex min-h-11 items-center justify-center rounded-full border border-ivy8 px-5 py-2 text-xs font-semibold text-ivy8 transition-colors hover:bg-ivy8 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ivy8 sm:px-7 sm:text-sm"
+                    href={`/solar-battery/works/${w.slug}`}
+                    scroll={false}
+                  >
+                    詳細を見る
+                    <ArrowRight
+                      aria-hidden="true"
+                      className="ml-3 size-4 transition-transform group-hover:translate-x-1"
+                    />
+                  </Link>
+                </div>
               </div>
             </article>
           ))}
