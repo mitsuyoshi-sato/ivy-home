@@ -16,6 +16,8 @@ export type Work = {
   outcome: string
 }
 
+export const isWorksPublished = false
+
 export const data: readonly Work[] = [
   {
     slug: 'example-1',
