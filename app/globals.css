@@ -65,7 +65,7 @@ body {
   -webkit-tap-highlight-color: transparent; /* iOSでタップ時のちらつきを無効 */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer 10+ */
-  @apply font-sans text-black bg-white;
+  @apply bg-white font-sans text-black;
 }
 body::-webkit-scrollbar {
   display: none; /* WebKit */
@@ -161,6 +161,34 @@ button {
     stroke-dashoffset: -126px;
   }
 }
+@keyframes work-modal-backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes work-modal-backdrop-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.work-modal::backdrop {
+  animation: work-modal-backdrop-in 200ms ease-out both;
+}
+.work-modal[data-closing='true']::backdrop {
+  animation: work-modal-backdrop-out 500ms ease-out forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .work-modal::backdrop,
+  .work-modal[data-closing='true']::backdrop {
+    animation: none;
+  }
+}
 @layer components {
   .link-external {
     /* @apply; */
@@ -191,7 +219,7 @@ button {
       rgba(0, 0, 0, 0.04) 48%,
       rgba(0, 0, 0, 0) 66%
     );
-    @apply absolute inset-0 pointer-events-none;
+    @apply pointer-events-none absolute inset-0;
   }
   .noise-reverse {
     background-image: url(/noise.svg);
@@ -206,16 +234,16 @@ button {
       rgba(0, 0, 0, 0.004) 8%,
       rgba(0, 0, 0, 0.048)
     );
-    @apply absolute inset-0 pointer-events-none;
+    @apply pointer-events-none absolute inset-0;
   }
   .gradient-text {
-    @apply inline-block text-transparent bg-clip-text font-medium bg-gradient-to-b from-white to-light;
+    @apply inline-block bg-gradient-to-b from-white to-light bg-clip-text font-medium text-transparent;
   }
   .dotted-underline {
     @apply text-white/90 underline decoration-light/90 decoration-dotted underline-offset-[4px];
   }
   .haze-t {
-    @apply fixed top-0 inset-x-0 h-[104px] opacity-50 backdrop-blur-[6px] select-none pointer-events-none;
+    @apply pointer-events-none fixed inset-x-0 top-0 h-[104px] select-none opacity-50 backdrop-blur-[6px];
     mask-image: linear-gradient(
       to bottom,
       rgba(31, 32, 36, 1) 25%,
@@ -223,11 +251,11 @@ button {
     );
   }
   .haze-b {
-    @apply fixed bottom-0 inset-x-0 h-[104px] opacity-50 backdrop-blur-[6px] select-none pointer-events-none;
+    @apply pointer-events-none fixed inset-x-0 bottom-0 h-[104px] select-none opacity-50 backdrop-blur-[6px];
     mask-image: linear-gradient(to top, rgba(31, 32, 36, 1) 25%, transparent);
   }
   .shine {
-    @apply absolute -top-px h-px w-full inset-x-0;
+    @apply absolute inset-x-0 -top-px h-px w-full;
     background-image: linear-gradient(
       to right,
       rgba(121, 122, 126, 0) 7%,
@@ -237,7 +265,7 @@ button {
     );
   }
   .shine-b {
-    @apply absolute -bottom-px h-px w-full inset-x-0;
+    @apply absolute inset-x-0 -bottom-px h-px w-full;
     background-image: linear-gradient(
       to left,
       rgba(121, 122, 126, 0) 7%,
@@ -247,7 +275,7 @@ button {
     );
   }
   .shine-lg {
-    @apply absolute -top-px h-px w-full inset-x-0;
+    @apply absolute inset-x-0 -top-px h-px w-full;
     background-image: linear-gradient(
       to right,
       rgba(235, 235, 235, 0) 7%,
@@ -257,7 +285,7 @@ button {
     );
   }
   .wrapper {
-    @apply w-[calc(100%-3vw)] md:w-[calc(100%-80px)] mx-auto max-w-[1200px] rounded-2xl lg:rounded-3xl px-[5vw] lg:px-[72px] py-[18vw] md:py-28;
+    @apply mx-auto w-[calc(100%-3vw)] max-w-[1200px] rounded-2xl px-[5vw] py-[18vw] md:w-[calc(100%-80px)] md:py-28 lg:rounded-3xl lg:px-[72px];
   }
   .scroller {
     overflow: auto;
@@ -271,10 +299,10 @@ button {
     }
   }
   .divider {
-    @apply w-full h-px bg-light/10;
+    @apply h-px w-full bg-light/10;
   }
   .br {
     content: '';
-    @apply block mt-2;
+    @apply mt-2 block;
   }
 }

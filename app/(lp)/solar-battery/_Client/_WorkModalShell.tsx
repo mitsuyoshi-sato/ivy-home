@@ -21,9 +21,26 @@ export const _WorkModalShell = (props: {
 }) => {
   const router = useRouter()
   const refDialog = useRef<HTMLDialogElement>(null)
+  const refClosing = useRef(false)
   const refPanel = useRef<HTMLDivElement>(null)
+  const [stateClosing, setClosing] = useState(false)
   const [stateMobile, setMobile] = useState<boolean | null>(null)
   const [stateDrawerOpen, setDrawerOpen] = useState(true)
+
+  const onClose = async () => {
+    if (!refClosing.current) {
+      refClosing.current = true
+      setClosing(true)
+
+      const p = refPanel.current
+      if (p && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        motion.to(p, 0.5, 'out', { opacity: '0' })
+        await motion.delay(0.5)
+      }
+
+      router.back()
+    }
+  }
 
   useEffect(() => {
     const m = window.matchMedia('(max-width: 639px)')
@@ -45,8 +62,8 @@ export const _WorkModalShell = (props: {
       }
 
       if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        motion.set(p, { opacity: '0', translateY: '16px', scale: '0.98' })
-        motion.to(p, 0.35, 'out', {
+        motion.set(p, { opacity: '0', translateY: '50px', scale: '1' })
+        motion.to(p, 1, 'out', {
           opacity: '1',
           translateY: '0px',
           scale: '1',
@@ -106,7 +123,7 @@ export const _WorkModalShell = (props: {
               <__Content
                 itemNext={props.itemNext}
                 itemPrevious={props.itemPrevious}
-                onClose={() => router.back()}
+                onClose={onClose}
               >
                 {props.children}
               </__Content>
@@ -118,14 +135,15 @@ export const _WorkModalShell = (props: {
         <dialog
           ref={refDialog}
           aria-label="施工事例の詳細"
-          className="m-auto max-h-[calc(100dvh-40px)] w-[calc(100%-40px)] max-w-4xl rounded-2xl border-0 bg-transparent p-0 text-left shadow-none backdrop:bg-black/70"
+          className="work-modal m-auto max-h-[calc(100dvh-40px)] w-[calc(100%-40px)] max-w-4xl rounded-2xl border-0 bg-transparent p-0 text-left shadow-none backdrop:bg-black/70"
+          data-closing={stateClosing}
           onCancel={(e) => {
             e.preventDefault()
-            router.back()
+            void onClose()
           }}
           onClick={(e) => {
             if (e.target === e.currentTarget) {
-              router.back()
+              void onClose()
             }
           }}
         >
@@ -136,7 +154,7 @@ export const _WorkModalShell = (props: {
             <__Content
               itemNext={props.itemNext}
               itemPrevious={props.itemPrevious}
-              onClose={() => router.back()}
+              onClose={onClose}
             >
               {props.children}
             </__Content>
