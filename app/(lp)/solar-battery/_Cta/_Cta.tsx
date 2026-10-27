@@ -18,7 +18,7 @@ export const _Cta = () => {
           <div className="rounded-2xl border border-white/80 bg-white/95 px-5 py-7 shadow-[0_22px_64px_rgba(21,50,35,0.2)] backdrop-blur-sm sm:px-8 sm:py-9 lg:px-10">
             <div className="mb-8 flex flex-wrap items-baseline gap-x-4 gap-y-2">
               <h2 className="text-xl font-semibold leading-relaxed text-ivy7 sm:text-2xl">
-                ご相談・お見積もりは無料です。お気軽にお問い合わせください。
+                お見積もり・シミュレーションは無料です。お気軽にお問い合わせください。
               </h2>
               <p className="text-xs leading-relaxed text-dark4">
                 <span className="sr-only">アスタリスク</span>

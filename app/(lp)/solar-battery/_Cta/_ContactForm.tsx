@@ -371,7 +371,7 @@ export const _ContactForm = () => {
         )}
         {!isSubmitting && (
           <>
-            無料で相談する
+            お問い合わせ内容を送信する
             <ArrowRight
               aria-hidden="true"
               className="ml-4 size-5 transition-transform group-hover:translate-x-1"
