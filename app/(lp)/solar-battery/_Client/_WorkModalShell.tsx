@@ -2,7 +2,7 @@
 
 import { ArrowLeft, ArrowRight, X } from 'lucide-react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import type { ReactNode } from 'react'
 import { useEffect, useRef, useState } from 'react'
 
@@ -14,18 +14,19 @@ import {
   DrawerTitle,
 } from '@/components/ui/drawer'
 
-export const _WorkModalShell = (props: {
-  children: ReactNode
-  itemNext: { slug: string; title: string } | null
-  itemPrevious: { slug: string; title: string } | null
-}) => {
+import { data } from '../works'
+
+export const _WorkModalShell = (props: { children: ReactNode }) => {
   const router = useRouter()
+  const params = useParams<{ slug: string }>()
   const refDialog = useRef<HTMLDialogElement>(null)
   const refClosing = useRef(false)
   const refPanel = useRef<HTMLDivElement>(null)
+  const refScrollMobile = useRef<HTMLDivElement>(null)
   const [stateClosing, setClosing] = useState(false)
   const [stateMobile, setMobile] = useState<boolean | null>(null)
   const [stateDrawerOpen, setDrawerOpen] = useState(true)
+  const indexItem = data.findIndex((w) => w.slug === params.slug)
 
   const onClose = async () => {
     if (!refClosing.current) {
@@ -101,6 +102,18 @@ export const _WorkModalShell = (props: {
     }
   }, [stateDrawerOpen, stateMobile])
 
+  useEffect(() => {
+    const p = refPanel.current
+    const s = refScrollMobile.current
+
+    if (p) {
+      p.scrollTop = 0
+    }
+    if (s) {
+      s.scrollTop = 0
+    }
+  }, [params.slug])
+
   return (
     <>
       {stateMobile === true && (
@@ -119,10 +132,13 @@ export const _WorkModalShell = (props: {
             <DrawerDescription className="sr-only">
               施工事例の内容を表示しています
             </DrawerDescription>
-            <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
+            <div
+              ref={refScrollMobile}
+              className="min-h-0 flex-1 overflow-y-auto overscroll-contain"
+            >
               <__Content
-                itemNext={props.itemNext}
-                itemPrevious={props.itemPrevious}
+                itemNext={data[indexItem + 1] ?? null}
+                itemPrevious={data[indexItem - 1] ?? null}
                 onClose={onClose}
               >
                 {props.children}
@@ -152,8 +168,8 @@ export const _WorkModalShell = (props: {
             className="max-h-[calc(100dvh-40px)] overflow-y-auto overscroll-contain rounded-2xl bg-[#f8f9f5] shadow-[0_24px_80px_rgba(0,0,0,0.28)]"
           >
             <__Content
-              itemNext={props.itemNext}
-              itemPrevious={props.itemPrevious}
+              itemNext={data[indexItem + 1] ?? null}
+              itemPrevious={data[indexItem - 1] ?? null}
               onClose={onClose}
             >
               {props.children}

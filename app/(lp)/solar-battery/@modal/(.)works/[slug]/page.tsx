@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 
-import { _WorkModal } from '../../../_WorkModal'
+import { _WorkDetail } from '../../../_WorkDetail'
 import { data } from '../../../works'
 
 const Page = async (props: { params: Promise<{ slug: string }> }) => {
@@ -11,7 +11,7 @@ const Page = async (props: { params: Promise<{ slug: string }> }) => {
     notFound()
   }
 
-  return <_WorkModal item={item} />
+  return <_WorkDetail item={item} heading="h2" />
 }
 
 export default Page
