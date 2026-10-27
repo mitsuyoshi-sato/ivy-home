@@ -1,4 +1,4 @@
-import { ArrowRight, Calculator } from 'lucide-react'
+import { ArrowRight, Calculator, Images } from 'lucide-react'
 
 import { _HeroImage } from './_HeroImage'
 
@@ -40,21 +40,22 @@ export const _Hero = () => {
 
         <div className="mt-8 flex max-w-xl flex-col gap-3 sm:flex-row">
           <a
-            className="group inline-flex min-h-14 items-center justify-center whitespace-nowrap rounded-md border border-ivy8 bg-ivy8 px-4 py-3 text-xs font-bold text-white shadow-lg transition-colors hover:bg-ivy7 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ivy6"
+            className="group inline-flex min-h-14 items-center justify-center whitespace-nowrap rounded-md border border-ivy8 bg-ivy8 px-4 py-3 text-xs font-bold text-white shadow-lg transition-colors hover:bg-ivy7 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ivy6 sm:flex-1"
             href="#simulation"
           >
             <Calculator aria-hidden="true" className="mr-2 size-4" />
-            無料シミュレーションをはじめる
+            シミュレーション・お見積もりはこちら
             <ArrowRight
               aria-hidden="true"
               className="ml-2 size-4 transition-transform group-hover:translate-x-1"
             />
           </a>
           <a
-            className="group inline-flex min-h-14 items-center justify-center whitespace-nowrap rounded-md border border-gray-200 bg-white/90 px-4 py-3 text-xs font-bold text-dark8 shadow-lg transition-colors hover:border-ivy7 hover:text-ivy7 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ivy6"
-            href="#contact"
+            className="group inline-flex min-h-14 items-center justify-center whitespace-nowrap rounded-md border border-gray-200 bg-white/90 px-4 py-3 text-xs font-bold text-dark8 shadow-lg transition-colors hover:border-ivy7 hover:text-ivy7 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ivy6 sm:flex-1"
+            href="#works"
           >
-            無料相談・お見積もりはこちら
+            <Images aria-hidden="true" className="mr-2 size-4" />
+            導入事例を見てみませんか？
             <ArrowRight
               aria-hidden="true"
               className="ml-2 size-4 transition-transform group-hover:translate-x-1"
