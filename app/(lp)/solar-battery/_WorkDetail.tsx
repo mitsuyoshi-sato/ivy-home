@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import type { Work } from './works'
 
-export const _WorkDetail = (props: { work: Work; heading: 'h1' | 'h2' }) => {
+export const _WorkDetail = (props: { item: Work; heading: 'h1' | 'h2' }) => {
   const Heading = props.heading
   const SectionHeading = ({ h1: 'h2', h2: 'h3' } as const)[props.heading]
 
@@ -13,13 +13,13 @@ export const _WorkDetail = (props: { work: Work; heading: 'h1' | 'h2' }) => {
         <p className="flex items-center gap-3 text-[11px] font-bold tracking-[0.22em] text-ivy7">
           <span>WORKS</span>
           <span aria-hidden="true" className="h-px w-7 bg-[#a9b391]" />
-          <span>{props.work.number}</span>
+          <span>{props.item.number}</span>
         </p>
         <Heading className="mt-5 font-serif text-2xl font-medium leading-normal tracking-wider sm:text-4xl">
-          {props.work.title}
+          {props.item.title}
         </Heading>
         <p className="mt-4 max-w-2xl text-sm leading-7 text-dark6 sm:text-base sm:leading-8">
-          {props.work.description}
+          {props.item.description}
         </p>
       </header>
 
@@ -70,17 +70,17 @@ export const _WorkDetail = (props: { work: Work; heading: 'h1' | 'h2' }) => {
             {
               number: '01',
               title: '導入前のお悩み',
-              content: props.work.challenge,
+              content: props.item.challenge,
             },
             {
               number: '02',
               title: 'ご提案・施工内容',
-              content: props.work.proposal,
+              content: props.item.proposal,
             },
             {
               number: '03',
               title: '導入後の暮らし',
-              content: props.work.outcome,
+              content: props.item.outcome,
             },
           ].map((s) => (
             <section

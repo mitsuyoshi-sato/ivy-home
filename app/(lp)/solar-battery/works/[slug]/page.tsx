@@ -4,29 +4,29 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 import { _WorkDetail } from '../../_WorkDetail'
-import { works } from '../../works'
+import { data } from '../../works'
 
 export const dynamicParams = false
 
-export const generateStaticParams = () => works.map((w) => ({ slug: w.slug }))
+export const generateStaticParams = () => data.map((w) => ({ slug: w.slug }))
 
 export const generateMetadata = async (props: {
   params: Promise<{ slug: string }>
 }): Promise<Metadata> => {
   const { slug } = await props.params
-  const work = works.find((w) => w.slug === slug)
+  const item = data.find((w) => w.slug === slug)
 
   return {
-    title: work?.title ?? '施工事例',
+    title: item?.title ?? '施工事例',
     robots: { index: false, follow: false },
   }
 }
 
 const Page = async (props: { params: Promise<{ slug: string }> }) => {
   const { slug } = await props.params
-  const work = works.find((w) => w.slug === slug)
+  const item = data.find((w) => w.slug === slug)
 
-  if (!work) {
+  if (!item) {
     notFound()
   }
 
@@ -41,7 +41,7 @@ const Page = async (props: { params: Promise<{ slug: string }> }) => {
           施工事例一覧に戻る
         </Link>
         <div className="overflow-hidden rounded-2xl shadow-[0_20px_70px_rgba(17,46,28,0.1)]">
-          <_WorkDetail work={work} heading="h1" />
+          <_WorkDetail item={item} heading="h1" />
         </div>
       </div>
     </div>
