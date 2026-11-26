@@ -6,6 +6,7 @@ import { Breadcrumb } from '@/components/Breadcrumb'
 import { Hero } from '@/components/Hero'
 
 import { _InfoSection } from './_InfoSection'
+import { _MessageSection } from './_MessageSection'
 import { _PhilosophySection } from './_PhilosophySection'
 
 export const metadata: Metadata = {
@@ -158,7 +159,10 @@ export default function Company() {
       <section className="bg-cleam" id="philosophy">
         <_PhilosophySection />
       </section>
-      <_InfoSection />
+      <_MessageSection />
+      <section className="border-t border-ivy7/10 bg-white" id="info">
+        <_InfoSection />
+      </section>
     </>
   )
 }

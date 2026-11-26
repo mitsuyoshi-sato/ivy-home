@@ -58,7 +58,7 @@ export const _InfoSection = () => {
   }, [])
 
   return (
-    <div className="wrapper" id="info">
+    <div className="wrapper">
       <div ref={refContainer} className="flex flex-col gap-20">
         <div className="flex flex-col">
           <p
